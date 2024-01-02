@@ -11,6 +11,8 @@ note-tex:
     paths:
       - build/
     key: "$CI_COMMIT_REF_SLUG"
+  tags:
+    - latex
   except:
     changes:
       - README.md
