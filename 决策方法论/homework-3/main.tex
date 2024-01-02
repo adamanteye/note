@@ -1,0 +1,38 @@
+\documentclass[a4paper]{article}
+\usepackage[left=1.5cm,right=1.5cm]{geometry}
+\usepackage{ctex}
+\usepackage{physics}
+\usepackage[thehwcnt = 3]{iidef}
+\usepackage{fontspec}
+\thecourseinstitute{清华大学}
+\thecoursename{决策方法论}
+\theterm{2023年秋季学期}
+\hwname{作业}
+\begin{document}
+\courseheader
+\name{杨哲涵}
+~
+\paragraph{1}
+概率和似然性的不同在于,给定某种概率模型后,概率会给出在指定模型参数后不同观测结果对应的可能性,似然性会给出指定观测数据后不同模型参数对应的可能性.
+\paragraph{2}
+最大似然估计是指找到让似然函数取值最大的模型参数.即根据已知的观测数据,以及某种已选定的概率模型的似然函数,寻找该似然函数取最大值时的模型参数.
+\paragraph{3}
+\begin{itemize}
+    \item 随机变量$X_i$的概率质量为\begin{align*}P(X_i)=\left\{\begin{aligned} \pi,X_i=1\\1-\pi,X_i=0\end{aligned}\right.\end{align*}
+    \item 已知$n$次伯努利实验的似然函数为$$L(\pi)=\pi^{\sum_{i=1}^nx_i}(1-\pi)^{n-\sum_{i=1}^nx_i}$$那么取对数后有$$l(\pi)=\ln L(\pi)=\sum_{i=1}^nx_i\ln(\pi)+(n-\sum_{i=1}^nx_i)\ln(1-\pi)$$
+    \item 令$\pdv{l}{\pi}=0$,可以得到$\hat{\pi}=\sum_{i=1}^nx_i/n$
+    \item 计算可得$l^{\prime\prime}(\hat{\pi})=-n(1/\hat{\pi}+1/(1-\hat{\pi}))$,因此方差为$$Var(\hat{\pi}|X)=-\frac{1}{l^{\prime\prime}(\hat{\pi})}=\frac{\hat{\pi}(1-\hat{\pi})}{n}=\frac{\hat{\pi}^2(1-\hat{\pi})}{\sum_{i=1}^nx_i}$$
+    \item 可以算得\begin{align*}\hat{\pi}=0.8,Var(\hat{\pi}|X)=0.032\qq{情况1}\\\hat{\pi}=0.8,Var(\hat{\pi}|X)=0.00032\qq{情况2}\end{align*}
+\end{itemize}
+\paragraph{4}
+\begin{itemize}
+    \item 中国队取胜的发生比为$p/(1-p)=19$,对数发生比为$\ln(19)\approx2.944$
+    \item 使用优势在于可以将乘法转化为加法,减少了数值计算的精度损失,此外对数发生比还可以将$(0,1)$映射到$(-\infty,\infty)$.
+\end{itemize}
+\paragraph{5}
+\begin{itemize}
+    \item 随机成分为因变量(响应变量)$Y$为服从泊松分布的随机变量,期望为$\lambda$.系统性成分为多个解释变量,利用解释变量的线性组合来估计响应变量$Y$的期望.链接函数为$\log$函数.
+    \item 对数形式的似然函数为$$L(\va*{\beta})=\sum_{i=1}^n(y_i\va*{x_i}^T\va*{\beta}-e^{\va*{x_i}^T\va*{\beta}}-\log(y_i!))$$
+    \item 最大似然估计方程为$$\sum_{i=1}^n(y_i-e^{\va*{x_i}^T\va*{\beta}})\va*{x_i}=0$$
+\end{itemize}
+\end{document}

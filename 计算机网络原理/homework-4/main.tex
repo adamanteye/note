@@ -1,0 +1,167 @@
+\documentclass[a4paper]{article}
+\usepackage[left=1.5cm,right=1.5cm]{geometry}
+\usepackage{ctex}
+\usepackage{siunitx}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage[thehwcnt = 4]{iidef}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\hypersetup{colorlinks = true, linkcolor = red}
+\thecourseinstitute{清华大学}
+\thecoursename{计算机网络原理}
+\theterm{2023年秋季学期}
+\hwname{作业}
+\begin{document}
+\courseheader
+\name{杨哲涵}
+习题按照计算机网络(第6版,潘爱民译)编号.
+\section{第四章习题}
+\paragraph{6} (a).CSMA/CD可被看作分槽ALOHA.时间槽长度为$2\tau=4/(3\times10^5\times0.82)=0.0162$ms.
+
+(b).时间槽长度为$2\tau=80/(3\times10^5\times0.65)=0.4103$ms.
+\paragraph{10}
+采用令牌环协议更好.他们的使用场景为CPU与网络敏感的视频游戏,IO并不重要.令牌环协议以确定次序分配带宽,延迟相比非坚持CSMA更低,更适合这种场景.
+\paragraph{14}
+(a).铺设方式较多,在不进行对角线铺设的情况下(只按照曼哈顿距离铺设),水平需要$56\times4\times7$米,竖直需要$12\times4$米,总共需要$1616$米线缆.
+
+(b).使用经典以太网IEEE 802.3 LAN,可以看作一根线缆不重不漏地连接了所有主机,需要$14\times4\times7+6*4=416$米线缆.
+\paragraph{15}
+由于经典10Mbps以太网使用Machester编码,所以波特率为比特率的两倍,即20Mbps.
+\paragraph{16}
+Machester编码中,\verb|1|被编码为低电平到高电平的跳变,\verb|0|被编码为高电平到低电平的跳变.因此比特流\verb|0001110101|将被编码为\verb|-_-_-__-_-_--__--__-|.
+\paragraph{17}
+由于已经假定了没有冲突,此外由于确认帧的存在,发送方不需要使发送时间达到二倍信道传输延迟来检测冲突.因此传输数据帧以及接受确认帧总共花费的时间为$256/10M+1k/200\mu+32/10M+1k/200M$,除去开销的有效数据速率为$(256-32)/t=5.773$Mpbs.
+\paragraph{18}
+对于题目的情况,$2\tau=10\mu s$.需要帧长至少达到可以发送$2\tau$的长度.因此最小帧长为$1G\times10\mu=10000$bit.
+\paragraph{20}
+这个问题可以通过限制快速以太网的线路长度为原先的1/10来解决.如此可以维持最小帧长不变.
+\paragraph{41}
+每次操作后$B_2$的哈希表列在下方:
+
+(a). \verb|B->4|
+
+(b). \verb|B->4;F->2|
+
+(c). \verb|B->4;F->2|
+
+(d). \verb|B->4;F->2;G->3|
+
+(e). \verb|B->4;F->2;G->3;D->1|
+
+(f). \verb|B->4;F->2;G->3;D->1|
+\paragraph{42}
+类似上述过程.
+
+(a) 会导致$B_1$与$B_2$均进行广播.之后哈希表分别为\verb|A->1|以及\verb|A->4|
+
+(b) 会导致$B_1$与$B_2$均进行广播.之后哈希表分别为\verb|A->1;B->2|以及\verb|A->4;B->4|
+
+(c) 不会广播.之后哈希表分别为\verb|A->1;B->2;c->3|以及\verb|A->4;B->4|
+
+(d) $B_2$会广播.之后哈希表分别为\verb|A->1;B->2;C->3;G->4|以及\verb|A->4;B->4;G->3|
+
+(e) 会导致$B_1$与$B_2$均进行广播.之后哈希表分别为\verb|A->1;B->2;C->3;G->4;E->4|以及\verb|A->4;B->4;G->3;E->2|
+
+(f) $B_2$会广播.之后哈希表分别为\verb|A->1;B->2;C->3;G->4;E->4;D->4|以及\verb|A->4;B->4;G->3;E->2;D->1|
+\paragraph{43}
+不是很清楚这道题的意思,按照网桥.端口的格式列出为:
+
+(a) \verb|B1.{2,3,4}, B2.{1,2,3}|
+
+(b) \verb|B1.{1,2,3}, B2.{1,3,4}|
+
+(c) 此时在$B_2$处就会将帧丢弃(因为端口相同),不会有转发
+
+(d) \verb|B2.2|
+
+(e) \verb|B1.1, B2.4|
+
+(f) \verb|B1.{1,3,4}, B2.2|
+\paragraph{44}
+加入$B_0$后,由于其具有最低标识符,$B_0$应当是新的根.另外考虑同样跳数下的选择较低标识符,以使路径唯一.可构造新的生成树如下:\verb|B0(-B5)-B4(-B3)-B2-B1|.其中$B_5$与$B_0$相连,$B_4$与$B_3$相连.
+\paragraph{47}
+这两个网络都需要CSMA/CD.考虑网络A,尽管工作方式为全双工,但由于通过集线器连接,集线器会向所有其他线路转发帧,有可能发生冲突.对于网络B,由于站是通过半双工线缆连接到交换机的,不能同时发送和接受,因此也需要CSMA/CD.
+\section{第五章习题}
+\paragraph{4}
+根据链路状态,可以构建全局的图,计算最短路径得到\verb|B|的新的路由表如下:
+\begin{table}[H]
+    \begin{tabular}{|llll|}
+        \hline
+        \verb|des| & \verb|nexthop| & \verb|routes|     & \verb|cost| \\
+        \verb|A|   & \verb|C|       & \verb|D->C->E->A| & \verb|8|    \\
+        \verb|B|   & \verb|F|       & \verb|D->F->B|    & \verb|5|    \\
+        \verb|C|   & \verb|C|       & \verb|D->C|       & \verb|3|    \\
+        \verb|E|   & \verb|C|       & \verb|D->C->E|    & \verb|6|    \\
+        \verb|F|   & \verb|F|       & \verb|D->F|       & \verb|4|    \\ \hline
+    \end{tabular}
+\end{table}
+\paragraph{7}
+根据距离向量,\verb|C|需要为每条可能的线路计算点到点开销与预报的开销之和,得到路由表如下:
+\begin{table}[H]
+    \begin{tabular}{|llll|}
+        \hline
+        \verb|des| & \verb|nexthop| & \verb|routes|  & \verb|cost| \\
+        \verb|A|   & \verb|B|       & \verb|C->B->A| & \verb|11|   \\
+        \verb|B|   & \verb|B|       & \verb|C->B|    & \verb|6|    \\
+        \verb|D|   & \verb|D|       & \verb|C->D|    & \verb|3|    \\
+        \verb|E|   & \verb|E|       & \verb|C->E|    & \verb|5|    \\
+        \verb|F|   & \verb|B|       & \verb|C->B->F| & \verb|8|    \\ \hline
+    \end{tabular}
+\end{table}
+\paragraph{8}
+交换指的是交换机在数据链路层将帧从一个端口转发到另一个端口.转发指的是路由器在网络层通过学习路由状态,构建路由表,将数据包从一个地址转发到另一个地址.路由指的就是路由器选择最短路径,找到下一跳的过程.
+\paragraph{16}
+(a). 对于每次传输,$P(1)=p,P(2)=(1-p)p,P(3)=(1-p)^2$, 因此每次传输的平均跳数为$3-3p+p^2$.
+
+(b). 数据包在传输时经过3跳才算传输成功,因此数据包的平均传输次数为$\sum_{n=1}^{+\infty}n(1-(1-p)^2)^{n-1}(1-p)^2=\frac{1}{(1-p)^2}$.
+
+(c). 对于每个收到的数据包,平均跳数为$(3-3p+p^2)\frac{1}{(1-p)^2}=\frac{3-3p+p^2}{(1-p)^2}$.
+\paragraph{21}
+首先主机可以全速发送20s共300MB数据,此后700MB都需要按照5MBps的速率发送,需要发送140s.因此发送1000MB总共需要160s.
+\paragraph{23}
+可知$10t+1=50t$,从而一个突发流量最大持续时间为$t=1/40=25$ms.
+\paragraph{27}
+由于段偏移字段以8字节为单位,因此将IP数据包分片后,每个分片的长度(除去包头)都应当是8的倍数.
+\begin{table}[H]
+    \begin{tabular}{|llllll|}
+        \hline
+                     & 总长度        & 标识符      & DF       & MF       & 段偏移       \\
+        \verb|A-R1|  & \verb|940| & \verb|0| & \verb|0| & \verb|0| & \verb|0|  \\
+        \verb|R1-R2| & \verb|500| & \verb|0| & \verb|0| & \verb|1| & \verb|0|  \\
+                     & \verb|460| & \verb|0| & \verb|0| & \verb|0| & \verb|60| \\
+        \verb|R2-B|  & \verb|500| & \verb|0| & \verb|0| & \verb|1| & \verb|0|  \\
+                     & \verb|460| & \verb|0| & \verb|0| & \verb|0| & \verb|60| \\ \hline
+    \end{tabular}
+\end{table}
+\paragraph{33}
+\verb|255.255.240.0|代表的掩码长度为20,因此有$2^{32-20}=2^{12}=4096$个地址.
+\paragraph{35}
+对于A组织申请的4000个地址,\verb|198.16.0.0/20|是分配出的第一个地址,\verb|198.16.15.255/20|是分配出的最后一个地址.
+
+对于B组织的2000个地址,\verb|198.16.16.0/21|是第一个地址,\verb|198.16.23.255/21|是最后一个地址.
+
+对于C组织的4000个地址,\verb|198.16.32.0/20|是第一个地址,\verb|198.16.47.255/20|是最后一个地址.
+
+对于D组织的8000个地址,\verb|198.16.96.0/19|是第一个地址,\verb|198.16.127.255/19|是最后一个地址.
+\paragraph{36}
+可以被聚合,它们都可以被聚合到\verb|57.6.0.0/17|中.
+\paragraph{37}
+没有必要,因为路由的时候是最长前缀匹配,所以只需要在路由表中添加一个新的项代表这1024个地址即可.新的地址块为\verb|29.18.60.0/22|.
+\paragraph{55}
+我使用\verb|traceroute -q 1|命令测试了题目中的一部分域名,并且参考了\href{https://www.gd1214b.icu/post/qfDddx_kZ/}{国内至国际骨干 ISP 线路整理},得到的结果如下:
+\begin{table}[H]
+    \begin{tabular}{|lll|}
+        \hline
+        \verb|域名|                & \verb|跨国链路|                                                            & \verb|有关的ISP|        \\
+        \verb|www.u-tokyo.ac.jp| & \verb|219.158.9.217(中国联通,北京)->193.251.250.5(France,Paris)|             & \verb|联通AS4837|      \\
+                                 & \verb|193.251.248.124(France)->58.138.83.186(USA,Los Angeles)|         &                      \\
+                                 & \verb|58.138.83.186(USA,Los Angeles)->58.138.88.113(Japan,Osaka)|      &                      \\
+        \verb|www.usyd.edu.au|   & \verb|101.4.114.222(CERNET,广东)->203.131.254.213(Hong Kong)|            & \verb|CERNET AS4538| \\
+                                 & \verb|203.131.254.213(Hong Kong)->129.250.7.66(Singapore)|             &                      \\
+                                 & \verb|15.230.212.85(Amazon,Singapore)->129.250.7.66(Amazon,Australia)| &                      \\
+        \hline
+    \end{tabular}
+\end{table}
+\end{document}
