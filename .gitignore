@@ -3,4 +3,7 @@
 *.aux
 *.log
 *.out
+*.xdv
+*.fdb_latexmk
+*.fls
 .vscode/
