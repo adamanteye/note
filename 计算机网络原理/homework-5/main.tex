@@ -1,0 +1,42 @@
+\documentclass[a4paper]{article}
+\usepackage[left=1.5cm,right=1.5cm]{geometry}
+\usepackage{ctex}
+\usepackage{siunitx}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage[thehwcnt = 5]{iidef}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{siunitx}
+\hypersetup{colorlinks = true, linkcolor = red}
+\thecourseinstitute{清华大学}
+\thecoursename{计算机网络原理}
+\theterm{2023年秋季学期}
+\hwname{作业}
+\begin{document}
+\courseheader
+\name{杨哲涵}
+习题按照计算机网络(第6版,潘爱民译)编号.
+\section{第六章习题}
+\paragraph{8}
+数据链路层滑动窗口协议的超时时间是固定的,传输层的超时时间可能是动态的(RTT).此外数据链路层的超时时间一般为毫秒或微秒级别,而传输层的超时时间一般为毫秒或秒级别.
+\paragraph{13}
+考虑某个起始不公平的分配,乘法递增加法递减策略会使操作点向远离原点方向移动,随后沿着\ang{45}方向靠近原点,这一过程中操作点远离了公平线,最终路径会收敛到远离公平线的位置.对于加法递增加法递减策略与乘法递增乘法递减策略,它们既不会远离公平线,也不会靠近公平线,而是沿着路径振荡.因此三种策略都不难达到公平的目的.
+\paragraph{14}
+会收敛,因为采用平方根递减策略后,分配到较大带宽的用户减小的带宽也较大,这个算法会收敛到公平的分配.
+\paragraph{15}
+主机A获得更高的吞吐量,由于主机A速率为800kbps,主机B为600kbps,两者总速率超过1Mbps.因此会遭遇拥塞控制,即TCP传输的速率会降低,UDP的速率不变.最终主机A获得800kbps,主机B获得200kbps.
+\paragraph{16}
+直接发送原始的IP数据包,意味着用户进程需要处理裸露的网络层的数据,可想而知,一个IP数据包归哪个进程所有将是一个问题.如果有人决定根据IP数据包内的特定字段决定进程归属,相当于变相的UDP协议.这样人们应当相信,无论如何,为了提供进程级别的网络接口,需要某个统一的协议将IP数据包进行分发.
+\paragraph{20}
+考虑不同操作系统进行网络通信,它们对于进程的概念可能并不统一,难以对进程ID达成共识.此外借助端口这个概念,人们可以保留一些知名端口(如\verb|80, 443, 22|)用于提供服务端的监听,但要想借助进程ID,就很难做到这一点.
+\paragraph{26}
+有可能,例如主机1有多个IP地址,例如一个IPv4地址,一个IPv6地址.总体上讲,如果主机1有$m$个IP地址,主机2有$n$个,那么在这一条件下这两个端口之间可以有$m\times n$个TCP连接.
+\paragraph{32}
+第一个10ms后传输2KB数据,第二个10ms后传输4KB数据,第三个10ms后传输8KB数据,第四个10ms后传输16KB数据,此时拥塞窗口已经变为32KB>24KB.即经过40ms后才能让第一个满窗口的数据被发送出去.
+\paragraph{33}
+超时后,慢启动重新开始,阈值设为一半,为9KB,拥塞窗口从1KB开始.前四次突发传输分别发送1KB,2KB,4KB,8KB.由于不能超过阈值,这之后拥塞窗口为8KB.
+\paragraph{36}
+双向延迟为20ms,由于窗口已满,每发65535个字节都需要等待确认,在1Gbps线路上发65535B需要0.52428ms,外加延迟20ms.因此可以达到的最大吞吐量为25.544Mbps,信道利用率为2.554\%.
+\end{document}
