@@ -48,6 +48,16 @@ $$\psi(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}g(k)e^{ikx}\dd{k}$$
 $$g(k)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\psi(x)e^{-ikx}\dd{x}$$
 Time evolution of wave function:
 $$\psi(x,t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}g(k)e^{i(kx-\omega t)}\dd{k},\omega=\frac{\hbar k^2}{2m}$$
+\paragraph{Probability Current in Quantum}
+The local conservation of charge is expressed as:
+$$\pdv{\rho(r,t)}{t}+\div\va{J}(r,t)=0$$
+In Quantum Mechanics, the total probability $\bra{\psi}\ket{\psi}$ is conserved, and the local probability density is $\rho(x,t)=\psi^\ast\psi$.
+For wave function satisfying Schrödinger Equation, we can define a probability current so that the local conservation is satisfied.
+
+Its regorous definition is:
+$$\va{J}(x,t)=\frac{\hbar}{2mi}\left(\psi^\ast\grad\psi-\psi\grad\psi^\ast\right)$$
+For a plane wave type $\psi(x,t)=Ae^{i(kx-\omega t)}$, the probability current is:
+$$J(x,t)=\abs{A}^2\frac{\hbar k}{m}\qq{which is analogous to the intensity in EM wave}$$
 \section{Schrödinger Equation}
 $$i\hbar\pdv{t}\ket{\Psi(t)}=\hat{H}\ket{\Psi(t)}$$
 $$\hat{H}\ket{\psi}=E\ket{\psi}$$
@@ -101,16 +111,6 @@ $$R=\frac{j_{ref}}{j_{ini}}=\abs{\frac{B}{A}}^2\qq{reflection ratio}$$
 $$T=\frac{j_{tran}}{j_{ini}}=\frac{k_2}{k_1}\abs{\frac{C}{A}}^2\qq{transmission ratio}$$
 When initially we only have waves travelling towards right, then $D=0$.
 $$\frac{B}{A}=\frac{k_1-k_2}{k_1+k_2},\frac{C}{A}=\frac{2k_1}{k_1+k_2}$$
-\subparagraph{Probability Current in Quantum}
-The local conservation of charge is expressed as:
-$$\pdv{\rho(r,t)}{t}+\div\va{j}(r,t)=0$$
-In Quantum Mechanics, the total probability $\bra{\psi}\ket{\psi}$ is conserved, and the local probability density is $\rho(x,t)=\psi^\ast\psi$.
-For wave function satisfying Schrödinger Equation, we can define a probability current so that the local conservation is satisfied.
-
-Its regorous definition is:
-$$\va{j}(x,t)=\frac{\hbar}{2mi}\left(\psi^\ast\grad\psi-\psi\grad\psi^\ast\right)$$
-For a plane wave type $\psi(x,t)=Ae^{i(kx-\omega t)}$, the probability current is:
-$$j(x,t)=\abs{A}^2\frac{\hbar k}{m}\qq{which is analogous to the intensity in EM wave}$$
 \subparagraph{Case $E<V_0$}
 $$\psi_1(x)=Ae^{ik_1x}+Be^{-ik_1x}\qq{for region I where}k_1=\sqrt{2mE}/\hbar$$
 $$\psi_2(x)=De^{-k_2^\prime x}\qq{C has to be 0 for region II where}k_2^\prime=\sqrt{2m(V_0-E)}/\hbar$$
