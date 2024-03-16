@@ -2,6 +2,14 @@
 
 您可以通过本页仓库简介处的 Badge 访问生成的[最新构建](https://git.tsinghua.edu.cn/dep22/note-tex/-/jobs/artifacts/master/browse/build?job=note-tex)
 
+## 编译要求
+
+- 软件包
+  - `xelatex`
+  - `typst`
+- 模板
+  - `THUCOURSEWORK`
+
 ## 致谢
 
 本仓库部分使用了以下模板
