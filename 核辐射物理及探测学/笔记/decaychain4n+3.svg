@@ -1,0 +1,326 @@
+<svg width="1310" height="2420"
+version="1.1"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <style type="text/css"><![CDATA[
+  tspan {font-family: DejaVu Sans Condensed, sans-serif; font-size:25px}
+  .symbol {font-family: DejaVu Sans Condensed, sans-serif; font-size:90px; font-weight:bold; stroke: none}
+  .su {font-size: 32px; font-family: DejaVu Sans Condensed, sans-serif; text-anchor:end; letter-spacing:-3px}
+  .halflife {font-size: 32px; font-family: DejaVu Sans Condensed, sans-serif; text-anchor:middle; font-size: 30px}
+  circle {stroke-width:3.5; stroke:black}
+  .nonmetal {fill: url(#nonmetal)}
+  .noblegas {fill: url(#noblegas)}
+  .alkali {fill:url(#alkali)}
+  .alkaline {fill:url(#alkaline)}
+  .metalloid {fill:url(#metalloid)}
+  .halogen {fill:url(#halogen)}
+  .posttransitionmetal {fill:url(#posttransitionmetal)}
+  .lanthanide {fill:url(#lanthanide)}
+  .actinide {fill: url(#actinide)}
+  .transition {fill: url(#transition)}
+  line {marker-end:url(#Arrow2Mend); stroke-width:3.5; stroke:black}
+  .dashed {stroke-dasharray: 18 9; stroke-dashoffset: 9}
+  .dotted {stroke-dasharray: 3.5 7}
+  .ab {font-family: Liberation Sans, sans-serif; font-style:italic; font-size:40px}
+  .background0 {stroke: none; fill: #ffffff}
+  .background1 {stroke: none; fill: #f5f5f5}
+  .SideKey {fill: #555555; font-family: DejaVu Sans Light, sans-serif; font-size: 40px; text-anchor: end}
+  .key {font-family: DejaVu Sans Light, sans-serif; font-size: 25px}
+  ]]></style>
+  <marker
+      refX="0"
+      refY="0"
+      orient="auto"
+      id="Arrow2Mend"
+      style="overflow:visible">
+    <path
+	d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+	transform="scale(-1,-1)"
+	id="path4011"
+	style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" />
+  </marker>
+  <radialGradient id="ball" fx="75%" fy="25%">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="grey" />
+  </radialGradient>
+  <radialGradient id="actinide" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#add5ff" />
+  </radialGradient>
+  <radialGradient id="nonmetal" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#a0ffa0" />
+  </radialGradient>
+  <radialGradient id="noblegas" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#c0ffff" />
+  </radialGradient>
+  <radialGradient id="alkali" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#ff6666" />
+  </radialGradient>
+  <radialGradient id="alkaline" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#ffdead" />
+  </radialGradient>
+  <radialGradient id="metalloid" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#cccc99" />
+  </radialGradient>
+  <radialGradient id="halogen" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#ffff99" />
+  </radialGradient>
+  <radialGradient id="posttransitionmetal" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#cccccc" />
+  </radialGradient>
+  <radialGradient id="lanthanide" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#ffbfff" />
+  </radialGradient>
+  <radialGradient id="transition" xlink:href="#ball">
+    <stop offset="0%" stop-color="white" />
+    <stop offset="100%" stop-color="#ffc0c0" />
+  </radialGradient>
+</defs>
+
+<rect x="10" y="10" width="1290" height="200" class="background0" />
+<rect x="10" y="210" width="1290" height="200" class="background1" />
+<rect x="10" y="410" width="1290" height="200" class="background0" />
+<rect x="10" y="610" width="1290" height="200" class="background1" />
+<rect x="10" y="810" width="1290" height="200" class="background0" />
+<rect x="10" y="1010" width="1290" height="200" class="background1" />
+<rect x="10" y="1210" width="1290" height="200" class="background0" />
+<rect x="10" y="1410" width="1290" height="200" class="background1" />
+<rect x="10" y="1610" width="1290" height="200" class="background0" />
+<rect x="10" y="1810" width="1290" height="200" class="background1" />
+<rect x="10" y="2010" width="1290" height="200" class="background0" />
+<rect x="10" y="2210" width="1290" height="200" class="background1" />
+<text x="1290" y="200" class="SideKey" >Uranium</text>
+<text x="1290" y="400" class="SideKey" >Protactinium</text>
+<text x="1290" y="600" class="SideKey" >Thorium</text>
+<text x="1290" y="800" class="SideKey" >Actinium</text>
+<text x="1290" y="1000" class="SideKey" >Radium</text>
+<text x="1290" y="1200" class="SideKey" >Francium</text>
+<text x="1290" y="1400" class="SideKey" >Radon</text>
+<text x="1290" y="1600" class="SideKey" >Astatine</text>
+<text x="1290" y="1800" class="SideKey" >Polonium</text>
+<text x="1290" y="2000" class="SideKey" >Bismuth</text>
+<text x="1290" y="2200" class="SideKey" >Lead</text>
+<text x="1290" y="2400" class="SideKey" >Thallium</text>
+<g transform="translate(0,2070)">
+	<rect x="10" y="10" width="340" height="340" style="fill: white; stroke: black; stroke-width: 2px" />
+	<rect x="20" y="20" width="40" height="40" class="actinide" />
+	<text x="65" y="50" class="key">Actinides</text>
+	<rect x="20" y="60" width="40" height="40" class="alkali" />
+	<text x="65" y="90" class="key">Alkali Metals</text>
+	<rect x="20" y="100" width="40" height="40" class="alkaline" />
+	<text x="65" y="130" class="key">Alkaline Earth Metals</text>
+	<rect x="20" y="140" width="40" height="40" class="halogen" />
+	<text x="65" y="170" class="key">Halogens</text>
+	<rect x="20" y="180" width="40" height="40" class="metalloid" />
+	<text x="65" y="210" class="key">Metalloids</text>
+	<rect x="20" y="220" width="40" height="40" class="noblegas" />
+	<text x="65" y="250" class="key">Noble Gases</text>
+	<rect x="20" y="260" width="40" height="40" class="posttransitionmetal" />
+	<text x="65" y="290" class="key">Post Transistion Metals</text>
+	<rect x="20" y="300" width="40" height="40" class="transition" />
+	<text x="65" y="330" class="key">Transition Metals</text>
+</g>
+<circle style="stroke: black; stroke-width: 3.5" cx="110" cy="110" r="100" class="actinide" />
+<text>
+	<tspan x="80" y="115" class="su"
+		>92</tspan><tspan x="80" dy="-42" class="su"
+		>235</tspan><tspan x="80" dy="42" class="symbol"
+		>U</tspan><tspan x="110" dy="1.4em" class="halflife"
+		>7.04e+8</tspan><tspan x="110" dy="1em" class="halflife"
+		>Years</tspan>
+</text>
+<line x1="110" y1="210" x2="110" y2="405" />
+<text x="115" y="310" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="110" cy="510" r="100" class="actinide" />
+<text>
+	<tspan x="80" y="515" class="su"
+		>90</tspan><tspan x="80" dy="-42" class="su"
+		>231</tspan><tspan x="80" dy="42" class="symbol"
+		>Th</tspan><tspan x="110" dy="1.4em" class="halflife"
+		>25.52</tspan><tspan x="110" dy="1em" class="halflife"
+		>Hours</tspan>
+</text>
+<line x1="181" y1="439" x2="236" y2="384" />
+<text x="200" y="450" class="ab">&#946;&#8315;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="310" cy="310" r="100" class="actinide" />
+<text>
+	<tspan x="280" y="315" class="su"
+		>91</tspan><tspan x="280" dy="-42" class="su"
+		>231</tspan><tspan x="280" dy="42" class="symbol"
+		>Pa</tspan><tspan x="310" dy="1.4em" class="halflife"
+		>3.276e+4</tspan><tspan x="310" dy="1em" class="halflife"
+		>Years</tspan>
+</text>
+<line x1="310" y1="410" x2="310" y2="605" />
+<text x="315" y="510" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="310" cy="710" r="100" class="actinide" />
+<text>
+	<tspan x="280" y="715" class="su"
+		>89</tspan><tspan x="280" dy="-42" class="su"
+		>227</tspan><tspan x="280" dy="42" class="symbol"
+		>Ac</tspan><tspan x="310" dy="1.4em" class="halflife"
+		>21.772</tspan><tspan x="310" dy="1em" class="halflife"
+		>Years</tspan>
+</text>
+<line x1="381" y1="639" x2="436" y2="584" />
+<text x="400" y="650" class="ab">&#946;&#8315;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="510" r="100" class="actinide" />
+<text>
+	<tspan x="480" y="515" class="su"
+		>90</tspan><tspan x="480" dy="-42" class="su"
+		>227</tspan><tspan x="480" dy="42" class="symbol"
+		>Th</tspan><tspan x="510" dy="1.4em" class="halflife"
+		>18.68</tspan><tspan x="510" dy="1em" class="halflife"
+		>Days</tspan>
+</text>
+<line x1="510" y1="610" x2="510" y2="805" />
+<text x="515" y="710" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="910" r="100" class="alkaline" />
+<text>
+	<tspan x="480" y="915" class="su"
+		>88</tspan><tspan x="480" dy="-42" class="su"
+		>223</tspan><tspan x="480" dy="42" class="symbol"
+		>Ra</tspan><tspan x="510" dy="1.4em" class="halflife"
+		>11.43</tspan><tspan x="510" dy="1em" class="halflife"
+		>Days</tspan>
+</text>
+<line x1="310" y1="810" x2="310" y2="1005" />
+<text x="315" y="910" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="310" cy="1110" r="100" class="alkali" />
+<text>
+	<tspan x="280" y="1115" class="su"
+		>87</tspan><tspan x="280" dy="-42" class="su"
+		>223</tspan><tspan x="280" dy="42" class="symbol"
+		>Fr</tspan><tspan x="310" dy="1.4em" class="halflife"
+		>22.0</tspan><tspan x="310" dy="1em" class="halflife"
+		>Minutes</tspan>
+</text>
+<line x1="381" y1="1039" x2="436" y2="984" />
+<text x="400" y="1050" class="ab">&#946;&#8315;</text>
+<line x1="510" y1="1010" x2="510" y2="1205" />
+<text x="515" y="1110" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="1310" r="100" class="noblegas" />
+<text>
+	<tspan x="480" y="1315" class="su"
+		>86</tspan><tspan x="480" dy="-42" class="su"
+		>219</tspan><tspan x="480" dy="42" class="symbol"
+		>Rn</tspan><tspan x="510" dy="1.4em" class="halflife"
+		>3.96</tspan><tspan x="510" dy="1em" class="halflife"
+		>Seconds</tspan>
+</text>
+<line x1="310" y1="1210" x2="310" y2="1405" class="dotted" />
+<text x="315" y="1310" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="310" cy="1510" r="100" class="metalloid" />
+<text>
+	<tspan x="280" y="1515" class="su"
+		>85</tspan><tspan x="280" dy="-42" class="su"
+		>219</tspan><tspan x="280" dy="42" class="symbol"
+		>At</tspan><tspan x="310" dy="1.4em" class="halflife"
+		>56</tspan><tspan x="310" dy="1em" class="halflife"
+		>Seconds</tspan>
+</text>
+<line x1="381" y1="1439" x2="436" y2="1384" />
+<text x="400" y="1450" class="ab">&#946;&#8315;</text>
+<line x1="510" y1="1410" x2="510" y2="1605" />
+<text x="515" y="1510" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="1710" r="100" class="metalloid" />
+<text>
+	<tspan x="480" y="1715" class="su"
+		>84</tspan><tspan x="480" dy="-42" class="su"
+		>215</tspan><tspan x="480" dy="42" class="symbol"
+		>Po</tspan><tspan x="510" dy="1.4em" class="halflife"
+		>1.781e-3</tspan><tspan x="510" dy="1em" class="halflife"
+		>Seconds</tspan>
+</text>
+<line x1="310" y1="1610" x2="310" y2="1805" />
+<text x="315" y="1710" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="310" cy="1910" r="100" class="posttransitionmetal" />
+<text>
+	<tspan x="280" y="1915" class="su"
+		>83</tspan><tspan x="280" dy="-42" class="su"
+		>215</tspan><tspan x="280" dy="42" class="symbol"
+		>Bi</tspan><tspan x="310" dy="1.4em" class="halflife"
+		>7.6</tspan><tspan x="310" dy="1em" class="halflife"
+		>Minutes</tspan>
+</text>
+<line x1="381" y1="1839" x2="436" y2="1784" />
+<text x="400" y="1850" class="ab">&#946;&#8315;</text>
+<line x1="581" y1="1639" x2="636" y2="1584" class="dotted" />
+<text x="600" y="1650" class="ab">&#946;&#8315;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="710" cy="1510" r="100" class="metalloid" />
+<text>
+	<tspan x="680" y="1515" class="su"
+		>85</tspan><tspan x="680" dy="-42" class="su"
+		>215</tspan><tspan x="680" dy="42" class="symbol"
+		>At</tspan><tspan x="710" dy="1.4em" class="halflife"
+		>1e-4</tspan><tspan x="710" dy="1em" class="halflife"
+		>Seconds</tspan>
+</text>
+<line x1="710" y1="1610" x2="710" y2="1805" />
+<text x="715" y="1710" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="710" cy="1910" r="100" class="posttransitionmetal" />
+<text>
+	<tspan x="680" y="1915" class="su"
+		>83</tspan><tspan x="680" dy="-42" class="su"
+		>211</tspan><tspan x="680" dy="42" class="symbol"
+		>Bi</tspan><tspan x="710" dy="1.4em" class="halflife"
+		>2.14</tspan><tspan x="710" dy="1em" class="halflife"
+		>Minutes</tspan>
+</text>
+<line x1="510" y1="1810" x2="510" y2="2005" />
+<text x="515" y="1910" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="2110" r="100" class="posttransitionmetal" />
+<text>
+	<tspan x="480" y="2115" class="su"
+		>82</tspan><tspan x="480" dy="-42" class="su"
+		>211</tspan><tspan x="480" dy="42" class="symbol"
+		>Pb</tspan><tspan x="510" dy="1.4em" class="halflife"
+		>36.1</tspan><tspan x="510" dy="1em" class="halflife"
+		>Minutes</tspan>
+</text>
+<line x1="581" y1="2039" x2="636" y2="1984" />
+<text x="600" y="2050" class="ab">&#946;&#8315;</text>
+<line x1="781" y1="1839" x2="836" y2="1784" class="dashed" />
+<text x="800" y="1850" class="ab">&#946;&#8315;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="910" cy="1710" r="100" class="metalloid" />
+<text>
+	<tspan x="880" y="1715" class="su"
+		>84</tspan><tspan x="880" dy="-42" class="su"
+		>211</tspan><tspan x="880" dy="42" class="symbol"
+		>Po</tspan><tspan x="910" dy="1.4em" class="halflife"
+		>0.516</tspan><tspan x="910" dy="1em" class="halflife"
+		>Seconds</tspan>
+</text>
+<line x1="910" y1="1810" x2="910" y2="2005" />
+<text x="915" y="1910" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="910" cy="2110" r="100" class="posttransitionmetal" />
+<text>
+	<tspan x="880" y="2115" class="su"
+		>82</tspan><tspan x="880" dy="-42" class="su"
+		>207</tspan><tspan x="880" dy="42" class="symbol"
+		>Pb</tspan><tspan x="910" dy="1.4em" class="halflife"
+		>Stable</tspan>
+</text>
+<line x1="710" y1="2010" x2="710" y2="2205" />
+<text x="715" y="2110" class="ab">&#945;</text>
+<circle style="stroke: black; stroke-width: 3.5" cx="710" cy="2310" r="100" class="posttransitionmetal" />
+<text>
+	<tspan x="680" y="2315" class="su"
+		>81</tspan><tspan x="680" dy="-42" class="su"
+		>207</tspan><tspan x="680" dy="42" class="symbol"
+		>Tl</tspan><tspan x="710" dy="1.4em" class="halflife"
+		>4.77</tspan><tspan x="710" dy="1em" class="halflife"
+		>Minutes</tspan>
+</text>
+<line x1="781" y1="2239" x2="836" y2="2184" />
+<text x="800" y="2250" class="ab">&#946;&#8315;</text>
+</svg>
