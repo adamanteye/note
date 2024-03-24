@@ -28,8 +28,7 @@
 - $e^2/(4pi epsilon.alt_0)=1.44"MeV fm"$
 - $h c=1240 "MeV fm"$
 == 原子核的组成,质量与半径
-三个变量确定一个核素(同质异能素)== 原子核稳定性的实验规律
-== 原子核的结合能
+三个变量确定一个核素(同质异能素)== 原子核稳定性的实验规律== 原子核的结合能
 / 液滴模型: 体积能,表面能,库伦能
 $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3) $
 / Weizacker公式: 半经验结合能公式
@@ -74,15 +73,15 @@ $ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
 / 比活度: $a=A/m$
   - 单位质量放射源的放射性活度
 == 递次衰变规律
-
 / 二次衰变: 涉及核素$isotope(A),isotope(B)$以及稳定核素$isotope(C)$
   $t_m$主要由衰变常数大的,即半衰期短的决定:
   $ t_m=1/(lambda_2-lambda_1)ln(lambda_2/lambda_1) $
   总活度为:
   $ A(t)=N_10 lambda_1 (e^(-lambda_1 t) +&\ lambda_2/(lambda_2-lambda_1) &(e^(-lambda_1 t)-e^(-lambda_2 t))) $
-
 / 多次连续衰变规律: 对于从数量为$N_10$的核素开始的多次连续衰变,衰变链中第$n$个核素的数量为
   $ N_1(t)&=N_10 e^(-lambda_1 t) \ N_(n!=1) (t)&=N_10 product_(j=1)^n c_(n,j) e^(-lambda_j t) \ c_(n!=1,i)&=(product_(j=1)^(n-1)lambda_j)/(product_(j=1,j!=i)^n lambda_j-lambda_i) $
+/ 长期平衡:
+
 == 放射系
 估测地球年龄,可用87Rb经$beta$衰变到87Sr的过程来估计,并用稳定核素$isotope("Sr", a: 86)$估计地球形成之初的$isotope("Sr")$含量.
 
