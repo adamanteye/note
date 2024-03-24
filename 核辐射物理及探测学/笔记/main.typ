@@ -1,10 +1,14 @@
-#set text(font: ("Linux Libertine", "Source Han Serif"), lang: "zh", region: "cn")
+#set text(
+  font: ("Linux Libertine", "Source Han Serif"),
+  lang: "zh",
+  region: "cn",
+)
 #set heading(numbering: "1.")
 #let title = [核辐射物理与探测学笔记]
 #set document(title: [#title])
 #import "@preview/physica:0.9.2": *
-#set page("a4",numbering: "1",margin: (x: 1.2cm, y: 1.2cm))
-#set math.equation(numbering: "(1)",supplement: [式.],number-align:bottom+right)
+#set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
+#set math.equation(numbering: "(1)", supplement: [式.], number-align: bottom + right)
 
 #align(center, text(17pt)[
   *#title*
@@ -24,8 +28,7 @@
 - $e^2/(4pi epsilon.alt_0)=1.44"MeV fm"$
 - $h c=1240 "MeV fm"$
 == 原子核的组成,质量与半径
-三个变量确定一个核素(同质异能素)
-== 原子核稳定性的实验规律
+三个变量确定一个核素(同质异能素)== 原子核稳定性的实验规律
 == 原子核的结合能
 / 液滴模型: 体积能,表面能,库伦能
 $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3) $
@@ -46,9 +49,9 @@ $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
   - 玻色-爱因斯坦统计
   - 可以占据相同的量子态, 玻色-爱因斯坦凝聚
 原子核的统计性质:
-  - 偶A核: 玻色子
-  - 奇A核: 费米子
-  - 历史上用来否定原子核的质子-电子论
+- 偶A核: 玻色子
+- 奇A核: 费米子
+- 历史上用来否定原子核的质子-电子论
 == 原子核的自旋与宇称
 == 原子核的能态和核的壳层模型
 / 核的能态结构: 原子核是由核子构成的体系, 具有能态结构
@@ -60,7 +63,7 @@ $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
 / 半衰期: $ e^(-lambda T_(1\/2))&=0.5\ lambda T_(1\/2)&=ln(2) $
 / 平均寿命: 放射性原子核的平均生存时间或存活概率为0的时间
 $ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
-&=integral_0^infinity t lambda e^(-lambda t)dd(t)=1/lambda=1.44T_(1\/2) $
+   &=integral_0^infinity t lambda e^(-lambda t)dd(t)=1/lambda=1.44T_(1\/2) $
 / 能级宽度: $Gamma tau=hbar$
   - $Gamma=hbar lambda$
 / 活度: $A(t)=lambda N(t)$
@@ -71,45 +74,38 @@ $ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
 / 比活度: $a=A/m$
   - 单位质量放射源的放射性活度
 == 递次衰变规律
-$t_m$主要由衰变常数大的,即半衰期短的决定:
-$ t_m=1/(lambda_2-lambda_1)ln(lambda_2/lambda_1) $
-/ 多次连续衰变规律: 共$n+1$个核素,最后1个是稳定的
-  $ N_n c (t)&=N_10 (c_1e^(-lambda_1t)+dots+c_n e^(-lambda_n t)) \ c_n&=(lambda_1 dots lambda_(n-1))/((lambda_1-lambda_n) dots (lambda_(n-1)-lambda_n)) $
+
+/ 二次衰变: 涉及核素$isotope(A),isotope(B)$以及稳定核素$isotope(C)$
+  $t_m$主要由衰变常数大的,即半衰期短的决定:
+  $ t_m=1/(lambda_2-lambda_1)ln(lambda_2/lambda_1) $
+  总活度为:
+  $ A(t)=N_10 lambda_1 (e^(-lambda_1 t) +&\ lambda_2/(lambda_2-lambda_1) &(e^(-lambda_1 t)-e^(-lambda_2 t))) $
+
+/ 多次连续衰变规律: 对于从数量为$N_10$的核素开始的多次连续衰变,衰变链中第$n$个核素的数量为
+  $ N_1(t)&=N_10 e^(-lambda_1 t) \ N_(n!=1) (t)&=N_10 product_(j=1)^n c_(n,j) e^(-lambda_j t) \ c_(n!=1,i)&=(product_(j=1)^(n-1)lambda_j)/(product_(j=1,j!=i)^n lambda_j-lambda_i) $
 == 放射系
-估测地球年龄,可用87Rb经$beta$衰变到87Sr的过程来估计,并用稳定核素$isotope("Sr",a:86)$估计地球形成之初的$isotope("Sr")$含量.
+估测地球年龄,可用87Rb经$beta$衰变到87Sr的过程来估计,并用稳定核素$isotope("Sr", a: 86)$估计地球形成之初的$isotope("Sr")$含量.
 
 / 天然放射系: 地球上的放射性核素维系在三个处于长期平衡的放射系中,第一个核素的半衰期都很长
-- 钍系($4n$系)从$isotope("Th",a:232)$开始经10次衰变到达$isotope("Pb",a:208)$(双幻数)
-#figure(
-  image("decaychain4n+0.svg", width: 60%),
-  caption: [钍系($4n$系)],
-)
-- 铀系($4n+2$系)从$isotope(U,a:238)$开始经14次衰变到达$isotope("Pb",a:206)$
-#figure(
-  image("decaychain4n+2.svg", width: 90%),
-  caption: [铀系($4n+2$系)],
-)
-- 锕-铀系($4n+3$系)从$isotope(U,a:235)$开始经11次衰变到达$isotope("Pb",a:207)$
-#figure(
-  image("decaychain4n+3.svg", width: 60%),
-  caption: [锕-铀系($4n+3$系)],
-)
-- 镎系($4n+1$系)从$isotope("Np",a:237)$衰变到$isotope("Bi",a:209)$
-  - $isotope("Np",a:237)$半衰期远比地球年龄小,至今这一系完全衰变完了
-  - 将$isotope(U,a:238)$放到反应堆用中子照射,连续吸收3个中子,经过两次$beta^-$衰变形成$isotope("Pu",a:241)$,再经一次$beta^-$衰变,一次$alpha$衰变形成$isotope("Np",a:237)$
-#figure(
-  image("decaychain4n+0.svg", width: 60%),
-  caption: [镎系($4n+1$系)],
-)
+- 钍系($4n$系)从$isotope("Th", a: 232)$开始经10次衰变到达$isotope("Pb", a: 208)$(双幻数)
+#figure(image("decaychain4n+0.svg", width: 60%), caption: [钍系($4n$系)])
+- 铀系($4n+2$系)从$isotope(U, a: 238)$开始经14次衰变到达$isotope("Pb", a: 206)$
+#figure(image("decaychain4n+2.svg", width: 90%), caption: [铀系($4n+2$系)])
+- 锕-铀系($4n+3$系)从$isotope(U, a: 235)$开始经11次衰变到达$isotope("Pb", a: 207)$
+#figure(image("decaychain4n+3.svg", width: 60%), caption: [锕-铀系($4n+3$系)])
+- 镎系($4n+1$系)从$isotope("Np", a: 237)$衰变到$isotope("Bi", a: 209)$
+  - $isotope("Np", a: 237)$半衰期远比地球年龄小,至今这一系完全衰变完了
+  - 将$isotope(U, a: 238)$放到反应堆用中子照射,连续吸收3个中子,经过两次$beta^-$衰变形成$isotope("Pu", a: 241)$,再经一次$beta^-$衰变,一次$alpha$衰变形成$isotope("Np", a: 237)$
+#figure(image("decaychain4n+0.svg", width: 60%), caption: [镎系($4n+1$系)])
 == 放射规律的一些应用
-/ 人工制备放射源: 例如通过反应堆或加速器制备人工放射性核素
+/ 人工制备放射源: 例如通过反应堆或加速器制备人工放射性核素,产生率为
 $ P=N_"target"sigma_0Phi $
-  - $N_"target"$是样品中用来制备放射源的靶核的总数,认为在辐照中不变
-  - $sigma_0$是靶核的热中子截面
-  - $Phi$是热中子的注量率
+- $N_"target"$是样品中用来制备放射源的靶核的总数,认为在辐照中不变
+- $sigma_0$是靶核的热中子截面
+- $Phi$是热中子的注量率
 考虑制得的核素自身以$lambda$衰变,则照射时间为$t$时数量及活度为
-$ N(t)&=(N_"target"sigma_0Phi)/lambda (1-e^(-lambda t)) \
-A(t)&=N_"target"sigma_0Phi (1-e^(-lambda t)) $
+$ N(t)&=P/lambda (1-e^(-lambda t)) \
+A(t)&=P (1-e^(-lambda t)) $
 定义$S=1-e^(-lambda t)$为饱和因子,那么$S(t approx 6.65T_(1\/2))=0.99$.
 因此通常制备时照射时间以六七倍半衰期为好.
 - 这5个影响活度的因素,在照射时间足够长时,退化为3个
@@ -118,7 +114,7 @@ A(t)&=N_"target"sigma_0Phi (1-e^(-lambda t)) $
 - 每隔$t_m$可以收获最多量的子体
 = 原子核的衰变
 == $alpha$衰变
-$ isotope(X,a:A,z:Z) -> isotope(Y,a:A-4,z:Z-2) + isotope("He",z:2,a:4) $
+$ isotope(X, a: A, z: Z) -> isotope(Y, a: A-4, z: Z-2) + isotope("He", z: 2, a: 4) $
 
 - A,Z越大,$alpha$衰变能越大
 
@@ -136,4 +132,3 @@ $ G=(2 sqrt(2m_alpha E_0))/hbar integral_R^b (b/r-1)^(1/2)dd(r) $
   - $beta^-$衰变: 原子核衰变时发射负电子
   - $beta^+$衰变: 原子核衰变时发射正电子
   - 轨道电子俘获EC: 原子核从核外的电子壳层俘获一个轨道电子
-  
