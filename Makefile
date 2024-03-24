@@ -14,7 +14,7 @@ build/%.pdf: %/main.typ
 build/%.pdf: %/main.tex
 	@mkdir -p $(dir $@)
 	latexmk -xelatex -cd $< > /dev/null 2>&1
-	cp $(<D)/main.pdf $@
+	@cp $(<D)/main.pdf $@
 
 print:
 	@for pdf in $(TYP_BUILDS); do \
@@ -25,7 +25,7 @@ print:
 	done
 
 remove:
-	find build -type f -name "*.pdf" | while read -r pdf; do \
+	@find build -type f -name "*.pdf" | while read -r pdf; do \
 		if ! echo "$(TEX_BUILDS) $(TYP_BUILDS)" | grep -q "$$pdf"; then \
 			rm -f "$$pdf"; \
 		fi \
