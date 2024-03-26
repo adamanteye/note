@@ -5,10 +5,12 @@
 ## 编译要求
 
 - 软件包
-  - `xelatex`
-  - `typst`
+  - `xelatex`: `XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023)`
+  - `typst`: `typst 0.11.0 (2bf9f95d)`
 - 模板
   - `THUCOURSEWORK`
+- 字体
+  - Source Han Serif [Region Specific Subset OTFs Simplified Chinese (简体中文)](https://github.com/adobe-fonts/source-han-serif/releases/tag/2.002R)
 
 ## 致谢
 
