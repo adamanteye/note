@@ -140,7 +140,10 @@ $ lambda_"max"=2900000/T "in units of K and nm" $
   image("stellar-classification-1.png", width: 70%),
   caption: [Stellar classification],
 )
-#figure(image("stellar-classification-2.png", width: 95%), caption: [Stellar spectrum])
+#figure(
+  image("stellar-classification-2.png", width: 95%),
+  caption: [Stellar spectrum],
+)
 = Telescope
 == Parameters
 #figure(
@@ -156,7 +159,6 @@ $ lambda_"max"=2900000/T "in units of K and nm" $
   - English cross-axis
   - Fork
 - alt-az mount
-
 / image formation: 2 beams of light separated by an angular distance are focused to 2 points
 $ S=F tan(theta) approx F theta $
 
@@ -180,7 +182,12 @@ $ sin theta=1.22 lambda/d $
   distortion. The strength of seeing is often characterized by the angular
   diameter (FWHM) of the long-exposure image of a star (seeing disk) in unit of
   arcsec.
-
+== Noise
+/ SNR: signal to noise ratio
+#figure(
+  image("long-exposure.jpg", width: 90%),
+  caption: [Long exposure to boost SNR],
+)
 = Concepts and their translations
 中文术语参考自#link("https://nadc.china-vo.org/astrodict/")[天文学名词]
 #table(
@@ -294,5 +301,41 @@ $ sin theta=1.22 lambda/d $
   [],
   [seeing],
   [视宁度],
+  [],
+  [kinetic temperature],
+  [运动温度],
+  [],
+  [color temperature],
+  [色温度],
+  [],
+  [excitation temperature],
+  [激发温度],
+  [],
+  [ionization temperature],
+  [电离温度],
+  [],
+  [distance ladder],
+  [距离阶梯],
+  [],
+  [trigonometric parallax],
+  [三角视差],
+  [],
+  [secular parallax],
+  [长期视差],
+  [],
+  [statistical parallax],
+  [统计视差],
+  [],
+  [peculiar motion],
+  [本动速度],
+  [],
+  [standard candle],
+  [标准烛光],
+  [],
+  [cepheid variable],
+  [造父变星],
+  [CCD],
+  [charge-coupled device],
+  [电荷耦合器件],
   table.hline(),
 )
