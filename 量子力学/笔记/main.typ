@@ -31,6 +31,8 @@
 #show: rest => columns(2, rest)
 
 = 数学速查
+#theorem("Schwarz不等式")[$ braket(alpha,alpha)braket(beta,beta)>=|braket(alpha,beta)|^2 $] <schwarz-ineq>
+#proof[$ (bra(alpha)+lambda^* bra(beta))dprod (ket(alpha)+lambda ket(beta))>=0 $对任意$lambda$成立,将$lambda=-braket(beta,alpha)/braket(beta,beta)$带入得证]
 == Levi-Civita symbol
 参考#link(
   "https://zh.wikipedia.org/wiki/%E5%88%97%E7%B6%AD-%E5%A5%87%E7%B6%AD%E5%A1%94%E7%AC%A6%E8%99%9F",
@@ -51,21 +53,28 @@ $ (vb(A)cprod vb(B))^k=epsilon^(k i j)A_i B_j $
 $ [A,B C]=B[A,C]+[A,B]C $
 $ [A B,C]=A[B,C]+[A,C]B $
 == 特殊函数
-#definition("连带Legendre多项式")[]
-/ 连带Legendre多项式:
-$ (1-xi^2)dv(P, xi, 2)-2xi &dv(P, xi) \ +(l(l+1)&-m^2/(1-xi^2))P=0 $ <a-legendre-eq>
+#definition(
+  "连带Legendre多项式",
+)[$ (1-xi^2)dv(P, xi, 2)-2xi &dv(P, xi) \ +(l(l+1)&-m^2/(1-xi^2))P=0 $ <a-legendre-eq>]
 $ integral_(-1)^1 P_k^m (xi)P_l^m (xi)dd(xi)=2/(2l+1) ((l+m)!)/((l-m)!)delta_(k l) $ <a-legendre-orthog>
 = 算符
 == 基本假设
-#definition("厄米伴随")[$A$的厄米伴随定义为$A^dagger$,有 $ A ket(psi)=bra(psi) A^dagger $]
+#definition("伴随算符")[$A$的伴随算符定义为$A^dagger$,有 $ A ket(psi)=bra(psi) A^dagger $]
 #definition(
   "厄米算符",
 )[称$A$为厄米算符当且仅当 $ A=A^dagger <==> braket(psi, A, phi)=(braket(phi, A, psi))^* \ "for arbitray" psi,phi $]
 #theorem()[厄米算符的本征值总是实的]
 #theorem()[厄米算符对应不同本征值的本征态正交]
-#definition("平均值")[算符A的平均值定义为$ expval(A)_ket(psi)=expval(A, psi) $]
-#theorem()[厄米算符的平均值总是实的]
+#definition("平均值")[算符$A$的平均值定义为$ expval(A)_ket(psi)=expval(A, psi) $]
+#theorem()[厄米算符的平均值总是实的] <hermite-re>
 #theorem()[平均值总是实的的算符是厄米的]
+#definition("对易子")[算符$A$,$B$的对易子为$ [A,B]=A B-B A $]
+#definition("反对易子")[算符$A$,$B$的反对易子定义为 $ {A,B}=A B+B A $]
+#definition("反厄米算符")[称$A$为反厄米算符当且仅当 $ A=-A^dagger $]
+#theorem()[反厄米算符的平均值总是虚的] <anti-hermite-im>
+#definition()[$ Delta A=A-expval(A) $]
+#theorem("不确定关系")[对任意$psi$有$ expval((Delta A)^2) expval((Delta B)^2)>=1/4 |expval([A,B])|^2 $]
+#proof[将$ket(alpha)=Delta A ket(psi)$与$ket(beta)=Delta B ket(psi)$带入@schwarz-ineq 可得$ expval((Delta A)^2) expval((Delta B)^2)>=|expval(Delta A Delta B)|^2 $由于$ Delta A Delta B=1/2 [Delta A,Delta B]+1/2 {Delta A,Delta B}\ =1/2 [A,B]+1/2 {Delta A,Delta B} $使用@hermite-re 以及@anti-hermite-im$ expval((Delta A)^2) expval((Delta B)^2)>=&\ 1/4 expval([A,B])^2&+1/4 expval({Delta A,Delta B})^2\ >=&1/4 expval([A,B])^2 $]
 == 常见算符表示
 $ va(p)=-i hbar grad $
 $ va(p)^2=- hbar^2 div grad $
@@ -82,12 +91,12 @@ $ [l_alpha,l_beta]=epsilon_(alpha beta gamma)i hbar l_gamma $
 $ [va(r),H]=(i hbar)/m va(p) $
 == 不同表象的转换
 $ braket(p, x)=1/sqrt(2pi hbar)e^(-i (p x)/hbar) $
+== 矩阵形式
+
 = Schödinger方程
-/ 含时方程: 系统的演化由哈密顿算符决定
-$ i hbar pdv(, t)ket(psi)=H ket(psi) $
-/ 定态方程: 哈密顿算符是能量算符
-$ H ket(psi)=E ket(psi) $
-/ Ehrenfest's Theorem: $ dv(, t)expval(A_ket(psi))=frac(1, i hbar)expval([A,H])_ket(psi) $
+#postulate("含时方程")[系统状态的演化由哈密顿算符决定$ i hbar pdv(, t)ket(psi)=H ket(psi) $]
+#postulate("定态方程")[哈密顿算符是能量算符$ H ket(psi)=E ket(psi) $]
+#theorem("Ehrenfest")[$ dv(, t)expval(A_ket(psi))=frac(1, i hbar)expval([A,H])_ket(psi) $]
 = 角动量
 球坐标表示下, 角动量的各个分量表示为
 $ l_x&=i hbar(sin phi.alt pdv(, theta)+cot theta cos phi.alt pdv(, phi.alt))\ l_y&=i hbar(-cos phi.alt pdv(, theta)+cot theta sin phi.alt pdv(, phi.alt))\ l_z&=- i hbar pdv(, phi.alt) $
