@@ -4,7 +4,7 @@ note-tex:
     - source ~/.bashrc
     - make all
     - make clean
-    - rsync -rz --delete build/ ${REMOTE_USER}:${REMOTE_ARTIFACTS_DIR}
+    - rsync -rzuv --delete build/ ${REMOTE_USER}:${REMOTE_ARTIFACTS_DIR}
   artifacts:
     paths:
       - build/*
