@@ -9,6 +9,7 @@
 #import "@preview/physica:0.9.2": *
 #set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
 #set math.equation(numbering: "(1)", supplement: [式.], number-align: bottom + right)
+#show link: it => underline(text(fill: rgb("#8c0000"), it))
 
 #align(center, text(17pt)[
   *#title*
@@ -33,7 +34,17 @@
 $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3) $
 / Weizacker公式: 半经验结合能公式
 $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
--a_"sym" (A\/2-Z)^2A^(-1)+B_P $
+-a_"sym" (A\/2-Z)^2A^(-1)+B_P \ B_p=cases(+a_P A^(-1\/2) "even-even", 0 "odd", -a_P A^(-1\/2) "odd-odd") $
+#figure(table(
+  stroke: none,
+  columns: 5,
+  table.header([$a_V$], [$a_S$], [$a_C$], [$a_"sym"$], [$a_P$]),
+  [15.835],
+  [18.33],
+  [0.714],
+  [92.90],
+  [11.2],
+), caption: [Weizacker公式参数(MeV)])
 == 核力及核势垒
 == 磁矩和电极矩
 == 原子核的统计性质
@@ -47,6 +58,7 @@ $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
   - 交换对称
   - 玻色-爱因斯坦统计
   - 可以占据相同的量子态, 玻色-爱因斯坦凝聚
+#figure(image("whatparticle3.png", width: 80%), caption: [标准模型的基本粒子])
 原子核的统计性质:
 - 偶A核: 玻色子
 - 奇A核: 费米子
@@ -85,8 +97,8 @@ $ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
 == 放射系
 估测地球年龄,可用87Rb经$beta$衰变到87Sr的过程来估计,并用稳定核素$isotope("Sr", a: 86)$估计地球形成之初的$isotope("Sr")$含量.
 
-/ 天然放射系: 地球上的放射性核素维系在三个处于长期平衡的放射系中,第一个核素的半衰期都很长
-- 钍系($4n$系)从$isotope("Th", a: 232)$开始经10次衰变到达$isotope("Pb", a: 208)$(双幻数)
+/ 天然放射系: 地球上的3个长期平衡#link("https://en.wikipedia.org/wiki/Decay_chain#Thorium_series")[放射系]
+- 钍系($4n$系)
 #figure(image("decaychain4n+0.svg", width: 60%), caption: [钍系($4n$系)])
 - 铀系($4n+2$系)从$isotope(U, a: 238)$开始经14次衰变到达$isotope("Pb", a: 206)$
 #figure(image("decaychain4n+2.svg", width: 90%), caption: [铀系($4n+2$系)])
@@ -126,7 +138,11 @@ $ E_0=(m_Y+m_alpha)/m_Y T_alpha approx A/(A-4) T_alpha $
 / Geiger-Nuttall Rule: $ lg(lambda)&=A-B E_0^(-1/2) $
 / $alpha$衰变的隧穿理论:
 $ G=(2 sqrt(2m_alpha E_0))/hbar integral_R^b (b/r-1)^(1/2)dd(r) $
+
+$ dd(n(t))/n(t)/dd(t)=(k_"eff"-1)/tau $
+
 == $beta$衰变
+/ 半衰期范围: $10^(-3)$ 1/s 到 $10^24$ a
 / 类型:
   - $beta^-$衰变: 原子核衰变时发射负电子
   - $beta^+$衰变: 原子核衰变时发射正电子
