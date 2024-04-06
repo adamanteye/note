@@ -85,7 +85,7 @@ $ f(x)&=1/sqrt(2pi) integral e^(i k x) g(k)dd(k)\ g(k)&=1/sqrt(2pi) integral e^(
 #definition("反对易子")[算符$A$,$B$的反对易子定义为 $ {A,B}=A B+B A $]
 #definition("反厄米算符")[称$A$为反厄米算符当且仅当 $ A=-A^dagger $]
 #theorem()[反厄米算符的平均值总是虚的] <anti-hermite-im>
-#definition()[$ Delta A=A-expval(A) $]
+#definition("偏差算符")[$ Delta A=A-expval(A) $]
 #theorem(
   "不确定关系",
 )[对任意$psi$有$ expval((Delta A)^2) expval((Delta B)^2)>=1/4 |expval([A,B])|^2 $]
@@ -189,7 +189,7 @@ $ V(x)=1/2 k x^2 $
  image("harmonic-oscillator-solution.png", width: 90%),
  caption: [一维谐振子本征态],
 )
-/ 幂级数法:
+=== 幂级数法:
 薛定谔方程表示为
 $ (-hbar^2/(2m)dv(d, x, 2)+1/2 k x^2)psi=E psi \ ==> dv(psi, xi,
 2)+(lambda-xi^2) psi=0 \ "where" omega=sqrt(k/m), lambda=(2E)/(hbar omega), xi=x
@@ -197,9 +197,10 @@ sqrt((m omega)/hbar)=alpha x $
 解为
 $ E_n&=(n+1/2)hbar omega \ psi_n&=((m omega)/(pi hbar))^(1/4) 1/sqrt(2^n
 n!)H_n(psi) e^(-psi^2/2) \ "where"& H_n(x)=(-1)^n e^(x^2) dv(, x, n) e^(-x^2) $
-/ 升降算符法: 参考 _Modern Quantum Mechanics 3rd edition_ (Sakurai)
+=== 升降算符法
+参考 _Modern Quantum Mechanics 3rd edition_ (Sakurai)
 $ H=p^2/(2m)+(m omega^2x^2)/2 $
-定义3个厄米算符
+定义3个算符
 $ a &=sqrt((m omega)/(2 hbar))(x+ (i p)/(m omega)) "annihilation operator"\
 a^dagger&=sqrt((m omega)/(2 hbar))(x- (i p)/(m omega)) "creation operator"\
 N &=a^dagger a $
