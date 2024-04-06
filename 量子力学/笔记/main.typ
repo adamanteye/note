@@ -18,7 +18,7 @@
 #let postulate = thmbox("thm", "公设", inset: (x: 0em, top: 0em))
 #let definition = thmbox("thm", "定义", inset: (x: 0em, top: 0em))
 #let theorem = thmbox("thm", "定理", inset: (x: 0em, top: 0em))
-#let proof = thmproof("proof", "证明", inset: (x: 1em, top: 0em), base: "thm")
+#let proof = thmproof("proof", "证明", inset: (x: 0em, top: 0em), base: "thm")
 
 #align(center, text(17pt)[
   *#title*
@@ -54,6 +54,8 @@ $ (vb(A)cprod vb(B))^k=epsilon^(k i j)A_i B_j $
 == 泊松括号
 $ [A,B C]=B[A,C]+[A,B]C $
 $ [A B,C]=A[B,C]+[A,C]B $
+== 傅里叶变换
+$ f(x)&=1/sqrt(2pi) integral e^(i k x) g(k)dd(k)\ g(k)&=1/sqrt(2pi) integral e^(-i k x) f(x)dd(x) $
 == 特殊函数
 #definition(
   "连带Legendre多项式",
@@ -107,16 +109,36 @@ $ [va(r),H]=(i hbar)/m va(p) $
 #theorem(
   "Backer-Hausdorff",
 )[对算符$A$,$B$,若$C:=[A,B]$满足$[C,A]=[C,B]=0$,则有$ e^(A+B)=e^A e^B e^(-1/2 C)=e^B e^A e^(1/2 C) $]
-== 不同表象的转换
-$ braket(p, x)=1/sqrt(2pi hbar)e^(-i (p x)/hbar) $
 == 矩阵形式
-
+#definition("幺正矩阵")[称A为幺正矩阵,当且仅当$ A^dagger=A^(-1) $]
+/ 不同表象的转换:$ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x,p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
 = Schödinger方程
-#postulate("含时方程")[系统状态的演化由哈密顿算符决定$ i hbar pdv(, t)ket(psi)=H ket(psi) $]
+#postulate(
+  "Schödinger Equation",
+)[系统状态的演化由哈密顿算符决定$ i hbar pdv(, t)ket(psi)=H ket(psi) $]
 #definition("能量")[哈密顿算符的本征值是哈密顿量$ H ket(psi)=E ket(psi) $]
 #theorem(
   "Ehrenfest",
 )[$ dv(, t)expval(A)_ket(psi)=frac(1, i hbar)expval([A,H])_ket(psi) $]
+#definition("投影算符")[对某表象中的基矢$ket(k)$,称$P_k$为投影算符,作用在任意$ket(psi)$上可得到$ket(psi)$在$ket(k)$方向上的分量$ P_k=ket(k)bra(k) $]
+#theorem("单位算符")[完备的情况下有$ I&=sum_n ket(k_n)bra(k_n)\ I&=integral ket(x)bra(x)dd(x) $]
+= 角动量
+球坐标表示下, 角动量的各个分量表示为
+$ l_x&=i hbar(sin phi.alt pdv(, theta)+cot theta cos phi.alt pdv(, phi.alt))\
+l_y&=i hbar(-cos phi.alt pdv(, theta)+cot theta sin phi.alt pdv(, phi.alt))\
+l_z&=- i hbar pdv(, phi.alt) $
+
+球谐函数$Y(theta,phi.alt)$是$l_z$与$va(l)$的共同本征态(球坐标下表示).
+$ Y(theta,phi.alt)&=Theta(theta)psi_m (phi.alt)\ va(l)^2 Y(theta,phi.alt)&=lambda hbar^2 Y(theta, phi.alt)\ psi_m (phi.alt)&=1/sqrt(2pi) e^(i m phi.alt) $
+$Theta(xi)$是连带Legendre方程,其中$xi=cos theta$
+
+当$lambda=l(l+1)$时,@a-legendre-eq 有连带Legendre多项式$P_l^m (xi)$作为解,根据归一化正交条件@a-legendre-orthog,可以定义:
+$ Theta_(l m) (theta)=(-1)^m sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) $
+满足 $ integral_0^pi Theta_(k m) (theta) Theta_(l m) (theta) sin theta dd(theta)=delta_(k l) $
+最终
+$ Y_(l m) (theta,phi.alt)\ =(-1)^m &sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) e^(i m phi.alt) $
+球谐函数满足
+$   &va(l)^2 Y_(l m)=l(l+1)hbar^2 Y_(l m)\ &l_z Y_(l m)=m hbar Y_(l m)\ &l=0,1,2,dots\ &m=-l,-l+1,dots,l-1,l\ &integral_0^(2pi)dd(phi.alt) integral_0^pi sin theta dd(theta) Y_(l_1 m_1)^* Y_(l_2 m_2)=delta_(l_1 l_2)delta_(m_1 m_2) $
 
 = 势场中的波函数
 == 一维无限深方势阱
@@ -175,7 +197,7 @@ sqrt((m omega)/hbar)=alpha x $
 解为
 $ E_n&=(n+1/2)hbar omega \ psi_n&=((m omega)/(pi hbar))^(1/4) 1/sqrt(2^n
 n!)H_n(psi) e^(-psi^2/2) \ "where"& H_n(x)=(-1)^n e^(x^2) dv(, x, n) e^(-x^2) $
-/ 升降算符法: 参考 _Modern Quantum Mechanics 3rd edition_(Sakurai)
+/ 升降算符法: 参考 _Modern Quantum Mechanics 3rd edition_ (Sakurai)
 $ H=p^2/(2m)+(m omega^2x^2)/2 $
 定义3个厄米算符
 $ a &=sqrt((m omega)/(2 hbar))(x+ (i p)/(m omega)) "annihilation operator"\
@@ -191,24 +213,5 @@ $ &[N,a]=-a \ &[N,a^dagger]=a^dagger $
 升降算符的名称来源于
 $ N a^dagger ket(n)&=([N,a^dagger]+a^dagger N) ket(n)=(n+1) a^dagger ket(n) \ N
 a ket(n) &=([N,a]+a N) ket(n)=(n-1) a ket(n) $
-$a^dagger ket(n)$和$a ket(n)$也是$N$的本征态
-
-= 角动量
-球坐标表示下, 角动量的各个分量表示为
-$ l_x&=i hbar(sin phi.alt pdv(, theta)+cot theta cos phi.alt pdv(, phi.alt))\
-l_y&=i hbar(-cos phi.alt pdv(, theta)+cot theta sin phi.alt pdv(, phi.alt))\
-l_z&=- i hbar pdv(, phi.alt) $
-
-球谐函数$Y$是$l_z$与$va(l)$的共同本征态(球坐标下表示).
-$ Y(theta,phi.alt)&=Theta(theta)psi_m (phi.alt)\ va(l)^2 Y(theta,phi.alt)&=lambda hbar^2 Y(theta, phi.alt)\ psi_m (phi.alt)&=1/sqrt(2pi) e^(i m phi.alt) $
-$Theta(xi)$是连带Legendre方程,其中$xi=cos theta$
-
-当$lambda=l(l+1)$时,@a-legendre-eq 有连带Legendre多项式$P_l^m (xi)$作为解,根据归一化正交条件@a-legendre-orthog,可以定义:
-$ Theta_(l m) (theta)=(-1)^m sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) $
-满足 $ integral_0^pi Theta_(k m) (theta) Theta_(l m) (theta) sin theta dd(theta)=delta_(k l) $
-最终
-$ Y_(l m) (theta,phi.alt)\ =(-1)^m &sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) e^(i m phi.alt) $
-球谐函数满足
-$   &va(l)^2 Y_(l m)=l(l+1)hbar^2 Y_(l m)\ &l_z Y_(l m)=m hbar Y_(l m)\ &l=0,1,2,dots\ &m=-l,-l+1,dots,l-1,l\ &integral_0^(2pi)dd(phi.alt) integral_0^pi sin theta dd(theta) Y_(l_1 m_1)^* Y_(l_2 m_2)=delta_(l_1 l_2)delta_(m_1 m_2) $
-= 氢原子
+$a^dagger ket(n)$和$a ket(n)$也是$N$的本征态== 氢原子
 #figure(image("hydrogen.png", width: 90%), caption: [氢原子波函数])
