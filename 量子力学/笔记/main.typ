@@ -15,10 +15,18 @@
 
 #set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])
 
-#let postulate = thmbox("thm", "公设", inset: (x: 0em, top: 0em))
-#let definition = thmbox("thm", "定义", inset: (x: 0em, top: 0em))
-#let theorem = thmbox("thm", "定理", inset: (x: 0em, top: 0em))
-#let proof = thmproof("proof", "证明", inset: (x: 0em, top: 0em), base: "thm")
+#let pst = thmbox("thm", "公设", inset: (x: 0em, top: 0em))
+#let def = thmbox("thm", "定义", inset: (x: 0em, top: 0em))
+#let thm = thmbox("thm", "定理", inset: (x: 0em, top: 0em))
+#let exmp = thmbox("exmp", "例", inset: (x: 0em, top: 0em), titlefmt: strong)
+#let sol = thmplain("sol", "解答", inset: (x: 0em, top: 0em), base: "thm").with(numbering: none)
+#let proof = thmproof(
+  "proof",
+  "证明",
+  inset: (x: 0em, top: 0em),
+  titlefmt: strong,
+  base: "thm",
+)
 
 #align(center, text(17pt)[
   *#title*
@@ -31,7 +39,7 @@
 #show: rest => columns(2, rest)
 
 = 数学速查
-#theorem(
+#thm(
   "Schwarz不等式",
 )[$ braket(alpha, alpha)braket(beta, beta)>=|braket(alpha, beta)|^2 $] <schwarz-ineq>
 #proof[$ (bra(alpha)+lambda^* bra(beta))dprod (ket(alpha)+lambda ket(beta))>=0 $对任意$lambda$成立,将$lambda=-braket(beta, alpha)/braket(beta, beta)$带入得证]
@@ -54,39 +62,45 @@ $ (vb(A)cprod vb(B))^k=epsilon^(k i j)A_i B_j $
 == 泊松括号
 $ [A,B C]=B[A,C]+[A,B]C $
 $ [A B,C]=A[B,C]+[A,C]B $
-== 傅里叶变换
-$ f(x)&=1/sqrt(2pi) integral e^(i k x) g(k)dd(k)\ g(k)&=1/sqrt(2pi) integral e^(-i k x) f(x)dd(x) $
 == 特殊函数
-#definition(
+=== Legendre多项式
+#def(
   "连带Legendre多项式",
 )[$ (1-xi^2)dv(P, xi, 2)-2xi &dv(P, xi) \ +(l(l+1)&-m^2/(1-xi^2))P=0 $ <a-legendre-eq>]
-#theorem(
+#thm(
   "连带Legendre多项式的正交性",
 )[$ integral_(-1)^1 P_k^m (xi)P_l^m (xi)dd(xi)=2/(2l+1) ((l+m)!)/((l-m)!)delta_(k l) $ <a-legendre-orthog>]
-#definition(
+#def(
   "Legendre多项式",
 )[连带Legendre多项式中$m=0$的情况$ P_l (x)=1/(2^l l!) dv(, x, l) (x^2-1)^2 $]
-#theorem(
+#thm(
   "Legendre多项式的正交性",
 )[$ integral_(-1)^1 P_k (x) P_l (x)dd(x)=2/(2l+1) delta_(k l) $]
-
+=== delta函数
+#thm(
+  "delta函数的性质",
+)[$ delta(a x)=1/(|a|)delta(x) $$ delta(x)=1/(2pi)integral_(-infinity)^infinity e^(i k x)dd(k) $]
+=== 傅里叶变换
+$ f(x)&=1/sqrt(2pi) integral e^(i k x) g(k)dd(k)\ g(k)&=1/sqrt(2pi) integral e^(-i k x) f(x)dd(x) $
 = 算符
 == 基本假设
-#definition("伴随算符")[$A$的伴随算符定义为$A^dagger$,有 $ A ket(psi)=bra(psi) A^dagger $]
-#definition(
+#def(
+  "伴随算符",
+)[$A$的伴随算符#footnote[这里为了书写简便,算符均省略hat,注意区分算符,可观测量以及算符的矩阵表示]定义为$A^dagger$,有 $ A ket(psi)=bra(psi) A^dagger $]
+#def(
   "厄米算符",
 )[称$A$为厄米算符当且仅当 $ A=A^dagger <==> braket(psi, A, phi)=(braket(phi, A, psi))^* \ "for arbitray" psi,phi $]
-#theorem()[厄米算符的本征值总是实的]
-#theorem()[厄米算符对应不同本征值的本征态正交]
-#definition("平均值")[算符$A$的平均值定义为$ expval(A)_ket(psi)=expval(A, psi) $]
-#theorem()[厄米算符的平均值总是实的] <hermite-re>
-#theorem()[平均值总是实的的算符是厄米的]
-#definition("对易子")[算符$A$,$B$的对易子为$ [A,B]=A B-B A $]
-#definition("反对易子")[算符$A$,$B$的反对易子定义为 $ {A,B}=A B+B A $]
-#definition("反厄米算符")[称$A$为反厄米算符当且仅当 $ A=-A^dagger $]
-#theorem()[反厄米算符的平均值总是虚的] <anti-hermite-im>
-#definition("偏差算符")[$ Delta A=A-expval(A) $]
-#theorem(
+#thm()[厄米算符的本征值总是实的]
+#thm()[厄米算符对应不同本征值的本征态正交]
+#def("平均值")[算符$A$的平均值定义为$ expval(A)_ket(psi)=expval(A, psi) $]
+#thm()[厄米算符的平均值总是实的] <hermite-re>
+#thm()[平均值总是实的的算符是厄米的]
+#def("对易子")[算符$A$,$B$的对易子为$ [A,B]=A B-B A $]
+#def("反对易子")[算符$A$,$B$的反对易子定义为 $ {A,B}=A B+B A $]
+#def("反厄米算符")[称$A$为反厄米算符当且仅当 $ A=-A^dagger $]
+#thm()[反厄米算符的平均值总是虚的] <anti-hermite-im>
+#def("偏差算符")[$ Delta A=A-expval(A) $]
+#thm(
   "不确定关系",
 )[对任意$psi$有$ expval((Delta A)^2) expval((Delta B)^2)>=1/4 |expval([A,B])|^2 $]
 #proof[将$ket(alpha)=Delta A ket(psi)$与$ket(beta)=Delta B ket(psi)$带入@schwarz-ineq 可得$ expval((Delta A)^2) expval((Delta B)^2)>=|expval(Delta A Delta B)|^2 $由于$ Delta A Delta B=1/2 [Delta A,Delta B]+1/2 {Delta A,Delta B}\ =1/2 [A,B]+1/2 {Delta A,Delta B} $使用@hermite-re
@@ -106,22 +120,37 @@ $ [l_alpha,p_beta]=epsilon_(alpha beta gamma)i hbar p_gamma $
 $ [l_alpha,l_beta]=epsilon_(alpha beta gamma)i hbar l_gamma $
 $ [va(r),H]=(i hbar)/m va(p) $
 == 算符的函数
-#theorem(
+#thm(
   "Backer-Hausdorff",
 )[对算符$A$,$B$,若$C:=[A,B]$满足$[C,A]=[C,B]=0$,则有$ e^(A+B)=e^A e^B e^(-1/2 C)=e^B e^A e^(1/2 C) $]
 == 矩阵形式
-#definition("幺正矩阵")[称A为幺正矩阵,当且仅当$ A^dagger=A^(-1) $]
-/ 不同表象的转换:$ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x,p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
+#def("幺正矩阵")[称A为幺正矩阵,当且仅当$ A^dagger=A^(-1) $]
+#thm(
+  "幺正变换",
+)[对2套各自正交归一的基矢,存在幺正算符$U$使得$ ket(b_1)=U ket(a_1),dots,ket(b_n)=U ket(a_n) $]
+#proof[构造$ U=sum_n ketbra(b_n, a_n) $注意到$ U^dagger U=sum_n sum_k ket(a_n)braket(b_n, b_k)bra(a_k)=I $从而$U$是幺正算符]
+#def(
+  "投影算符",
+)[对某表象中的基矢$ket(k)$,称$P_k$为投影算符,作用在任意$ket(psi)$上可得到$ket(psi)$在$ket(k)$方向上的分量$ P_k=ket(k)bra(k) $]
+#thm("单位算符")[完备的情况下有$ I&=sum_n ketbra(k_n)\ I&=integral ketbra(x)dd(x) $]
+#exmp[在$l=1$的表象下, $l_z$的矩阵是什么?]
+#sol[考虑$l=1$下共有3个本征态, 记为$ket(1)=ket(1\,-1),ket(2)=ket(1\,0),ket(3)=ket(1\,1)$
+
+  那么$l_z$的矩阵表示应为$ mat(
+    braket(1, l_z, 1), braket(1, l_z, 2), braket(1, l_z, 3);braket(2, l_z, 1), braket(2, l_z, 2), braket(2, l_z, 3);braket(3, l_z, 1), braket(3, l_z, 2), braket(3, l_z, 3)
+  )=dmat(-hbar, 0, hbar) $]
+#exmp[二态体系的哈密顿量$H=H_0+H'$,在$H_0$的表象中有$ H_0=dmat(E_1,E_2), H'=admat(H'_(1 2),H'_(2 1)) $证明$H=E_1 ketbra(1)+E_2 ketbra(2)+H'_(1 2)ketbra(1,2)+H'_(2 1)ketbra(2,1)$]
+=== 不同表象中的表示
+$ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x, p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
+$ braket(p, H, psi)&=p^2/(2m)braket(p, psi)+V(i hbar pdv(, p))braket(p, psi) $
 = Schödinger方程
-#postulate(
+#pst(
   "Schödinger Equation",
 )[系统状态的演化由哈密顿算符决定$ i hbar pdv(, t)ket(psi)=H ket(psi) $]
-#definition("能量")[哈密顿算符的本征值是哈密顿量$ H ket(psi)=E ket(psi) $]
-#theorem(
+#def("哈密顿量")[哈密顿算符的本征值是哈密顿量$ H ket(psi)=E ket(psi) $]
+#thm(
   "Ehrenfest",
 )[$ dv(, t)expval(A)_ket(psi)=frac(1, i hbar)expval([A,H])_ket(psi) $]
-#definition("投影算符")[对某表象中的基矢$ket(k)$,称$P_k$为投影算符,作用在任意$ket(psi)$上可得到$ket(psi)$在$ket(k)$方向上的分量$ P_k=ket(k)bra(k) $]
-#theorem("单位算符")[完备的情况下有$ I&=sum_n ket(k_n)bra(k_n)\ I&=integral ket(x)bra(x)dd(x) $]
 = 角动量
 球坐标表示下, 角动量的各个分量表示为
 $ l_x&=i hbar(sin phi.alt pdv(, theta)+cot theta cos phi.alt pdv(, phi.alt))\
@@ -213,6 +242,11 @@ $ H ket(n)&=(n+1/2)hbar omega ket(n)\ E_n&=(n+1/2)hbar omega $
 $ &[N,a]=-a \ &[N,a^dagger]=a^dagger $
 升降算符的名称来源于
 $ N a^dagger ket(n)&=([N,a^dagger]+a^dagger N) ket(n)=(n+1) a^dagger ket(n) \ N
-a ket(n) &=([N,a]+a N) ket(n)=(n-1) a ket(n) $
-$a^dagger ket(n)$和$a ket(n)$也是$N$的本征态== 氢原子
+a ket(n) &=([N,a]+a N) ket(n)=(n-1) a ket(n) $ <an-cr-op>
+从而$a^dagger ket(n)$和$a ket(n)$也是$N$的本征态
+从@an-cr-op 可发现$ a ket(n)=&c ket(n-1)==> \ &braket(n,a^dagger a,n)=|c|^2=1=braket(n,N,n)=n $ <an-cr-csqure-n>
+人们一般取$c$为实数且$c=1$,对$a^dagger$也如此操作,最后有$ a ket(n)&=sqrt(n)ket(n-1)\ a^dagger ket(n)&=sqrt(n)ket(n+1) $
+注意到@an-cr-csqure-n 中蕴含$n>=0$,即$N$为正定厄米算符,可证明$n$均为整数,且最小的本征值$n_0=0$.
+从而谐振子基态为$ E_0=1/2 hbar omega $
+== 氢原子
 #figure(image("hydrogen.png", width: 90%), caption: [氢原子波函数])
