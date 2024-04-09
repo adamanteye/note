@@ -9,7 +9,7 @@
 #let thisauthor = "Zhehan Yang"
 #set document(title: [#title], author: thisauthor)
 #set math.equation(numbering: "(1)", number-align: bottom + right)
-#show link: underline
+#show link: it => underline(text(fill: rgb("#8c0000"), it))
 #import "@preview/physica:0.9.2": *
 #import "@preview/unify:0.4.3": unit
 
@@ -121,6 +121,10 @@ of $upright("arcsec"^2)$.
   image("filters-system.png", width: 80%),
   caption: [Photometric filters],
 )
+#figure(
+  image("atmospheric_opacity.svg", width: 90%),
+  caption: [Atmospheric electromagnetic opacity],
+)
 == Flux
 / energy flux: amount of light energy per unit in a given bandpass
 $ F=E_"band"/(dd(A) dd(t)) "in unit of" unit("W/cm^2") $
@@ -151,7 +155,6 @@ $ lambda_"max"=2900000/T "in units of K and nm" $
   caption: [Types of telescopes],
 )
 #figure(image("types-of-focus.png", width: 85%), caption: [Types of focus])
-
 / mount: how the telescope is supported and pointed
 - equatorial mount
   - German
@@ -161,14 +164,14 @@ $ lambda_"max"=2900000/T "in units of K and nm" $
 - alt-az mount
 / image formation: 2 beams of light separated by an angular distance are focused to 2 points
 $ S=F tan(theta) approx F theta $
-
 / plate scale: angular size of the object per unit length on the plate
 $ P_s=theta/S=1/F $
+/ image sacle:
 / limiting magnitude: the magnitude of the faintest star an average observer is likely to see through
   the telescope
 $ M_L approx 2.7+5log(d) $
 where $d$ is the objective lens diameter in millimeter
-/ focal ration:
+/ focal ratio:
 $ R=F/D "as" E prop D^2/F^2 $
 / Field of view:
 $ "fov"=2arctan(w/(2 f))\ "where" w "is the sensor width" $
@@ -188,6 +191,15 @@ $ sin theta=1.22 lambda/d $
   image("long-exposure.jpg", width: 90%),
   caption: [Long exposure to boost SNR],
 )
+
+= CCD
+#figure(image("pixelofccd.png", width: 80%), caption: [Single pixel of CCD])
+#figure(
+  image("ccdvscmos.png", width: 90%),
+  caption: [Image formation: CCD vs CMOS],
+)
+== Image reduction
+$ "reduced"=("science"-"dark"-"bias")/("flat"-"dark"-"bias")_"normailzed" $
 = Concepts and their translations
 中文术语参考自#link("https://nadc.china-vo.org/astrodict/")[天文学名词]
 #table(
@@ -195,147 +207,6 @@ $ sin theta=1.22 lambda/d $
   columns: (auto, auto, auto),
   align: horizon,
   table.hline(),
-  table.header([*ABBR.*], [*Concepts*], [*术语*]),
-  [],
-  [barycenter],
-  [质心],
-  [],
-  [heliocentric],
-  [日心],
-  [],
-  [azimuth axis],
-  [方位轴],
-  [],
-  [sidereal time],
-  [恒星时],
-  [LST],
-  [local sidereal time],
-  [本地恒星时],
-  [GST],
-  [greenwich sidereal time],
-  [格林威治恒星时],
-  [],
-  [epoch],
-  [历元,时期],
-  [RA],
-  [right ascension],
-  [赤经],
-  [DEC],
-  [declination],
-  [赤纬],
-  [],
-  [zenith],
-  [天顶],
-  [ICRS],
-  [international celestial reference system],
-  [国际天球参考系],
-  [],
-  [meridian],
-  [子午圈],
-  [HA],
-  [hour angle],
-  [时角],
-  [],
-  [proper motion],
-  [自行],
-  [],
-  [color index],
-  [色指数],
-  [],
-  [photometry],
-  [光度学],
-  [],
-  [apparent brightness],
-  [视亮度],
-  [],
-  [bandpass],
-  [带通],
-  [SED],
-  [spectral energy distribution],
-  [光谱能量分布],
-  [],
-  [atmospheric extincion],
-  [大气消光],
-  [],
-  [limiting magnitude],
-  [极限星等],
-  [],
-  [aberration],
-  [像差],
-  [],
-  [field of view],
-  [视场],
-  [],
-  [prime focus],
-  [主焦点],
-  [],
-  [cassegrain foucs],
-  [卡赛格林焦点],
-  [],
-  [nasmyth focus],
-  [内氏焦点],
-  [],
-  [coude focus],
-  [折轴焦点],
-  [],
-  [exit pupil],
-  [出射光瞳],
-  [],
-  [achromatic lens],
-  [消色差透镜],
-  [coma],
-  [comatic aberration],
-  [彗差],
-  [],
-  [spherical aberration],
-  [球差],
-  [],
-  [vignetting],
-  [渐晕],
-  [],
-  [plate scale],
-  [底片比例尺],
-  [],
-  [focal ratio],
-  [焦比],
-  [],
-  [seeing],
-  [视宁度],
-  [],
-  [kinetic temperature],
-  [运动温度],
-  [],
-  [color temperature],
-  [色温度],
-  [],
-  [excitation temperature],
-  [激发温度],
-  [],
-  [ionization temperature],
-  [电离温度],
-  [],
-  [distance ladder],
-  [距离阶梯],
-  [],
-  [trigonometric parallax],
-  [三角视差],
-  [],
-  [secular parallax],
-  [长期视差],
-  [],
-  [statistical parallax],
-  [统计视差],
-  [],
-  [peculiar motion],
-  [本动速度],
-  [],
-  [standard candle],
-  [标准烛光],
-  [],
-  [cepheid variable],
-  [造父变星],
-  [CCD],
-  [charge-coupled device],
-  [电荷耦合器件],
+  table.header([*ABBR.*], [*Concepts*], [*术语*]),[],[barycenter],[质心],[],[heliocentric],[日心],[],[azimuth axis],[方位轴],[],[sidereal time],[恒星时],[LST],[local sidereal time],[本地恒星时],[GST],[greenwich sidereal time],[格林威治恒星时],[],[epoch],[历元,时期],[RA],[right ascension],[赤经],[DEC],[declination],[赤纬],[],[zenith],[天顶],[ICRS],[international celestial reference system],[国际天球参考系],[],[meridian],[子午圈],[HA],[hour angle],[时角],[],[proper motion],[自行],[],[color index],[色指数],[],[photometry],[光度学],[],[apparent brightness],[视亮度],[],[bandpass],[带通],[SED],[spectral energy distribution],[光谱能量分布],[],[atmospheric extincion],[大气消光],[],[limiting magnitude],[极限星等],[],[aberration],[像差],[],[field of view],[视场],[],[prime focus],[主焦点],[],[cassegrain foucs],[卡赛格林焦点],[],[nasmyth focus],[内氏焦点],[],[coude focus],[折轴焦点],[],[exit pupil],[出射光瞳],[],[achromatic lens],[消色差透镜],[coma],[comatic aberration],[彗差],[],[spherical aberration],[球差],[],[vignetting],[渐晕],[],[plate scale],[底片比例尺],[],[focal ratio],[焦比],[],[seeing],[视宁度],[],[kinetic temperature],[运动温度],[],[color temperature],[色温度],[],[excitation temperature],[激发温度],[],[ionization temperature],[电离温度],[],[distance ladder],[距离阶梯],[],[trigonometric parallax],[三角视差],[],[secular parallax],[长期视差],[],[statistical parallax],[统计视差],[],[peculiar motion],[本动速度],[],[standard candle],[标准烛光],[],[cepheid variable],[造父变星],[CCD],[charge coupled device],[电荷耦合器件],[],[full well capacity],[势阱容量],[],[front illumination],[前照式],[],[back illumination],[后照式],[],[thermal detector],[热探测器],[],[chopping],[斩波法],[],[flat],[平场],[],[twilight sky flat],[晨昏天光平场],[],[dome flat],[圆顶平场],[CV],[cataclysmic variable],[激变变星],[],[roche lobe],[洛希瓣],[TDE],[tidal disruption event],[潮汐瓦解事件],[],[accretion disc],[吸积盘],
   table.hline(),
 )

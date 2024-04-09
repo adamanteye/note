@@ -18,8 +18,8 @@
 #let pst = thmbox("thm", "公设", inset: (x: 0em, top: 0em))
 #let def = thmbox("thm", "定义", inset: (x: 0em, top: 0em))
 #let thm = thmbox("thm", "定理", inset: (x: 0em, top: 0em))
-#let exmp = thmbox("exmp", "例", inset: (x: 0em, top: 0em), titlefmt: strong)
-#let sol = thmplain("sol", "解答", inset: (x: 0em, top: 0em), base: "thm").with(numbering: none)
+#let exmp = thmbox("exmp", "例", inset: (x: 0em, top: 0em))
+#let sol = thmplain("sol", "解答", inset: (x: 0em, top: 0em), base: "thm", titlefmt: strong).with(numbering: none)
 #let proof = thmproof(
   "proof",
   "证明",
@@ -139,7 +139,7 @@ $ [va(r),H]=(i hbar)/m va(p) $
   那么$l_z$的矩阵表示应为$ mat(
     braket(1, l_z, 1), braket(1, l_z, 2), braket(1, l_z, 3);braket(2, l_z, 1), braket(2, l_z, 2), braket(2, l_z, 3);braket(3, l_z, 1), braket(3, l_z, 2), braket(3, l_z, 3)
   )=dmat(-hbar, 0, hbar) $]
-#exmp[二态体系的哈密顿量$H=H_0+H'$,在$H_0$的表象中有$ H_0=dmat(E_1,E_2), H'=admat(H'_(1 2),H'_(2 1)) $证明$H=E_1 ketbra(1)+E_2 ketbra(2)+H'_(1 2)ketbra(1,2)+H'_(2 1)ketbra(2,1)$]
+#exmp[二态体系的哈密顿量$H=H_0+H'$,在$H_0$的表象中有$ H_0=dmat(E_1, E_2), H'=admat(H'_(1 2), H'_(2 1)) $证明$H=E_1 ketbra(1)+E_2 ketbra(2)+H'_(1 2)ketbra(1, 2)+H'_(2 1)ketbra(2, 1)$]
 === 不同表象中的表示
 $ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x, p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
 $ braket(p, H, psi)&=p^2/(2m)braket(p, psi)+V(i hbar pdv(, p))braket(p, psi) $
@@ -243,10 +243,11 @@ $ &[N,a]=-a \ &[N,a^dagger]=a^dagger $
 升降算符的名称来源于
 $ N a^dagger ket(n)&=([N,a^dagger]+a^dagger N) ket(n)=(n+1) a^dagger ket(n) \ N
 a ket(n) &=([N,a]+a N) ket(n)=(n-1) a ket(n) $ <an-cr-op>
-从而$a^dagger ket(n)$和$a ket(n)$也是$N$的本征态
-从@an-cr-op 可发现$ a ket(n)=&c ket(n-1)==> \ &braket(n,a^dagger a,n)=|c|^2=1=braket(n,N,n)=n $ <an-cr-csqure-n>
-人们一般取$c$为实数且$c=1$,对$a^dagger$也如此操作,最后有$ a ket(n)&=sqrt(n)ket(n-1)\ a^dagger ket(n)&=sqrt(n)ket(n+1) $
-注意到@an-cr-csqure-n 中蕴含$n>=0$,即$N$为正定厄米算符,可证明$n$均为整数,且最小的本征值$n_0=0$.
-从而谐振子基态为$ E_0=1/2 hbar omega $
+从而$a^dagger ket(n)$和$a ket(n)$也是$N$的本征态 从@an-cr-op 可发现$ a ket(n)=&c ket(n-1)==>
+\ &braket(n, a^dagger a, n)=|c|^2=1=braket(n, N, n)=n $ <an-cr-csqure-n>
+人们一般取$c$为实数且$c=1$,对$a^dagger$也如此操作,最后有$ a ket(n)&=sqrt(n)ket(n-1)\ a^dagger
+ket(n)&=sqrt(n)ket(n+1) $
+注意到@an-cr-csqure-n 中蕴含$n>=0$,即$N$为正定厄米算符,可证明$n$均为整数,且最小的本征值$n_0=0$. 从而谐振子基态为$
+E_0=1/2 hbar omega $
 == 氢原子
 #figure(image("hydrogen.png", width: 90%), caption: [氢原子波函数])
