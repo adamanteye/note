@@ -11,6 +11,21 @@
 #set math.equation(numbering: "(1)", supplement: [式.], number-align: bottom + right)
 #show link: it => underline(text(fill: rgb("#8c0000"), it))
 
+#import "@preview/ctheorems:1.1.2": *
+#show: thmrules
+#let pst = thmbox("thm", "公设", inset: (x: 0em, top: 0em),base:none)
+#let def = thmbox("thm", "定义", inset: (x: 0em, top: 0em),base:none)
+#let thm = thmbox("thm", "定理", inset: (x: 0em, top: 0em),base:none)
+#let exmp = thmbox("exmp", "例", inset: (x: 0em, top: 0em),base:none)
+#let sol = thmplain("sol", "解答", inset: (x: 0em, top: 0em), base: "thm", titlefmt: strong).with(numbering: none)
+#let proof = thmproof(
+  "proof",
+  "证明",
+  inset: (x: 0em, top: 0em),
+  titlefmt: strong,
+  base: "thm",
+)
+
 #align(center, text(17pt)[
   *#title*
 ])
@@ -33,17 +48,19 @@
 / 液滴模型: 体积能,表面能,库伦能
 $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3) $
 / Weizacker公式: 半经验结合能公式
-$ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
--a_"sym" (A\/2-Z)^2A^(-1)+B_P \ B_p=cases(+a_P A^(-1\/2) "even-even", 0 "odd", -a_P A^(-1\/2) "odd-odd") $
+$ B(Z,A)=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
+-a_"sym" (A\/2-Z)^2A^(-1)+B_P \ B_p=cases(+a_P A^(-1\/2) &"even-even", 0 &"odd", -a_P A^(-1\/2) &"odd-odd") $
 #figure(table(
   stroke: none,
   columns: 5,
+  table.hline(),
   table.header([$a_V$], [$a_S$], [$a_C$], [$a_"sym"$], [$a_P$]),
   [15.835],
   [18.33],
   [0.714],
   [92.90],
   [11.2],
+  table.hline(),
 ), caption: [Weizacker公式参数(MeV)])
 == 核力及核势垒
 == 磁矩和电极矩
@@ -58,7 +75,7 @@ $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
   - 交换对称
   - 玻色-爱因斯坦统计
   - 可以占据相同的量子态, 玻色-爱因斯坦凝聚
-#figure(image("whatparticle3.png", width: 80%), caption: [标准模型的基本粒子])
+#figure(image("whatparticle3.png", width: 95%), caption: [标准模型的基本粒子])
 原子核的统计性质:
 - 偶A核: 玻色子
 - 奇A核: 费米子
@@ -95,9 +112,8 @@ $ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
 / 长期平衡:
 
 == 放射系
-估测地球年龄,可用87Rb经$beta$衰变到87Sr的过程来估计,并用稳定核素$isotope("Sr", a: 86)$估计地球形成之初的$isotope("Sr")$含量.
-
-/ 天然放射系: 地球上的3个长期平衡#link("https://en.wikipedia.org/wiki/Decay_chain#Thorium_series")[放射系]
+估测地球年龄,可用$isotope("Rb", a: 87)$经$beta$衰变到$isotope("Sr", a: 87)$的过程来估计,并用稳定核素$isotope("Sr", a: 86)$估计地球形成之初的$isotope("Sr")$含量.
+/ 天然放射系: 地球上存在3个长期平衡#link("https://en.wikipedia.org/wiki/Decay_chain#Thorium_series")[放射系],此外有1系已经衰变完了
 - 钍系($4n$系)
 #figure(image("decaychain4n+0.svg", width: 60%), caption: [钍系($4n$系)])
 - 铀系($4n+2$系)从$isotope(U, a: 238)$开始经14次衰变到达$isotope("Pb", a: 206)$
@@ -142,8 +158,42 @@ $ G=(2 sqrt(2m_alpha E_0))/hbar integral_R^b (b/r-1)^(1/2)dd(r) $
 $ dd(n(t))/n(t)/dd(t)=(k_"eff"-1)/tau $
 
 == $beta$衰变
-/ 半衰期范围: $10^(-3)$ 1/s 到 $10^24$ a
+/ 半衰期范围: $10^(-3)$ s 到 $10^24$ a
 / 类型:
-  - $beta^-$衰变: 原子核衰变时发射负电子
-  - $beta^+$衰变: 原子核衰变时发射正电子
-  - 轨道电子俘获EC: 原子核从核外的电子壳层俘获一个轨道电子
+- $beta^-$衰变: 原子核衰变时发射负电子
+- $beta^+$衰变: 原子核衰变时发射正电子
+- 轨道电子俘获EC: 原子核从核外的电子壳层俘获一个轨道电子
+== $gamma$跃迁
+/ $gamma$衰变能:$E_gamma$是$gamma$光子的能量,$T_R$是子核反冲能$ E_0=E_i-E_f=E_gamma+T_R $
+=== 穆斯堡尔效应
+=== 多级性
+#thm("gamma跃迁宇称守恒")[$gamma$跃迁是电磁相互作用,因此宇称守恒,设$pi_gamma$是光子宇称,有$ pi_gamma=pi_i/pi_f $]
+#thm("gamma跃迁角动量守恒")[设跃迁前后原子核角动量分别为$va(I_i)$与$va(I_f)$,有$va(L)=va(I_i)-va(I_f)$$ L=|I_i-I_f|,|I_i-I_f|+1,dots,|I_i+I_f| $] <gamma-am-conserve>
+#thm("电多级辐射光子宇称")[$pi_gamma=(-1)^L$]
+#thm("磁多级辐射光子宇称")[$pi_gamma=(-1)^(L+1)$]
+=== 概率公式
+#thm("Weisskopf单质子模型")[Weisskopf假定$gamma$跃迁是核内1个质子状态变化导致的$ lambda_E (L)=1/(4pi epsilon_0) (2(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hbar c) (k R)^(2L) omega $
+$ lambda_M (L)=1/(4pi epsilon_0) (20(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hbar c) (hbar/(m_P c R))^2 (k R)^(2L) omega $]
+/ 讨论:
+  - $lambda_M (L)$一般与$lambda_E (L+1)$有相同的量级
+=== 选择定则
+#figure(image("gammadecysele.png", width: 95%),caption:[$Delta I=1$的例子])
+#figure(image("gammadecysele-1.png", width: 95%))
+#figure(image("gammadecysele-2.png", width: 95%))
+=== 同质异能跃迁
+/ 讨论:
+- 高激发态一般不会是同质异能态
+- 偶偶核的同质异能态很少
+- 奇A核的同质异能态最多
+- 同质异能态的内转换系数最大
+=== 内转换电子
+/ 讨论:
+- 发射内转换电子和发射光子是互相竞争的
+= 原子核反应
+具有一定能量的粒子轰击靶核,使其组成或能量状态发生变化,成为不稳定核素,并放出粒子.
+/ 讨论:
+- 涉及的能量可以很高
+  - 中高能反应能量可以达到几百MeV
+- 可以产生不稳定核素
+== 原子核反应概况
+=== 核反应的运动学
