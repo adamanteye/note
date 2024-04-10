@@ -95,7 +95,7 @@ print(
   table.hline(),
 ), caption: [The language of light])
 == Magnitude
-/ pogson equation: relationship between magnitude and apparent brightness
+/ pogson equation: relationship between magnitude and flux (apparent brightness)
 $ m_1-m_2=-2.5log(F_1/F_2) \ m=-2.5 log(F)+C $
 / monochromatic version of Pogson equation: applying to a range of wavelengths
 $ m_lambda=-2.5 log(F_lambda)+C_lambda $
@@ -148,13 +148,26 @@ $ lambda_"max"=2900000/T "in units of K and nm" $
   image("stellar-classification-2.png", width: 95%),
   caption: [Stellar spectrum],
 )
+= Observations
+== Distance
+/ parallax: the apparent shift in the position of a nearby star relative to the background $ d=1/p $
+$p$ is measured in arcsec and $d$ in pc.
+#figure(
+  image("parallax.png", width: 90%),
+  caption: [Parallax],
+)
+== Size
+$ L=cal(F)4pi r^2 $
+$ L=4pi R^2 sigma T_"eff"^4 $
+== Mass
+/ Virial theorem: $ 2K+V=0\ 2sum_i 1/2 m_i v_i^2-sum (G m_i m_j)/r_(i j)=0\ (G M)/R=sigma^2 $
 = Telescope
-== Parameters
 #figure(
   image("types-of-telescopes.png", width: 80%),
   caption: [Types of telescopes],
 )
 #figure(image("types-of-focus.png", width: 85%), caption: [Types of focus])
+== Parameters
 / mount: how the telescope is supported and pointed
 - equatorial mount
   - German
@@ -198,6 +211,9 @@ $ sin theta=1.22 lambda/d $
   image("ccdvscmos.png", width: 90%),
   caption: [Image formation: CCD vs CMOS],
 )
+/ Quantum Efficiency: the fraction of photons that are converted into electrons
+#figure(image("ccdqesensitivity.png", width: 80%))
+/ ADU: #link("https://www.cloudynights.com/topic/417383-what-is-adu/")[What is ADU]
 == Image reduction
 $ "reduced"=("science"-"dark"-"bias")/("flat"-"dark"-"bias")_"normailzed" $
 = Concepts and their translations
@@ -207,6 +223,6 @@ $ "reduced"=("science"-"dark"-"bias")/("flat"-"dark"-"bias")_"normailzed" $
   columns: (auto, auto, auto),
   align: horizon,
   table.hline(),
-  table.header([*ABBR.*], [*Concepts*], [*术语*]),[],[barycenter],[质心],[],[heliocentric],[日心],[],[azimuth axis],[方位轴],[],[sidereal time],[恒星时],[LST],[local sidereal time],[本地恒星时],[GST],[greenwich sidereal time],[格林威治恒星时],[],[epoch],[历元,时期],[RA],[right ascension],[赤经],[DEC],[declination],[赤纬],[],[zenith],[天顶],[ICRS],[international celestial reference system],[国际天球参考系],[],[meridian],[子午圈],[HA],[hour angle],[时角],[],[proper motion],[自行],[],[color index],[色指数],[],[photometry],[光度学],[],[apparent brightness],[视亮度],[],[bandpass],[带通],[SED],[spectral energy distribution],[光谱能量分布],[],[atmospheric extincion],[大气消光],[],[limiting magnitude],[极限星等],[],[aberration],[像差],[],[field of view],[视场],[],[prime focus],[主焦点],[],[cassegrain foucs],[卡赛格林焦点],[],[nasmyth focus],[内氏焦点],[],[coude focus],[折轴焦点],[],[exit pupil],[出射光瞳],[],[achromatic lens],[消色差透镜],[coma],[comatic aberration],[彗差],[],[spherical aberration],[球差],[],[vignetting],[渐晕],[],[plate scale],[底片比例尺],[],[focal ratio],[焦比],[],[seeing],[视宁度],[],[kinetic temperature],[运动温度],[],[color temperature],[色温度],[],[excitation temperature],[激发温度],[],[ionization temperature],[电离温度],[],[distance ladder],[距离阶梯],[],[trigonometric parallax],[三角视差],[],[secular parallax],[长期视差],[],[statistical parallax],[统计视差],[],[peculiar motion],[本动速度],[],[standard candle],[标准烛光],[],[cepheid variable],[造父变星],[CCD],[charge coupled device],[电荷耦合器件],[],[full well capacity],[势阱容量],[],[front illumination],[前照式],[],[back illumination],[后照式],[],[thermal detector],[热探测器],[],[chopping],[斩波法],[],[flat],[平场],[],[twilight sky flat],[晨昏天光平场],[],[dome flat],[圆顶平场],[CV],[cataclysmic variable],[激变变星],[],[roche lobe],[洛希瓣],[TDE],[tidal disruption event],[潮汐瓦解事件],[],[accretion disc],[吸积盘],
+  table.header([*ABBR.*], [*Concepts*], [*术语*]),[],[barycenter],[质心],[],[heliocentric],[日心],[],[azimuth axis],[方位轴],[],[sidereal time],[恒星时],[LST],[local sidereal time],[本地恒星时],[GST],[greenwich sidereal time],[格林威治恒星时],[],[epoch],[历元,时期],[RA],[right ascension],[赤经],[DEC],[declination],[赤纬],[],[zenith],[天顶],[ICRS],[international celestial reference system],[国际天球参考系],[],[meridian],[子午圈],[HA],[hour angle],[时角],[],[proper motion],[自行],[],[color index],[色指数],[],[photometry],[光度学],[],[apparent brightness],[视亮度],[],[bandpass],[带通],[SED],[spectral energy distribution],[光谱能量分布],[],[atmospheric extincion],[大气消光],[],[limiting magnitude],[极限星等],[],[aberration],[像差],[],[field of view],[视场],[],[prime focus],[主焦点],[],[cassegrain foucs],[卡赛格林焦点],[],[nasmyth focus],[内氏焦点],[],[coude focus],[折轴焦点],[],[exit pupil],[出射光瞳],[],[achromatic lens],[消色差透镜],[coma],[comatic aberration],[彗差],[],[spherical aberration],[球差],[],[vignetting],[渐晕],[],[plate scale],[底片比例尺],[],[focal ratio],[焦比],[],[seeing],[视宁度],[],[kinetic temperature],[运动温度],[],[color temperature],[色温度],[],[excitation temperature],[激发温度],[],[ionization temperature],[电离温度],[],[distance ladder],[距离阶梯],[],[trigonometric parallax],[三角视差],[],[secular parallax],[长期视差],[],[statistical parallax],[统计视差],[],[peculiar motion],[本动速度],[],[standard candle],[标准烛光],[],[cepheid variable],[造父变星],[CCD],[charge coupled device],[电荷耦合器件],[],[full well capacity],[势阱容量],[],[front illumination],[前照式],[],[back illumination],[后照式],[],[thermal detector],[热探测器],[],[chopping],[斩波法],[],[flat],[平场],[],[twilight sky flat],[晨昏天光平场],[],[dome flat],[圆顶平场],[CV],[cataclysmic variable],[激变变星],[],[roche lobe],[洛希瓣],[TDE],[tidal disruption event],[潮汐瓦解事件],[],[accretion disc],[吸积盘],[],[differential photometry],[较差测光],[],[photoelectric photometer],[光电光度计],[],[photometric night],[测光夜],[],[instrumental magnitude],[仪器星等],[],[aperture photometry],[孔径测光],
   table.hline(),
 )
