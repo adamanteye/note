@@ -13,10 +13,10 @@
 
 #import "@preview/ctheorems:1.1.2": *
 #show: thmrules
-#let pst = thmbox("thm", "公设", inset: (x: 0em, top: 0em),base:none)
-#let def = thmbox("thm", "定义", inset: (x: 0em, top: 0em),base:none)
-#let thm = thmbox("thm", "定理", inset: (x: 0em, top: 0em),base:none)
-#let exmp = thmbox("exmp", "例", inset: (x: 0em, top: 0em),base:none)
+#let pst = thmbox("thm", "公设", inset: (x: 0em, top: 0em), base: none)
+#let def = thmbox("thm", "定义", inset: (x: 0em, top: 0em), base: none)
+#let thm = thmbox("thm", "定理", inset: (x: 0em, top: 0em), base: none)
+#let exmp = thmbox("exmp", "例", inset: (x: 0em, top: 0em), base: none)
 #let sol = thmplain("sol", "解答", inset: (x: 0em, top: 0em), base: "thm", titlefmt: strong).with(numbering: none)
 #let proof = thmproof(
   "proof",
@@ -31,6 +31,33 @@
 ])
 
 #show: rest => columns(2, rest)
+
+#figure(table(
+  stroke: none,
+  columns: 3,
+  table.hline(),
+  table.header([量], [值], [注释]),
+  table.hline(),
+  [热运动],
+  [25.3meV],
+  [也是热中子的动能],
+  [$e^2/(4pi epsilon.alt_0)$],
+  [1.44 MeV fm],
+  [],
+  [$h c$],
+  [1240 MeV fm],
+  [],
+  [$m_e c^2$],
+  [0.511 MeV],
+  [],
+  [Ry],
+  [13.6 eV],
+  [Rydberg constant],
+  [u$c^2$],
+  [931.494 MeV],
+  [],
+  table.hline(),
+), caption: [常数表])
 = 原子核的基本性质
 / 不确定度关系:
   - 动量-位置不确定关系
@@ -38,13 +65,8 @@
   - 角动量-角位置不确定关系
 / 同量异位素: 质量数相同而电荷数不同
 / 镜像核: 质子数中子数互换,相等的没有镜像核
-
-/ 一些常数与近似:
-- 热运动 25.3MeV
-- $e^2/(4pi epsilon.alt_0)=1.44"MeV fm"$
-- $h c=1240 "MeV fm"$
-== 原子核的组成,质量与半径
-三个变量确定一个核素(同质异能素)== 原子核稳定性的实验规律== 原子核的结合能
+== 原子核的结合能
+#thm[$ E^2-(p c)^2=(m_0 c^2)^2 $]
 / 液滴模型: 体积能,表面能,库伦能
 $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3) $
 / Weizacker公式: 半经验结合能公式
@@ -142,47 +164,68 @@ A(t)&=P (1-e^(-lambda t)) $
 = 原子核的衰变
 == $alpha$衰变
 $ isotope(X, a: A, z: Z) -> isotope(Y, a: A-4, z: Z-2) + isotope("He", z: 2, a: 4) $
-
-- A,Z越大,$alpha$衰变能越大
-
 / 衰变能: $ E_0=T_alpha+T_Y=(m_X-(m_Y+m_alpha))c^2 $
 由于动量守恒,有:
 $ E_0=(m_Y+m_alpha)/m_Y T_alpha approx A/(A-4) T_alpha $
 - 实际中测量的是$T_alpha$,而$T_Y$由于Y核前进距离太小等原因难以测量
-- 探测器中测得的$alpha$能谱有宽度,这是探测器自身的分辨能力
-
+- 探测器中测得的$alpha$能谱有宽度,这是由于探测本身的分辨能力
+/ 讨论:
+- A,Z越大,$alpha$衰变能越大
+=== 势垒穿透模型
 / Geiger-Nuttall Rule: $ lg(lambda)&=A-B E_0^(-1/2) $
-/ $alpha$衰变的隧穿理论:
-$ G=(2 sqrt(2m_alpha E_0))/hbar integral_R^b (b/r-1)^(1/2)dd(r) $
-
-$ dd(n(t))/n(t)/dd(t)=(k_"eff"-1)/tau $
-
+/ $alpha$粒子相对母核的势函数: $ V(r)=cases(-V_0 &"where" r<R, e^2/(4pi epsilon_0) (Z_alpha Z_Y )/r &"where" r>R) $ 当$alpha$粒子要带走角动量时,势能要被修正为 $ V(r)+(l(l+1)hbar^2)/(2 M_alpha r^2) "where" r>R $
+/ 势垒高度: $ V_c=V(R) \ "where" R=R_Y+R_alpha=r_0(A_Y^(1/3)+A_alpha^(1/3)) $
+- 其他重核衰变,如$isotope(C, a: 12)$衰变难以发生,原因在于势垒高度与$Z_isotope(C, a: 12)$成正比,这几乎是$alpha$衰变的势垒高度的3倍
+/ 势垒宽度: $ b=(Z_alpha Z_Y e^2)/(4pi epsilon_0 E_0) $
+/ Gamow factor: $ G=(2 sqrt(2mu E_0))/hbar integral_R^b (b/r-1)^(1/2)dd(r) $
+=== 守恒
 == $beta$衰变
 / 半衰期范围: $10^(-3)$ s 到 $10^24$ a
 / 类型:
 - $beta^-$衰变: 原子核衰变时发射负电子
 - $beta^+$衰变: 原子核衰变时发射正电子
 - 轨道电子俘获EC: 原子核从核外的电子壳层俘获一个轨道电子
+/ 讨论:
+- 经$beta$衰变生成的子核一般处于激发态,激发态发射$gamma$光子或内转换电子跃迁至基态,纯$beta$衰变放射性核素不多
+- $beta$衰变宇称不守恒
+=== $beta^-$衰变
+$ isotope(X, a: A, z: Z)->isotope(Y, a: A, z: Z+1)+e^-+accent(nu_e, tilde) $
+/ 衰变能: $ E_0 (beta^-)=Delta(Z, A)-Delta(Z+1, A) $
+=== $beta^+$衰变
+$ isotope(X, a: A, z: Z)->isotope(Y, a: A, z: Z-1)+e^++nu_e $
+/ 衰变能: $ E_0 (beta^+)=Delta(Z, A)&-Delta(Z-1, A)\ &-2m_e c^2 $
+=== 轨道电子俘获(EC)
+$ isotope(X, a: A, z: Z)+e_i^- ->isotope(Y, a: A, z: Z-1)+nu_e $
+/ 衰变能: $ E_0(epsilon)=Delta(Z, A)-Delta(Z-1, A)-B_i $
+/ 电子结合能公式: $ B_K (Z)&approx "Ry" (Z-1)^2\ B_L (Z)&approx 1/4 "Ry" (Z-5)^2\ B_M (Z)&approx 1/9 "Ry" (Z-13)^2 $
 == $gamma$跃迁
-/ $gamma$衰变能:$E_gamma$是$gamma$光子的能量,$T_R$是子核反冲能$ E_0=E_i-E_f=E_gamma+T_R $
+/ 衰变能:$E_gamma$是$gamma$光子的能量,$T_R$是子核反冲能$ E_0=E_i-E_f=E_gamma+T_R $
 === 穆斯堡尔效应
 === 多级性
-#thm("gamma跃迁宇称守恒")[$gamma$跃迁是电磁相互作用,因此宇称守恒,设$pi_gamma$是光子宇称,有$ pi_gamma=pi_i/pi_f $]
-#thm("gamma跃迁角动量守恒")[设跃迁前后原子核角动量分别为$va(I_i)$与$va(I_f)$,有$va(L)=va(I_i)-va(I_f)$$ L=|I_i-I_f|,|I_i-I_f|+1,dots,|I_i+I_f| $] <gamma-am-conserve>
+#thm(
+  "gamma跃迁宇称守恒",
+)[$gamma$跃迁是电磁相互作用,因此宇称守恒,设$pi_gamma$是光子宇称,有$ pi_gamma=pi_i/pi_f $]
+#thm(
+  "gamma跃迁角动量守恒",
+)[设跃迁前后原子核角动量分别为$va(I_i)$与$va(I_f)$,有$va(L)=va(I_i)-va(I_f)$$ L=|I_i-I_f|,|I_i-I_f|+1,dots,|I_i+I_f| $] <gamma-am-conserve>
 #thm("电多级辐射光子宇称")[$pi_gamma=(-1)^L$]
 #thm("磁多级辐射光子宇称")[$pi_gamma=(-1)^(L+1)$]
-=== 概率公式
-#thm("Weisskopf单质子模型")[Weisskopf假定$gamma$跃迁是核内1个质子状态变化导致的$ lambda_E (L)=1/(4pi epsilon_0) (2(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hbar c) (k R)^(2L) omega $
-$ lambda_M (L)=1/(4pi epsilon_0) (20(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hbar c) (hbar/(m_P c R))^2 (k R)^(2L) omega $]
 / 讨论:
-  - $lambda_M (L)$一般与$lambda_E (L+1)$有相同的量级
+- 光子带走的角动量不能为0
+=== 概率公式
+#thm(
+  "Weisskopf单质子模型",
+)[Weisskopf假定$gamma$跃迁是核内1个质子状态变化导致的$ lambda_E (L)=1/(4pi epsilon_0) (2(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hbar c) (k R)^(2L) omega $
+  $ lambda_M (L)=1/(4pi epsilon_0) (20(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hbar c) (hbar/(m_P c R))^2 (k R)^(2L) omega $]
+/ 讨论:
+- $lambda_M (L)$一般与$lambda_E (L+1)$有相同的量级
 === 选择定则
-#figure(image("gammadecysele.png", width: 95%),caption:[$Delta I=1$的例子])
+#figure(image("gammadecysele.png", width: 95%), caption: [$Delta I=1$的例子])
 #figure(image("gammadecysele-1.png", width: 95%))
 #figure(image("gammadecysele-2.png", width: 95%))
 === 同质异能跃迁
 / 同质异能态: 通常将寿命较长($>0.1$s)的核激发态成为同质异能态
-/ 同质异能素: 质子数,中子数相同但处在长寿命激发态上的核素称为同质异能素,表示为$isotope("X",a:A m)$
+/ 同质异能素: 质子数,中子数相同但处在长寿命激发态上的核素称为同质异能素,表示为$isotope("X", a: A m)$
 / 同质异能跃迁: 同质异能态的$gamma$跃迁称为同质异能跃迁
 / 讨论:
 - 高激发态一般不会是同质异能态
@@ -193,12 +236,14 @@ $ lambda_M (L)=1/(4pi epsilon_0) (20(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hba
 / 内转换: 原子核将退激能量交给核外电子,使电子从原子中电离的现象.能量以发射特征X射线或俄歇电子的形式放出.
 / 内转换电子的动能: $ T_e=E_i-E_f-B_i=E_gamma-B_i $
 这里$B_i$是第$i$层电子的结合能
-#figure(image("internalconversion.png",width: 95%))
+#figure(image("internalconversion.png", width: 95%))
 / 内转换系数: $ alpha:=lambda_e/lambda_gamma=n_e/n_gamma $
 注意$lambda_gamma (1+alpha)$才是两个能级间跃迁过程对应的衰变常数
-#figure(image("internalconversion-1.png",width: 95%))
+#figure(image("internalconversion-1.png", width: 95%))
 / 讨论:
 - 退激时,发射内转换电子和发射光子是互相竞争的
+== 衰变纲图
+
 = 原子核反应
 具有一定能量的粒子轰击靶核,使其组成或能量状态发生变化,成为不稳定核素,并放出粒子.
 / 讨论:
