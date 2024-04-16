@@ -177,7 +177,9 @@ $ E_0=(m_Y+m_alpha)/m_Y T_alpha approx A/(A-4) T_alpha $
 / 势垒高度: $ V_c=V(R) \ "where" R=R_Y+R_alpha=r_0(A_Y^(1/3)+A_alpha^(1/3)) $
 - 其他重核衰变,如$isotope(C, a: 12)$衰变难以发生,原因在于势垒高度与$Z_isotope(C, a: 12)$成正比,这几乎是$alpha$衰变的势垒高度的3倍
 / 势垒宽度: $ b=(Z_alpha Z_Y e^2)/(4pi epsilon_0 E_0) $
-/ Gamow factor: $ G=(2 sqrt(2mu E_0))/hbar integral_R^b (b/r-1)^(1/2)dd(r) $
+#def(
+  "Gamow factor",
+)[$ G=(2 sqrt(2mu E_0))/hbar integral_R^b (b/r-1)^(1/2)dd(r) $]
 === 守恒
 == $beta$衰变
 / 半衰期范围: $10^(-3)$ s 到 $10^24$ a
@@ -194,19 +196,22 @@ $ isotope(X, a: A, z: Z)->isotope(Y, a: A, z: Z+1)+e^-+accent(nu_e, tilde) $
 === $beta^+$衰变
 $ isotope(X, a: A, z: Z)->isotope(Y, a: A, z: Z-1)+e^++nu_e $
 / 衰变能: $ E_0 (beta^+)=Delta(Z, A)&-Delta(Z-1, A)\ &-2m_e c^2 $
+=== 禁戒条件
 === 轨道电子俘获(EC)
 $ isotope(X, a: A, z: Z)+e_i^- ->isotope(Y, a: A, z: Z-1)+nu_e $
 / 衰变能: $ E_0(epsilon)=Delta(Z, A)-Delta(Z-1, A)-B_i $
-/ 电子结合能公式: $ B_K (Z)&approx "Ry" (Z-1)^2\ B_L (Z)&approx 1/4 "Ry" (Z-5)^2\ B_M (Z)&approx 1/9 "Ry" (Z-13)^2 $
+#thm(
+  "电子结合能公式",
+)[$ B_K (Z)&approx "Ry" (Z-1)^2\ B_L (Z)&approx 1/4 "Ry" (Z-5)^2\ B_M (Z)&approx 1/9 "Ry" (Z-13)^2 $]
 == $gamma$跃迁
 / 衰变能:$E_gamma$是$gamma$光子的能量,$T_R$是子核反冲能$ E_0=E_i-E_f=E_gamma+T_R $
 === 穆斯堡尔效应
 === 多级性
 #thm(
-  "gamma跃迁宇称守恒",
+  [$gamma$跃迁宇称守恒],
 )[$gamma$跃迁是电磁相互作用,因此宇称守恒,设$pi_gamma$是光子宇称,有$ pi_gamma=pi_i/pi_f $]
 #thm(
-  "gamma跃迁角动量守恒",
+  [$gamma$跃迁角动量守恒],
 )[设跃迁前后原子核角动量分别为$va(I_i)$与$va(I_f)$,有$va(L)=va(I_i)-va(I_f)$$ L=|I_i-I_f|,|I_i-I_f|+1,dots,|I_i+I_f| $] <gamma-am-conserve>
 #thm("电多级辐射光子宇称")[$pi_gamma=(-1)^L$]
 #thm("磁多级辐射光子宇称")[$pi_gamma=(-1)^(L+1)$]
@@ -252,5 +257,37 @@ $ isotope(X, a: A, z: Z)+e_i^- ->isotope(Y, a: A, z: Z-1)+nu_e $
 - 可以产生不稳定核素
 == 原子核反应概况
 == 核反应和Q方程
+$ isotope(a)+isotope(A) -> isotope(b) + isotope(B) $
+#thm("核反应中的能量守恒")[$ (m_a+m_A)^2+(T_a+T_A)=(m_b+m_B)^2+(T_b+T_B) $]
+#def(
+  "反应能Q",
+)[$ Q&=(T_b+T_B)-(T_a+T_A)\ &=(m_a+m_A)c^2-(m_b+m_B)^c^2\ &approx (Delta_a+Delta_A)-(Delta_b+Delta_B)\ &= (B_b+B_B)-(B_a+B_A) $]
+- $Q>0$: 放能反应
+- $Q<0$: 吸能反应
+- 如果余核处在激发态$E^*$,那么有$m_B^*=m_B+E^* /c^2$,$Q'=Q-E^*$
+#thm(
+  "Q方程",
+)[假设靶核$isotope(A)$静止,Q方程将出射粒子的动能$T_b$与入射粒子动能$T_a$,出射粒子的方向$theta$,反应能$Q$这四个量联系起来$ sqrt(T_b)=plus.minus (((A_B-A_a)/(A_B+A_b)+(A_a A_b)/(A_B+A_b)^2 cos^2theta)T_a\ +A_B/(A_B+A_b)Q)&^(1\/2)+sqrt(A_a A_b T_a)/(A_B+A_b) cos theta $]
+
+#figure(
+  grid(
+    columns: 2,
+    row-gutter: 2mm,
+    column-gutter: 1mm,
+    image("14cpn14n-1.png"),
+    image("14cpn14n-2.png"),
+    [能量阈值],
+    [$T_b$几乎不随$theta_L$变化],
+  ),
+  caption: [$isotope(C, a: 14)(isotope(p),isotope(n))isotope(N, a: 14)$反应],
+)
 == 实验室坐标系与质心坐标系
 == 核反应截面和产额
+#def("截面")[反映一个入射粒子与单位面积上的一个靶核发生反应的概率$ sigma=N'/(I N_s) $]
+#def("总截面")[不同反应道有各自截面,分截面之和称为总截面$ sigma=sum_i sigma_i $]
+#def("微分截面")[]
+#def("产额")[入射粒子在靶中引起的可反应数$N'$与入射粒子数$I_0$之比$ Y=N'/I_0 $]
+#thm("中子入射的产额")[$ Y=1-e^(-sigma N D) $
+  - 对于薄靶,有$Y approx sigma N D$
+  - 对于厚靶,有$Y -> 1$]
+== 核反应中的分波分析
