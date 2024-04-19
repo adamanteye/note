@@ -12,6 +12,10 @@
 - 字体
   - Source Han Serif [Region Specific Subset OTFs Simplified Chinese (简体中文)](https://github.com/adobe-fonts/source-han-serif/releases/tag/2.002R)
 
+## 删除不再使用的静态资源
+
+参考[从存储库删除敏感数据](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
+
 ## 致谢
 
 本仓库部分使用了以下模板
