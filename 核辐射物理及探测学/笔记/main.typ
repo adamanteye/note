@@ -38,7 +38,7 @@
   table.hline(),
   table.header([量], [值], [注释]),
   table.hline(),
-  [热运动],
+  [$k_B T$],
   [25.3meV],
   [也是热中子的动能],
   [$e^2/(4pi epsilon.alt_0)$],
@@ -65,6 +65,9 @@
   - 角动量-角位置不确定关系
 / 同量异位素: 质量数相同而电荷数不同
 / 镜像核: 质子数中子数互换,相等的没有镜像核
+/ 质量:
+  - 质量过剩:原子
+  - 质量亏损:原子核
 == 原子核的结合能
 #thm[$ E^2-(p c)^2=(m_0 c^2)^2 $]
 / 液滴模型: 体积能,表面能,库伦能
@@ -85,20 +88,29 @@ $ B(Z,A)=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
   table.hline(),
 ), caption: [Weizacker公式参数(MeV)])
 == 核力及核势垒
+=== 核力的性质
+- 短程强作用力
+- 和电荷无关,这使得中子,质子的能级结构基本相同
+- 具有饱和性,只与临近的几个核子相互作用
+- 极短程内存在排斥芯,核子不能无限靠近
+- 两核子间的核力与自旋相对取向有关
+- 核力有自旋轨道耦合项
 == 磁矩和电极矩
 == 原子核的统计性质
-/ 费米子: 自旋为半整数
+=== 费米子
+自旋量子数为半整数的称为费米子
   - 质子,中子,电子,中微子,$mu$子
   - 交换反对称
   - 费米-狄拉克统计
   - 不可以占据相同的量子态, 泡利不相容原理
-/ 玻色子: 自旋为整数
+=== 玻色子
+自旋量子数为整数的称为玻色子
   - 光子,$pi$介子
   - 交换对称
   - 玻色-爱因斯坦统计
   - 可以占据相同的量子态, 玻色-爱因斯坦凝聚
 #figure(image("whatparticle3.png", width: 95%), caption: [标准模型的基本粒子])
-原子核的统计性质:
+对原子核而言
 - 偶A核: 玻色子
 - 奇A核: 费米子
 - 历史上用来否定原子核的质子-电子论
@@ -123,15 +135,20 @@ $ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
   - 与活度定义相同,主要用来描述衰变过程
 / 比活度: $a=A/m$
   - 单位质量放射源的放射性活度
+=== 测量半衰期
+- 对中等寿命,可直接观察到活度的指数衰减,得到半衰期
+- 对较长寿命,无法看到活度变化,但可以分别测量活度和放射性核素的个数(化学手段),利用$A=lambda N$即可得到半衰期
 == 递次衰变规律
-/ 二次衰变: 涉及核素$isotope(A),isotope(B)$以及稳定核素$isotope(C)$
-  $t_m$主要由衰变常数大的,即半衰期短的决定:
-  $ t_m=1/(lambda_2-lambda_1)ln(lambda_2/lambda_1) $
-  总活度为:
-  $ A(t)=N_10 lambda_1 (e^(-lambda_1 t) +&\ lambda_2/(lambda_2-lambda_1) &(e^(-lambda_1 t)-e^(-lambda_2 t))) $
-/ 多次连续衰变规律: 对于从数量为$N_10$的核素开始的多次连续衰变,衰变链中第$n$个核素的数量为
-  $ N_1(t)&=N_10 e^(-lambda_1 t) \ N_(n!=1) (t)&=N_10 product_(j=1)^n c_(n,j) e^(-lambda_j t) \ c_(n!=1,i)&=(product_(j=1)^(n-1)lambda_j)/(product_(j=1,j!=i)^n lambda_j-lambda_i) $
-/ 长期平衡:
+=== 二次衰变
+涉及核素$isotope(A),isotope(B)$以及稳定核素$isotope(C)$
+$t_m$主要由衰变常数大的,即半衰期短的决定:
+$ t_m=1/(lambda_2-lambda_1)ln(lambda_2/lambda_1) $
+总活度为:
+$ A(t)=N_10 lambda_1 (e^(-lambda_1 t) +&\ lambda_2/(lambda_2-lambda_1) &(e^(-lambda_1 t)-e^(-lambda_2 t))) $
+=== 多次连续衰变规律
+对于从数量为$N_10$的核素开始的多次连续衰变,衰变链中第$n$个核素的数量为
+$ N_1(t)&=N_10 e^(-lambda_1 t) \ N_(n!=1) (t)&=N_10 product_(j=1)^n c_(n,j) e^(-lambda_j t) \ c_(n!=1,i)&=(product_(j=1)^(n-1)lambda_j)/(product_(j=1,j!=i)^n lambda_j-lambda_i) $
+=== 长期平衡
 
 == 放射系
 估测地球年龄,可用$isotope("Rb", a: 87)$经$beta$衰变到$isotope("Sr", a: 87)$的过程来估计,并用稳定核素$isotope("Sr", a: 86)$估计地球形成之初的$isotope("Sr")$含量.
@@ -273,7 +290,6 @@ $ isotope(a)+isotope(A) -> isotope(b) + isotope(B) $
   grid(
     columns: 2,
     row-gutter: 2mm,
-    column-gutter: 1mm,
     image("14cpn14n-1.png"),
     image("14cpn14n-2.png"),
     [能量阈值],
@@ -291,3 +307,9 @@ $ isotope(a)+isotope(A) -> isotope(b) + isotope(B) $
   - 对于薄靶,有$Y approx sigma N D$
   - 对于厚靶,有$Y -> 1$]
 == 核反应中的分波分析
+== 核反应机制及核反应模型
+=== 复合核机制
+- 复合核如何衰变与它如何形成无关
+- 反应在$10^(-15)$s量级
+- 入射粒子能量不太高: 10-20MeV
+- 靶核质量较大
