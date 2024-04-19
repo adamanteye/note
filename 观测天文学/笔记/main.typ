@@ -161,6 +161,9 @@ $ L=cal(F)4pi r^2 $
 $ L=4pi R^2 sigma T_"eff"^4 $
 == Mass
 / Virial theorem: $ 2K+V=0\ 2sum_i 1/2 m_i v_i^2-sum (G m_i m_j)/r_(i j)=0\ (G M)/R=sigma^2 $
+== Age
+#figure(image("hr-diagram-age.png",width: 80%),caption: [Comparing ages of clusters])
+
 = Telescope
 #figure(
   image("types-of-telescopes.png", width: 80%),

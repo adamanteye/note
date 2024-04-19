@@ -3,7 +3,6 @@
   lang: "en",
   region: "us",
 )
-#set heading(numbering: "1.")
 #show link: it => underline(text(fill: rgb("#8c0000"), it))
 #let title = [Note on Electrodynamics]
 #set document(title: [#title])
@@ -42,6 +41,7 @@
 This note is based on the textbook _Classical Electrodynamics 3rd edition_ (John
 David Jackson) as well as _电动力学简明教程_ (俞允强).
 
+#set heading(numbering: none)
 = Vector Calculus
 == Scalar Triple Product
 $va(A) dprod (va(B) cprod va(C))=va(B) dprod (va(C) cprod va(A))=va(C) dprod (va(A) cprod va(B))$
@@ -69,6 +69,19 @@ $grad (div va(v))$
 $div (curl va(v))=0$
 
 $curl (curl va(v))=grad (div va(v))-laplacian va(v)$
+
+== Coordinates
+=== Cylindrical Coordinates
+#thm("Gradient in Cylindrical Coordinates")[$ grad=vu(e_rho)pdv(,rho)+vu(e_phi.alt) 1/rho pdv(,phi.alt)+vu(e_z)pdv(,z) $]
+#thm("Laplacian in Cylindrical Coordinates")[$ laplacian=pdv(,rho,2)+1/rho pdv(,rho)+1/rho^2 pdv(,phi.alt,2)+pdv(,z,2) $]
+
+== Special Functions
+#def("Complete elliptic integral of the first kind")[$ K(k)=integral_0^1 dd(x)/sqrt((1-x^2)(1-k^2 x^2)) $]
+
+#def("Complete elliptic integral of the second kind")[$ E(k)=integral_0^1 sqrt((1-k^2 x^2)/(1-x^2)) dd(x) $]
+
+#set heading(numbering: "1.")
+
 = Introduction to Electrostatics
 #thm(
   "Green's first identity",
@@ -92,11 +105,12 @@ $ curl va(E)=0 $
   In regions of space lacking charge, the Poisson equation becomes $ laplacian Phi=0 $
 ]
 == Solution of Boundary-Value Problem with Green Function
+#thm("Gauss's theorem")[$ integral.cont va(E) dprod dd(va(a))=q/(4pi epsilon_0)integral dd(Omega) $]
 #def(
   "Green function",
 )[A function $ G(va(x),va(x)')=1/abs(va(x)-va(x)')+F(va(x),va(x)') $
   must satisfy the condition that:
-  $ laplacian'G(va(x),va(x)')=-4pi delta(va(x)-va(x)') $]
+  $ laplacian'G(va(x),va(x)')=-4pi delta(va(x)-va(x)') $And with $F$ satisfying the Laplace equation inside the volume $V$]
 #thm("general solution for Poisson function")[$ Phi(va(x))=1/(4pi epsilon.alt_0) integral_V rho(va(x)')G(va(x),va(x)')dd(x', 3)+\
 1/(4pi) integral.cont_S (G(va(x),va(x)')pdv(Phi, n')-Phi(va(x)')pdv(G(va(x),va(x)'), n')) dd(a') $]
 #proof[Plug $G(va(x),va(x)')$ and $Phi$ into @gsi]
@@ -104,7 +118,7 @@ $ curl va(E)=0 $
 #proof[Let $U=Phi_1-Phi_2$ and use @green1stid.]
 #def("Dirichlet boundary conditions")[$ G_D (va(x),va(x'))=0 "for" va(x) "on S" $]
 #thm("Solution to Dirichlet boundary conditions")[$ Phi(va(x))=1/(4pi epsilon_0) integral_V rho(va(x')) G_D (va(x),va(x')) dd(x,3)\  -1/(4pi) integral.cont Phi(va(x')) pdv(G_D,n') dd(a') $]
-#def("Neumann boundary conditions")[This is consistent with Gauss's theorem that $ pdv(,n') G_N (va(x),va(x'))=-4pi "for" va(x) "on S" $]
+#def("Neumann boundary conditions")[This is consistent with Gauss's theorem that $ pdv(,n') G_N (va(x),va(x'))=-(4pi)/S "for" va(x) "on S" $]
 #thm("Solution to Neumann boundary conditions")[$ Phi(va(x))=expval(Phi)_S+1/(4pi epsilon_0) integral_V rho(va(x')) G_N (va(x),va(x')) dd(x,3)\  +1/(4pi) integral.cont G_N pdv(Phi,n') dd(a') $]
 == Energy and Capacitance
 #thm("Discrete total potential")[$ W=1/(8pi epsilon_0) sum_i sum_j (q_i q_j)/(|va(x_i)-va(x_j)|) $]
@@ -117,13 +131,16 @@ $ curl va(E)=0 $
   - appropriately charged
   - external to the region of interest
   - simulating the required boundary conditions
-
 / Zero potential plane conductor condition: $q'=-q$ and $x'=-x$
 #figure(
   image("image-1.png", width: 60%),
   caption: [Electric filed of $q$ away from an infinite plane conductor],
 ) <glacier>
 / hollow grounded sphere conductor:
+== Laplace Equation in Rectangular Coordinates
+== Fields in Two-Dimensional Corners
+
+
 == Expansion in Spherical Coordinates
 $ 1/(|va(x)-va(x')|)=&4pi sum_(l=0)^infinity sum_(m=-l)^l 1/(2l+1) r_<^l/r_>^(l+1) \ &Y_(l m) (theta, phi.alt)Y_(l m)^* (theta', phi.alt') Y_(l m) (theta, phi.alt) $
 = Multipoles and Dielectrics
