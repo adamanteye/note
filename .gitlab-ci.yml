@@ -8,6 +8,7 @@ note-tex:
   artifacts:
     paths:
       - build/*
+    expire_in: 1 week
   cache:
     paths:
       - build/
