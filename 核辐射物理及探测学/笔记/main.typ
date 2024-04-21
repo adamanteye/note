@@ -99,16 +99,16 @@ $ B(Z,A)=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
 == 原子核的统计性质
 === 费米子
 自旋量子数为半整数的称为费米子
-  - 质子,中子,电子,中微子,$mu$子
-  - 交换反对称
-  - 费米-狄拉克统计
-  - 不可以占据相同的量子态, 泡利不相容原理
+- 质子,中子,电子,中微子,$mu$子
+- 交换反对称
+- 费米-狄拉克统计
+- 不可以占据相同的量子态, 泡利不相容原理
 === 玻色子
 自旋量子数为整数的称为玻色子
-  - 光子,$pi$介子
-  - 交换对称
-  - 玻色-爱因斯坦统计
-  - 可以占据相同的量子态, 玻色-爱因斯坦凝聚
+- 光子,$pi$介子
+- 交换对称
+- 玻色-爱因斯坦统计
+- 可以占据相同的量子态, 玻色-爱因斯坦凝聚
 #figure(image("whatparticle3.png", width: 95%), caption: [标准模型的基本粒子])
 对原子核而言
 - 偶A核: 玻色子
@@ -141,6 +141,7 @@ $ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
 == 递次衰变规律
 === 二次衰变
 涉及核素$isotope(A),isotope(B)$以及稳定核素$isotope(C)$
+
 $t_m$主要由衰变常数大的,即半衰期短的决定:
 $ t_m=1/(lambda_2-lambda_1)ln(lambda_2/lambda_1) $
 总活度为:
@@ -284,8 +285,7 @@ $ isotope(a)+isotope(A) -> isotope(b) + isotope(B) $
 - 如果余核处在激发态$E^*$,那么有$m_B^*=m_B+E^* /c^2$,$Q'=Q-E^*$
 #thm(
   "Q方程",
-)[假设靶核$isotope(A)$静止,Q方程将出射粒子的动能$T_b$与入射粒子动能$T_a$,出射粒子的方向$theta$,反应能$Q$这四个量联系起来$ sqrt(T_b)=plus.minus (((A_B-A_a)/(A_B+A_b)+(A_a A_b)/(A_B+A_b)^2 cos^2theta)T_a\ +A_B/(A_B+A_b)Q)&^(1\/2)+sqrt(A_a A_b T_a)/(A_B+A_b) cos theta $]
-
+)[假设靶核$isotope(A)$静止,Q方程将出射粒子的动能$T_b$与入射粒子动能$T_a$,出射粒子的方向$theta$,反应能$Q$把这四个量联系起来$ Q=(1+m_b/m_B)T_b-(1-m_a/m_B)T_a \ - (2sqrt(m_a m_b T_a T_b))/m_b cos theta $$ sqrt(T_b)=plus.minus (((A_B-A_a)/(A_B+A_b)+(A_a A_b)/(A_B+A_b)^2 cos^2theta)T_a\ +A_B/(A_B+A_b)Q)&^(1\/2)+sqrt(A_a A_b T_a)/(A_B+A_b) cos theta $]
 #figure(
   grid(
     columns: 2,

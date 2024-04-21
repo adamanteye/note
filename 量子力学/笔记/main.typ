@@ -158,6 +158,8 @@ $ braket(p, H, psi)&=p^2/(2m)braket(p, psi)+V(i hbar pdv(, p))braket(p, psi) $
   "Schödinger Equation",
 )[系统状态的演化由哈密顿算符决定$ i hbar pdv(, t)ket(psi)=H ket(psi) $]
 #def("哈密顿量")[哈密顿算符的本征值是哈密顿量$ H ket(psi)=E ket(psi) $]
+#def("定态")[若$ket(psi(t))$是哈密顿量的本征态,则称其为定态]
+#thm[定态下,一切不显含时间的力学量的平均值和概率分布都不随时间变化]
 = 角动量
 球坐标表示下, 角动量的各个分量表示为
 $ l_x&=i hbar(sin phi.alt pdv(, theta)+cot theta cos phi.alt pdv(, phi.alt))\
@@ -210,7 +212,8 @@ $ |R|^2+|S|^2=1 $
 $ V(x)=gamma delta(x)\ -hbar^2/(2m) dv(psi, x, 2)=(E-gamma delta(x)) psi $
 $psi''$在Schödinger方程的奇点处不存在,$psi$在$x=0$处不连续,对Schödinger方程积分可得*跃变条件*
 $ psi'(0^+)-psi'(0^-)=(2m gamma)/hbar^2 psi(0) $
-$ psi(x)=cases(e^(i k x)+R e^(-i k x) &"if" x<0, S e^(i k x) &"if" x>0) \ "where"
+$ psi(x)=cases(e^(i k x)+R e^(-i k x) &"if" x<0, S e^(i k x) &"if" x>0) \
+"where"
 k=sqrt(2m E)/hbar $
 由连续性与跃变条件有
 $ S&=1/(1+(i m gamma)/(hbar^2 k))\ R&=S-1=- (i m gamma)/(1+(i m gamma)/(hbar^2
@@ -220,11 +223,13 @@ $ T&=|S|^2=1/(1+(m gamma^2)/(2hbar^2 E))\ |R|^2&+|S|^2=1 $
 $ L&=hbar^2/(m gamma)\ E&=(m gamma^2)/ hbar^2 $
 == 一维谐振子
 $ V(x)=1/2 k x^2 $
-#figure(
-  grid(columns: 2,column-gutter: 5%, image("harmonic-oscillator-1.png"),image("harmonic-oscillator-2.png")),
- caption: [一维谐振子本征态],
-)
-=== 幂级数法:
+#figure(grid(
+ columns: 2,
+ column-gutter: 5%,
+ image("harmonic-oscillator-1.png"),
+ image("harmonic-oscillator-2.png"),
+), caption: [一维谐振子本征态])
+=== 幂级数法
 薛定谔方程表示为
 $ (-hbar^2/(2m)dv(d, x, 2)+1/2 k x^2)psi=E psi \ ==> dv(psi, xi,
 2)+(lambda-xi^2) psi=0 \ "where" omega=sqrt(k/m), lambda=(2E)/(hbar omega), xi=x
@@ -251,18 +256,37 @@ $ N a^dagger ket(n)&=([N,a^dagger]+a^dagger N) ket(n)=(n+1) a^dagger ket(n) \ N
 a ket(n) &=([N,a]+a N) ket(n)=(n-1) a ket(n) $ <an-cr-op>
 从而$a^dagger ket(n)$和$a ket(n)$也是$N$的本征态 从@an-cr-op 可发现$ a ket(n)=&c ket(n-1)==>
 \ &braket(n, a^dagger a, n)=|c|^2=1=braket(n, N, n)=n $ <an-cr-csqure-n>
-人们一般取$c$为实数且$c=1$,对$a^dagger$也如此操作,最后有$ a ket(n)&=sqrt(n)ket(n-1)\ a^dagger
-ket(n) &=sqrt(n)ket(n+1) $
-注意到@an-cr-csqure-n 中蕴含$n>=0$,即$N$为正定厄米算符,可证明$n$均为整数,且最小的本征值$n_0=0$. 从而谐振子基态为$
- E_0=1/2 hbar omega
-$
+人们一般取$c$为实数且$c>0$,对$a^dagger$也如此操作,最后有$ a ket(n)&=sqrt(n)ket(n-1)\ a^dagger
+ket(n) &=sqrt(n+1)ket(n+1) $
+注意到@an-cr-csqure-n 中蕴含$n>=0$,即$N$为正定厄米算符,可证明$n$均为整数,且最小的本征值$n_0=0$. 从而谐振子基态能量为$
+E_0=1/2 hbar omega $
+为得到所有的本征态,从基态$ket(0)$出发,反复作用产生算符$a^dagger$,有$ ket(n)=1/sqrt(n!)(a^dagger)^n
+ket(0) $
+若想得到本征态在坐标表象下的表示,如$psi_0 (x)=braket(x, 0)$,可以借助$a$的本征方程
+$ a ket(0)=0 $
+即解有关$psi_0 (x)$的微分方程
+$ braket(x, sqrt((m omega)/(2 hbar))(x+ (i p)/(m omega)), 0)=0 $
+解得归一化波函数$ psi_0 (x)=((m omega)/(pi hbar))^(1/4) e^(-(m omega)/(2hbar)x^2) $
+对于一般的$n$,利用$a^dagger$可得
+$ braket(x, n)=&1/sqrt(n!)braket(x, (a^dagger)^n, 0)\ =&1/sqrt(2^n n!) ((m
+omega)/(pi hbar))^(1/4) \ &(sqrt((m omega)/hbar)x+sqrt(hbar/(m omega))dv(, x))^n
+e^(-(m omega)/(2hbar)x^2) $
 == 氢原子
 #figure(image("hydrogen.png", width: 90%), caption: [氢原子波函数])
 = 守恒量与对称性
 == 守恒量
 #thm(
  "Ehrenfest",
-)[若力学量$A$不显含时间,有$ dv(, t)expval(A)=frac(1, i hbar)expval([A,H]) $]
-#proof[考虑力学量$A(t)$在任意$ket(psi(t))$上的演化,可得$ dv(,t) expval(A)=expval(pdv(A,t))+1/(i hbar)expval([A,H]) $]
+)[若力学量$A$不显含时间,有$ dv(, t)expval(A)=frac(1, i hbar)expval([A,H]) $] <ehrenfest>
+#proof[考虑力学量$A(t)$在任意$ket(psi(t))$上的演化,可得$ dv(, t) expval(A)=expval(pdv(A,
+t))+1/(i hbar)expval([A,H]) $]
 #thm[若力学量$A$不显含时间,且$[A,H]=0$,则$expval(A)$在任何$ket(psi(t))$下的平均值与概率分布均不变]
-#proof[取包含$A,H$在内的力学量完全集]
+#proof[平均值不变由@ehrenfest 说明,概率分布的证明如下
+
+ 取包含$A,H$在内的力学量完全集,将任何态$ket(psi)$用完全集的共同本征态${ket(psi_k)}$展开
+ $ ket(psi(t))=sum_k a_k (t) ket(psi_k) $
+ 其中$a_k (t)=braket(psi_k, psi(t))$
+ 现在考虑概率的变化
+ $ dv(, t) abs(a_k (t))^2=dv(a_k^*, t)a_k + a_k^* dv(a_k, t) $由于$ dv(a_k^*,
+t)=-1/(i hbar)braket(psi, H, psi_k)&=-E_k/(i hbar)a_k^* \ dv(a_k, t)&=E_k/(i
+ hbar)a_k $因此$dv(, t) abs(a_k (t))^2=0$]
