@@ -15,22 +15,42 @@
 
 #set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])
 
-#let pst = thmbox("thm", "公设", inset: (x: 0.5em, top: 0em))
-#let def = thmbox("thm", "定义", inset: (x: 0.5em, top: 0em))
-#let thm = thmbox("thm", "定理", inset: (x: 0.5em, top: 0em))
-#let exmp = thmbox("exmp", "例", inset: (x: 0.5em, top: 0em))
-#let sol = thmplain(
-  "sol",
-  "解答",
+#let pst = thmbox(
+  "thm",
+  "公设",
+  namefmt: x => [(#(strong(x)))],
+  titlefmt: emph,
+  inset: (x: 0.5em, top: 0em),
+)
+#let def = thmbox(
+  "thm",
+  "定义",
+  namefmt: x => [(#(strong(x)))],
+  titlefmt: emph,
+  inset: (x: 0.5em, top: 0em),
+)
+#let thm = thmbox(
+  "thm",
+  "定理",
+  namefmt: x => [(#(strong(x)))],
+  titlefmt: emph,
+  inset: (x: 0.5em, top: 0em),
+)
+#let coll = thmbox(
+  "coll",
+  "推论",
+  namefmt: x => [(#(strong(x)))],
+  titlefmt: emph,
   inset: (x: 0.5em, top: 0em),
   base: "thm",
-  titlefmt: strong,
-).with(numbering: none)
+)
+#let exmp = thmbox("exmp", "例", titlefmt: emph, inset: (x: 0.5em, top: 0em))
+#let sol = thmplain("sol", "解答", titlefmt: emph, inset: (x: 0.5em, top: 0em), base: "thm").with(numbering: none)
 #let proof = thmproof(
   "proof",
   "证明",
   inset: (x: 0.5em, top: 0em),
-  titlefmt: strong,
+  titlefmt: emph,
   base: "thm",
 )
 
@@ -142,7 +162,7 @@ $ [va(r),H]=(i hbar)/m va(p) $
 #proof[构造$ U=sum_n ketbra(b_n, a_n) $注意到$ U^dagger U=sum_n sum_k ket(a_n)braket(b_n, b_k)bra(a_k)=I $从而$U$是幺正算符]
 #def(
   "投影算符",
-)[对某表象中的基矢$ket(k)$,称$P_k$为投影算符,作用在任意$ket(psi)$上可得到$ket(psi)$在$ket(k)$方向上的分量$ P_k=ket(k)bra(k) $]
+)[对某表象中的基矢$ket(k)$,称$P_k$为投影算符,作用在任意$ket(psi)$上可得到$ket(psi)$在$ket(k)$方向上的部分$ P_k=ket(k)bra(k) $]
 #thm("单位算符")[完备的情况下有$ I&=sum_n ketbra(k_n)\ I&=integral ketbra(x)dd(x) $]
 #exmp[在$l=1$的表象下, $l_z$的矩阵是什么?]
 #sol[考虑$l=1$下共有3个本征态, 记为$ket(1)=ket(1\,-1),ket(2)=ket(1\,0),ket(3)=ket(1\,1)$
@@ -150,7 +170,7 @@ $ [va(r),H]=(i hbar)/m va(p) $
     braket(1, l_z, 1), braket(1, l_z, 2), braket(1, l_z, 3);braket(2, l_z, 1), braket(2, l_z, 2), braket(2, l_z, 3);braket(3, l_z, 1), braket(3, l_z, 2), braket(3, l_z, 3)
   )=dmat(-hbar, 0, hbar) $]
 #exmp[二态体系的哈密顿量$H=H_0+H'$,在$H_0$的表象中有$ H_0=dmat(E_1, E_2), H'=admat(H'_(1 2), H'_(2 1)) $证明$H=E_1 ketbra(1)+E_2 ketbra(2)+H'_(1 2)ketbra(1, 2)+H'_(2 1)ketbra(2, 1)$]
-=== 不同表象中的表示
+== 不同表象中的表示
 $ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x, p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
 $ braket(p, H, psi)&=p^2/(2m)braket(p, psi)+V(i hbar pdv(, p))braket(p, psi) $
 = Schödinger方程
@@ -166,7 +186,7 @@ $ l_x&=i hbar(sin phi.alt pdv(, theta)+cot theta cos phi.alt pdv(, phi.alt))\
 l_y&=i hbar(-cos phi.alt pdv(, theta)+cot theta sin phi.alt pdv(, phi.alt))\
 l_z&=- i hbar pdv(, phi.alt) $
 
-球谐函数$Y(theta,phi.alt)$是$l_z$与$va(l)$的共同本征态(球坐标下表示).
+球谐函数$Y(theta,phi.alt)$是$l_z$与$va(l)^2$的共同本征态(球坐标下表示).
 $ Y(theta,phi.alt)&=Theta(xi)psi_m (phi.alt)\ va(l)^2 Y(theta,phi.alt)&=lambda hbar^2 Y(theta, phi.alt)\ psi_m (phi.alt)&=1/sqrt(2pi) e^(i m phi.alt) $
 $Theta(xi)$是连带Legendre方程,其中$xi=cos theta$
 
@@ -210,7 +230,7 @@ $ T=(16E(V_0-E))/V_0^2 e^(-(2a)/hbar sqrt(2m(V_0-E))) $
 $ |R|^2+|S|^2=1 $
 == 一维$delta$势垒
 $ V(x)=gamma delta(x)\ -hbar^2/(2m) dv(psi, x, 2)=(E-gamma delta(x)) psi $
-$psi''$在Schödinger方程的奇点处不存在,$psi$在$x=0$处不连续,对Schödinger方程积分可得*跃变条件*
+在Schödinger方程的奇点处$psi''$不存在,在$x=0$处$psi$不连续,对Schödinger方程积分可得*跃变条件*
 $ psi'(0^+)-psi'(0^-)=(2m gamma)/hbar^2 psi(0) $
 $ psi(x)=cases(e^(i k x)+R e^(-i k x) &"if" x<0, S e^(i k x) &"if" x>0) \
 "where"
@@ -259,7 +279,8 @@ a ket(n) &=([N,a]+a N) ket(n)=(n-1) a ket(n) $ <an-cr-op>
 人们一般取$c$为实数且$c>0$,对$a^dagger$也如此操作,最后有$ a ket(n)&=sqrt(n)ket(n-1)\ a^dagger
 ket(n) &=sqrt(n+1)ket(n+1) $
 注意到@an-cr-csqure-n 中蕴含$n>=0$,即$N$为正定厄米算符,可证明$n$均为整数,且最小的本征值$n_0=0$. 从而谐振子基态能量为$
-E_0=1/2 hbar omega $
+ E_0=1/2 hbar omega
+$
 为得到所有的本征态,从基态$ket(0)$出发,反复作用产生算符$a^dagger$,有$ ket(n)=1/sqrt(n!)(a^dagger)^n
 ket(0) $
 若想得到本征态在坐标表象下的表示,如$psi_0 (x)=braket(x, 0)$,可以借助$a$的本征方程
@@ -279,8 +300,8 @@ e^(-(m omega)/(2hbar)x^2) $
  "Ehrenfest",
 )[若力学量$A$不显含时间,有$ dv(, t)expval(A)=frac(1, i hbar)expval([A,H]) $] <ehrenfest>
 #proof[考虑力学量$A(t)$在任意$ket(psi(t))$上的演化,可得$ dv(, t) expval(A)=expval(pdv(A,
-t))+1/(i hbar)expval([A,H]) $]
-#thm[若力学量$A$不显含时间,且$[A,H]=0$,则$expval(A)$在任何$ket(psi(t))$下的平均值与概率分布均不变]
+t))+1/(i hbar)expval([A,H]) $此外$A$不显含时间,有$pdv(A, t)=0$.]
+#thm[若力学量$A$不显含时间,且$[A,H]=0$,则$A$在任何$ket(psi(t))$下的平均值与概率分布均不变.]
 #proof[平均值不变由@ehrenfest 说明,概率分布的证明如下
 
  取包含$A,H$在内的力学量完全集,将任何态$ket(psi)$用完全集的共同本征态${ket(psi_k)}$展开
@@ -288,5 +309,91 @@ t))+1/(i hbar)expval([A,H]) $]
  其中$a_k (t)=braket(psi_k, psi(t))$
  现在考虑概率的变化
  $ dv(, t) abs(a_k (t))^2=dv(a_k^*, t)a_k + a_k^* dv(a_k, t) $由于$ dv(a_k^*,
-t)=-1/(i hbar)braket(psi, H, psi_k)&=-E_k/(i hbar)a_k^* \ dv(a_k, t)&=E_k/(i
- hbar)a_k $因此$dv(, t) abs(a_k (t))^2=0$]
+t)&=-1/(i hbar)braket(psi, H, psi_k)=-E_k/(i hbar)a_k^* \ dv(a_k, t)&=E_k/(i
+ hbar)a_k $因此$dv(, t) abs(a_k (t))^2=0$.]
+#exmp[中心力场中的守恒量为${H,va(l)^2,l_z}$.]
+#exmp[自由粒子的态可以用${p_x,p_y,p_z}$标记,对应能量的简并度一般是无穷大.]
+#thm("Feynman-Hellmann")[]
+#thm(
+ "位力(virial)",
+)[处于势场$V(va(r))$中的粒子,动能算符在定态上的平均值为$ expval(T)=1/2 expval(va(r) dprod grad V) $]
+#coll[当势能为坐标的$n$次齐次函数时,有$ expval(T)=n/2 expval(V) $]
+== 力学量完全集
+#def(
+ "CSCO",
+)[彼此独立,互相对易的厄米算符的共同本征态如果能唯一确定体系的状态,那么这组力学量就称为*对易力学量完全集*(complete set of
+commuting
+ observables).]
+#def(
+ "CSCCO",
+)[如果对易力学量完全集中包含哈密顿量,并且哈密顿量是守恒量(不显含时间),那么该完全集中所有力学量都是守恒量,这样的完全集称为*对易守恒量完全集*(complete
+ set of commuting conserved observables).]
+== Schödinger图像与Heisenberg图像 <heisgenberg-pic>
+#def(
+ "Schödinger图像",
+)[$ket(psi(t))$随时间演化,其变化遵守Schrödinger方程,力学量算符(不显含时间)与时间无关,这种描述方式称为Schrödinger图像.]
+#def(
+ "Heisenberg图像",
+)[$ket(psi)$不随时间变化,力学量算符$A(t)$随时间演化,这种描述方式称为Heisenberg图像#footnote([除了@heisgenberg-pic
+以外,其他部分均采用Schrödinger图像]).]
+#thm("Heisenberg方程")[算符$A(t)$随时间的变化为$ dv(, t)A(t)=1/(i hbar)[A(t),H] $]
+== 相互作用图像
+相互作用图像介于Schrödinger图像和Heisenberg图像之间,在用微扰论来处理问题时有广泛的应用.
+
+== 对称性变换
+#def("对称性变换")[称满足以下条件的幺正算符$Q$为体系的对称性变换$ [Q,H]=0 $$Q$必须是幺正的,否则概率模不守恒]
+#thm[对于幺正变换对称性,存在相应的守恒量.]
+#def(
+  "无穷小变换",
+)[对于连续变换,考虑$epsilon->0^+$$ Q=I+i epsilon F $其中$F$必须是厄米的.称这样的变换$Q$为无穷小变换.] <infinitesimal-trans>
+#def("无穷小算符")[称@infinitesimal-trans 当中的$F$为变换$Q$的无穷小算符.]
+#def(
+  "空间反射变换",
+)[对态和算符都可以分别定义空间反射变换$P$$ P psi(va(x))=psi(-va(x)) $$ P F(va(x),va(p)) P^dagger=F(-va(x),-va(p)) $]
+#def("空间反射对称性")[若哈密顿量满足$[P,H]=0 <==> P H P^dagger=H$,那么系统具有空间反射对称性.]
+#thm[具有空间反射对称性的系统宇称守恒.]
+#def("空间平移对称性")[若哈密顿量满足$[D,H]=0 <==> D H D^dagger=H$,那么系统具有空间平移对称性.]
+#thm[具有空间平移对称性的系统动量守恒.]
+#def("空间转动对称性")[若哈密顿量满足$[R,H]=0 <==> R H R^dagger=H$,那么系统具有空间转动对称性.]
+#thm[具有空间转动对称性的系统角动量守恒.]
+#def("时间平移对称性")[若哈密顿量满足$[D,H]=0 <==> D H D^dagger=H$,那么系统具有时间平移对称性.]
+#thm[具有时间平移对称性的系统哈密顿量不显含时间,能量守恒.即系统状态随时间的演化规律与时间零点的选取无关,具有时间均匀性.]
+== 全同粒子体系与交换对称性
+#def(
+  "全同粒子",
+)[经典中,由于粒子的性质和状态可以连续变化,谈不上两个粒子真正全同.但实际上粒子是量子化的,属于同一类(内禀属性即静质量,电荷,自旋,磁矩,寿命,
+  内部结构等相同)的粒子称为全同粒子.]
+#def(
+  "交换算符",
+)[$ P_(i j)&psi(dots, q_i, dots, q_j, dots, t)\ &=psi(dots, q_j, dots, q_i, dots, t) $] <exchange-operator>
+#thm[交换算符是厄米的.]
+#thm[交换算符是幺正的.]
+#pst("全同性假设")[全同粒子体系中,可观测量对任何两个粒子交换是不变的,即任意两个全同粒子的交换,都不改变体系的物理状态.] <identity-postulate>
+#coll(
+  "全同粒子系波函数的性质",
+)[根据@exchange-operator 以及@identity-postulate,全同粒子的波函数$psi$满足$ P_(i j) psi&=C psi \ C&=plus.minus 1 $]
+#thm("全同粒子的统计性不变")[全同粒子系的波函数交换对称性是不随时间变化的,即Bose统计或Fermi统计是不变的.]
+#thm(
+  [$N$个全同玻色子体系的波函数],
+)[$ Psi_(n_1 dots n_N)^S (q_1,dots,q_N)&\ =sqrt((product_i n_i !)/N!)sum_P
+                                     &P(psi_k_1 (q_1) dots psi_k_N (q_N)) $]
+#def(
+  "反对称化算符",
+)[$ cal(A)=sqrt(1/N!)sum_P delta_P P $这里$P$代表$N$个粒子的一种排列,$delta_P$在$P$是经过奇数个对换得到时为$-1$,偶数个对换为$+1$]
+#thm(
+  [$N$个全同费米子体系的波函数],
+)[$ Psi_(n_1 dots n_N)^A &(q_1,dots,q_N)\ =&sqrt(1/N!) mdet(
+    psi_k_1 (q_1), dots, psi_k_1 (q_N);dots.v, , dots.v;psi_k_N (q_1), dots, psi_k_N (q_N)
+  ) \ =&cal(A) psi_k_1 (q_1) dots psi_k_N
+  (q_N) $]
+#image("whatparticle.png")
+#thm("Pauli不相容原理")[不允许有两个及以上全同的费米子处于同一个单粒子态]
+#exmp[对3个全同粒子组成的系统,如果可能的单粒子态有3种.那么Boltzmann统计(经典统计),Bose统计,Fermi统计下,系统的可能态数目分别为27,10,1.
+
+  一般来说,对于3个及3个以上的全同粒子体系,Bose统计与Fermi统计的可能态数目总是少于Boltzmann统计.因为后者包含有一些没有对称性或混杂对称性的状态.]
+== 二次量子化方法
+对全同粒子编号本来就是多余的,粒子填布数表象描述全同粒子体系的量子态更为方便.
+
+在同一势场中运动的全同粒子体系的态可以用单粒子态上的粒子占有数表示
+$ ket(n_1 n_2 n_3 dots)=ket(n_1)ket(n_2)ket(n_3)dots $
+即在$ket(psi_1),ket(psi_2),ket(psi_3),dots$上分别有$n_1,n_2,n_3,dots$个粒子.
