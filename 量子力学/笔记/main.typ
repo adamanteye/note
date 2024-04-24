@@ -111,8 +111,16 @@ $ [A B,C]=A[B,C]+[A,C]B $
 #thm(
   [$delta$函数的性质],
 )[$ delta(a x)=1/(|a|)delta(x) $$ delta(x)=1/(2pi)integral_(-infinity)^infinity e^(i k x)dd(k) $]
-=== 傅里叶变换
+== 傅里叶变换
 $ f(x)&=1/sqrt(2pi) integral e^(i k x) g(k)dd(k)\ g(k)&=1/sqrt(2pi) integral e^(-i k x) f(x)dd(x) $
+= 态与波函数
+#def("概率密度")[$ rho=psi^* psi $]
+#def(
+  "概率流密度",
+)[$ va(j)&=-(i hbar)/(2m)(psi^* grad psi-psi grad psi^*)\ &=1/(2m) (psi^* p psi-psi p psi^*) $]
+#thm("概率守恒")[概率(粒子数)守恒的微分式$ pdv(rho, t)+div va(j)=0 $]
+#pst[$braket(alpha, beta)=braket(beta, alpha)^*$]
+#pst("positive definite metric")[$braket(alpha)>=0$]
 = 算符
 == 基本假设
 #def(
@@ -121,12 +129,17 @@ $ f(x)&=1/sqrt(2pi) integral e^(i k x) g(k)dd(k)\ g(k)&=1/sqrt(2pi) integral e^(
 #def(
   "厄米算符",
 )[称$A$为厄米算符当且仅当 $ A=A^dagger <==> braket(psi, A, phi)=(braket(phi, A, psi))^* \ "for arbitray" psi,phi $]
+#def(
+  "投影算符",
+)[对某表象中的基矢$ket(k)$,称$P_k$为投影算符,作用在任意$ket(psi)$上可得到$ket(psi)$在$ket(k)$方向上的部分$ P_k=ket(k)bra(k) $]
+#thm("单位算符")[完备的情况下有$ I&=sum_n ketbra(k_n)\ I&=integral ketbra(x)dd(x) $]
 #thm()[厄米算符的本征值总是实的]
 #thm()[厄米算符对应不同本征值的本征态正交]
 #def("平均值")[算符$A$的平均值定义为$ expval(A)_ket(psi)=expval(A, psi) $]
 #thm()[厄米算符的平均值总是实的] <hermite-re>
 #thm()[平均值总是实的的算符是厄米的]
 #def("对易子")[算符$A$,$B$的对易子为$ [A,B]=A B-B A $]
+#thm[如果两个厄米算符有共同的本征函数的集合,那么它们对易]
 #def("反对易子")[算符$A$,$B$的反对易子定义为 $ {A,B}=A B+B A $]
 #def("反厄米算符")[称$A$为反厄米算符当且仅当 $ A=-A^dagger $]
 #thm()[反厄米算符的平均值总是虚的] <anti-hermite-im>
@@ -150,37 +163,14 @@ $ [l_alpha,x_beta]=epsilon_(alpha beta gamma)i hbar x_gamma $
 $ [l_alpha,p_beta]=epsilon_(alpha beta gamma)i hbar p_gamma $
 $ [l_alpha,l_beta]=epsilon_(alpha beta gamma)i hbar l_gamma $
 $ [va(r),H]=(i hbar)/m va(p) $
-== 算符的函数
-#thm(
-  "Backer-Hausdorff",
-)[对算符$A$,$B$,若$C:=[A,B]$满足$[C,A]=[C,B]=0$,则有$ e^(A+B)=e^A e^B e^(-1/2 C)=e^B e^A e^(1/2 C) $]
-== 矩阵形式
-#def("幺正矩阵")[称A为幺正矩阵,当且仅当$ A^dagger=A^(-1) $]
-#thm(
-  "幺正变换",
-)[对2套各自正交归一的基矢,存在幺正算符$U$使得$ ket(b_1)=U ket(a_1),dots,ket(b_n)=U ket(a_n) $]
-#proof[构造$ U=sum_n ketbra(b_n, a_n) $注意到$ U^dagger U=sum_n sum_k ket(a_n)braket(b_n, b_k)bra(a_k)=I $从而$U$是幺正算符]
-#def(
-  "投影算符",
-)[对某表象中的基矢$ket(k)$,称$P_k$为投影算符,作用在任意$ket(psi)$上可得到$ket(psi)$在$ket(k)$方向上的部分$ P_k=ket(k)bra(k) $]
-#thm("单位算符")[完备的情况下有$ I&=sum_n ketbra(k_n)\ I&=integral ketbra(x)dd(x) $]
-#exmp[在$l=1$的表象下, $l_z$的矩阵是什么?]
-#sol[考虑$l=1$下共有3个本征态, 记为$ket(1)=ket(1\,-1),ket(2)=ket(1\,0),ket(3)=ket(1\,1)$
-  那么$l_z$的矩阵表示应为$ mat(
-    braket(1, l_z, 1), braket(1, l_z, 2), braket(1, l_z, 3);braket(2, l_z, 1), braket(2, l_z, 2), braket(2, l_z, 3);braket(3, l_z, 1), braket(3, l_z, 2), braket(3, l_z, 3)
-  )=dmat(-hbar, 0, hbar) $]
-#exmp[二态体系的哈密顿量$H=H_0+H'$,在$H_0$的表象中有$ H_0=dmat(E_1, E_2), H'=admat(H'_(1 2), H'_(2 1)) $证明$H=E_1 ketbra(1)+E_2 ketbra(2)+H'_(1 2)ketbra(1, 2)+H'_(2 1)ketbra(2, 1)$]
-== 不同表象中的表示
-$ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x, p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
-$ braket(p, H, psi)&=p^2/(2m)braket(p, psi)+V(i hbar pdv(, p))braket(p, psi) $
-= Schödinger方程
+== Schödinger方程
 #pst(
   "Schödinger Equation",
-)[系统状态的演化由哈密顿算符决定$ i hbar pdv(, t)ket(psi)=H ket(psi) $]
+)[Schödinger方程是非相对论量子力学的基本方程.可以理解为系统状态的演化由哈密顿算符决定$ i hbar pdv(, t)ket(psi)=H ket(psi) $]
 #def("哈密顿量")[哈密顿算符的本征值是哈密顿量$ H ket(psi)=E ket(psi) $]
 #def("定态")[若$ket(psi(t))$是哈密顿量的本征态,则称其为定态]
 #thm[定态下,一切不显含时间的力学量的平均值和概率分布都不随时间变化]
-= 角动量
+== 角动量
 球坐标表示下, 角动量的各个分量表示为
 $ l_x&=i hbar(sin phi.alt pdv(, theta)+cot theta cos phi.alt pdv(, phi.alt))\
 l_y&=i hbar(-cos phi.alt pdv(, theta)+cot theta sin phi.alt pdv(, phi.alt))\
@@ -197,7 +187,30 @@ $ Theta_(l m) (theta)=(-1)^m sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) 
 $ Y_(l m) (theta,phi.alt)\ =(-1)^m &sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) e^(i m phi.alt) $
 球谐函数满足
 $   &va(l)^2 Y_(l m)=l(l+1)hbar^2 Y_(l m)\ &l_z Y_(l m)=m hbar Y_(l m)\ &l=0,1,2,dots\ &m=-l,-l+1,dots,l-1,l\ &integral_0^(2pi)dd(phi.alt) integral_0^pi sin theta dd(theta) Y_(l_1 m_1)^* Y_(l_2 m_2)=delta_(l_1 l_2)delta_(m_1 m_2) $
-= 势场中的波函数
+== 算符的函数
+#thm(
+  "Backer-Hausdorff",
+)[对算符$A$,$B$,若$C:=[A,B]$满足$[C,A]=[C,B]=0$,则有$ e^(A+B)=e^A e^B e^(-1/2 C)=e^B e^A e^(1/2 C) $]
+== 矩阵形式
+#def("幺正矩阵")[称A为幺正矩阵,当且仅当$ A^dagger=A^(-1) $]
+#thm(
+  "幺正变换",
+)[对2套各自正交归一的基矢,存在幺正算符$U$使得$ ket(b_1)=U ket(a_1),dots,ket(b_n)=U ket(a_n) $]
+#proof[构造$ U=sum_n ketbra(b_n, a_n) $注意到$ U^dagger U=sum_n sum_k ket(a_n)braket(b_n, b_k)bra(a_k)=I $从而$U$是幺正算符]
+
+#exmp[在$l=1$的表象下, $l_z$的矩阵是什么?]
+#sol[考虑$l=1$下== 不同表象中的表示
+  $ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x, p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
+  $ braket(p, H, psi)&=p^2/(2m)braket(p, psi)+V(i hbar pdv(, p))braket(p, psi) $共有3个本征态,
+  记为$ket(1)=ket(1\,-1),ket(2)=ket(1\,0),ket(3)=ket(1\,1)$
+  那么$l_z$的矩阵表示应为$ mat(
+    braket(1, l_z, 1), braket(1, l_z, 2), braket(1, l_z, 3);braket(2, l_z, 1), braket(2, l_z, 2), braket(2, l_z, 3);braket(3, l_z, 1), braket(3, l_z, 2), braket(3, l_z, 3)
+  )=dmat(-hbar, 0, hbar) $]
+#exmp[二态体系的哈密顿量$H=H_0+H'$,在$H_0$的表象中有$ H_0=dmat(E_1, E_2), H'=admat(H'_(1 2), H'_(2 1)) $证明$H=E_1 ketbra(1)+E_2 ketbra(2)+H'_(1 2)ketbra(1, 2)+H'_(2 1)ketbra(2, 1)$]
+== 不同表象中的表示
+$ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x, p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
+$ braket(p, H, psi)&=p^2/(2m)braket(p, psi)+V(i hbar pdv(, p))braket(p, psi) $
+= 简单势场中的本征问题
 == 一维无限深方势阱
 $ V(x)=cases(0 &"if" 0<x<a, infinity &"elsewhere") $
 $ E_n&=(pi^2hbar^2)/(2m a^2)n^2 "where" n=1,2,3,dots \ psi_n (x)&=cases(sqrt(2/a)sin((n pi x)/a) &"if" 0<x<a, 0 &"elsewhere") $
@@ -292,8 +305,6 @@ $ braket(x, sqrt((m omega)/(2 hbar))(x+ (i p)/(m omega)), 0)=0 $
 $ braket(x, n)=&1/sqrt(n!)braket(x, (a^dagger)^n, 0)\ =&1/sqrt(2^n n!) ((m
 omega)/(pi hbar))^(1/4) \ &(sqrt((m omega)/hbar)x+sqrt(hbar/(m omega))dv(, x))^n
 e^(-(m omega)/(2hbar)x^2) $
-== 氢原子
-#figure(image("hydrogen.png", width: 90%), caption: [氢原子波函数])
 = 守恒量与对称性
 == 守恒量
 #thm(
@@ -370,8 +381,8 @@ commuting
 #thm[交换算符是幺正的.]
 #pst("全同性假设")[全同粒子体系中,可观测量对任何两个粒子交换是不变的,即任意两个全同粒子的交换,都不改变体系的物理状态.] <identity-postulate>
 #coll(
-  "全同粒子系波函数的性质",
-)[根据@exchange-operator 以及@identity-postulate,全同粒子的波函数$psi$满足$ P_(i j) psi&=C psi \ C&=plus.minus 1 $]
+  "全同粒子体系波函数的性质",
+)[根据@exchange-operator 以及@identity-postulate,全同粒子体系的波函数$psi$满足$ P_(i j) psi&=C psi \ C&=plus.minus 1 $]
 #thm("全同粒子的统计性不变")[全同粒子系的波函数交换对称性是不随时间变化的,即Bose统计或Fermi统计是不变的.]
 #thm(
   [$N$个全同玻色子体系的波函数],
@@ -396,4 +407,9 @@ commuting
 
 在同一势场中运动的全同粒子体系的态可以用单粒子态上的粒子占有数表示
 $ ket(n_1 n_2 n_3 dots)=ket(n_1)ket(n_2)ket(n_3)dots $
-即在$ket(psi_1),ket(psi_2),ket(psi_3),dots$上分别有$n_1,n_2,n_3,dots$个粒子.
+即在$ket(psi_1),ket(psi_2),ket(psi_3),dots$上分别有$n_1,n_2,n_3,dots$个粒子.= 中心力场中的本征问题
+== 无限深球方势阱
+$ V(r)=cases(0 &"if" r<a, infinity &"if" r>a) $
+== 三维各向同性谐振子
+== 氢原子
+#figure(image("hydrogen.png", width: 90%), caption: [氢原子波函数])

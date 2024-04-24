@@ -36,29 +36,19 @@ Our textbook is _Obeservational Astronomy_ (Birney)
 / precession:
 / proper motion: Here is an `Python` example of correcting proper motion
 ```py
-import math
 from astropy import units as u
 from astropy.coordinates import Angle
 
 year = 2023
-# See https://simbad.harvard.edu/simbad/sim-basic?Ident=55+cnc for 55 Cnc
+# See https://simbad.harvard.edu/simbad/sim-basic?Ident=55+cnc
 pm_ra = -485.681e-3
 pm_dec = -233.517e-3
 ra = 3600 * 8 + 52 * 60 + 35.8111044043
 ra *= 15
 dec = 3600 * 28 + 19 * 60 + 50.954994470
 
-m = 46.1244 + 2.79e-4 * (year - 2000)
-n = 20.0431 - 8.5e-5 * (year - 2000)
-
-dra = (
-    m
-    + n * math.sin(math.radians(ra / 3600)) * math.tan(math.radians(dec / 3600))
-    + pm_ra / math.cos(math.radians(dec / 3600))
-)
-dra *= year - 2000
-ddec = n * math.cos(math.radians(ra / 3600)) + pm_dec
-ddec *= year - 2000
+dra = (year - 2000) * pm_ra
+ddec = (year - 2000) * pm_dec
 
 dec = Angle((dec + ddec) / 3600, unit=u.deg)
 ra = Angle((ra + dra) / 3600, unit=u.deg)
@@ -97,6 +87,7 @@ print(
 == Magnitude
 / pogson equation: relationship between magnitude and flux (apparent brightness)
 $ m_1-m_2=-2.5log(F_1/F_2) \ m=-2.5 log(F)+C $
+$ Delta m=-1.086 (Delta F)/F approx -(Delta F)/F $
 / monochromatic version of Pogson equation: applying to a range of wavelengths
 $ m_lambda=-2.5 log(F_lambda)+C_lambda $
 / bolometeric magnitude: all the electromagnetic radiation is included
@@ -182,14 +173,15 @@ $ L=4pi R^2 sigma T_"eff"^4 $
 $ S=F tan(theta) approx F theta $
 / plate scale: angular size of the object per unit length on the plate
 $ P_s=theta/S=1/F $
-/ image sacle:
+/ image scale: how much of the sky in arcsec each and every pixel can see $ (206.2648 times "pixel size"_"in µm") / F_"in mm" $
+see also to #link("https://www.cloudynights.com/topic/777087-please-explain-image-scalepixel-scale-to-me/")[explain image scale].
 / limiting magnitude: the magnitude of the faintest star an average observer is likely to see through
   the telescope
 $ M_L approx 2.7+5log(d) $
 where $d$ is the objective lens diameter in millimeter
 / focal ratio:
 $ R=F/D "as" E prop D^2/F^2 $
-/ Field of view:
+/ field of view:
 $ "fov"=2arctan(w/(2 f))\ "where" w "is the sensor width" $
 #figure(image("fov.png", width: 80%), caption: [Field of view])
 == Resolution
@@ -201,12 +193,7 @@ $ sin theta=1.22 lambda/d $
   distortion. The strength of seeing is often characterized by the angular
   diameter (FWHM) of the long-exposure image of a star (seeing disk) in unit of
   arcsec.
-== Noise
-/ SNR: signal to noise ratio
-#figure(
-  image("long-exposure.jpg", width: 90%),
-  caption: [Long exposure to boost SNR],
-)
+
 
 = CCD
 #figure(image("pixelofccd.png", width: 80%), caption: [Single pixel of CCD])
@@ -219,6 +206,24 @@ $ sin theta=1.22 lambda/d $
 / ADU: #link("https://www.cloudynights.com/topic/417383-what-is-adu/")[What is ADU]
 == Image reduction
 $ "reduced"=("science"-"dark"-"bias")/("flat"-"dark"-"bias")_"normailzed" $
+== Noise
+/ SNR: signal to noise ratio
+#figure(
+  image("long-exposure.jpg", width: 90%),
+  caption: [Long exposure to boost SNR],
+)
+/ CCD equation: 
+$ S_"net"=(S+B) - B_"estimated"-D $
+$ B_"estimated"=n_s/n_B B_"total" $
+$ sigma_B=n_s^2/n_B^2 B_"total" $
+$ "SNR"=S_"net"/sqrt(S_"total"+sigma_B^2+N_d+n_s N_r^2) $
+#table(  stroke: none,
+  columns: (auto, auto,auto),
+  align: horizon,
+  table.hline(),
+  [$I$],[photon flux],[photons per second],[],)
+/ Howell, Koehn, Bowell, Hoffan equation:
+
 = Concepts and their translations
 中文术语参考自#link("https://nadc.china-vo.org/astrodict/")[天文学名词]
 #table(
