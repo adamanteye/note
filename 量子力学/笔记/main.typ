@@ -97,20 +97,23 @@ $ [A B,C]=A[B,C]+[A,C]B $
 === Legendre多项式
 #def(
   "连带Legendre多项式",
-)[$ (1-xi^2)dv(P, xi, 2)-2xi &dv(P, xi) \ +(l(l+1)&-m^2/(1-xi^2))P=0 $ <a-legendre-eq>]
+)[$ (1-xi^2)dv(P, xi, 2)-2xi &dv(P, xi) \ +(l(l+1)&-m^2/(1-xi^2))P=0 $$ P_l^m (x)=1/(2^l l!) (1-x^2)^(m^2/2) dv(, x, l+m) (x^2-1)^l $]
 #thm(
   "连带Legendre多项式的正交性",
-)[$ integral_(-1)^1 P_k^m (xi)P_l^m (xi)dd(xi)=2/(2l+1) ((l+m)!)/((l-m)!)delta_(k l) $ <a-legendre-orthog>]
+)[$ integral_(-1)^1 P_k^m (xi)P_l^m (xi)dd(xi)=2/(2l+1) ((l+m)!)/((l-m)!)delta_(k l) $] <a-legendre-orthog>
 #def(
   "Legendre多项式",
 )[连带Legendre多项式中$m=0$的情况$ P_l (x)=1/(2^l l!) dv(, x, l) (x^2-1)^2 $]
 #thm(
   "Legendre多项式的正交性",
 )[$ integral_(-1)^1 P_k (x) P_l (x)dd(x)=2/(2l+1) delta_(k l) $]
+#thm(
+  "厄米多项式的正交性",
+)[$ integral_(-infinity)^(+infinity) H_m (xi) H_n (xi) e^(-xi^2) dd(xi)=sqrt(pi) 2^n n! delta_(m n) $]
 === $delta$函数
 #thm(
   [$delta$函数的性质],
-)[$ delta(a x)=1/(|a|)delta(x) $$ delta(x)=1/(2pi)integral_(-infinity)^infinity e^(i k x)dd(k) $]
+)[$ delta(a x)&=1/(|a|)delta(x) \ delta(x)&=1/(2pi)integral_(-infinity)^infinity e^(i k x)dd(k)\ x delta(x)&=0 $]
 == 傅里叶变换
 $ f(x)&=1/sqrt(2pi) integral e^(i k x) g(k)dd(k)\ g(k)&=1/sqrt(2pi) integral e^(-i k x) f(x)dd(x) $
 = 态与波函数
@@ -168,7 +171,7 @@ $ [va(r),H]=(i hbar)/m va(p) $
   "Schödinger Equation",
 )[Schödinger方程是非相对论量子力学的基本方程.可以理解为系统状态的演化由哈密顿算符决定$ i hbar pdv(, t)ket(psi)=H ket(psi) $]
 #def("哈密顿量")[哈密顿算符的本征值是哈密顿量$ H ket(psi)=E ket(psi) $]
-#def("定态")[若$ket(psi(t))$是哈密顿量的本征态,则称其为定态]
+#def("定态")[若$ket(psi(t))$是哈密顿量的本征态,则称其为定态.定态是体系的能量有确定值的状态.]
 #thm[定态下,一切不显含时间的力学量的平均值和概率分布都不随时间变化]
 == 角动量
 球坐标表示下, 角动量的各个分量表示为
@@ -180,7 +183,7 @@ l_z&=- i hbar pdv(, phi.alt) $
 $ Y(theta,phi.alt)&=Theta(xi)psi_m (phi.alt)\ va(l)^2 Y(theta,phi.alt)&=lambda hbar^2 Y(theta, phi.alt)\ psi_m (phi.alt)&=1/sqrt(2pi) e^(i m phi.alt) $
 $Theta(xi)$是连带Legendre方程,其中$xi=cos theta$
 
-当$lambda=l(l+1)$时,@a-legendre-eq 有连带Legendre多项式$P_l^m (xi)$作为解,根据归一化正交条件@a-legendre-orthog,可以定义:
+当$lambda=l(l+1)$时,有连带Legendre多项式$P_l^m (xi)$作为解,根据归一化正交条件@a-legendre-orthog,可以定义:
 $ Theta_(l m) (theta)=(-1)^m sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) $
 满足 $ integral_0^pi Theta_(k m) (theta) Theta_(l m) (theta) sin theta dd(theta)=delta_(k l) $
 最终
@@ -219,22 +222,23 @@ $ V(r)=cases(0 &"if" (x,y,z) in [0,a]cprod[0,b]cprod[0,c], infinity &"elsewhere"
 $ psi_(k_1 k_2 k_3)&(x,y,z)=\ &sin((k_1 pi x)/a)sin((k_2 pi y)/b)sin((k_3 pi z)/c) \
 E_n              &=E_(k_1 k_2 k_3)=(pi^2 hbar^2)/(2m) (k_1^2/a^2+k_2^2/b^2+k_3^2/c^2) $
 == 一维有限深方势阱
-$ V(x)=cases(-V_0 &"if" |x|<a, 0 &"elsewhere") $
+$ V(x)=cases(0 &"if" abs(x)<a/2, V_0 &"if" abs(x)>a/2) $
 势阱外的波函数为平面波
-$ psi(x)=cases(A e^(beta x) &"if" x< -a, A e^(-beta x) &"if" x>a) \ "where" beta=sqrt(2m(-E))/hbar $
-势阱内的波函数为
-$ psi(x)=C sin(k x) +D cos(k x) \ "where" k=sqrt(2m(V_0+E))/hbar $
-替换$ z=k a,z_0=a sqrt(2m V_0)/hbar $
-- 偶宇称态
-$ tan(z)=sqrt(z_0^2/z^2-1) $
-- 奇宇称态
-$ -cot(z)=sqrt(z_0^2/z^2-1) $
-#figure(
-  image("finite-potential-solution.png", width: 80%),
-  caption: [一维谐振子本征态],
-)
+$ psi(x)=cases(
+  C e^(beta x) &"if" x< -a/2,
+  A sin(k x)+B cos(k x) &"if" abs(x) < a/2,
+  D e^(-beta x) &"if" x>a/2,
+
+) \ beta=sqrt(2m(V_0-E))/hbar ","k=sqrt(2m E)/hbar $
+无量纲数 $xi=(k a)/2$, $eta=(beta a)/2$ 满足
+$ eta^2+xi^2=(m V_0 a^2)/(2 hbar^2) $
+/ 偶宇称态: $xi tan(xi)=eta$
+基态宇称为偶
+/ 奇宇称态: $-xi cot(xi)=eta$
+在$V_0 a^2>=(pi^2 hbar^2)/(2m)$时才可能出现最低的奇宇称能级
 == 一维有限高方势垒
 $ V(x)=cases(V_0 &"if" 0<x<a, 0 &"elsewhere") $
+取波函数$ psi(x)=cases(e^(i k x)+R e^(- i k x) &"if" x<0,S e^(i k x) &"if" x>0) $
 透射系数为
 $ T=|S|^2=(1+1/(((4E)/V_0)(1-E/V_0))sinh^2(kappa a))^(-1)\ "where" kappa=sqrt(2m(V_0-E))/hbar $
 在 $kappa a>>1$的情况下,
@@ -243,17 +247,16 @@ $ T=(16E(V_0-E))/V_0^2 e^(-(2a)/hbar sqrt(2m(V_0-E))) $
 $ |R|^2+|S|^2=1 $
 == 一维$delta$势垒
 $ V(x)=gamma delta(x)\ -hbar^2/(2m) dv(psi, x, 2)=(E-gamma delta(x)) psi $
-在Schödinger方程的奇点处$psi''$不存在,在$x=0$处$psi$不连续,对Schödinger方程积分可得*跃变条件*
+在Schödinger方程的奇点$x=0$处$psi''$不存在,$psi$不连续,对Schödinger方程积分可得*跃变条件*
 $ psi'(0^+)-psi'(0^-)=(2m gamma)/hbar^2 psi(0) $
 $ psi(x)=cases(e^(i k x)+R e^(-i k x) &"if" x<0, S e^(i k x) &"if" x>0) \
 "where"
 k=sqrt(2m E)/hbar $
 由连续性与跃变条件有
-$ S&=1/(1+(i m gamma)/(hbar^2 k))\ R&=S-1=- (i m gamma)/(1+(i m gamma)/(hbar^2
+$ S&=1/(1+(i m gamma)/(hbar^2 k))\ R&=S-1=- (i m gamma)/(hbar^2 k) 1/(1+(i m gamma)/(hbar^2
 k)) $
 $ T&=|S|^2=1/(1+(m gamma^2)/(2hbar^2 E))\ |R|^2&+|S|^2=1 $
-特征长度与特征能量为
-$ L&=hbar^2/(m gamma)\ E&=(m gamma^2)/ hbar^2 $
+特征长度为$L=hbar^2/(m gamma)$,特征能量为$E=(m gamma^2)/ hbar^2 $
 == 一维谐振子
 $ V(x)=1/2 k x^2 $
 #figure(grid(
@@ -407,8 +410,8 @@ commuting
 
 在同一势场中运动的全同粒子体系的态可以用单粒子态上的粒子占有数表示
 $ ket(n_1 n_2 n_3 dots)=ket(n_1)ket(n_2)ket(n_3)dots $
-即在$ket(psi_1),ket(psi_2),ket(psi_3),dots$上分别有$n_1,n_2,n_3,dots$个粒子.= 中心力场中的本征问题
-== 无限深球方势阱
+即在$ket(psi_1),ket(psi_2),ket(psi_3),dots$上分别有$n_1,n_2,n_3,dots$个粒子.=
+中心力场中的本征问题== 无限深球方势阱
 $ V(r)=cases(0 &"if" r<a, infinity &"if" r>a) $
 == 三维各向同性谐振子
 == 氢原子
