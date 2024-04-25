@@ -62,6 +62,9 @@
   #thisauthor
 ])
 
+#set par(leading: 0.8em)
+#set block(spacing: 0.6em)
+
 #show: rest => columns(2, rest)
 
 = 数学速查
@@ -93,8 +96,8 @@ $ (vb(A)cprod vb(B))^k=epsilon^(k i j)A_i B_j $
 == 泊松括号
 $ [A,B C]=B[A,C]+[A,B]C $
 $ [A B,C]=A[B,C]+[A,C]B $
+$ [A,[B,C]]+B[C,A]+[C,[A,B]]=0 $
 == 特殊函数
-=== Legendre多项式
 #def(
   "连带Legendre多项式",
 )[$ (1-xi^2)dv(P, xi, 2)-2xi &dv(P, xi) \ +(l(l+1)&-m^2/(1-xi^2))P=0 $$ P_l^m (x)=1/(2^l l!) (1-x^2)^(m^2/2) dv(, x, l+m) (x^2-1)^l $]
@@ -110,7 +113,6 @@ $ [A B,C]=A[B,C]+[A,C]B $
 #thm(
   "厄米多项式的正交性",
 )[$ integral_(-infinity)^(+infinity) H_m (xi) H_n (xi) e^(-xi^2) dd(xi)=sqrt(pi) 2^n n! delta_(m n) $]
-=== $delta$函数
 #thm(
   [$delta$函数的性质],
 )[$ delta(a x)&=1/(|a|)delta(x) \ delta(x)&=1/(2pi)integral_(-infinity)^infinity e^(i k x)dd(k)\ x delta(x)&=0 $]
@@ -235,10 +237,9 @@ $ eta^2+xi^2=(m V_0 a^2)/(2 hbar^2) $
 / 偶宇称态: $xi tan(xi)=eta$
 基态宇称为偶
 / 奇宇称态: $-xi cot(xi)=eta$
-在$V_0 a^2>=(pi^2 hbar^2)/(2m)$时才可能出现最低的奇宇称能级
-== 一维有限高方势垒
+在$V_0 a^2>=(pi^2 hbar^2)/(2m)$时才可能出现最低的奇宇称能级== 一维有限高方势垒
 $ V(x)=cases(V_0 &"if" 0<x<a, 0 &"elsewhere") $
-取波函数$ psi(x)=cases(e^(i k x)+R e^(- i k x) &"if" x<0,S e^(i k x) &"if" x>0) $
+取波函数$ psi(x)=cases(e^(i k x)+R e^(- i k x) &"if" x<0, S e^(i k x) &"if" x>0) $
 透射系数为
 $ T=|S|^2=(1+1/(((4E)/V_0)(1-E/V_0))sinh^2(kappa a))^(-1)\ "where" kappa=sqrt(2m(V_0-E))/hbar $
 在 $kappa a>>1$的情况下,
@@ -253,7 +254,8 @@ $ psi(x)=cases(e^(i k x)+R e^(-i k x) &"if" x<0, S e^(i k x) &"if" x>0) \
 "where"
 k=sqrt(2m E)/hbar $
 由连续性与跃变条件有
-$ S&=1/(1+(i m gamma)/(hbar^2 k))\ R&=S-1=- (i m gamma)/(hbar^2 k) 1/(1+(i m gamma)/(hbar^2
+$ S&=1/(1+(i m gamma)/(hbar^2 k))\ R&=S-1=- (i m gamma)/(hbar^2 k) 1/(1+(i m
+gamma)/(hbar^2
 k)) $
 $ T&=|S|^2=1/(1+(m gamma^2)/(2hbar^2 E))\ |R|^2&+|S|^2=1 $
 特征长度为$L=hbar^2/(m gamma)$,特征能量为$E=(m gamma^2)/ hbar^2 $
@@ -410,8 +412,10 @@ commuting
 
 在同一势场中运动的全同粒子体系的态可以用单粒子态上的粒子占有数表示
 $ ket(n_1 n_2 n_3 dots)=ket(n_1)ket(n_2)ket(n_3)dots $
-即在$ket(psi_1),ket(psi_2),ket(psi_3),dots$上分别有$n_1,n_2,n_3,dots$个粒子.=
-中心力场中的本征问题== 无限深球方势阱
+即在$ket(psi_1),ket(psi_2),ket(psi_3),dots$上分别有$n_1,n_2,n_3,dots$个粒子.
+
+= 中心力场中的本征问题
+== 无限深球方势阱
 $ V(r)=cases(0 &"if" r<a, infinity &"if" r>a) $
 == 三维各向同性谐振子
 == 氢原子
