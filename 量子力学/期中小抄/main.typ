@@ -58,7 +58,7 @@
 #set block(spacing: 0.4em)
 #show: rest => columns(4, rest,gutter: 1%)
 
-#set text(8pt)
+#set text(8pt) // 经过测试,这是最小的字号
 
 = 数学速查
 #thm(
@@ -172,7 +172,7 @@ $ eta^2+xi^2=(m V_0 a^2)/(2 hbar^2) $
 / 偶宇称态: $xi tan(xi)=eta$
 基态宇称为偶
 / 奇宇称态: $-xi cot(xi)=eta$
-在$V_0 a^2>=(pi^2 hbar^2)/(2m)$时才可能出现最低的奇宇称能级
+在$V_0 a^2>= (pi^2 hbar^2)/(2m)$时才可能出现最低的奇宇称能级
 $ E_n=(2hbar^2)/(m a^2)xi^2 $
 == 一维有限高方势垒
 $ V(x)=cases(V_0 &"if" 0<x<a, 0 &"elsewhere") $
@@ -209,6 +209,7 @@ $ H=p^2/(2m)+(m omega^2x^2)/2 $
 $ a &=sqrt((m omega)/(2 hbar))(x+ (i p)/(m omega))\
 a^dagger&=sqrt((m omega)/(2 hbar))(x- (i p)/(m omega))\
 N &=a^dagger a $
+$ [a,a^dagger]=1 $
 $ H ket(n)&=(n+1/2)hbar omega ket(n)\ E_n&=(n+1/2)hbar omega $
 $ &[N,a]=-a \ &[N,a^dagger]=a^dagger $
 $ a ket(n)&=sqrt(n)ket(n-1)\ a^dagger
@@ -266,24 +267,6 @@ commuting
 == 相互作用图像
 相互作用图像介于Schrödinger图像和Heisenberg图像之间,在用微扰论来处理问题时有广泛的应用.
 
-== 对称性变换
-#def("对称性变换")[称满足以下条件的幺正算符$Q$为体系的对称性变换$ [Q,H]=0 $$Q$必须是幺正的,否则概率模不守恒]
-#thm[对于幺正变换对称性,存在相应的守恒量.]
-#def(
-  "无穷小变换",
-)[对于连续变换,考虑$epsilon->0^+$$ Q=I+i epsilon F $其中$F$必须是厄米的.称这样的变换$Q$为无穷小变换.] <infinitesimal-trans>
-#def("无穷小算符")[称@infinitesimal-trans 当中的$F$为变换$Q$的无穷小算符.$F$会给出一个守恒量.]
-#def(
-  "空间反射变换",
-)[对态和算符都可以分别定义空间反射变换$P$$ P psi(va(x))=psi(-va(x)) $$ P F(va(x),va(p)) P^dagger=F(-va(x),-va(p)) $]
-#def("空间反射对称性")[若哈密顿量满足$[P,H]=0 <==> P H P^dagger=H$,那么系统具有空间反射对称性.]
-#thm[具有空间反射对称性的系统宇称守恒.]
-#def("空间平移对称性")[若哈密顿量满足$[D,H]=0 <==> D H D^dagger=H$,那么系统具有空间平移对称性.]
-#thm[具有空间平移对称性的系统动量守恒.]
-#def("空间转动对称性")[若哈密顿量满足$[R,H]=0 <==> R H R^dagger=H$,那么系统具有空间转动对称性.]
-#thm[具有空间转动对称性的系统角动量守恒.]
-#def("时间平移对称性")[若哈密顿量满足$[D,H]=0 <==> D H D^dagger=H$,那么系统具有时间平移对称性.]
-#thm[具有时间平移对称性的系统哈密顿量不显含时间,能量守恒.即系统状态随时间的演化规律与时间零点的选取无关,具有时间均匀性.]
 == 全同粒子体系与交换对称性
 #def(
   "全同粒子",

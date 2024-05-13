@@ -45,7 +45,7 @@
   base: "thm",
 )
 #let exmp = thmbox("exmp", "例", titlefmt: emph, inset: (x: 0.5em, top: 0em))
-#let sol = thmplain("sol", "解答", titlefmt: emph, inset: (x: 0.5em, top: 0em), base: "thm").with(numbering: none)
+#let sol = thmplain("sol", "解答", titlefmt: emph, inset: (x: 0.5em, top: 0em), base: "exmp").with(numbering: none)
 #let proof = thmproof(
   "proof",
   "证明",
@@ -64,6 +64,45 @@
 
 #set par(leading: 0.8em)
 #set block(spacing: 0.6em)
+
+#figure(table(
+  stroke: none,
+  columns: 5,
+  table.hline(),
+  table.header([], [$delta$势], [线性势], [谐振子势], [库仑势($kappa=Z e^2$)]),
+  [],
+  [$mu=hbar=gamma=1$],
+  [$mu=hbar=F=1$],
+  [$mu=hbar=omega=1$],
+  [$mu=hbar=kappa=1$],
+  table.hline(),
+  [能量$[E]$],
+  [$mu gamma^2\/hbar^2$],
+  [$(hbar^2 F^2\/mu)^(1\/3)$],
+  [$hbar omega$],
+  [$mu kappa^2\/hbar^2$],
+  [长度$[L]$],
+  [$hbar^2\/mu gamma$],
+  [$(hbar^2\/mu F)^(1\/3)$],
+  [$sqrt(hbar\/mu omega)$],
+  [$hbar^2\/mu kappa$],
+  [时间$[T]$],
+  [$hbar^3\/mu gamma^2$],
+  [$(hbar mu\/F^2)^(1\/3)$],
+  [$1\/omega$],
+  [$hbar^3\/mu kappa^2$],
+  [速度$[v]$],
+  [$gamma\/hbar$],
+  [$(hbar F\/mu^2)^(1\/3)$],
+  [$sqrt(hbar omega\/mu)$],
+  [$kappa\/hbar$],
+  [动量$[p]$],
+  [$mu gamma\/hbar$],
+  [$(hbar mu F)^(1\/3)$],
+  [$sqrt(hbar mu omega)$],
+  [$mu kappa\/hbar$],
+  table.hline(),
+), caption: [自然单位制])
 
 #show: rest => columns(2, rest)
 
@@ -113,6 +152,12 @@ $ [A,[B,C]]+B[C,A]+[C,[A,B]]=0 $
 #thm(
   "厄米多项式的正交性",
 )[$ integral_(-infinity)^(+infinity) H_m (xi) H_n (xi) e^(-xi^2) dd(xi)=sqrt(pi) 2^n n! delta_(m n) $]
+
+#def("合流超几何微分方程")[$ z dv(y, z, 2)+(gamma-z)dv(y, z)-alpha y=0 $]
+#def(
+  "合流超几何函数",
+)[$ F(alpha,gamma,z)&=sum_(k=0)^infinity alpha_k/gamma_k z^k/(k!)\ "where" alpha_k&=alpha(alpha+1)dots(alpha+k-1)\ gamma_k&=gamma(gamma+1)dots(gamma+k-1) $]
+== $delta$函数
 #thm(
   [$delta$函数的性质],
 )[$ delta(a x)&=1/(|a|)delta(x) \ delta(x)&=1/(2pi)integral_(-infinity)^infinity e^(i k x)dd(k)\ x delta(x)&=0\ delta(f(x))&=sum_i delta(x-x_i)/abs(f'(x_i)) $]
@@ -126,7 +171,9 @@ $ integral_(-infinity)^(+infinity) e^(-x^2) dd(x)=sqrt(pi) $
   "概率流密度",
 )[$ va(j)&=-(i hbar)/(2m)(psi^* grad psi-psi grad psi^*)\ &=1/(2m) (psi^* p psi-psi p psi^*) $]
 #thm("概率守恒")[概率(粒子数)守恒的微分式$ pdv(rho, t)+div va(j)=0 $]
-#def([$delta$函数规格化])[对于全空间积分发散的波函数,可以要求$ integral psi^*_p' (x) psi_p (x)=delta(p'-p) $]
+#def(
+  [$delta$函数规格化],
+)[对于全空间积分发散的波函数,可以要求$ integral psi^*_p' (x) psi_p (x)=delta(p'-p) $]
 #pst[$braket(alpha, beta)=braket(beta, alpha)^*$]
 #pst("positive definite metric")[$braket(alpha)>=0$]
 = 算符
@@ -216,15 +263,20 @@ $   &va(l)^2 Y_(l m)=l(l+1)hbar^2 Y_(l m)\ &l_z Y_(l m)=m hbar Y_(l m)\ &l=0,1,2
     braket(1, l_z, 1), braket(1, l_z, 2), braket(1, l_z, 3);braket(2, l_z, 1), braket(2, l_z, 2), braket(2, l_z, 3);braket(3, l_z, 1), braket(3, l_z, 2), braket(3, l_z, 3)
   )=dmat(-hbar, 0, hbar) $]
 #exmp[二态体系的哈密顿量$H=H_0+H'$,在$H_0$的表象中有$ H_0=dmat(E_1, E_2), H'=admat(H'_(1 2), H'_(2 1)) $证明$H=E_1 ketbra(1)+E_2 ketbra(2)+H'_(1 2)ketbra(1, 2)+H'_(2 1)ketbra(2, 1)$]
-#thm("正交对角化")[$ A&=P D P^(-1) \ D&=dmat(lambda_1,dots,lambda_n )"," P=mat(v_1,dots,v_n) $]
+#thm(
+  "正交对角化",
+)[$ A&=P D P^(-1) \ D&=dmat(lambda_1, dots, lambda_n)"," P=mat(v_1, dots, v_n) $]
 == 不同表象中的表示
 $ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x, p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
 $ braket(p, H, psi)&=p^2/(2m)braket(p, psi)+V(i hbar pdv(, p))braket(p, psi) $
 = 简单势场中的本征问题
-#def("简并")[如果对一个给定的能量$E$,只有一个线性独立的波函数存在,则称该能级是非简并的,否则
-称它是简并的,其线性独立的波函数的个数称为它的简并度]
+#def(
+  "简并",
+)[如果对一个给定的能量$E$,只有一个线性独立的波函数存在,则称该能级是非简并的,否则 称它是简并的,其线性独立的波函数的个数称为它的简并度]
 == 关于一维定态Schrödinger方程的解的结论
-#thm("Wronski")[若势能$V(x)$在$-infinity<x<+infinity$上没有奇点,$psi_1 (x)$和$psi_2 (x)$都是一维定态Schrödinger方程的解,而且属于相同的能量,那么$ mdet(psi_1,psi_2;psi'_1,psi'_2)="constant" $]
+#thm(
+  "Wronski",
+)[若势能$V(x)$在$-infinity<x<+infinity$上没有奇点,$psi_1 (x)$和$psi_2 (x)$都是一维定态Schrödinger方程的解,而且属于相同的能量,那么$ mdet(psi_1, psi_2;psi'_1, psi'_2)="constant" $]
 #thm("共轭")[假定$V(x)$是实函数,那么若$psi$是解,$psi^*$也是解]
 #thm("反射")[若$V(x)=V(-x)$,那么若$psi(x)$是解,$psi(-x)$也是解]
 #thm("不简并")[一维束缚定态必是非简并态]
@@ -323,6 +375,8 @@ $ braket(x, sqrt((m omega)/(2 hbar))(x+ (i p)/(m omega)), 0)=0 $
 $ braket(x, n)=&1/sqrt(n!)braket(x, (a^dagger)^n, 0)\ =&1/sqrt(2^n n!) ((m
 omega)/(pi hbar))^(1/4) \ &(sqrt((m omega)/hbar)x+sqrt(hbar/(m omega))dv(, x))^n
 e^(-(m omega)/(2hbar)x^2) $
+#exmp[证明一维谐振子的能量本征态$ket(n)$的$expval(x^2)$为$ expval(x^2)_ket(n)=(n+1/2) hbar/(m
+ omega) $]
 = 守恒量与对称性
 == 守恒量
 #thm(
@@ -342,7 +396,13 @@ t)&=-1/(i hbar)braket(psi, H, psi_k)=-E_k/(i hbar)a_k^* \ dv(a_k, t)&=E_k/(i
  hbar)a_k $因此$dv(, t) abs(a_k (t))^2=0$.]
 #exmp[中心力场中的守恒量为${H,va(l)^2,l_z}$.]
 #exmp[自由粒子的态可以用${p_x,p_y,p_z}$标记,对应能量的简并度一般是无穷大.]
-#thm("Feynman-Hellmann")[若系统哈密顿量含有某参数$lambda$,$E_n$为哈密顿量的本征值,相应归一化本征态(束缚态)为$ket(psi_n)$,有$ pdv(E_n,lambda)=expval(pdv(H,lambda),psi_n) $]
+#thm(
+ "Feynman-Hellmann",
+)[若系统哈密顿量含有某参数$lambda$,$E_n$为哈密顿量的本征值,相应归一化本征态(束缚态)为$ket(psi_n)$,有$ pdv(E_n,
+lambda)=expval(pdv(H, lambda), psi_n) $]
+#exmp[证明一维谐振子的能量本征态$ket(n)$的$expval(x^2)$为$ expval(x^2)_ket(n)=(n+1/2) hbar/(m
+ omega) $]
+#exmp[证明一维谐振子的能量本征态满足$ expval(T)_ket(n)=expval(V)_ket(n)=1/2 E_n $]
 #thm(
  "位力(virial)",
 )[处于势场$V(va(r))$中的粒子,动能算符在定态上的平均值为$ expval(T)=1/2 expval(va(r) dprod grad V) $]
@@ -429,8 +489,52 @@ $ ket(n_1 n_2 n_3 dots)=ket(n_1)ket(n_2)ket(n_3)dots $
 
 = 中心力场中的本征问题
 #thm("Sommerfeld量子化条件")[$ integral.cont p dd(q)=(n+1/2) $]
+中心力场中势函数的特点:
+- $V=V(r)$,具有转动对称性
+- $[va(l),H]=0$,轨道角动量守恒
+中心力场中的力学量完全集一般选为${H,va(l)^2,l_z}$
+#thm(
+  "中心力场中运动粒子的哈密顿量",
+)[$ H&=p^2/(2mu)+V(r)\ &=p_r^2/(2mu)+va(l)^2/(2 mu r^2)+V(r)\ &=-hbar^2 (pdv(, r, 2)+2/r pdv(, r))+va(l)^2/(2mu r^2)+V(r) $]
+#thm(
+  "中心力场中能量本征方程",
+)[一般将势函数分离变量为$ Psi(r, theta, phi.alt)=R(r)Y_(l m) (theta,phi.alt) $令$chi(r)=r R(r)$,有$ chi_l ''+((2mu)/hbar^2 (E-V)-(l(l+1))/r^2)chi_l =0 $]
 == 无限深球方势阱
 $ V(r)=cases(0 &"if" r<a, infinity &"if" r>a) $
+/ s态:
+径向方程为$ chi_0 ''+((2mu)/hbar^2 (E-V))chi_0 =0 $
+边界条件为$chi_0 (0)=chi_0 (a)=0$
+
+在势阱内有$ E_(n_r 0)=(pi^2 hbar^2(n_r+1)^2)/(2mu a^2) "," n_r=0,1,2,dots $
+归一化波函数为$ chi_(n_r 0)=sqrt(2/a)sin ((n_r+1)pi r)/a $
+/ 非s态:
+径向方程为
+$ R_l ''+2/r R_l '+(k^2-(l(l+1))/r^2)R=0\ "where" k=sqrt(2mu E)/hbar $
+引入无量纲变量$rho=k r$有$ dv(R_l, rho, 2)+2/rho dv(R_l, rho)+(1-(l(l+1))/rho^2)R_l=0 $
+由于在球方势阱内,这个球Bessel方程的解应取为$R_l (r)prop j_l (k r)$.
+
+记$j_l (k a)$的根依次为$xi_(n_r l)$,那么能量本征值为$ E_(n_r l)&=hbar^2/(2mu a^2) xi_(n_r l)\ n_r&=0,1,2,dots $
+径向本征函数为$ R_(n_r l) (r)&=C_(n_r l)j_l (k_(n_r l) r)\ C_(n_r l)&=sqrt(-2/a^3 (j_(l+1) (k_(n_r l)a))/(j_(l-1)(k_(n_r l)a))) $
+若取$a -> infinity$,相当于自由粒子,通常采用如下的$delta$归一化$ R_(k l)=sqrt(2/pi)k j_l (k r) $
 == 三维各向同性谐振子
+$ V(r)=1/2 mu omega^2 r^2 $
+能量本征值为$ E_N=(N+3/2)hbar omega\ N=2n_r+l\ n_r,l=0,1,2,dots $
+简并度为$ f_N=1/2(N+1)(N+2) $
+径向本征函数为$ R_(n_r l) (r)=&a^(l+3\/2)sqrt((2^(l+2-n_r)(2l+2n_r+1)!!)/(sqrt(pi)n_r !((2l+1)!!)^2))\ &r^l e^(-a^2r^2\/2)F(-n_r,l+3/2,a^2r^2) $
+如果在直角坐标系中求解,这两套本征态通过幺正变换联系起来$ phi_(01m)=sum_(n_x n_y n_z)psi_(n_x n_y n_z) integral psi^*_(n_x n_y n_z) phi_(01m) dd(tau) $$ mat(phi_(011);phi_(01-1);phi_(010))=mat(-1/sqrt(2), -i/sqrt(2), 0;1/sqrt(2), -i/sqrt(2), 0;0, 0, 1) mat(psi_(100);psi_(010);psi_(001)) $
 == 氢原子
+化为单体问题后有$ V(r)=-e^2/r $
+#def("Bohr半径")[$a=hbar^2/(mu e^2)$]
+能量本征值为$ E_n&=-(mu e^4)/(2 hbar^2) 1/n^2=-e^2/(2a)1/n^2\ n&=n_r+l+1\ n_r&=0,1,2,dots $
+径向本征函数为$ R_(n l) (r)&=2/(a^(3\/2)n^2(2l+1)!)sqrt(((n+1)!)/(n-l-1)!)\ &e^(-xi\/2)xi^l F(-n_r,2l+2,xi) $
+简并度为$ f_n=sum_(l=0)^(n-1) (2l+1)=n^2 $
+=== 电流分布和磁矩
+统计意义上,电子的电流密度为$ va(j)&=(i e hbar)/(2mu) (psi^* grad psi-psi grad psi^*)\ &=-(e hbar m)/mu 1/(r sin theta) abs(psi_(n l m))^2 vu(e_phi.alt) $
+总的磁矩为$ va(M)=&-(e hbar m)/(2mu c) vu(z) integral abs(psi_(n l m))^2 dd(tau)\ =&-(e hbar m)/(2mu c)vu(z) $
+#def("Bohr磁子")[$ mu_B=(e hbar)/(2mu c) $]
+#def("g因子")[$ g=M_z/(m hbar)=-e/(2mu c) $]
+=== 概率密度
 #figure(image("hydrogen.png", width: 90%), caption: [氢原子波函数])
+=== 类氢离子
+关于氢原子的结论,在类氢离子($isotope("He")^+,isotope("Li")^(++),dots$)上也适用,只需将核电荷数$+e$换成$+Z e$,约化质量换成相应的$mu$.其能级公式为
+$ E_n=-(mu e^4)/(2 hbar^2) Z^2/n^2=-e^2/(2 a)Z^2/n^2 $
