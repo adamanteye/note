@@ -111,6 +111,7 @@
   "Schwarz不等式",
 )[$ braket(alpha, alpha)braket(beta, beta)>=|braket(alpha, beta)|^2 $] <schwarz-ineq>
 #proof[$ (bra(alpha)+lambda^* bra(beta))dprod (ket(alpha)+lambda ket(beta))>=0 $对任意$lambda$成立,将$lambda=-braket(beta, alpha)/braket(beta, beta)$带入得证]
+#thm("三角恒等式")[$ sin(a)sin(b)=1/2(cos(a-b)-cos(a+b)) $]
 == Levi-Civita symbol
 参考#link(
   "https://zh.wikipedia.org/wiki/%E5%88%97%E7%B6%AD-%E5%A5%87%E7%B6%AD%E5%A1%94%E7%AC%A6%E8%99%9F",
@@ -255,10 +256,7 @@ $   &va(l)^2 Y_(l m)=l(l+1)hbar^2 Y_(l m)\ &l_z Y_(l m)=m hbar Y_(l m)\ &l=0,1,2
 #proof[构造$ U=sum_n ketbra(b_n, a_n) $注意到$ U^dagger U=sum_n sum_k ket(a_n)braket(b_n, b_k)bra(a_k)=I $从而$U$是幺正算符]
 
 #exmp[在$l=1$的表象下, $l_z$的矩阵是什么?]
-#sol[考虑$l=1$下== 不同表象中的表示
-  $ braket(p, x)&=1/sqrt(2pi hbar)e^(-(i p x)/hbar)\ braket(x, p)&=1/sqrt(2pi hbar)e^((i p x)/hbar) $
-  $ braket(p, H, psi)&=p^2/(2m)braket(p, psi)+V(i hbar pdv(, p))braket(p, psi) $共有3个本征态,
-  记为$ket(1)=ket(1\,-1),ket(2)=ket(1\,0),ket(3)=ket(1\,1)$
+#sol[考虑$l=1$下共有3个本征态, 记为$ket(1)=ket(1\,-1),ket(2)=ket(1\,0),ket(3)=ket(1\,1)$
   那么$l_z$的矩阵表示应为$ mat(
     braket(1, l_z, 1), braket(1, l_z, 2), braket(1, l_z, 3);braket(2, l_z, 1), braket(2, l_z, 2), braket(2, l_z, 3);braket(3, l_z, 1), braket(3, l_z, 2), braket(3, l_z, 3)
   )=dmat(-hbar, 0, hbar) $]

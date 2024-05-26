@@ -56,7 +56,7 @@
 
 #set par(leading: 0.3em)
 #set block(spacing: 0.4em)
-#show: rest => columns(4, rest,gutter: 1%)
+#show: rest => columns(3, rest,gutter: 1%)
 
 #set text(8pt) // 经过测试,这是最小的字号
 

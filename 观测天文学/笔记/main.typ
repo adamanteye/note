@@ -34,7 +34,7 @@ Our textbook is _Obeservational Astronomy_ (Birney)
 - When to observe your star (*hour angle*)
 == Correction
 / precession:
-/ proper motion: Here is an `Python` example of correcting proper motion
+/ proper motion: an example of correcting proper motion
 ```py
 from astropy import units as u
 from astropy.coordinates import Angle
@@ -143,17 +143,18 @@ $ lambda_"max"=2900000/T "in units of K and nm" $
 == Distance
 / parallax: the apparent shift in the position of a nearby star relative to the background $ d=1/p $
 $p$ is measured in arcsec and $d$ in pc.
-#figure(
-  image("parallax.png", width: 90%),
-  caption: [Parallax],
-)
+$ 1"pc"=3.2615637769"ly" $
+#figure(image("parallax.png", width: 90%), caption: [Parallax])
 == Size
 $ L=cal(F)4pi r^2 $
 $ L=4pi R^2 sigma T_"eff"^4 $
 == Mass
 / Virial theorem: $ 2K+V=0\ 2sum_i 1/2 m_i v_i^2-sum (G m_i m_j)/r_(i j)=0\ (G M)/R=sigma^2 $
 == Age
-#figure(image("hr-diagram-age.png",width: 80%),caption: [Comparing ages of clusters])
+#figure(
+  image("hr-diagram-age.png", width: 80%),
+  caption: [Comparing ages of clusters],
+)
 
 = Telescope
 #figure(
@@ -174,7 +175,9 @@ $ S=F tan(theta) approx F theta $
 / plate scale: angular size of the object per unit length on the plate
 $ P_s=theta/S=1/F $
 / image scale: how much of the sky in arcsec each and every pixel can see $ (206.2648 times "pixel size"_"in µm") / F_"in mm" $
-see also to #link("https://www.cloudynights.com/topic/777087-please-explain-image-scalepixel-scale-to-me/")[explain image scale].
+see also to #link(
+  "https://www.cloudynights.com/topic/777087-please-explain-image-scalepixel-scale-to-me/",
+)[explain image scale].
 / limiting magnitude: the magnitude of the faintest star an average observer is likely to see through
   the telescope
 $ M_L approx 2.7+5log(d) $
@@ -194,7 +197,6 @@ $ sin theta=1.22 lambda/d $
   diameter (FWHM) of the long-exposure image of a star (seeing disk) in unit of
   arcsec.
 
-
 = CCD
 #figure(image("pixelofccd.png", width: 80%), caption: [Single pixel of CCD])
 #figure(
@@ -212,18 +214,24 @@ $ "reduced"=("science"-"dark"-"bias")/("flat"-"dark"-"bias")_"normailzed" $
   image("long-exposure.jpg", width: 90%),
   caption: [Long exposure to boost SNR],
 )
-/ CCD equation: 
+/ CCD equation:
 $ S_"net"=(S+B) - B_"estimated"-D $
 $ B_"estimated"=n_s/n_B B_"total" $
 $ sigma_B=n_s^2/n_B^2 B_"total" $
 $ "SNR"=S_"net"/sqrt(S_"total"+sigma_B^2+N_d+n_s N_r^2) $
-#table(  stroke: none,
-  columns: (auto, auto,auto),
+#table(
+  stroke: none,
+  columns: (auto, auto, auto),
   align: horizon,
   table.hline(),
-  [$I$],[photon flux],[photons per second],[],)
+  [$I$],
+  [photon flux],
+  [photons per second],
+  [],
+)
 / Howell, Koehn, Bowell, Hoffan equation:
-
+= Spectroscopy
+/ #link("https://en.wikipedia.org/wiki/Redshift")[Redshift]: $ z=(lambda_"obs"-lambda_"emit")/lambda_"emit" $
 = Concepts and their translations
 中文术语参考自#link("https://nadc.china-vo.org/astrodict/")[天文学名词]
 #table(
@@ -231,6 +239,207 @@ $ "SNR"=S_"net"/sqrt(S_"total"+sigma_B^2+N_d+n_s N_r^2) $
   columns: (auto, auto, auto),
   align: horizon,
   table.hline(),
-  table.header([*ABBR.*], [*Concepts*], [*术语*]),[],[barycenter],[质心],[],[heliocentric],[日心],[],[azimuth axis],[方位轴],[],[sidereal time],[恒星时],[LST],[local sidereal time],[本地恒星时],[GST],[greenwich sidereal time],[格林威治恒星时],[],[epoch],[历元,时期],[RA],[right ascension],[赤经],[DEC],[declination],[赤纬],[],[zenith],[天顶],[ICRS],[international celestial reference system],[国际天球参考系],[],[meridian],[子午圈],[HA],[hour angle],[时角],[],[proper motion],[自行],[],[color index],[色指数],[],[photometry],[光度学],[],[apparent brightness],[视亮度],[],[bandpass],[带通],[SED],[spectral energy distribution],[光谱能量分布],[],[atmospheric extincion],[大气消光],[],[limiting magnitude],[极限星等],[],[aberration],[像差],[],[field of view],[视场],[],[prime focus],[主焦点],[],[cassegrain foucs],[卡赛格林焦点],[],[nasmyth focus],[内氏焦点],[],[coude focus],[折轴焦点],[],[exit pupil],[出射光瞳],[],[achromatic lens],[消色差透镜],[coma],[comatic aberration],[彗差],[],[spherical aberration],[球差],[],[vignetting],[渐晕],[],[plate scale],[底片比例尺],[],[focal ratio],[焦比],[],[seeing],[视宁度],[],[kinetic temperature],[运动温度],[],[color temperature],[色温度],[],[excitation temperature],[激发温度],[],[ionization temperature],[电离温度],[],[distance ladder],[距离阶梯],[],[trigonometric parallax],[三角视差],[],[secular parallax],[长期视差],[],[statistical parallax],[统计视差],[],[peculiar motion],[本动速度],[],[standard candle],[标准烛光],[],[cepheid variable],[造父变星],[CCD],[charge coupled device],[电荷耦合器件],[],[full well capacity],[势阱容量],[],[front illumination],[前照式],[],[back illumination],[后照式],[],[thermal detector],[热探测器],[],[chopping],[斩波法],[],[flat],[平场],[],[twilight sky flat],[晨昏天光平场],[],[dome flat],[圆顶平场],[CV],[cataclysmic variable],[激变变星],[],[roche lobe],[洛希瓣],[TDE],[tidal disruption event],[潮汐瓦解事件],[],[accretion disc],[吸积盘],[],[differential photometry],[较差测光],[],[photoelectric photometer],[光电光度计],[],[photometric night],[测光夜],[],[instrumental magnitude],[仪器星等],[],[aperture photometry],[孔径测光],
+  table.header([*ABBR.*], [*Concepts*], [*术语*]),
+  [],
+  [barycenter],
+  [质心],
+  [],
+  [heliocentric],
+  [日心],
+  [],
+  [azimuth axis],
+  [方位轴],
+  [],
+  [sidereal time],
+  [恒星时],
+  [LST],
+  [local sidereal time],
+  [本地恒星时],
+  [GST],
+  [greenwich sidereal time],
+  [格林威治恒星时],
+  [],
+  [epoch],
+  [历元,时期],
+  [RA],
+  [right ascension],
+  [赤经],
+  [DEC],
+  [declination],
+  [赤纬],
+  [],
+  [zenith],
+  [天顶],
+  [ICRS],
+  [international celestial reference system],
+  [国际天球参考系],
+  [],
+  [meridian],
+  [子午圈],
+  [HA],
+  [hour angle],
+  [时角],
+  [],
+  [proper motion],
+  [自行],
+  [],
+  [color index],
+  [色指数],
+  [],
+  [photometry],
+  [光度学],
+  [],
+  [apparent brightness],
+  [视亮度],
+  [],
+  [bandpass],
+  [带通],
+  [SED],
+  [spectral energy distribution],
+  [光谱能量分布],
+  [],
+  [atmospheric extincion],
+  [大气消光],
+  [],
+  [limiting magnitude],
+  [极限星等],
+  [],
+  [aberration],
+  [像差],
+  [],
+  [field of view],
+  [视场],
+  [],
+  [prime focus],
+  [主焦点],
+  [],
+  [cassegrain foucs],
+  [卡赛格林焦点],
+  [],
+  [nasmyth focus],
+  [内氏焦点],
+  [],
+  [coude focus],
+  [折轴焦点],
+  [],
+  [exit pupil],
+  [出射光瞳],
+  [],
+  [achromatic lens],
+  [消色差透镜],
+  [coma],
+  [comatic aberration],
+  [彗差],
+  [],
+  [spherical aberration],
+  [球差],
+  [],
+  [vignetting],
+  [渐晕],
+  [],
+  [plate scale],
+  [底片比例尺],
+  [],
+  [focal ratio],
+  [焦比],
+  [],
+  [seeing],
+  [视宁度],
+  [],
+  [kinetic temperature],
+  [运动温度],
+  [],
+  [color temperature],
+  [色温度],
+  [],
+  [excitation temperature],
+  [激发温度],
+  [],
+  [ionization temperature],
+  [电离温度],
+  [],
+  [distance ladder],
+  [距离阶梯],
+  [],
+  [trigonometric parallax],
+  [三角视差],
+  [],
+  [secular parallax],
+  [长期视差],
+  [],
+  [statistical parallax],
+  [统计视差],
+  [],
+  [peculiar motion],
+  [本动速度],
+  [],
+  [standard candle],
+  [标准烛光],
+  [],
+  [cepheid variable],
+  [造父变星],
+  [CCD],
+  [charge coupled device],
+  [电荷耦合器件],
+  [],
+  [full well capacity],
+  [势阱容量],
+  [],
+  [front illumination],
+  [前照式],
+  [],
+  [back illumination],
+  [后照式],
+  [],
+  [thermal detector],
+  [热探测器],
+  [],
+  [chopping],
+  [斩波法],
+  [],
+  [flat],
+  [平场],
+  [],
+  [twilight sky flat],
+  [晨昏天光平场],
+  [],
+  [dome flat],
+  [圆顶平场],
+  [CV],
+  [cataclysmic variable],
+  [激变变星],
+  [],
+  [roche lobe],
+  [洛希瓣],
+  [TDE],
+  [tidal disruption event],
+  [潮汐瓦解事件],
+  [],
+  [accretion disc],
+  [吸积盘],
+  [],
+  [differential photometry],
+  [较差测光],
+  [],
+  [photoelectric photometer],
+  [光电光度计],
+  [],
+  [photometric night],
+  [测光夜],
+  [],
+  [instrumental magnitude],
+  [仪器星等],
+  [],
+  [aperture photometry],
+  [孔径测光],
+  [],
+  [spectral calibration lamp],
+  [光谱定标灯],
+  [],
+  [telluric line],
+  [大气谱线],
+  [],
+  [column density],
+  [柱密度],
   table.hline(),
 )
