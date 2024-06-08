@@ -151,9 +151,12 @@ $ [A,[B,C]]+B[C,A]+[C,[A,B]]=0 $
   "Legendre多项式的正交性",
 )[$ integral_(-1)^1 P_k (x) P_l (x)dd(x)=2/(2l+1) delta_(k l) $]
 #thm(
+  "球谐函数的性质",
+)[$ z/r Y_(l m)=&cos theta Y_(l m)\ =&a_(l m)Y_(l+1,m)+a_(l-1,m)Y_(l-1,m)\ (x+i y)/r Y_(l m)=& e_(i phi.alt)sin theta Y_(l m)\ =& b_(l-1,-(m+1))Y_(l-1,m+1)-b_(l m)Y_(l+1,m+1)\ a_(l m)=& sqrt(((l+1)^2-m^2)/((2l+1)(2l+3)))\ b_(l m)=&sqrt((l+m+1)(l+m+2))/((2l+1)(2l+3)) $]
+#thm(
   "厄米多项式的正交性",
 )[$ integral_(-infinity)^(+infinity) H_m (xi) H_n (xi) e^(-xi^2) dd(xi)=sqrt(pi) 2^n n! delta_(m n) $]
-
+#thm("厄米多项式的递推关系")[$ H_(n+1) (xi)-2xi H_n (xi)+2n H_(n-1) (xi)=0 $]
 #def("合流超几何微分方程")[$ z dv(y, z, 2)+(gamma-z)dv(y, z)-alpha y=0 $]
 #def(
   "合流超几何函数",
@@ -338,8 +341,11 @@ sqrt((m omega)/hbar) $
 解为
 $ E_n&=(n+1/2)hbar omega \ psi_n (x)&=((m omega)/(pi hbar))^(1/4) 1/sqrt(2^n
 n!)H_n (xi) e^(-xi^2/2) \ "where"& H_n (x)=(-1)^n e^(x^2) dv(, x, n) e^(-x^2) $
+#thm(
+ "谐振子波函数的递推公式",
+)[$ x psi_n=sqrt(hbar/(m omega))(sqrt(n/2)psi_(n-1)+sqrt((n+1)/2)psi_(n+1)) $]
 === 升降算符法
-参考 _Modern Quantum Mechanics 3rd edition_ (Sakurai)
+参考 _Modern Quantum Mechanics 3rd edition_@sakurai_modern_2020
 $ H=p^2/(2m)+(m omega^2x^2)/2 $
 定义3个算符
 $ a &=sqrt((m omega)/(2 hbar))(x+ (i p)/(m omega)) "annihilation operator"\
@@ -371,7 +377,7 @@ $ braket(x, sqrt((m omega)/(2 hbar))(x+ (i p)/(m omega)), 0)=0 $
 解得归一化波函数$ psi_0 (x)=((m omega)/(pi hbar))^(1/4) e^(-(m omega)/(2hbar)x^2) $
 对于一般的$n$,利用$a^dagger$可得
 $ braket(x, n)=&1/sqrt(n!)braket(x, (a^dagger)^n, 0)\ =&1/sqrt(2^n n!) ((m
-omega)/(pi hbar))^(1/4) \ &(sqrt((m omega)/hbar)x+sqrt(hbar/(m omega))dv(, x))^n
+omega)/(pi hbar))^(1/4) \ &(sqrt((m omega)/hbar)x-sqrt(hbar/(m omega))dv(, x))^n
 e^(-(m omega)/(2hbar)x^2) $
 #exmp[证明一维谐振子的能量本征态$ket(n)$的$expval(x^2)$为$ expval(x^2)_ket(n)=(n+1/2) hbar/(m
  omega) $]
@@ -421,8 +427,8 @@ commuting
 )[$ket(psi(t))$随时间演化,其变化遵守Schrödinger方程,力学量算符(不显含时间)与时间无关,这种描述方式称为Schrödinger图像.]
 #def(
  "Heisenberg图像",
-)[$ket(psi)$不随时间变化,力学量算符$A(t)$随时间演化,这种描述方式称为Heisenberg图像#footnote([除了@heisgenberg-pic
-以外,其他部分均采用Schrödinger图像]).]
+)[$ket(psi)$不随时间变化,力学量算符$A(t)$随时间演化,这种描述方式称为Heisenberg图像#footnote[除了@heisgenberg-pic
+以外,其他部分均采用Schrödinger图像].]
 #thm("Heisenberg方程")[算符$A(t)$随时间的变化为$ dv(, t)A(t)=1/(i hbar)[A(t),H] $]
 == 相互作用图像
 相互作用图像介于Schrödinger图像和Heisenberg图像之间,在用微扰论来处理问题时有广泛的应用.
@@ -475,9 +481,7 @@ commuting
   (q_N) $]
 #image("whatparticle.png")
 #thm("Pauli不相容原理")[不允许有两个及以上全同的费米子处于同一个单粒子态]
-#exmp[对3个全同粒子组成的系统,如果可能的单粒子态有3种.那么Boltzmann统计(经典统计),Bose统计,Fermi统计下,系统的可能态数目分别为27,10,1.
-
-  一般来说,对于3个及3个以上的全同粒子体系,Bose统计与Fermi统计的可能态数目总是少于Boltzmann统计.因为后者包含有一些没有对称性或混杂对称性的状态.]
+#exmp[对3个全同粒子组成的系统,如果可能的单粒子态有3种.那么Boltzmann统计(经典统计),Bose统计,Fermi统计下,系统的可能态数目分别为27,10,1.#footnote[一般来说,对于3个及3个以上的全同粒子体系,Bose统计与Fermi统计的可能态数目总是少于Boltzmann统计.因为后者包含有一些没有对称性或混杂对称性的状态.]]
 == 二次量子化方法
 对全同粒子编号本来就是多余的,粒子填布数表象描述全同粒子体系的量子态更为方便.
 
@@ -524,7 +528,10 @@ $ V(r)=1/2 mu omega^2 r^2 $
 化为单体问题后有$ V(r)=-e^2/r $
 #def("Bohr半径")[$a=hbar^2/(mu e^2)$]
 能量本征值为$ E_n&=-(mu e^4)/(2 hbar^2) 1/n^2=-e^2/(2a)1/n^2\ n&=n_r+l+1\ n_r&=0,1,2,dots $
-径向本征函数为$ R_(n l) (r)&=2/(a^(3\/2)n^2(2l+1)!)sqrt(((n+1)!)/(n-l-1)!)\ &e^(-xi\/2)xi^l F(-n_r,2l+2,xi) $
+径向本征函数为$ R_(n l) (r)=2/(a^(3\/2)n^2(2l+1)!)&sqrt(((n+1)!)/(n-l-1)!)\ &e^(-xi\/2)xi^l F(-n_r,2l+2,xi)\ & "where" xi=(2r)/(n a) $
+
+本征函数为$ psi_(n l m)=R_(n l) (r)Y_(l m)(theta, phi.alt) $
+
 简并度为$ f_n=sum_(l=0)^(n-1) (2l+1)=n^2 $
 === 电流分布和磁矩
 统计意义上,电子的电流密度为$ va(j)&=(i e hbar)/(2mu) (psi^* grad psi-psi grad psi^*)\ &=-(e hbar m)/mu 1/(r sin theta) abs(psi_(n l m))^2 vu(e_phi.alt) $
@@ -536,3 +543,19 @@ $ V(r)=1/2 mu omega^2 r^2 $
 === 类氢离子
 关于氢原子的结论,在类氢离子($isotope("He")^+,isotope("Li")^(++),dots$)上也适用,只需将核电荷数$+e$换成$+Z e$,约化质量换成相应的$mu$.其能级公式为
 $ E_n=-(mu e^4)/(2 hbar^2) Z^2/n^2=-e^2/(2 a)Z^2/n^2 $
+
+= 微扰论
+== 非简并围绕论
+== 简并微扰论
+
+= 含时微扰与跃迁
+== 含时体系的量子跃迁的微扰论
+== 光的吸收与辐射的半经典理论
+
+#set text(
+  font: ("Linux Libertine", "Source Han Serif"),
+  lang: "en",
+  region: "us",
+)
+
+#bibliography("main.bib", style: "american-physics-society")
