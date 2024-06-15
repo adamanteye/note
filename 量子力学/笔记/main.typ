@@ -151,8 +151,11 @@ $ [A,[B,C]]+B[C,A]+[C,[A,B]]=0 $
   "Legendre多项式的正交性",
 )[$ integral_(-1)^1 P_k (x) P_l (x)dd(x)=2/(2l+1) delta_(k l) $]
 #thm(
-  "球谐函数的性质",
-)[$ z/r Y_(l m)=&cos theta Y_(l m)\ =&a_(l m)Y_(l+1,m)+a_(l-1,m)Y_(l-1,m)\ (x+i y)/r Y_(l m)=& e_(i phi.alt)sin theta Y_(l m)\ =& b_(l-1,-(m+1))Y_(l-1,m+1)-b_(l m)Y_(l+1,m+1)\ a_(l m)=& sqrt(((l+1)^2-m^2)/((2l+1)(2l+3)))\ b_(l m)=&sqrt((l+m+1)(l+m+2))/((2l+1)(2l+3)) $]
+  "球谐函数的完备性",
+)[平方可积的球谐函数形成了一个希尔伯特空间$ integral.double Y_(l' m') Y_(l m) sin theta dd(theta) dd(phi.alt)=delta_(l l') delta_(m m') $$ sum_(l=0)^(+infinity)sum_(m=-l)^(+l) Y_(l m) (theta,phi.alt) Y_(l' m')^* (theta',phi.alt')\ =1/(sin theta) delta(theta-theta') delta(phi.alt-phi.alt') $]
+#thm(
+  "球谐函数的递推性质",
+)[$ z/r Y_(l m)=&cos theta Y_(l m)\ =&a_(l m)Y_(l+1,m)+a_(l-1,m)Y_(l-1,m)\ (x+i y)/r Y_(l m)=& e^(+i phi.alt)sin theta Y_(l m)\ =& b_(l-1,-(m+1))Y_(l-1,m+1)-b_(l m)Y_(l+1,m+1)\ (x-i y)/r Y_(l m)=&e^(- i phi.alt)sin theta Y_(l m)\ =& -b_(l-1,m-1)Y_(l-1,m-1)+b_(l,-m)Y_(l+1,m-1) \ a_(l m)=& sqrt(((l+1)^2-m^2)/((2l+1)(2l+3)))\ b_(l m)=&sqrt((l+m+1)(l+m+2))/((2l+1)(2l+3)) $]
 #thm(
   "厄米多项式的正交性",
 )[$ integral_(-infinity)^(+infinity) H_m (xi) H_n (xi) e^(-xi^2) dd(xi)=sqrt(pi) 2^n n! delta_(m n) $]
@@ -165,10 +168,17 @@ $ [A,[B,C]]+B[C,A]+[C,[A,B]]=0 $
 #thm(
   [$delta$函数的性质],
 )[$ delta(a x)&=1/(|a|)delta(x) \ delta(x)&=1/(2pi)integral_(-infinity)^infinity e^(i k x)dd(k)\ x delta(x)&=0\ delta(f(x))&=sum_i delta(x-x_i)/abs(f'(x_i)) $]
+#def(
+  [三维$delta$函数],
+)[假设已定义一维Dirac函数$delta(x)$,那么$ delta(va(r))&=delta(x)delta(y)delta(z)\ &= 1/(r^2sin theta)delta(r)delta(theta)delta(phi.alt)\ &=1/rho delta(rho)delta(phi.alt)delta(z) $]
 == 傅里叶变换
 $ f(x)&=1/sqrt(2pi) integral e^(i k x) g(k)dd(k)\ g(k)&=1/sqrt(2pi) integral e^(-i k x) f(x)dd(x) $
+#thm(
+  "Parseval",
+)[平方可积函数的标积在傅里叶变化中保持不变$ integral_(-infinity)^(infinity)psi_1^*(x)psi_2(x)dd(x)=integral_(-infinity)^(infinity)phi.alt_1^*(k)phi.alt_2(k)dd(k) $]
 == 积分
-$ integral_(-infinity)^(+infinity) e^(-x^2) dd(x)=sqrt(pi) $
+$ integral_(-infinity)^(+infinity) e^(-a^2x^2) dd(x)=sqrt(pi)/abs(a) $
+$ integral_0^(+infinity)r^n e^(-r\/a)dd(r)=n! a^(n+1) $
 = 态与波函数
 #def("概率密度")[$ rho=psi^* psi $]
 #def(
@@ -181,7 +191,7 @@ $ integral_(-infinity)^(+infinity) e^(-x^2) dd(x)=sqrt(pi) $
 #pst[$braket(alpha, beta)=braket(beta, alpha)^*$]
 #pst("positive definite metric")[$braket(alpha)>=0$]
 = 算符
-== 基本假设
+参考格里菲斯@griffiths_introduction_2005 以及樱井纯@sakurai_modern_2020.== 基本假设
 #def(
   "伴随算符",
 )[$A$的伴随算符#footnote[这里为了书写简便,算符均省略hat,注意区分算符,可观测量以及算符的矩阵表示]定义为$A^dagger$,有 $ A ket(psi)=bra(psi) A^dagger $]
@@ -544,6 +554,14 @@ $ V(r)=1/2 mu omega^2 r^2 $
 关于氢原子的结论,在类氢离子($isotope("He")^+,isotope("Li")^(++),dots$)上也适用,只需将核电荷数$+e$换成$+Z e$,约化质量换成相应的$mu$.其能级公式为
 $ E_n=-(mu e^4)/(2 hbar^2) Z^2/n^2=-e^2/(2 a)Z^2/n^2 $
 
+= 角动量
+
+北大曹庆宏老师的#link(
+  "https://faculty.pku.edu.cn/caoqinghong/zh_CN/zdylm/11906/list/index.htm",
+)[讲义草稿]非常值得阅读学习.
+
+= 自旋
+
 = 微扰论
 == 非简并围绕论
 == 简并微扰论
@@ -551,6 +569,8 @@ $ E_n=-(mu e^4)/(2 hbar^2) Z^2/n^2=-e^2/(2 a)Z^2/n^2 $
 = 含时微扰与跃迁
 == 含时体系的量子跃迁的微扰论
 == 光的吸收与辐射的半经典理论
+
+= 散射
 
 #set text(
   font: ("Linux Libertine", "Source Han Serif"),

@@ -152,3 +152,7 @@ $ Phi(va(x))=1/(4pi epsilon_0)sum_(l=0)^infinity sum_(m=-l)^l (4pi)/(2l+1)q_(l m
 
 $ va(p)=integral va(x')rho(va(x'))dd(x', 3) $
 $ Phi(va(x))=1/(4pi epsilon_0)&(q/r+(va(p)dprod va(x))/r^3\ +&1/2sum_(i,j)Q_(i j)(x_i x_j)/r^5+dots) $
+
+= Relativistic Electromagnetics
+
+$ diff_mu=pdv(,x^mu), diff^mu=pdv(,x_mu) $
