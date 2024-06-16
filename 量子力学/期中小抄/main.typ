@@ -3,7 +3,7 @@
   lang: "zh",
   region: "cn",
 )
-#let title = [量子力学笔记]
+#let title = [量子力期中小抄]
 #let thisauthor = "杨哲涵"
 #set document(title: [#title], author: thisauthor)
 #set heading(numbering: "1.")
@@ -132,7 +132,7 @@ l_z&=- i hbar pdv(, phi.alt) $]
 
 $ Y(theta,phi.alt)&=Theta(xi)psi_m (phi.alt)\ va(l)^2 Y(theta,phi.alt)&=lambda hbar^2 Y(theta, phi.alt)\ psi_m (phi.alt)&=1/sqrt(2pi) e^(i m phi.alt) $
 
-$ Y_(l m) (theta,phi.alt)\ =(-1)^m &sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) e^(i m phi.alt) $
+$ Y_(l m) (theta,phi.alt)\ =(-1)^m &sqrt((2l+1)/(4pi) ((l-m)!)/((l+m)!)) P_l^m (cos theta) e^(i m phi.alt) $
 球谐函数满足
 $   &va(l)^2 Y_(l m)=l(l+1)hbar^2 Y_(l m)\ &l_z Y_(l m)=m hbar Y_(l m)\ &l=0,1,2,dots\ &m=-l,-l+1,dots,l-1,l\ &integral_0^(2pi)dd(phi.alt) integral_0^pi sin theta dd(theta) Y_(l_1 m_1)^* Y_(l_2 m_2)=delta_(l_1 l_2)delta_(m_1 m_2) $
 #thm(

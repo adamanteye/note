@@ -150,6 +150,7 @@ $ [A,[B,C]]+B[C,A]+[C,[A,B]]=0 $
 #thm(
   "Legendre多项式的正交性",
 )[$ integral_(-1)^1 P_k (x) P_l (x)dd(x)=2/(2l+1) delta_(k l) $]
+#def("球谐函数")[$ Y_(l m) (theta,phi.alt)\ =(-1)^m &sqrt((2l+1)/(4pi) ((l-m)!)/((l+m)!)) P_l^m (cos theta) e^(i m phi.alt) $$ Y_(00)&=1/sqrt(4pi),Y_(10)=sqrt(3/(4pi))cos theta\ Y_(1plus.minus 1)&=minus.plus sqrt(3/(8pi))sin theta e^(plus.minus i phi.alt)\ Y_(20)&=sqrt(5/(16pi))(3cos^2theta-1)\ Y_(2plus.minus 1)&=minus.plus sqrt(15/(8pi))cos theta sin theta e^(plus.minus i phi.alt)\ Y_(2plus.minus 2)&=1/2 sqrt(15/(8pi))sin^2theta e^(plus.minus 2i phi.alt) $]
 #thm(
   "球谐函数的完备性",
 )[平方可积的球谐函数形成了一个希尔伯特空间$ integral.double Y_(l' m') Y_(l m) sin theta dd(theta) dd(phi.alt)=delta_(l l') delta_(m m') $$ sum_(l=0)^(+infinity)sum_(m=-l)^(+l) Y_(l m) (theta,phi.alt) Y_(l' m')^* (theta',phi.alt')\ =1/(sin theta) delta(theta-theta') delta(phi.alt-phi.alt') $]
@@ -254,7 +255,7 @@ $Theta(xi)$是连带Legendre方程,其中$xi=cos theta$
 $ Theta_(l m) (theta)=(-1)^m sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) $
 满足 $ integral_0^pi Theta_(k m) (theta) Theta_(l m) (theta) sin theta dd(theta)=delta_(k l) $
 最终
-$ Y_(l m) (theta,phi.alt)\ =(-1)^m &sqrt(2/(2l+1) ((l+m)!)/((l-m)!)) P_l^m (cos theta) e^(i m phi.alt) $
+$ Y_(l m) (theta,phi.alt)\ =(-1)^m &sqrt((2l+1)/(4pi) ((l-m)!)/((l+m)!)) P_l^m (cos theta) e^(i m phi.alt) $
 球谐函数满足
 $   &va(l)^2 Y_(l m)=l(l+1)hbar^2 Y_(l m)\ &l_z Y_(l m)=m hbar Y_(l m)\ &l=0,1,2,dots\ &m=-l,-l+1,dots,l-1,l\ &integral_0^(2pi)dd(phi.alt) integral_0^pi sin theta dd(theta) Y_(l_1 m_1)^* Y_(l_2 m_2)=delta_(l_1 l_2)delta_(m_1 m_2) $
 == 算符的函数
@@ -544,16 +545,17 @@ $ V(r)=1/2 mu omega^2 r^2 $
 
 简并度为$ f_n=sum_(l=0)^(n-1) (2l+1)=n^2 $
 === 电流分布和磁矩
-统计意义上,电子的电流密度为$ va(j)&=(i e hbar)/(2mu) (psi^* grad psi-psi grad psi^*)\ &=-(e hbar m)/mu 1/(r sin theta) abs(psi_(n l m))^2 vu(e_phi.alt) $
+统计意义上,电子的电流密度(绕z轴的环电流密度)为$ va(j)&=(i e hbar)/(2mu) (psi^* grad psi-psi grad psi^*)\ &=-(e hbar m)/mu 1/(r sin theta) abs(psi_(n l m))^2 vu(e_phi.alt) $
 总的磁矩为$ va(M)=&-(e hbar m)/(2mu c) vu(z) integral abs(psi_(n l m))^2 dd(tau)\ =&-(e hbar m)/(2mu c)vu(z) $
 #def("Bohr磁子")[$ mu_B=(e hbar)/(2mu c) $]
 #def("g因子")[$ g=M_z/(m hbar)=-e/(2mu c) $]
 === 概率密度
 #figure(image("hydrogen.png", width: 90%), caption: [氢原子波函数])
+$ R_(10)&=2/a^(3\/2)e^(-r\/a) \ R_(20)&=1/(sqrt(2)a^(3\/2))(1-r/(2a))e^(-r\/2a)\ R_(21)&=1/(2sqrt(6)a^(3\/2))r/a e^(-r\/2a)\ R_(30)&=2/(3sqrt(3)a^(3\/2))(1-(2r)/(3a)+2/27 r^2/a^2)e^(-r\/3a) $
+
 === 类氢离子
 关于氢原子的结论,在类氢离子($isotope("He")^+,isotope("Li")^(++),dots$)上也适用,只需将核电荷数$+e$换成$+Z e$,约化质量换成相应的$mu$.其能级公式为
 $ E_n=-(mu e^4)/(2 hbar^2) Z^2/n^2=-e^2/(2 a)Z^2/n^2 $
-
 = 角动量
 
 北大曹庆宏老师的#link(
