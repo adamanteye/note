@@ -69,7 +69,7 @@
   stroke: none,
   columns: 5,
   table.hline(),
-  table.header([], [$delta$势], [线性势], [谐振子势], [库仑势($kappa=Z e^2$)]),
+  table.header([], [$delta$势], [线性], [谐振子], [库仑$kappa=Z e^2$]),
   [],
   [$mu=hbar=gamma=1$],
   [$mu=hbar=F=1$],
