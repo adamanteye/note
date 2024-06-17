@@ -160,7 +160,7 @@ $ [va(r),H]=(i hbar)/m va(p) $
 = 中心力场
 #thm(
   "中心力场中运动粒子的哈密顿量",
-)[$ H&=p^2/(2mu)+V(r)\ &=p_r^2/(2mu)+va(l)^2/(2 mu r^2)+V(r)\ &=-hbar^2 (pdv(, r, 2)+2/r pdv(, r))+va(l)^2/(2mu r^2)+V(r) $]
+)[$ H&=p^2/(2mu)+V(r)\ &=p_r^2/(2mu)+va(l)^2/(2 mu r^2)+V(r)\ &=-hbar^2/(2mu) (pdv(, r, 2)+2/r pdv(, r))+va(l)^2/(2mu r^2)+V(r) $]
 #thm(
   "中心力场中能量本征方程",
 )[一般将势函数分离变量为$ Psi(r, theta, phi.alt)=R(r)Y_(l m) (theta,phi.alt) $令$chi(r)=r R(r)$,有$ chi_l ''+((2mu)/hbar^2 (E-V)-(l(l+1))/r^2)chi_l =0 $]
@@ -216,7 +216,7 @@ $   &[Jp,Jm]=2hbar J_z, [J_z,Jpm]=plus.minus hbar Jpm\ &[J_x,Jpm]=minus.plus hba
 == 耦合与非耦合表象的基底变换
 $ ket(j_1 j_2 j m)=sum_(m_1=-j_1)^(j_1)sum_(m_2=-j_2)^(j_2) C_(j_1 m_1 j_2 m_2)^(j_1 j_2 j m) ket(j_1 m_1 j_2 m_2) $$ C_(j_1 m_1 j_2 m_2)^(j m)=braket(j_1 m_1 j_2 m_2, j_1 j_2 j m) $
 == 电子耦合与非耦合表象变换
-$ Psi_(l,j=l+1/2,m_j)&=1/sqrt(2j) mat(sqrt(j+m_j)Y_(l,m_j-1/2);sqrt(j-m_j)Y_(l,m_j+1/2))\ Psi_(l,j=l-1/2,m_j)&=1/sqrt(2j+2) mat(-sqrt(j-m_j+1)Y_(l,m_j-1/2);sqrt(j-m_j+1)Y_(l,m_j+1/2)) $$ Y_(l m_l chi_(1/2))=sqrt((l+m_l+1)/(2l+1))Psi_(l,j=l+1/2,m_l+1/2)\ -sqrt((l-m_l)/(2l+1))Psi_(l,j=l-1/2,m_l+1/2)\ Y_(l m_l chi_(-1/2))=sqrt((l-m_l+1)/(2l+1))Psi_(l,j=l+1/2,m_l-1/2)\ +sqrt((l+m_l)/(2l+1))Psi_(l,j=l-1/2,m_l-1/2) $
+$ Psi_(l,j=l+1/2,m_j)&=1/sqrt(2j) mat(sqrt(j+m_j)Y_(l,m_j-1/2);sqrt(j-m_j)Y_(l,m_j+1/2))\ Psi_(l,j=l-1/2,m_j)&=1/sqrt(2j+2) mat(-sqrt(j-m_j+1)Y_(l,m_j-1/2);sqrt(j+m_j+1)Y_(l,m_j+1/2)) $$ Y_(l m_l chi_(1/2))=sqrt((l+m_l+1)/(2l+1))Psi_(l,j=l+1/2,m_l+1/2)\ -sqrt((l-m_l)/(2l+1))Psi_(l,j=l-1/2,m_l+1/2)\ Y_(l m_l chi_(-1/2))=sqrt((l-m_l+1)/(2l+1))Psi_(l,j=l+1/2,m_l-1/2)\ +sqrt((l+m_l)/(2l+1))Psi_(l,j=l-1/2,m_l-1/2) $
 #def(
   "自旋三重态与单态",
 )[选择${va(S)^2,S_z}$作为对易自旋力学量完全集$ va(S)^2 chi_(S M_S)=&S(S+1)hbar^2chi_(S M_S)\ S_z chi_(S M_S)=&M_S hbar chi_(S M_S) $
