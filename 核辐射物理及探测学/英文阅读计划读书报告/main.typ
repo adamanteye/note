@@ -371,10 +371,13 @@ types of photon interactions.
 
 Common application of sodium iodide scintillators is to measure the absolute
 intensity, which requires a prior knowledge of the effeiency of radiation
-detector. And published data on the detection efficiency of NaI(Tl) detectors are undoubtedly abundant.
+detector. And published data on the detection efficiency of NaI(Tl) detectors
+are undoubtedly abundant.
 
-#figure(image("absorptionefficiency.png"), caption: [Absorption efficiency of NaI of different thicknesses]),
-
+#figure(
+  image("absorptionefficiency.png"),
+  caption: [Absorption efficiency of NaI of different thicknesses],
+),
 
 #set page(columns: 1)
 
@@ -384,7 +387,7 @@ detector. And published data on the detection efficiency of NaI(Tl) detectors ar
 
 == Periodic Table
 
-#figure(image("periodictable.png"), caption: [Terminologies]),
+#figure(image("periodictable.png"), caption: [Periodic Table]),
 
 == Terminologies
 
