@@ -7,7 +7,6 @@ function readDirectory(dir: string): { filePath: string; lastModified: Date }[] 
     list.forEach((file) => {
         let filePath = path.join(dir, file);
         let stat = fs.statSync(filePath);
-
         if (stat && stat.isDirectory()) {
             results = results.concat(readDirectory(filePath));
         } else if (filePath.endsWith('.pdf')) {
