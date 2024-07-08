@@ -21,3 +21,5 @@
 本仓库部分使用了以下模板
 
 - [THUCOURSEWORK：清华大学课程作业模板](https://github.com/zhaofeng-shu33/THU-coursework-template)
+- [typst-physics](https://github.com/Leedehai/typst-physics)
+- [typst-theorems](https://github.com/sahasatvik/typst-theorems)
