@@ -3,9 +3,9 @@ TYP_DIRS := $(shell find . -type f -name "main.typ" -exec dirname {} \;)
 TEX_BUILDS := $(foreach dir,$(TEX_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
 TYP_BUILDS := $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
 
-.PHONY: all clean help remove print
+.PHONY: all site clean help remove print
 
-all: $(TYP_BUILDS) $(TEX_BUILDS) remove
+all: $(TYP_BUILDS) $(TEX_BUILDS) remove site
 
 build/%.pdf: %/main.typ
 	@mkdir -p $(dir $@)
@@ -15,6 +15,18 @@ build/%.pdf: %/main.tex
 	@mkdir -p $(dir $@)
 	latexmk -xelatex -cd $< > /dev/null 2>&1
 	@cp $(<D)/main.pdf $@
+
+site: build/index.html
+
+build/generate.js: generate.ts
+	npm install
+	@mkdir -p build
+	tsc generate.ts --outDir build
+
+build/index.html: build/generate.js build/%.pdf build/%.pdf index-template.html
+	@mkdir -p build
+	cd build
+	node generate.js .
 
 print:
 	@for pdf in $(TYP_BUILDS); do \
