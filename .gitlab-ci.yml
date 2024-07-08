@@ -2,7 +2,7 @@ note-tex:
   stage: deploy
   script:
     - source ~/.bashrc
-    - make all
+    - make site
     - make clean
     - rsync -rzuv --delete build/ ${REMOTE_USER}:${REMOTE_ARTIFACTS_DIR}
   artifacts:
