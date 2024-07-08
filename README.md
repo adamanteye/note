@@ -1,6 +1,6 @@
 ## 如何使用
 
-您可以通过本页仓库简介处的 Badge 访问生成的[最新构建](https://git.tsinghua.edu.cn/yangzheh22/note-tex/-/jobs/artifacts/master/browse/build?job=note-tex)
+您可以通过本页仓库简介处的 Badge 访问生成的[最新构建](https://note.adamanteye.cc)
 
 ## 编译要求
 
