@@ -20,7 +20,7 @@ const pdfPath = process.argv[2];
 const pdfFiles = readDirectory(pdfPath);
 const templateFile = process.argv[3];
 const pdfLinks = pdfFiles.map(file =>
-    `<tr><td><a href="${file.filePath}">${file.filePath}</a></td><td>${file.lastModified.toLocaleString()}</td></tr>`
+    `<tr><td><a href="${file.filePath}">${file.filePath}</a></td><td>${file.lastModified.toLocaleString("zh-CN")}</td></tr>`
 ).join('\n');
 const index = fs.readFileSync(templateFile, 'utf-8').replace('{{pdfLinks}}', pdfLinks);
 const outputPath = path.join(pdfPath, 'index.html');
