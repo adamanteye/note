@@ -5,13 +5,10 @@ note-tex:
     - make site
     - make clean
     - rsync -rzuv --delete build/ ${REMOTE_USER}:${REMOTE_ARTIFACTS_DIR}
-  artifacts:
-    paths:
-      - build/*
-    expire_in: 1 week
   cache:
     paths:
       - build/
+      - node_modules/
     key: "$CI_COMMIT_REF_SLUG"
   tags:
     - latex
