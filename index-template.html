@@ -8,8 +8,34 @@
     <style>
         h1 {
             color: #C46243;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        #header {
             width: 80%;
             margin-left: 10%;
+            align-items: center;
+            position: relative;
+        }
+
+        #header h1 {
+            display: inline-block;
+        }
+
+        #header a {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: fit-content;
+        }
+
+        #header a img {
+            width: 48px;
         }
 
         table {
@@ -29,7 +55,13 @@
 </head>
 
 <body>
-    <h1>Adamanteye's Note</h1>
+    <div id="header">
+        <h1>Adamanteye's Note</h1>
+        <a href="https://github.com/adamanteye/note">
+            <img src="assets/github-142-svgrepo-com.svg" />
+        </a>
+    </div>
+
     <hr width="80%">
     <table>
         <thead>
