@@ -17,6 +17,7 @@ note-tex:
     - latex
     - typst
     - shell
+    - node
   except:
     changes:
       - README.md
