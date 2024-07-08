@@ -22,8 +22,8 @@ build/generate.js: generate.ts
 	tsc generate.ts --outDir build
 
 build/index.html: build/generate.js $(TYP_BUILDS) $(TEX_BUILDS) remove index-template.html
-        @mkdir -p build
-        @cd build && node generate.js . ../index-template.html
+	@mkdir -p build
+	@cd build && node generate.js . ../index-template.html
 
 print:
 	@for pdf in $(TYP_BUILDS); do \
