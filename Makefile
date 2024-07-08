@@ -21,7 +21,7 @@ build/generate.js: generate.ts
 	@mkdir -p build
 	tsc generate.ts --outDir build
 
-build/index.html: build/generate.js $(TYP_BUILDS) remove index-template.html
+build/index.html: build/generate.js $(TYP_BUILDS) $(TEX_BUILDS) remove index-template.html
 	@mkdir -p build
 	@cp -r assets build
 	@cd build && node generate.js . ../index-template.html
