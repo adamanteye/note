@@ -1,30 +1,33 @@
-TEX_DIRS := $(shell find . -type f -name "main.tex" -exec dirname {} \;)
-TYP_DIRS := $(shell find . -type f -name "main.typ" -exec dirname {} \;)
-TEX_BUILDS := $(foreach dir,$(TEX_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
-TYP_BUILDS := $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
+TEX_DIRS = $(shell find . -type f -name "main.tex" -exec dirname {} \;)
+TYP_DIRS = $(shell find . -type f -name "main.typ" -exec dirname {} \;)
+TEX_BUILDS = $(foreach dir,$(TEX_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
+TYP_BUILDS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
 
 .PHONY: site clean help remove print
 
 build/%.pdf: %/main.typ %/
-	@mkdir -p $(dir $@)
+	@mkdir -p $(@D)
 	typst compile $(<D)/main.typ $@
 
 build/%.pdf: %/main.tex %/
-	@mkdir -p $(dir $@)
+	@mkdir -p $(@D)
 	latexmk -xelatex -cd $< > /dev/null 2>&1
 	@cp $(<D)/main.pdf $@
 
 site: build/index.html
 
-build/generate.js: generate.ts
+build/generate.js: package-lock.json generate.ts
+	@mkdir -p $(@D)
 	npm install
-	@mkdir -p build
-	tsc generate.ts --outDir build
+	tsc generate.ts --outDir $(@D)
 
-build/index.html: build/generate.js $(TYP_BUILDS) $(TEX_BUILDS) remove index-template.html
-	@mkdir -p build
-	@cp -r assets build
-	@cd build && node generate.js . ../index-template.html
+build/assets/: assets/
+	@mkdir -p $(@D)
+	cp -r $(<D) $(@D)
+
+build/index.html: $(TYP_BUILDS) build/assets/ build/generate.js index-template.html
+	@mkdir -p $(@D)
+	node $(@D)/generate.js $(@D) index-template.html
 
 print:
 	@for pdf in $(TYP_BUILDS); do \
