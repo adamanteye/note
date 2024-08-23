@@ -16,18 +16,13 @@ build/%.pdf: %/main.tex %/
 
 site: build/index.html
 
-build/generate.js: package-lock.json generate.ts
-	@mkdir -p $(@D)
-	npm install
-	tsc generate.ts --outDir $(@D)
-
 build/assets/: assets/
 	@mkdir -p $(@D)
 	cp -r $(<D) $(@D)
 
-build/index.html: $(TYP_BUILDS) build/assets/ build/generate.js index-template.html
+build/index.html: $(TYP_BUILDS) build/assets/ build/generate.sh index-template.html
 	@mkdir -p $(@D)
-	node $(@D)/generate.js $(@D) index-template.html
+	cd $(@D) && ../generate.sh . ../index-template.html
 
 print:
 	@for pdf in $(TYP_BUILDS); do \
