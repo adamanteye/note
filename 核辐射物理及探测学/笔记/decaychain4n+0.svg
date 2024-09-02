@@ -1,180 +1,163 @@
-<svg width="1310" height="2020" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<defs>
-  <style type="text/css"><![CDATA[
-  
-  tspan {font-family: DejaVu Sans Condensed, sans-serif; font-size:25px}
-  .symbol {font-family: DejaVu Sans Condensed, sans-serif; font-size:90px; font-weight:bold; stroke: none}
-  .su {font-size: 32px; font-family: DejaVu Sans Condensed, sans-serif; text-anchor:end; letter-spacing:-3px}
-  .halflife {font-size: 32px; font-family: DejaVu Sans Condensed, sans-serif; text-anchor:middle; font-size: 30px}
-  
-  circle {stroke-width:3.5; stroke:black}
-  .nonmetal {fill: url(#nonmetal)}
-  .noblegas {fill: url(#noblegas)}
-  .alkali {fill:url(#alkali)}
-  .alkaline {fill:url(#alkaline)}
-  .metalloid {fill:url(#metalloid)}
-  .halogen {fill:url(#halogen)}
-  .poormetal {fill:url(#poormetal)}
-  .lanthanide {fill:url(#lanthanide)}
-  .actinide {fill: url(#actinide)}
-  .transition {fill: url(#transition)}
-  line {marker-end:url(#Arrow2Mend); stroke-width:3.5; stroke:black}
-  .ab {font-family: Liberation Sans, sans-serif; font-style:italic; font-size:40px}
-  .background0 {stroke: none; fill: #ffffff}
-  .background1 {stroke: none; fill: #f5f5f5}
-  .SideKey {fill: #555555; font-family: DejaVu Sans Light, sans-serif; font-size: 40px; text-anchor: end}
-  .key {font-family: DejaVu Sans Light, sans-serif; font-size: 25px}
-  ]]></style>
-  <marker refX="0" refY="0" orient="auto" id="Arrow2Mend" style="overflow:visible"> 
-    <path d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" transform="scale(-1,-1)" id="path4011" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"/> 
-  </marker> 
-  <radialGradient id="ball" fx="75%" fy="25%">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="grey"/>
-  </radialGradient>
-  <radialGradient id="actinide" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#add5ff"/>
-  </radialGradient>
-  <radialGradient id="nonmetal" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#a0ffa0"/>
-  </radialGradient>
-  <radialGradient id="noblegas" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#c0ffff"/>
-  </radialGradient>
-  <radialGradient id="alkali" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#ff6666"/>
-  </radialGradient>
-  <radialGradient id="alkaline" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#ffdead"/>
-  </radialGradient>
-  <radialGradient id="metalloid" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#cccc99"/>
-  </radialGradient>
-  <radialGradient id="halogen" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#ffff99"/>
-  </radialGradient>
-  <radialGradient id="poormetal" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#cccccc"/>
-  </radialGradient>
-  <radialGradient id="lanthanide" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#ffbfff"/>
-  </radialGradient>
-  <radialGradient id="transition" xlink:href="#ball">
-    <stop offset="0%" stop-color="white"/>
-    <stop offset="100%" stop-color="#ffc0c0"/>
-  </radialGradient>
-  
-  
-</defs>
-
-<rect x="10" y="10" width="1290" height="200" class="background0"/>
-<rect x="10" y="210" width="1290" height="200" class="background1"/>
-<rect x="10" y="410" width="1290" height="200" class="background0"/>
-<rect x="10" y="610" width="1290" height="200" class="background1"/>
-<rect x="10" y="810" width="1290" height="200" class="background0"/>
-<rect x="10" y="1010" width="1290" height="200" class="background1"/>
-<rect x="10" y="1210" width="1290" height="200" class="background0"/>
-<rect x="10" y="1410" width="1290" height="200" class="background1"/>
-<rect x="10" y="1610" width="1290" height="200" class="background0"/>
-<rect x="10" y="1810" width="1290" height="200" class="background1"/>
-<text x="1290" y="200" class="SideKey">Thorium</text><text x="1290" y="400" class="SideKey">Actinium</text><text x="1290" y="600" class="SideKey">Radium</text><text x="1290" y="800" class="SideKey">Francium</text><text x="1290" y="1000" class="SideKey">Radon</text><text x="1290" y="1200" class="SideKey">Astatine</text><text x="1290" y="1400" class="SideKey">Polonium</text><text x="1290" y="1600" class="SideKey">Bismuth</text><text x="1290" y="1800" class="SideKey">Lead</text><text x="1290" y="2000" class="SideKey">Thallium</text><g transform="translate(0,1670)">
-<rect x="10" y="10" width="340" height="340" style="fill: white; stroke: black; stroke-width: 2px"/>
-<rect x="20" y="20" width="40" height="40" class="actinide"/>
-<text x="65" y="50" class="key">Actinides</text>
-<rect x="20" y="60" width="40" height="40" class="alkali"/>
-<text x="65" y="90" class="key">Alkali Metals</text>
-<rect x="20" y="100" width="40" height="40" class="alkaline"/>
-<text x="65" y="130" class="key">Alkaline Earth Metals</text>
-<rect x="20" y="140" width="40" height="40" class="halogen"/>
-<text x="65" y="170" class="key">Halogens</text>
-<rect x="20" y="180" width="40" height="40" class="metalloid"/>
-<text x="65" y="210" class="key">Metalloids</text>
-<rect x="20" y="220" width="40" height="40" class="noblegas"/>
-<text x="65" y="250" class="key">Noble Gases</text>
-<rect x="20" y="260" width="40" height="40" class="poormetal"/>
-<text x="65" y="290" class="key">Post Transition Metals</text>
-<rect x="20" y="300" width="40" height="40" class="transition"/>
-<text x="65" y="330" class="key">Transition Metals</text>
-</g>
-<circle style="stroke: black; stroke-width: 3.5" cx="110" cy="110" r="100" class="actinide"/>
-<text>
-	<tspan x="80" y="115" class="su">90</tspan><tspan x="80" dy="-42" class="su">232</tspan><tspan x="80" dy="42" class="symbol">Th</tspan><tspan x="110" dy="1.4em" class="halflife">1.41e+10</tspan><tspan x="110" dy="1em" class="halflife">Years</tspan>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1310" height="2020">
+  <defs>
+    <radialGradient id="ball" fx="75%" fy="25%">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="gray"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="actinide">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#add5ff"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="nonmetal">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#a0ffa0"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="noblegas">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#c0ffff"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="alkali">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#f66"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="alkaline">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#ffdead"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="metalloid">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#cc9"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="halogen">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#ff9"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="poormetal">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#ccc"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="lanthanide">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#ffbfff"/>
+    </radialGradient>
+    <radialGradient xlink:href="#ball" id="transition">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#ffc0c0"/>
+    </radialGradient>
+    <marker id="Arrow2Mend" orient="auto" overflow="visible" refX="0" refY="0">
+      <path id="path4011" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".625" d="M8.719 4.034-2.207.016 8.719-4.002c-1.746 2.372-1.736 5.618 0 8.036z" font-size="12" transform="scale(-1)"/>
+    </marker>
+    <style>
+      tspan{font-size:25px}.symbol{font-size:90px;font-weight:700;stroke:none}.halflife,.su,.symbol,tspan{font-family:DejaVu Sans Condensed,sans-serif}.su{font-size:32px;text-anchor:end;letter-spacing:-3px}.halflife{text-anchor:middle;font-size:30px}circle{stroke-width:3.5;stroke:#000}.noblegas{fill:url(#noblegas)}.alkaline{fill:url(#alkaline)}.metalloid{fill:url(#metalloid)}.poormetal{fill:url(#poormetal)}.actinide{fill:url(#actinide)}.ab{font-family:Liberation Sans,sans-serif;font-style:italic;font-size:40px}.background0{stroke:none;fill:#fff}.background1{stroke:none;fill:#f5f5f5}.SideKey,.key{font-family:DejaVu Sans Light,sans-serif}.SideKey{fill:#555;font-size:40px;text-anchor:end}.key{font-size:25px}
+    </style>
+  </defs>
+  <path d="M10 10h1290v200H10z" class="background0"/>
+  <path d="M10 210h1290v200H10z" class="background1"/>
+  <path d="M10 410h1290v200H10z" class="background0"/>
+  <path d="M10 610h1290v200H10z" class="background1"/>
+  <path d="M10 810h1290v200H10z" class="background0"/>
+  <path d="M10 1010h1290v200H10z" class="background1"/>
+  <path d="M10 1210h1290v200H10z" class="background0"/>
+  <path d="M10 1410h1290v200H10z" class="background1"/>
+  <path d="M10 1610h1290v200H10z" class="background0"/>
+  <path d="M10 1810h1290v200H10z" class="background1"/>
+  <text x="1290" y="200" class="SideKey">Thorium</text>
+  <text x="1290" y="400" class="SideKey">Actinium</text>
+  <text x="1290" y="600" class="SideKey">Radium</text>
+  <text x="1290" y="800" class="SideKey">Francium</text>
+  <text x="1290" y="1000" class="SideKey">Radon</text>
+  <text x="1290" y="1200" class="SideKey">Astatine</text>
+  <text x="1290" y="1400" class="SideKey">Polonium</text>
+  <text x="1290" y="1600" class="SideKey">Bismuth</text>
+  <text x="1290" y="1800" class="SideKey">Lead</text>
+  <text x="1290" y="2000" class="SideKey">Thallium</text>
+  <path fill="#fff" stroke="#000" stroke-width="2" d="M10 10h340v340H10z" transform="translate(0 1670)"/>
+  <path d="M20 20h40v40H20z" class="actinide" transform="translate(0 1670)"/>
+  <text x="65" y="50" class="key" transform="translate(0 1670)">Actinides</text>
+  <path fill="url(#alkali)" d="M20 60h40v40H20z" transform="translate(0 1670)"/>
+  <text x="65" y="90" class="key" transform="translate(0 1670)">Alkali Metals</text>
+  <path d="M20 100h40v40H20z" class="alkaline" transform="translate(0 1670)"/>
+  <text x="65" y="130" class="key" transform="translate(0 1670)">Alkaline Earth Metals</text>
+  <path fill="url(#halogen)" d="M20 140h40v40H20z" transform="translate(0 1670)"/>
+  <text x="65" y="170" class="key" transform="translate(0 1670)">Halogens</text>
+  <path d="M20 180h40v40H20z" class="metalloid" transform="translate(0 1670)"/>
+  <text x="65" y="210" class="key" transform="translate(0 1670)">Metalloids</text>
+  <path d="M20 220h40v40H20z" class="noblegas" transform="translate(0 1670)"/>
+  <text x="65" y="250" class="key" transform="translate(0 1670)">Noble Gases</text>
+  <path d="M20 260h40v40H20z" class="poormetal" transform="translate(0 1670)"/>
+  <text x="65" y="290" class="key" transform="translate(0 1670)">Post Transition Metals</text>
+  <path fill="url(#transition)" d="M20 300h40v40H20z" transform="translate(0 1670)"/>
+  <text x="65" y="330" class="key" transform="translate(0 1670)">Transition Metals</text>
+  <circle cx="110" cy="110" r="100" stroke="#000" stroke-width="3.5" class="actinide"/>
+  <text>
+	<tspan x="80" y="115" class="su">90</tspan><tspan x="80" class="su" dy="-42">232</tspan><tspan x="80" class="symbol" dy="42">Th</tspan><tspan x="110" class="halflife" dy="1.4em">1.41e+10</tspan><tspan x="110" class="halflife" dy="1em">Years</tspan>
 </text>
-<line x1="110" y1="210" x2="110" y2="405"/>
-<text x="115" y="310" class="ab">α</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="110" cy="510" r="100" class="alkaline"/>
-<text>
-	<tspan x="80" y="515" class="su">88</tspan><tspan x="80" dy="-42" class="su">228</tspan><tspan x="80" dy="42" class="symbol">Ra</tspan><tspan x="110" dy="1.4em" class="halflife">5.7</tspan><tspan x="110" dy="1em" class="halflife">Years</tspan>
+  <path d="M110 210v195"/>
+  <text x="115" y="310" class="ab">α</text>
+  <circle cx="110" cy="510" r="100" stroke="#000" stroke-width="3.5" class="alkaline"/>
+  <text>
+	<tspan x="80" y="515" class="su">88</tspan><tspan x="80" class="su" dy="-42">228</tspan><tspan x="80" class="symbol" dy="42">Ra</tspan><tspan x="110" class="halflife" dy="1.4em">5.7</tspan><tspan x="110" class="halflife" dy="1em">Years</tspan>
 </text>
-<line x1="181" y1="439" x2="236" y2="384"/>
-<text x="200" y="450" class="ab">β⁻</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="310" cy="310" r="100" class="actinide"/>
-<text>
-	<tspan x="280" y="315" class="su">89</tspan><tspan x="280" dy="-42" class="su">228</tspan><tspan x="280" dy="42" class="symbol">Ac</tspan><tspan x="310" dy="1.4em" class="halflife">6.1</tspan><tspan x="310" dy="1em" class="halflife">Hours</tspan>
+  <path d="m181 439 55-55"/>
+  <text x="200" y="450" class="ab">β⁻</text>
+  <circle cx="310" cy="310" r="100" stroke="#000" stroke-width="3.5" class="actinide"/>
+  <text>
+	<tspan x="280" y="315" class="su">89</tspan><tspan x="280" class="su" dy="-42">228</tspan><tspan x="280" class="symbol" dy="42">Ac</tspan><tspan x="310" class="halflife" dy="1.4em">6.1</tspan><tspan x="310" class="halflife" dy="1em">Hours</tspan>
 </text>
-<line x1="381" y1="239" x2="436" y2="184"/>
-<text x="400" y="250" class="ab">β⁻</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="110" r="100" class="actinide"/>
-<text>
-	<tspan x="480" y="115" class="su">90</tspan><tspan x="480" dy="-42" class="su">228</tspan><tspan x="480" dy="42" class="symbol">Th</tspan><tspan x="510" dy="1.4em" class="halflife">1.9</tspan><tspan x="510" dy="1em" class="halflife">Years</tspan>
+  <path d="m381 239 55-55"/>
+  <text x="400" y="250" class="ab">β⁻</text>
+  <circle cx="510" cy="110" r="100" stroke="#000" stroke-width="3.5" class="actinide"/>
+  <text>
+	<tspan x="480" y="115" class="su">90</tspan><tspan x="480" class="su" dy="-42">228</tspan><tspan x="480" class="symbol" dy="42">Th</tspan><tspan x="510" class="halflife" dy="1.4em">1.9</tspan><tspan x="510" class="halflife" dy="1em">Years</tspan>
 </text>
-<line x1="510" y1="210" x2="510" y2="405"/>
-<text x="515" y="310" class="ab">α</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="510" r="100" class="alkaline"/>
-<text>
-	<tspan x="480" y="515" class="su">88</tspan><tspan x="480" dy="-42" class="su">224</tspan><tspan x="480" dy="42" class="symbol">Ra</tspan><tspan x="510" dy="1.4em" class="halflife">3.6</tspan><tspan x="510" dy="1em" class="halflife">Days</tspan>
+  <path d="M510 210v195"/>
+  <text x="515" y="310" class="ab">α</text>
+  <circle cx="510" cy="510" r="100" stroke="#000" stroke-width="3.5" class="alkaline"/>
+  <text>
+	<tspan x="480" y="515" class="su">88</tspan><tspan x="480" class="su" dy="-42">224</tspan><tspan x="480" class="symbol" dy="42">Ra</tspan><tspan x="510" class="halflife" dy="1.4em">3.6</tspan><tspan x="510" class="halflife" dy="1em">Days</tspan>
 </text>
-<line x1="510" y1="610" x2="510" y2="805"/>
-<text x="515" y="710" class="ab">α</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="910" r="100" class="noblegas"/>
-<text>
-	<tspan x="480" y="915" class="su">86</tspan><tspan x="480" dy="-42" class="su">220</tspan><tspan x="480" dy="42" class="symbol">Rn</tspan><tspan x="510" dy="1.4em" class="halflife">55</tspan><tspan x="510" dy="1em" class="halflife">Seconds</tspan>
+  <path d="M510 610v195"/>
+  <text x="515" y="710" class="ab">α</text>
+  <circle cx="510" cy="910" r="100" stroke="#000" stroke-width="3.5" class="noblegas"/>
+  <text>
+	<tspan x="480" y="915" class="su">86</tspan><tspan x="480" class="su" dy="-42">220</tspan><tspan x="480" class="symbol" dy="42">Rn</tspan><tspan x="510" class="halflife" dy="1.4em">55</tspan><tspan x="510" class="halflife" dy="1em">Seconds</tspan>
 </text>
-<line x1="510" y1="1010" x2="510" y2="1205"/>
-<text x="515" y="1110" class="ab">α</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="1310" r="100" class="metalloid"/>
-<text>
-	<tspan x="480" y="1315" class="su">84</tspan><tspan x="480" dy="-42" class="su">216</tspan><tspan x="480" dy="42" class="symbol">Po</tspan><tspan x="510" dy="1.4em" class="halflife">0.14</tspan><tspan x="510" dy="1em" class="halflife">Seconds</tspan>
+  <path d="M510 1010v195"/>
+  <text x="515" y="1110" class="ab">α</text>
+  <circle cx="510" cy="1310" r="100" stroke="#000" stroke-width="3.5" class="metalloid"/>
+  <text>
+	<tspan x="480" y="1315" class="su">84</tspan><tspan x="480" class="su" dy="-42">216</tspan><tspan x="480" class="symbol" dy="42">Po</tspan><tspan x="510" class="halflife" dy="1.4em">0.14</tspan><tspan x="510" class="halflife" dy="1em">Seconds</tspan>
 </text>
-<line x1="510" y1="1410" x2="510" y2="1605"/>
-<text x="515" y="1510" class="ab">α</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="510" cy="1710" r="100" class="poormetal"/>
-<text>
-	<tspan x="480" y="1715" class="su">82</tspan><tspan x="480" dy="-42" class="su">212</tspan><tspan x="480" dy="42" class="symbol">Pb</tspan><tspan x="510" dy="1.4em" class="halflife">10.6</tspan><tspan x="510" dy="1em" class="halflife">Hours</tspan>
+  <path d="M510 1410v195"/>
+  <text x="515" y="1510" class="ab">α</text>
+  <circle cx="510" cy="1710" r="100" stroke="#000" stroke-width="3.5" class="poormetal"/>
+  <text>
+	<tspan x="480" y="1715" class="su">82</tspan><tspan x="480" class="su" dy="-42">212</tspan><tspan x="480" class="symbol" dy="42">Pb</tspan><tspan x="510" class="halflife" dy="1.4em">10.6</tspan><tspan x="510" class="halflife" dy="1em">Hours</tspan>
 </text>
-<line x1="581" y1="1639" x2="636" y2="1584"/>
-<text x="600" y="1650" class="ab">β⁻</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="710" cy="1510" r="100" class="poormetal"/>
-<text>
-	<tspan x="680" y="1515" class="su">83</tspan><tspan x="680" dy="-42" class="su">212</tspan><tspan x="680" dy="42" class="symbol">Bi</tspan><tspan x="710" dy="1.4em" class="halflife">61</tspan><tspan x="710" dy="1em" class="halflife">Minutes</tspan>
+  <path d="m581 1639 55-55"/>
+  <text x="600" y="1650" class="ab">β⁻</text>
+  <circle cx="710" cy="1510" r="100" stroke="#000" stroke-width="3.5" class="poormetal"/>
+  <text>
+	<tspan x="680" y="1515" class="su">83</tspan><tspan x="680" class="su" dy="-42">212</tspan><tspan x="680" class="symbol" dy="42">Bi</tspan><tspan x="710" class="halflife" dy="1.4em">61</tspan><tspan x="710" class="halflife" dy="1em">Minutes</tspan>
 </text>
-<line x1="710" y1="1610" x2="710" y2="1805"/>
-<text x="715" y="1710" class="ab">α</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="710" cy="1910" r="100" class="poormetal"/>
-<text>
-	<tspan x="680" y="1915" class="su">81</tspan><tspan x="680" dy="-42" class="su">208</tspan><tspan x="680" dy="42" class="symbol">Tl</tspan><tspan x="710" dy="1.4em" class="halflife">3.1</tspan><tspan x="710" dy="1em" class="halflife">Minutes</tspan>
+  <path d="M710 1610v195"/>
+  <text x="715" y="1710" class="ab">α</text>
+  <circle cx="710" cy="1910" r="100" stroke="#000" stroke-width="3.5" class="poormetal"/>
+  <text>
+	<tspan x="680" y="1915" class="su">81</tspan><tspan x="680" class="su" dy="-42">208</tspan><tspan x="680" class="symbol" dy="42">Tl</tspan><tspan x="710" class="halflife" dy="1.4em">3.1</tspan><tspan x="710" class="halflife" dy="1em">Minutes</tspan>
 </text>
-<line x1="781" y1="1839" x2="836" y2="1784"/>
-<text x="800" y="1850" class="ab">β⁻</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="910" cy="1710" r="100" class="poormetal"/>
-<text>
-	<tspan x="880" y="1715" class="su">82</tspan><tspan x="880" dy="-42" class="su">208</tspan><tspan x="880" dy="42" class="symbol">Pb</tspan><tspan x="910" dy="1.4em" class="halflife">Stable</tspan>
+  <path d="m781 1839 55-55"/>
+  <text x="800" y="1850" class="ab">β⁻</text>
+  <circle cx="910" cy="1710" r="100" stroke="#000" stroke-width="3.5" class="poormetal"/>
+  <text>
+	<tspan x="880" y="1715" class="su">82</tspan><tspan x="880" class="su" dy="-42">208</tspan><tspan x="880" class="symbol" dy="42">Pb</tspan><tspan x="910" class="halflife" dy="1.4em">Stable</tspan>
 </text>
-<line x1="781" y1="1439" x2="836" y2="1384"/>
-<text x="800" y="1450" class="ab">β⁻</text>
-<circle style="stroke: black; stroke-width: 3.5" cx="910" cy="1310" r="100" class="metalloid"/>
-<text>
-	<tspan x="880" y="1315" class="su">84</tspan><tspan x="880" dy="-42" class="su">212</tspan><tspan x="880" dy="42" class="symbol">Po</tspan><tspan x="910" dy="1.4em" class="halflife">3e-07</tspan><tspan x="910" dy="1em" class="halflife">Seconds</tspan>
+  <path d="m781 1439 55-55"/>
+  <text x="800" y="1450" class="ab">β⁻</text>
+  <circle cx="910" cy="1310" r="100" stroke="#000" stroke-width="3.5" class="metalloid"/>
+  <text>
+	<tspan x="880" y="1315" class="su">84</tspan><tspan x="880" class="su" dy="-42">212</tspan><tspan x="880" class="symbol" dy="42">Po</tspan><tspan x="910" class="halflife" dy="1.4em">3e-07</tspan><tspan x="910" class="halflife" dy="1em">Seconds</tspan>
 </text>
-<line x1="910" y1="1410" x2="910" y2="1605"/>
-<text x="915" y="1510" class="ab">α</text>
+  <path d="M910 1410v195"/>
+  <text x="915" y="1510" class="ab">α</text>
 </svg>
