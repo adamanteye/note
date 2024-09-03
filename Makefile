@@ -18,11 +18,11 @@ site: build/index.html
 
 build/assets/: assets/
 	@mkdir -p $(@D)
-	cp -r $(<D) $(@D)
+	cp -r $(<D)/* $(@D)
 
-build/index.html: $(TYP_BUILDS) build/assets/ generate.sh index-template.html
+build/index.html: $(TYP_BUILDS) $(TEX_BUILDS) build/assets/ generate.sh index-template.html
 	@mkdir -p $(@D)
-	cd $(@D) && ../generate.sh . ../index-template.html
+	cd $(@D) && ../generate.sh . ../index-template.html ../page-template.html
 
 print:
 	@for pdf in $(TYP_BUILDS); do \

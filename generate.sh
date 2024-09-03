@@ -1,25 +1,23 @@
 #!/bin/zsh
 
-# 读取目录并生成PDF文件的路径和最后修改时间
-read_directory() {
+pdf_path=$1
+root_template=$2
+page_template=$3
+
+generate_root() {
     local dir=$1
-    find "$dir" -type f -name "*.pdf" -exec stat --format='<tr><td><a href="{}">{}</a></td><td>%y</td></tr>' "{}" \;
+    local depth=0
+    find "$dir"  -type f -name "*.pdf" -exec sh -c 'stat --format="<tr><td><a href=\"{}\">{}</a></td><td>%y</td></tr>" "{}" | sed "s|>./|>|"' \;
 }
 
-pdf_path=$1
-template_file=$2
-
-# 生成PDF文件的链接表格
-pdf_links=$(read_directory "$pdf_path")
+links=$(generate_root "$pdf_path")
 
 # 读取模板文件并替换占位符
 output_path="$pdf_path/index.html"
-awk -v pdf_links="$pdf_links" '{
-    if ($0 ~ /{{pdfLinks}}/) {
-        print pdf_links;
+awk -v links="$links" '{
+    if ($0 ~ /{{Links}}/) {
+        print links;
     } else {
         print $0;
     }
-}' "$template_file" > "$output_path"
-
-echo "Generated $output_path"
+}' "$root_template" > "$output_path"
