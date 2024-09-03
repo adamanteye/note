@@ -20,7 +20,7 @@ build/assets/: assets/
 	@mkdir -p $(@D)
 	cp -r $(<D) $(@D)
 
-build/index.html: $(TYP_BUILDS) build/assets/ build/generate.sh index-template.html
+build/index.html: $(TYP_BUILDS) build/assets/ generate.sh index-template.html
 	@mkdir -p $(@D)
 	cd $(@D) && ../generate.sh . ../index-template.html
 
