@@ -9,13 +9,11 @@ note-tex:
   cache:
     paths:
       - build/
-      - node_modules/
     key: "$CI_COMMIT_REF_SLUG"
   tags:
     - latex
     - typst
     - shell
-    - node
   except:
     changes:
       - README.md
