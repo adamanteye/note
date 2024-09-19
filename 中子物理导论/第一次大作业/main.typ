@@ -45,9 +45,12 @@
 - 在1986年到1999年间,两方面的进步提高了测量精度
   + 这里补充5,6论文
   + GAMS-4的0.1MeV到6MeV的$gamma$射线测量精度不断地得到改善
-- 1999年, E.G. Kessler, Jr., M.S. Dewey, R.D. Deslattes, A. Henins, H.G. Borner, M. Jentschel, C. Doll以及H. Lehmann又利用更准确的原子质量数据重新计算了中子质量
+    - 为晶体光谱仪配备精确定位的隔振平台
+    - 改进角度干涉仪(angle interferometers)
+- 1999年, E.G. Kessler, Jr., M.S. Dewey, R.D. Deslattes, A. Henins, H.G. Borner, M. Jentschel, C. Doll以及H. Lehmann又利用更准确的原子质量数据重新计算了中子质量,结果为$qty("1.00866491637+-0.00000000082","u")$
 == 从结合能得到中子质量
-
+对于中子质量,以相对原子质量单位表达的式子为$ A_r (isotope(d))= $
+== Bragg
 = 总结
 #show: appendix
 #set text(font: ("Linux Libertine", "Source Han Serif SC"), lang: "en", region: "us")
