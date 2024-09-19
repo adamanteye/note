@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3369.174" height="1578.258" version="1.0">
+  <defs>
+    <marker id="a" orient="auto" overflow="visible" refX="0" refY="0">
+      <path fill-rule="evenodd" stroke="#000" stroke-width=".8pt" d="m-10 0-4 4L0 0l-14-4 4 4z"/>
+    </marker>
+    <marker id="b" orient="auto" overflow="visible" refX="0" refY="0">
+      <path fill-rule="evenodd" stroke="#000" stroke-width=".8pt" d="m10 0 4-4L0 0l14 4-4-4z"/>
+    </marker>
+  </defs>
+  <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.954" d="M598.023 1459.837a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm1600 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm-1200 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm1600 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm-1200 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm1600 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm-1200 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm-1200-400a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm1600 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm-1200 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm1600 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm-1200 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm1600 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0zm-1200 0a48.023 48.023 0 1 1-96.046 0 48.023 48.023 0 1 1 96.046 0z"/>
+  <path fill="none" fill-rule="evenodd" stroke="#000" stroke-width="10" d="M5 1459.837h3359.174"/>
+  <path fill="none" fill-rule="evenodd" stroke="#000" stroke-width="5" marker-end="url(#a)" marker-start="url(#b)" d="M-355.018 988.304v-372.41" transform="translate(500 457.475)"/>
+  <path fill="none" fill-rule="evenodd" stroke="#000" stroke-width="10" d="M5 1059.837h3359.174"/>
+  <path fill="none" fill-rule="evenodd" stroke="#000" stroke-dasharray="60 20" stroke-width="10" d="M1745.23 1054.837 1139.105 5"/>
+  <path fill="none" fill-rule="evenodd" stroke="#000" stroke-dasharray="60 20" stroke-width="10" marker-end="url(#a)" d="m1254.949 597.413 599.928-1039.107" transform="translate(500 457.475)"/>
+  <path fill="none" fill-rule="evenodd" stroke="#000" stroke-dasharray="60 20" stroke-width="10" d="M1743.346 1452.954 908.88 7.615"/>
+  <path fill="none" fill-rule="evenodd" stroke="#000" stroke-dasharray="60 20" stroke-width="10" marker-end="url(#a)" d="m1256.846 995.516 829.42-1436.598" transform="translate(500 457.475)"/>
+  <path fill="none" fill-rule="evenodd" stroke="#000" stroke-width="5" marker-end="url(#a)" marker-start="url(#b)" d="m1397.309 1073.57 159.54-276.333" transform="translate(500 457.475)"/>
+  <path fill="none" fill-rule="evenodd" stroke="#000" stroke-width="10" d="m1755 1064.837 361.11 208.487m-361.308 191.315 188.135 108.62"/>
+  <text xml:space="preserve" x="1530.432" y="941.98" stroke="none" font-family="Bitstream Vera Sans" font-size="72" font-weight="400" transform="translate(500 457.475)"><tspan x="1530.432" y="941.98" font-size="100">dsinθ</tspan></text>
+  <path fill="none" stroke="#000" stroke-linejoin="round" stroke-width="5" d="M1495.692 1460.682a254.093 254.093 0 0 1 166.11-148.912"/>
+  <text xml:space="preserve" x="1093.002" y="978.756" stroke="none" font-family="Bitstream Vera Sans" font-size="40" font-weight="400" transform="translate(500 457.475)"><tspan x="1093.002" y="978.756" font-size="100">θ</tspan></text>
+  <text xml:space="preserve" x="-450.603" y="841.32" stroke="none" font-family="Bitstream Vera Sans" font-size="40" font-weight="400" transform="translate(500 457.475)"><tspan x="-450.603" y="841.32" font-size="100">d</tspan></text>
+</svg>
