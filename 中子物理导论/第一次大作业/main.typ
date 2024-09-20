@@ -3,7 +3,7 @@
 #import "@preview/unify:0.6.0": *
 #import "@preview/physica:0.9.3": *
 
-#set text(font: ("Linux Libertine", "Source Han Serif SC"), lang: "zh", region: "cn")
+#set text(font: ("Linux Libertine", "Source Han Serif"), lang: "zh", region: "cn")
 #show heading.where(level: 1): set heading(numbering: "1.")
 #show: university-theme.with(
   aspect-ratio: "16-9",
