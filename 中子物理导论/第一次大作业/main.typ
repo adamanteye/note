@@ -60,6 +60,8 @@
   - 中子通量$qty("5e14","cm^-2 s^-1")$
 / 晶体: $qty("2.5","mm")$厚的硅片,晶格间距以米为单位测量,误差为$num("5e-8")$
 / 干涉仪: 经常校准,测量衍射角度的精度可以达到$num("1e-7")$
+== GAMS-4装置
+#figure(image("4.png", height: 90%), caption: [GAMS-4双晶谱仪 @kessler_gams4_2001])
 == Bragg衍射
 #grid(columns: (1.5fr,1fr),[
   布拉格衍射(又称X射线衍射的布拉格形式),最早由Sir William Lawrence Bragg及Sir William Henry Bragg于1913年提出.
@@ -93,4 +95,4 @@
 
 #show: appendix
 #set text(font: ("Linux Libertine", "Source Han Serif SC"), lang: "en", region: "us")
-#bibliography("ref.bib", style: "american-physics-society")
+#bibliography("ref.bib", style: "american-physics-society", title: "参考文献")
