@@ -12,7 +12,7 @@
     subtitle: [中子物理导论第一次大作业],
     authors: ("杨哲涵","司书屹"),
     date: datetime.today(),
-    institution: [工物系],
+    institution: [工程物理系],
     logo: none,
   ),
   config-colors(
