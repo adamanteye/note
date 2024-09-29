@@ -79,6 +79,11 @@ $ x'=x-eta f' (x) $
   $ E_k = -t_k log(y_k) \ E=sum_k E_k $
 ]
 == 反向传播
+Steps of BP is:
++ compute the local gradients
++ compute the upstream gradients (Gradient Output) from next operator unit
++ apply chain rule to compute downstream gradients (Gradient Input) of local inputs
++ repeat the same procedure on the back operator units
 #def("Gradient Output")[
   Gradient output of neuron $j$ in layer $l$ is $ delta_j^l=pdv(E,u_j^l) $
 ]
