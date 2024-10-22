@@ -1,7 +1,7 @@
 #grid(columns: 2,align: left,[
   Die Ausstellung "Crossing Parallels: German Design 1945-1990" im Kunstmuseum der Tsinghua Universität wird bis Mitte April dauern.
 ],[
-  清华大学艺术博物馆承办的展览 “交织的轨迹：德国设计 1945-1990” 将持续到四月中旬。
+  清华大学艺术博物馆承办的展览 "交织的轨迹:德国设计 1945-1990" 将持续到四月中旬.
 ])
 
 #grid(columns: 2,align: left,[
@@ -11,7 +11,7 @@
 #grid(columns: 2,align: left,[
   Die meisten Menschen denken, dass Krieg vor allem aus Kämpfen besteht, das stimmt nicht, es ist das Warten. Auf den nächsten Angriff, das nächste Essen, den nächsten Morgen.
 ],[
-  大多数人以为，战争是由战斗组成的，其实不是。它是等待，等待下一次进攻，下一顿饭，下一个清晨。
+  大多数人以为,战争是由战斗组成的,其实不是.它是等待,等待下一次进攻,下一顿饭,下一个清晨.
 ])
 
 #grid(columns: 2,align: left,[
@@ -21,21 +21,21 @@
   - Brigitte fragt ihn, ob ihm das Essen in der Mensa nicht schmeckt.
   - Wang Hongliang antwortet: "Das Essen in der Mensa schmeckt mir gut. Nur hat unsere Uni zu viele Mensen und ich weiß nicht, in welche Mensa ich gehen soll."
 ],[
-  - 我听说，在中国人们常提到 "凡尔赛文学" 。你能告诉我什么是凡尔赛文学吗？
-  - 啊，这就是说，一个人说他很烦恼，但实际上他想要展示他很幸福。
-  - 比如，王洪亮说，中午他总是很烦躁。
-  - Brigitte 问他，他是否觉得食堂的饭不好吃。
-  - 王洪亮回答说： "食堂的饭很好吃，只不过我们学校有太多食堂，我不知道该去哪个食堂。"
+  - 我听说,在中国人们常提到 "凡尔赛文学".你能告诉我什么是凡尔赛文学吗？
+  - 啊,这就是说,一个人说他很烦恼,但实际上他想要展示他很幸福.
+  - 比如,王洪亮说,中午他总是很烦躁.
+  - Brigitte 问他,他是否觉得食堂的饭不好吃.
+  - 王洪亮回答说: "食堂的饭很好吃,只不过我们学校有太多食堂,我不知道该去哪个食堂."
 ])
 
 #grid(columns: 2,align: left,[
   Wenn einer eine Blume liebt, die es nur ein einziges Mal gibt auf allen Millionen und Millionen Sternen, dann genügt es ihm völlig, dass er zu ihnen hinaufschaut, um glücklich zu sein. Er sagt sich: Meine Blume ist da oben, irgendwo… Wenn aber das Schaf die Blume frisst, so sit es für ihn, als wären plötzlich alle Sterne ausgelöscht! Und das soll nicht wichtig sein?
 ],[
-  如果有人爱着在亿万星球之中独一无二的一朵花儿，那他只要看一眼天上的星星就足以幸福了！他可以对他自己说：我的花儿就在那里，某个地方……但是如果羊吃了那朵花儿，那么一瞬间他的世界里所有的星星都将熄灭。你认为这也不重要吗？
+  如果有人爱着在亿万星球之中独一无二的一朵花儿,那他只要看一眼天上的星星就足以幸福了！他可以对他自己说:我的花儿就在那里,某个地方……但是如果羊吃了那朵花儿,那么一瞬间他的世界里所有的星星都将熄灭.你认为这也不重要吗？
 ])
 
 #grid(columns: 2,align: left,[
   Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.
 ],[
-  一天早晨，当 Gregor Samsa 从不安的睡梦中醒来时，他发现自己在床上变成了一只巨大的甲虫。
+  一天早晨,当 Gregor Samsa 从不安的睡梦中醒来时,他发现自己在床上变成了一只巨大的甲虫.
 ])

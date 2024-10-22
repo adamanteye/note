@@ -1,5 +1,5 @@
 #set text(
-  font: ("Linux Libertine", "Source Han Serif"),
+  font: ("Libertinus Serif", "Source Han Serif"),
   lang: "de",
   region: "de",
 )
@@ -19,7 +19,11 @@
 ])
 
 #columns(2)[
-= 动词
+= 形容词
+#set heading(offset: 1)
+#include "形容词.typ"
+#set heading(offset: 0)
+] 动词
 #set heading(offset: 1)
 #include "动词.typ"
 #set heading(offset: 0)
