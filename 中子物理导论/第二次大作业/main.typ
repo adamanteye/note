@@ -1,9 +1,9 @@
-#import "@preview/touying:0.5.2": *
+#import "@preview/touying:0.5.3": *
 #import themes.university: *
 #import "@preview/unify:0.6.0": *
 #import "@preview/physica:0.9.3": *
 
-#set text(font: ("Linux Libertine", "Source Han Serif"), lang: "zh", region: "cn")
+#set text(font: ("Libertinus Serif", "Source Han Serif"), lang: "zh", region: "cn")
 #show heading.where(level: 1): set heading(numbering: "1.")
 #show: university-theme.with(
   aspect-ratio: "16-9",
@@ -80,7 +80,7 @@ $ ket(nu_j (L))=e^(-i (m_j^2 L)/(2E)) ket(nu_j (0)) $
 == 概述
 #grid(columns:3,[
   Super-Kamiokande(Super-Kamioka Neutrino Detection Experiment)是世界上最大的切伦科夫探测器(直径39.3m,高度41.4m,填充50000t超纯水).
-  
+
   Super-K的前身为1982年小柴昌俊(Koshiba)建设的神冈探测器.探测目标包括质子衰变(没有实现),太阳中微子,大气中微子,超新星中微子.
   ],figure(image("1.jpg", height: 60%), caption: "神岡町(岐阜県)"),figure(image("2.jpg", height: 60%), caption: "Super-K示意图"))
 Super-K建造于1000米厚的岩层下的废弃矿井,对宇宙线muon的屏蔽效果等效于2700米的水深.观测到的宇宙线muon通量为$qty("6e-8","cm^-2 s^-1 sr^-1")$.@fukuda_super-kamiokande_2003
@@ -161,7 +161,7 @@ $ n+p->d+gamma+qty("2.2","MeV") $
   - 超低能触发(SLE)
   - 低能触发(LE)
   - 高能触发(HE)
-  
+
   为了测量中子标记效率,开发了一个与当前Super-K电子设备兼容的标准核仪器模块(NIM)
 ],figure(image("13.jpg",height: 40%), caption: [强制触发信号]))
 #figure(image("16.jpg", height: 85%), caption: [Distributions of discriminating variables for signal (open histogram) and background (hatched)])

@@ -1,4 +1,4 @@
-#import "@preview/touying:0.5.2": *
+#import "@preview/touying:0.5.3": *
 #import themes.university: *
 #import "@preview/unify:0.6.0": *
 #import "@preview/physica:0.9.3": *
@@ -9,7 +9,7 @@
 #show: university-theme.with(
   aspect-ratio: "16-9",
   config-info(
-    title: [$isotope("Pu", a:239)(n,f)$瞬发裂变中子谱的预平衡不对称性],
+    title: [$isotope("Pu", a:239)(n,f)$瞬发裂变中子谱的预平衡不对称],
     subtitle: [中子物理导论第四次大作业],
     authors: ("杨哲涵", "司书屹"),
     date: datetime(year: 2024, month: 10, day: 25),

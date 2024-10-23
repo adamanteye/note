@@ -1,9 +1,9 @@
-#import "@preview/touying:0.5.2": *
+#import "@preview/touying:0.5.3": *
 #import themes.university: *
 #import "@preview/unify:0.6.0": *
 #import "@preview/physica:0.9.3": *
 
-#set text(font: ("Linux Libertine", "Source Han Serif"), lang: "zh", region: "cn")
+#set text(font: ("Libertinus Serif", "Source Han Serif"), lang: "zh", region: "cn")
 #show heading.where(level: 1): set heading(numbering: "1.")
 #show: university-theme.with(
   aspect-ratio: "16-9",
@@ -50,7 +50,7 @@
     - 改进角度干涉仪(angle interferometers)
     - 更多几乎完美的硅和锗晶体
 - 1999年, E.G. Kessler, Jr., M.S. Dewey, R.D. Deslattes, A. Henins, H.G. Borner, M. Jentschel, C. Doll以及H. Lehmann又利用更准确的原子质量数据重新计算了中子质量,结果为$qty("1.00866491637+-0.00000000082","u")$
-== 实验方法 
+== 实验方法
 1986年实验与1999年的实验设置是基本一样的,实验均在GAMS-4(位于法国Grenoble的高精度伽马射线计量实验室，连接到一个反应堆端口)完成.
 
 基本方法是通过Bragg衍射测量$gamma$射线的能量,然后利用结合能计算中子质量.
@@ -69,7 +69,7 @@
   $ n lambda=2d sin theta $
 
   模型中晶体为一组各自分离的平行平面,相邻平面间的距离皆为一常数$d$
-  
+
   如果各平面反射出来的X射线成相长干涉的话,那么入射的X射线经晶体反射后会产生尖峰
 
 ],figure(image("2.svg", height: 70%), caption: "Bragg衍射示意图"))

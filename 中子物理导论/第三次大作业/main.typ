@@ -1,10 +1,10 @@
-#import "@preview/touying:0.5.2": *
+#import "@preview/touying:0.5.3": *
 #import themes.university: *
 #import "@preview/unify:0.6.0": *
 #import "@preview/physica:0.9.3": *
 
+#set text(font: ("Libertinus Serif", "Source Han Serif"), lang: "zh", region: "cn")
 #let pm=$plus.minus$
-#set text(font: ("Linux Libertine", "Source Han Serif"), lang: "zh", region: "cn")
 #show heading.where(level: 1): set heading(numbering: "1.")
 #show: university-theme.with(
   aspect-ratio: "16-9",
@@ -45,7 +45,7 @@
 为了解释低能区的此类反常现象,学者们提出了各种假说,尝试了多种模型拟合,例如
 
 - 存在“负能量”共振峰导致的“背景”截面@SNR_1958
-- 尝试跳出单能Breit-Wigner公式的束缚,用多级色散理论等解释.@SR_1952 @HAM_1957 
+- 尝试跳出单能Breit-Wigner公式的束缚,用多级色散理论等解释.@SR_1952 @HAM_1957
 
 由于裂变核在低能区域的裂变宽度与共振峰间隔相当,不同共振峰之间的相干效应往往被优先考虑,而自旋态又恰是影响此类干扰强度的不可忽视的一部分.
 
