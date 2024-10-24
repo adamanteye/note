@@ -34,11 +34,12 @@
 == 目录 <touying:hidden>
 #align(horizon, components.adaptive-columns(outline(title: none, indent: 1em, depth: 1)))
 = 引言
+#slide[
 从大约上世纪40年代开始,人们在尝试用共振理论解释核截面时遇到了各种问题.尤其是对于$isotope("U", a: 233),isotope("Pu", a: 239)$等裂变核素,它们的核截面在低能区(热中子区)显得尤为反常,具体表现在
 + 无论是总截面$sigma_(n T)$,抑或单是裂变截面$sigma_(n f)$,其数值都异常的大
 + 共振峰的形状,尤其是$isotope("U",a: 235)$能量最小的两个共振峰,相对宽度中心并不对称,不符合Brite-Wigner公式的预期
 + 即使是位于共振峰之间的能量区域,其截面数值也远远超过了理论预期
-
+]
 #figure(image("img/cross_section.png", width: 80%), caption: "U-235低能区截面图")
 #pagebreak()
 
@@ -138,6 +139,7 @@ $ sigma=I/(2I+1)(1-f_N f_n)sigma_-+(I+1)/(2I+1)(1+I/(I+1)f_N f_n)sigma_+ $其中
 此外,即使基本只能保证$f_N$数据的数量级准确,但仍可以尝试对截面比的数值进行评估,例如取0.075eV的数据计算$ isotope("U", a: 235)_"metal":sigma_(I+1\/2)/sigma_0 =0.74 $
 这意味着在入射中子能量为0.075eV时,纯铀金属中,大约四分之三的截面来自$I+1/2$的自旋态贡献
 = 总结
+#slide[
 大量研究聚焦于低能中子诱发的$isotope("U",a:235)$裂变截面,但目前人们对这个过程的理解也不完整.
 
 裂变是一个多通道过程,已观察到截面共振峰的不对称性,这一不对称性使得单能极的Breit-Wigner公式难以解释,需要多能级色散理论等更复杂的模型.
@@ -147,6 +149,7 @@ $ sigma=I/(2I+1)(1-f_N f_n)sigma_-+(I+1)/(2I+1)(1+I/(I+1)f_N f_n)sigma_+ $其中
 在此研究之后,还有若干研究尝试解决没有回答清楚的问题,例如1974年BNL确定了更精确的自旋依赖,给出了15个共振峰的结果,并且确认了$isotope("U", a: 235)$的磁矩为负@reddingiust_spins_nodate.
 
 因此,本文使用的方法和数据分析手段具有重要的开创性意义,为后续研究提供了重要的参考.
+]
 #show: appendix
 #set text(lang: "en", region: "us")
 #bibliography("main.bib", style: "american-physics-society", title: "参考文献")
