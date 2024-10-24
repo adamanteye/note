@@ -71,20 +71,20 @@
   <text x="1290" y="1600" class="SideKey">Bismuth</text>
   <text x="1290" y="1800" class="SideKey">Lead</text>
   <text x="1290" y="2000" class="SideKey">Thallium</text>
-  <path fill="#fff" stroke="#000" stroke-width="2" d="M10 10h340v340H10z" transform="translate(0 1670)"/>
-  <path d="M20 20h40v40H20z" class="actinide" transform="translate(0 1670)"/>
+  <path fill="#fff" stroke="#000" stroke-width="2" d="M10 1680h340v340H10z"/>
+  <path d="M20 1690h40v40H20z" class="actinide"/>
   <text x="65" y="50" class="key" transform="translate(0 1670)">Actinides</text>
   <path fill="url(#alkali)" d="M20 60h40v40H20z" transform="translate(0 1670)"/>
   <text x="65" y="90" class="key" transform="translate(0 1670)">Alkali Metals</text>
-  <path d="M20 100h40v40H20z" class="alkaline" transform="translate(0 1670)"/>
+  <path d="M20 1770h40v40H20z" class="alkaline"/>
   <text x="65" y="130" class="key" transform="translate(0 1670)">Alkaline Earth Metals</text>
   <path fill="url(#halogen)" d="M20 140h40v40H20z" transform="translate(0 1670)"/>
   <text x="65" y="170" class="key" transform="translate(0 1670)">Halogens</text>
-  <path d="M20 180h40v40H20z" class="metalloid" transform="translate(0 1670)"/>
+  <path d="M20 1850h40v40H20z" class="metalloid"/>
   <text x="65" y="210" class="key" transform="translate(0 1670)">Metalloids</text>
-  <path d="M20 220h40v40H20z" class="noblegas" transform="translate(0 1670)"/>
+  <path d="M20 1890h40v40H20z" class="noblegas"/>
   <text x="65" y="250" class="key" transform="translate(0 1670)">Noble Gases</text>
-  <path d="M20 260h40v40H20z" class="poormetal" transform="translate(0 1670)"/>
+  <path d="M20 1930h40v40H20z" class="poormetal"/>
   <text x="65" y="290" class="key" transform="translate(0 1670)">Post Transition Metals</text>
   <path fill="url(#transition)" d="M20 300h40v40H20z" transform="translate(0 1670)"/>
   <text x="65" y="330" class="key" transform="translate(0 1670)">Transition Metals</text>

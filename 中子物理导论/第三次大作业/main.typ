@@ -148,5 +148,5 @@ $ sigma=I/(2I+1)(1-f_N f_n)sigma_-+(I+1)/(2I+1)(1+I/(I+1)f_N f_n)sigma_+ $其中
 
 因此,本文使用的方法和数据分析手段具有重要的开创性意义,为后续研究提供了重要的参考.
 #show: appendix
-#set text(font: ("Linux Libertine", "Source Han Serif SC"), lang: "en", region: "us")
+#set text(lang: "en", region: "us")
 #bibliography("main.bib", style: "american-physics-society", title: "参考文献")

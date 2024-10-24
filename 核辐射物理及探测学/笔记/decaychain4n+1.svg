@@ -77,16 +77,16 @@
   <text x="1290" y="2200" class="SideKey">Bismuth</text>
   <text x="1290" y="2400" class="SideKey">Lead</text>
   <text x="1290" y="2600" class="SideKey">Thallium</text>
-  <path fill="#fff" stroke="#000" stroke-width="2" d="M10 90h340v340H10z" transform="translate(0 2270)"/>
-  <path d="M20 100h40v40H20z" class="actinide" transform="translate(0 2270)"/>
+  <path fill="#fff" stroke="#000" stroke-width="2" d="M10 2360h340v340H10z"/>
+  <path d="M20 2370h40v40H20z" class="actinide"/>
   <text x="65" y="130" class="key" transform="translate(0 2270)">Actinide</text>
-  <path d="M20 150h40v40H20z" class="alkali" transform="translate(0 2270)"/>
+  <path d="M20 2420h40v40H20z" class="alkali"/>
   <text x="65" y="180" class="key" transform="translate(0 2270)">Alkali metal</text>
-  <path d="M20 200h40v40H20z" class="alkaline" transform="translate(0 2270)"/>
+  <path d="M20 2470h40v40H20z" class="alkaline"/>
   <text x="65" y="230" class="key" transform="translate(0 2270)">Alkaline earth metal</text>
-  <path d="M20 250h40v40H20z" class="metalloid" transform="translate(0 2270)"/>
+  <path d="M20 2520h40v40H20z" class="metalloid"/>
   <text x="65" y="280" class="key" transform="translate(0 2270)">Metalloid</text>
-  <path d="M20 300h40v40H20z" class="posttransitionmetal" transform="translate(0 2270)"/>
+  <path d="M20 2570h40v40H20z" class="posttransitionmetal"/>
   <text x="65" y="330" class="key" transform="translate(0 2270)">Post-transition metal</text>
   <circle cx="110" cy="110" r="100" stroke="#000" stroke-width="3.5" class="actinide"/>
   <text>

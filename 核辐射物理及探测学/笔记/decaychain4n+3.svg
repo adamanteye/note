@@ -75,20 +75,20 @@
   <text x="1290" y="2000" class="SideKey">Bismuth</text>
   <text x="1290" y="2200" class="SideKey">Lead</text>
   <text x="1290" y="2400" class="SideKey">Thallium</text>
-  <path fill="#fff" stroke="#000" stroke-width="2" d="M10 10h340v340H10z" transform="translate(0 2070)"/>
-  <path d="M20 20h40v40H20z" class="actinide" transform="translate(0 2070)"/>
+  <path fill="#fff" stroke="#000" stroke-width="2" d="M10 2080h340v340H10z"/>
+  <path d="M20 2090h40v40H20z" class="actinide"/>
   <text x="65" y="50" class="key" transform="translate(0 2070)">Actinides</text>
-  <path d="M20 60h40v40H20z" class="alkali" transform="translate(0 2070)"/>
+  <path d="M20 2130h40v40H20z" class="alkali"/>
   <text x="65" y="90" class="key" transform="translate(0 2070)">Alkali Metals</text>
-  <path d="M20 100h40v40H20z" class="alkaline" transform="translate(0 2070)"/>
+  <path d="M20 2170h40v40H20z" class="alkaline"/>
   <text x="65" y="130" class="key" transform="translate(0 2070)">Alkaline Earth Metals</text>
   <path fill="url(#halogen)" d="M20 140h40v40H20z" transform="translate(0 2070)"/>
   <text x="65" y="170" class="key" transform="translate(0 2070)">Halogens</text>
-  <path d="M20 180h40v40H20z" class="metalloid" transform="translate(0 2070)"/>
+  <path d="M20 2250h40v40H20z" class="metalloid"/>
   <text x="65" y="210" class="key" transform="translate(0 2070)">Metalloids</text>
-  <path d="M20 220h40v40H20z" class="noblegas" transform="translate(0 2070)"/>
+  <path d="M20 2290h40v40H20z" class="noblegas"/>
   <text x="65" y="250" class="key" transform="translate(0 2070)">Noble Gases</text>
-  <path d="M20 260h40v40H20z" class="posttransitionmetal" transform="translate(0 2070)"/>
+  <path d="M20 2330h40v40H20z" class="posttransitionmetal"/>
   <text x="65" y="290" class="key" transform="translate(0 2070)">Post Transistion Metals</text>
   <path fill="url(#transition)" d="M20 300h40v40H20z" transform="translate(0 2070)"/>
   <text x="65" y="330" class="key" transform="translate(0 2070)">Transition Metals</text>
