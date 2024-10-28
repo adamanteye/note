@@ -104,7 +104,7 @@
 $ P(A)=m(A)/m(S) $
 几何概型基于现代的 "测度" 的概念,
 == 贝叶斯概率
-贝叶斯概率的样本空间中的样本点为一系列 "假设(hypotheses)",
+贝叶斯概率的样本空间中的样本点为一系列*假设(hypotheses)*
 = 连续型随机变量
 #def("连续型随机变量")[
   设$X$是随机变量,若存在一个非负可积函数$f(x)$,使得$ F(x)=integral_(-infinity)^x f(t) dd(t),-infinity<x<+infinity $
@@ -201,6 +201,21 @@ $ lim_(n->infinity) 1/B_n^(2+delta) sum_(k=1)^n E(abs(X_k-mu_k))=0 $
 且满足可逆性和可达性条件,使它成为一个马尔科夫链,那么
 $ mu=E(X_1) $
 $ sigma^2="Var"(X_1)+2sum_(k=1)^infinity "Cov"(X_1,X_(1+k))<+infinity $
+]
+= 蒙特卡罗方法
+#def("第一类舍选法")[
+希望采样分布$X=x in [a,b], X~f(x)$且$L=max{f(x)|a<=x<=b}$
++ 对$[a,b]cprod[0,1]$区域内均匀分布的二维随机变量$(U,V)$抽样
++ 保留曲线$v=f(u)/L$下方的点,取其横坐标$ {u_i|v_i<=f(u_i)/L,i=1,2,dots,n}={x_1,x_2,dots,x_n} $
+]
+#thm("舍选法效率的期望")[
+$ E=1/((b-a)L) $
+]
+#proof[
+舍选法可以采样到希望的分布,是因为
+$ P(X<=x)&=P(U<=x|V<=f(U)/L)\ &=P(U<=x,V<=f(U)/L)/P(V<=f(U)/L)\ &=(integral_a^x dd(u) integral_0^(f(u)/L) dd(v) g(u,v))/(integral_a^b dd(u) integral_0^(f(u)/L) dd(v) g(u,v))\ &=integral_a^x dd(u) f(u) $
+其中$g(u,v)=1/(b-a)$.此外,效率的期望为
+$ E&=P(V<=f(U)/L)\ &=integral_a^b dd(u)integral_0^(f(u)/L)dd(v)g(u,v)\ &=1/((b-a)L) $
 ]
 = 分布族
 #def("指数分布族")[
