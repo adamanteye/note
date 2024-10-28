@@ -10,11 +10,8 @@
 #show link: it => underline(text(fill: rgb("#8c0000"), it))
 #set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
 #import "@preview/physica:0.9.3": *
-#import "@preview/ctheorems:1.1.2": *
+#import "@preview/ctheorems:1.1.3": *
 #show: thmrules
-
-// #set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])
-
 #let pst = thmbox(
   "thm",
   "公设",
@@ -31,7 +28,7 @@
   "thm",
   "定理",
   namefmt: x => [(#(strong(x)))],
-  titlefmt: emph
+  titlefmt: emph,
 )
 #let coll = thmbox(
   "coll",
@@ -40,7 +37,7 @@
   titlefmt: emph,
   base: "thm",
 )
-#let exmp = thmbox("exmp", "例", titlefmt: emph)
+#let exmp = thmbox("exmp", "例", titlefmt: emph, base: "thm")
 #let sol = thmplain("sol", "解答", titlefmt: emph, base: "exmp").with(numbering: none)
 #let proof = thmproof(
   "proof",
@@ -58,7 +55,6 @@
 ])
 
 #set par(leading: 1em)
-#set block(spacing: 1.5em)
 
 #show: rest => columns(2, rest)
 = 集合以及事件
@@ -134,13 +130,31 @@ $ P(A)=m(A)/m(S) $
 几何分布作为也是无记忆的,可以认为是离散型随机变量中的无记忆分布.
 
 离散型随机变量是右连续的.
+#def("柯西分布")[
+又称Breit-Wigner分布,概率密度函数为
+$ f(x;x_0,gamma)=1/pi gamma/((x-x_0)^2+gamma^2) $
+$x_0=0,gamma=1$的特例被称为标准柯西分布.
+]
 
+#thm("随机变量概率密度的复合")[
+设随机变量$X$具有概率密度$f_X (x),-infinity<x<infinity$.设函数$g(x)$处处可导且恒有$g'(x)>0$或$g'(x)<0$.则随机变量$Y=g(X)$是连续型随机变量,其概率密度为
+$ f_Y (y)=cases(f_X (h(y)) abs(h'(y)) &"if" alpha < y< beta,0 &"elsewhere") $
+其中$h(y)$是$g(x)$的反函数$ alpha=min(g(-infinity),g(infinity)),beta=max(g(-infinity),g(infinity)) $
+]
 = 二维随机变量
-
 注意$X$,$Y$来自同一个样本空间,意味着$X$,$Y$可以不独立.
-
-#def("Khinchin")[辛钦大数定律]
-#def("Bernoulli")[伯努利大数定律]
+= 大数定律
+#thm("Chebyshev不等式")[
+设随机变量$X$有数学期望$E(X)=mu$和方差$"Var"(X)=sigma^2$,则:$ forall epsilon>0, P(abs(x-mu)>=epsilon)<=sigma^2/epsilon^2 $
+]
+#def("Khinchin")[辛钦大数定律是弱大数定律,设$X_1,X_2,dots$是相互独立,服从同一分布的随机变量序列,且具有数学期望$E(X_k)=mu,k=1,2,dots$,则$forall epsilon >0$,有
+$ lim_(n->infinity) P(abs(1/n sum_(k=1)^n X_k -mu)<epsilon)=1 $
+]
+#coll("Bernoulli")[伯努利大数定律是辛钦大数定律的重要推论,设$f_A$是$n$次独立重复试验中事件$A$发生的次数,$p$是事件$A$在每次试验中发生的概率,则$forall epsilon >0$,有
+$ lim_(n->infinity) P(abs(f_A/n-p)<epsilon)=1 $
+或
+$ lim_(n->infinity) P(abs(f_A/n-p)>=epsilon)=0 $
+]
 
 = 极限定理
 极限定理是概率论的核心内容之一.
@@ -155,12 +169,54 @@ $ P(A)=m(A)/m(S) $
 则随机变量之和$X=:sum_(k=1)^n X_k$的标准化变量
 $ Y_n=(X-n mu)/(sqrt(n)sigma) $
 的分布函数$F_n (x)$对于任意实数$x$满足
-$ lim_(n->infinity) F_n(x)=integral_(-infinity)^x 1/sqrt(2pi) e^(-t^2/2) dd(t)=Phi(x) $
+$ lim_(n->infinity) F_n (x)=integral_(-infinity)^x 1/sqrt(2pi) e^(-t^2/2) dd(t)=Phi(x) $
 $n$足够大时, $X$近似服从$N(n mu,n sigma^2)$
 ]
-#thm("De Moivre Laplace")[
+#proof[
+对于$ Y_n=(sum_(k=1)^n X_k-n mu)/(sqrt(n)sigma)=sum_(i=1)^n (X_i-mu)/(sqrt(n)sigma) $
+$ => phi_(Y_n) (t)=(phi_(X_i)-mu (t/(sqrt(n)sigma)))^n $
+]
+#coll("De Moivre-Laplace")[
 这是Lindberg-Levi中心极限定理的二项分布特例.
 
-设$Y_n~b(n,p), 0<p<1, n=1,2,dots$,则对任一实数$x$,有
+设$Y_n~b(n,p), 0<p<1, n=1,2,dots$,则$forall x in RR$,有
 $ lim_(n->infinity) P((Y_n-n p)/sqrt(n p(1-p))<=x)=1/sqrt(2pi)integral_(-infinity)^x e^(-t^2/2) dd(t)=Phi(x) $
+]
+如何理解中心极限定理?
+
+卷积操作是高斯分布的不动点.
+#thm("Lyapunov")[
+李雅普诺夫定理说,设$X_1,X_2,dots$是独立随机变量序列,且数学期望和方差存在$ E(X_k)=mu_k, "Var"(X_k)=sigma_k^2>0, 1<=k<=n $
+记$B_n^2=sum_(k=1)^n sigma_k^2$.
+如果存在$delta>0$,使得Lyapunov条件
+$ lim_(n->infinity) 1/B_n^(2+delta) sum_(k=1)^n E(abs(X_k-mu_k))=0 $
+成立,则随机变量之和$X=:sum_(k=1)^n X_k$的标准化变量$ Y_n=(sum_(i=1)^n X_k-sum_(k=1)^n mu_k)/B_n $
+的分布函数$F_n (x)$对于任意$x$满足$ lim_(n->infinity) F_n (x)=Phi(x) $
+]
+#exmp[
+对于柯西分布,由于其方差不存在,所以中心极限定理不成立.
+]
+#thm("马尔科夫中心极限定理")[
+对于相互不独立的随机变量,即设$X_1,X_2,dots$是随机变量序列,且满足无后效性,即$P(X_j|X_(j-1),X_(j-2),dots)=P(X_j|X_(j-1))$
+且满足可逆性和可达性条件,使它成为一个马尔科夫链,那么
+$ mu=E(X_1) $
+$ sigma^2="Var"(X_1)+2sum_(k=1)^infinity "Cov"(X_1,X_(1+k))<+infinity $
+]
+= 分布族
+#def("指数分布族")[
+一族的分布,它们的概率密度函数或分布律记为$f(x|va(theta))$,如果有如下的形式,则称为$s$维指数分布族
+$ f(x|va(theta))=exp(sum_(i=1)^s eta_i (va(theta)) T_i (x)-B(va(theta))) h(x) $
+]
+#def("指数分布族标准形式")[
+把 $eta_i (va(theta))$当作自变量反解$theta$,那么形式有进一步化简.
+$ f(x|va(eta))=exp(sum_(i=1)^s eta_i T_i (x)-A(va(eta))) h(x) $
+其中$eta_i=eta_i (va(theta)),A(eta(va(theta)))=B(va(theta))$
+]
+#thm[指数分布族的期望和方差为$ E(X)=A'(eta) $$ "Var"(X)=A''(eta) $]
+#exmp("二项分布属于指数分布族")[
+$ P(k|p,n)&=binom(n,k)p^k(1-p)^(n-k)\ &=h(k) exp(T(k) eta(p)-B(p)) $
+其中$ h(k)=binom(n,k),T(k)=k,eta(p)=ln(p/(1-p)),B(p)=-n ln(1-p) $
+]
+#exmp("正态分布属于指数分布族")[
+$ f(x|mu,sigma^2)&=1/sqrt(2pi sigma^2) exp(-(x-mu)^2/(2sigma^2)) $
 ]
