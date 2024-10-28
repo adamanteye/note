@@ -1,5 +1,5 @@
 #set text(
-  font: ("Linux Libertine", "Source Han Serif"),
+  font: ("Libertinus Serif", "Source Han Serif"),
   lang: "zh",
   region: "cn",
 )
@@ -9,8 +9,8 @@
 #set heading(numbering: "1.")
 #show link: it => underline(text(fill: rgb("#8c0000"), it))
 #set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
-#import "@preview/physica:0.9.2": *
-#import "@preview/ctheorems:1.1.2": *
+#import "@preview/physica:0.9.3": *
+#import "@preview/ctheorems:1.1.3": *
 #show: thmrules
 
 #set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])

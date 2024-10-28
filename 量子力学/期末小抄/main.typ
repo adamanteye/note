@@ -1,5 +1,5 @@
 #set text(
-  font: ("Linux Libertine", "Source Han Serif"),
+  font: ("Libertinus Serif", "Source Han Serif"),
   lang: "zh",
   region: "cn",
 )
@@ -10,7 +10,7 @@
 #show link: it => underline(text(fill: rgb("#8c0000"), it))
 #set page("a4", numbering: "1", margin: (x: 1cm, y: 1cm), flipped: true)
 #import "@preview/physica:0.9.3": *
-#import "@preview/ctheorems:1.1.2": *
+#import "@preview/ctheorems:1.1.3": *
 #show: thmrules
 
 #let pst = thmbox(
@@ -323,4 +323,3 @@ e^(-(m omega)/(2hbar)x^2) $
 #def(
   "散射截面",
 )[$sigma(theta, phi.alt)=1/j_1 dv(n, Omega)$$ sigma(theta)=abs(f(theta))^2 $]
-
