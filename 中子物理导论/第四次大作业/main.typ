@@ -39,7 +39,7 @@
 #grid(columns: 2, column-gutter: 1em, [
 / 瞬发中子: 核裂变时,大部分的裂变中子均是一裂变就立即释出,称为瞬发中子(*prompt fission neutron*).
 #pause
-实验中,测得的中子谱包括了瞬发中子谱(*prompt fission neutron spectrum, PFNS*)与预平衡中子谱.前者对应前三个反应道,后者对应最后一个反应道.
+实验中,测得的瞬发中子谱(*prompt fission neutron spectrum, PFNS*)包括了后裂变中子谱与预平衡中子谱.前者对应前三个反应道,后者对应最后一个反应道.
 
 #pause
 根据理论,预平衡预裂变谱具有两个特征:
@@ -98,8 +98,16 @@ figure(table(columns:1, stroke: none,table.hline(), table.header([出射角度])
 ])
 == 预裂变不平衡的各向异性验证
 #grid(column-gutter: 1em, columns: 2, figure(image("img/4.png",height: 60%),caption: [$isotope("Pu", a:239)(n,f)$出射方向30$unit("d")\/$150$unit("d")$计数]),[
-])
-= 总结
+- 1-3MeV的出射中子主要是后裂变中子,具有高度的各向同性
+#pause
+- 验证了预平衡预裂变中子的各向异性,即在30$unit("d")$和150$unit("d")$方向上的计数差异
+#pause
+- 1-12MeV的出射中子含有预平衡预裂变中子,在$E^"inc"_n$超过16-17MeV后,高能尾部计数不再增长,这是因为超过了仪器的动态范围])
+== FKK模型
+本文依赖的理论模型是FKK模型(The model of Feshbach, Kerman, and Koonin)
+
+对预裂变中子,FKK模型的MSD(multiple step direct)-MSC(multiple step compound)可以用来描述不同能量和不同角度的裂变截面
+#pause
 #show: appendix
 #set text(lang: "en", region: "us")
 #bibliography("main.bib", style: "american-physics-society", title: "参考文献")
