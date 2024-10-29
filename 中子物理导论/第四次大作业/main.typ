@@ -109,7 +109,7 @@ figure(table(columns:1, stroke: none,table.hline(), table.header([出射角度])
 对预裂变中子,FKK模型的MSD(multiple step direct)-MSC(multiple step compound)可以用来描述不同能量和不同角度的裂变截面@kawano_effect_2001
 #pause
 $ (pdv(sigma,Omega,E))^"MSC"=1/(4pi)pi/k^2 sum_J (2J+1)2pi expval(Gamma_(1 J))/expval(D_(1 J)) sum_N sum_(nu j)expval(Gamma_N^(arrow.t nu j)rho^nu (U))/expval(Gamma_(N J))product_(M=1)^(N-1)expval(Gamma_(M J)^arrow.b)/expval(Gamma_(M J)) $
-#pause 
+#pause
 $ (pdv(sigma,Omega,E))^"MSD" =sum_lambda (2lambda+1)/(2s_a +1) (mu_a mu_b)/(2pi hbar^2)^2 k_b/k_a sum_(m m_b m_a) abs(T_lambda^(m m_b m_a) (theta))^2 omega(p,h,E_x) R_n (lambda) $
 其中各参数的含义详见@kawano_effect_2001,这里使用的FKK模型在后面给出了理论预测
 == K-M拟合
@@ -126,6 +126,8 @@ $ (pdv(sigma,Omega,E))=sigma_"MSD" sum_(l=0)^(l_max) b_l P_l (cos theta) $
 == 讨论
 #grid(column-gutter: 1em, columns: (1.5fr,1fr), figure(image("img/5.png",width: 100%),caption: [$isotope("Pu", a:239)(n,f)$的角分布实验数据与拟合分析]),[
 - K-M方法能够很好地拟合据的角分布特性,适合描述预裂变预平衡中子的角分布
+- FKK模型的估计值在这里没有给出绝对截面,因此给出的曲线是缩放过的.FKK模型与实验结果符合得很好,证实了预平衡预裂变中子与裂变轴(*fission axis*)无关
+/ 贡献: 准确测了预裂变中子的角分布,未来的裂变模型需要符合这一实验结果
 ])
 = 总结
 #slide[

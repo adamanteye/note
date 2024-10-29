@@ -4,6 +4,7 @@
 #import "@preview/physica:0.9.3": *
 
 #set text(font: ("Libertinus Serif", "Source Han Serif"), lang: "zh", region: "cn")
+#show figure.caption: set text(size: 0.9em)
 #show heading.where(level: 1): set heading(numbering: "1.")
 #show: university-theme.with(
   aspect-ratio: "16-9",

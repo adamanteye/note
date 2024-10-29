@@ -5,6 +5,7 @@
 
 #set text(font: ("Libertinus Serif", "Source Han Serif"), lang: "zh", region: "cn")
 #show heading.where(level: 1): set heading(numbering: "1.")
+#show figure.caption: set text(size: 0.9em)
 #show: university-theme.with(
   aspect-ratio: "16-9",
   config-info(
