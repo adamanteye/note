@@ -109,10 +109,26 @@ figure(table(columns:1, stroke: none,table.hline(), table.header([出射角度])
 对预裂变中子,FKK模型的MSD(multiple step direct)-MSC(multiple step compound)可以用来描述不同能量和不同角度的裂变截面@kawano_effect_2001
 #pause
 $ (pdv(sigma,Omega,E))^"MSC"=1/(4pi)pi/k^2 sum_J (2J+1)2pi expval(Gamma_(1 J))/expval(D_(1 J)) sum_N sum_(nu j)expval(Gamma_N^(arrow.t nu j)rho^nu (U))/expval(Gamma_(N J))product_(M=1)^(N-1)expval(Gamma_(M J)^arrow.b)/expval(Gamma_(M J)) $
+#pause 
+$ (pdv(sigma,Omega,E))^"MSD" =sum_lambda (2lambda+1)/(2s_a +1) (mu_a mu_b)/(2pi hbar^2)^2 k_b/k_a sum_(m m_b m_a) abs(T_lambda^(m m_b m_a) (theta))^2 omega(p,h,E_x) R_n (lambda) $
+其中各参数的含义详见@kawano_effect_2001,这里使用的FKK模型在后面给出了理论预测
+== K-M拟合
+K-M(Kalbach-Mann)拟合方法是一种用于描述MSD和MSC拟合的方法@kalbach_phenomenology_1981,描述公式为
 #pause
-$ (pdv(sigma,Omega,E))^"MSD" = $
+$ (pdv(sigma,Omega,E))=&sigma_"MSD" sum_(l=0)^(l_max) b_l P_l (cos theta)\ + & sigma_"MSC" sum_(l=0, Delta l=2)^(l_max) b_l P_l (cos theta) $
+由于测量预平衡中子,所以本实验中认为$sigma_"MSC"=0$,有
+#pause
+$ (pdv(sigma,Omega,E))=sigma_"MSD" sum_(l=0)^(l_max) b_l P_l (cos theta) $
+由于拟合得到的$sigma_"MSD"$包括真实的MSD截面和实验参数,所以本文没有提交$sigma_"MSD"$的数值,而是只给出了拟合曲线
+== 结果
+#figure(image("img/5.png",height: 70%), caption: [$isotope("Pu", a:239)(n,f)$的角分布实验数据与拟合分析]) <fig5>
+在PFNS谱中将预平衡预裂变中子从后裂变中子本底中分离出来之后,利用MCNP6对中子探测效率和环境散射进行了修正,得到@fig5 展示的结果
+== 讨论
+#grid(column-gutter: 1em, columns: (1.5fr,1fr), figure(image("img/5.png",width: 100%),caption: [$isotope("Pu", a:239)(n,f)$的角分布实验数据与拟合分析]),[
+- K-M方法能够很好地拟合据的角分布特性,适合描述预裂变预平衡中子的角分布
+])
 = 总结
-== 总结
+#slide[
 - 为了建立更全面完整的中子诱发核裂变模型，需要严谨地测量出射中子的能谱和角分布等性质并细化区分
 - 针对出射中子束流的角分布,以往的理论模型预测不能令人满意.例如
   - 激子模型(*exciton model*)仅适用于预测能量分布,对角分布无能为力
@@ -122,6 +138,7 @@ $ (pdv(sigma,Omega,E))^"MSD" = $
   - 角分布的各向异性:分布在入射中子动量的前向方向得到增强,且与裂变轴无关
   - 能量分布的"硬化(*harder*)":随着入射中子能量的增加,预平衡预裂变中子的平均能量有所上升
 - 此外,本实验结合了FKK模型和K-M拟合方法,对实验数据进行了分析,为理论模型的验证提供了重要的数据支持
+]
 #show: appendix
 #set text(lang: "en", region: "us")
 #bibliography("main.bib", style: "american-physics-society", title: "参考文献")
