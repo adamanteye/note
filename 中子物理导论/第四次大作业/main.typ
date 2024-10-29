@@ -106,20 +106,22 @@ figure(table(columns:1, stroke: none,table.hline(), table.header([出射角度])
 == FKK模型
 本文依赖的理论模型是FKK模型(The model of Feshbach, Kerman, and Koonin)
 
-对预裂变中子,FKK模型的MSD(multiple step direct)-MSC(multiple step compound)可以用来描述不同能量和不同角度的裂变截面
+对预裂变中子,FKK模型的MSD(multiple step direct)-MSC(multiple step compound)可以用来描述不同能量和不同角度的裂变截面@kawano_effect_2001
 #pause
-])
+$ (pdv(sigma,Omega,E))^"MSC"=1/(4pi)pi/k^2 sum_J (2J+1)2pi expval(Gamma_(1 J))/expval(D_(1 J)) sum_N sum_(nu j)expval(Gamma_N^(arrow.t nu j)rho^nu (U))/expval(Gamma_(N J))product_(M=1)^(N-1)expval(Gamma_(M J)^arrow.b)/expval(Gamma_(M J)) $
+#pause
+$ (pdv(sigma,Omega,E))^"MSD" = $
 = 总结
 == 总结
 - 为了建立更全面完整的中子诱发核裂变模型，需要严谨地测量出射中子的能谱和角分布等性质并细化区分
-- 针对出射中子束流的角分布，以往的理论模型预测不能令人满意。例如
-  - 激子模型(*exciton model*)仅适用于预测能量分布，对角分布无能为力
-  - FKK模型采用了简化假设，其实用性有待进一步验证
-- 因此，基于双微分测量方法给出具体的角分布数据，对于理论模型的验证和完善具有重要意义
-- 本实验通过调节入射中子束流的能量和测量角度，测量瞬发中子谱并进行中子计数，从多个角度验证了预平衡预裂变中子的性质，尤其关注
-  - 角分布的各向异性：分布在入射中子动量的前向方向得到增强，且与裂变轴无关
-  - 能量分布的"硬化(*harder*)"：随着入射中子能量的增加，预平衡预裂变中子的平均能量有所上升
-- 此外，本实验结合了FKK模型和K-M拟合方法，对实验数据进行了分析，为理论模型的验证提供了重要的数据支持
+- 针对出射中子束流的角分布,以往的理论模型预测不能令人满意.例如
+  - 激子模型(*exciton model*)仅适用于预测能量分布,对角分布无能为力
+  - FKK模型采用了简化假设,其实用性有待进一步验证
+- 因此，基于双微分测量方法给出具体的角分布数据,对于理论模型的验证和完善具有重要意义
+- 本实验通过调节入射中子束流的能量和测量角度,测量瞬发中子谱并进行中子计数,从多个角度验证了预平衡预裂变中子的性质,尤其关注
+  - 角分布的各向异性:分布在入射中子动量的前向方向得到增强,且与裂变轴无关
+  - 能量分布的"硬化(*harder*)":随着入射中子能量的增加,预平衡预裂变中子的平均能量有所上升
+- 此外,本实验结合了FKK模型和K-M拟合方法,对实验数据进行了分析,为理论模型的验证提供了重要的数据支持
 #show: appendix
 #set text(lang: "en", region: "us")
 #bibliography("main.bib", style: "american-physics-society", title: "参考文献")
