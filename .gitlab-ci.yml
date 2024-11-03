@@ -5,6 +5,7 @@ note-tex:
     - make remove
     - make site -j2
     - make clean
+    - minify -ars -o . build
     - rsync -rzuv --delete build/ ${REMOTE_USER}:${REMOTE_ARTIFACTS_DIR}
   cache:
     paths:
