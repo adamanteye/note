@@ -6,6 +6,11 @@
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
         <title>Adamanteye's Note</title>
         <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+            }
             h1 {
                 color: #c46243;
             }
@@ -20,6 +25,9 @@
             img {
                 width: 100%;
                 height: auto;
+            }
+            div.spacer {
+                flex: 0 0 100%;
             }
             #header {
                 width: 80%;
@@ -41,8 +49,10 @@
                 width: 48px;
             }
             table {
+                flex: 1;
                 width: 80%;
                 margin-left: 10%;
+                overflow: auto;
                 color: #787878;
             }
             a {
@@ -85,5 +95,6 @@
                 {{dirs}}
             </tbody>
         </table>
+        <div class="spacer"></div>
     </body>
 </html>
