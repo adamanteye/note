@@ -3,7 +3,7 @@ note-tex:
   script:
     - source ~/.bashrc
     - make remove
-    - make site
+    - make site -j2
     - make clean
     - rsync -rzuv --delete build/ ${REMOTE_USER}:${REMOTE_ARTIFACTS_DIR}
   cache:

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 pdf_path=$1
 root_template=$2
