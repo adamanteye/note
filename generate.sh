@@ -7,7 +7,7 @@ page_template=$3
 generate_root() {
     local dir=$1
     local depth=0
-    find "$dir"  -type f -name "*.pdf" -exec sh -c 'stat --format="<tr><td><a href=\"{}\">{}</a></td><td>%y</td></tr>" "{}" | sed "s|>./|>|"' \;
+    find "$dir" -type f -name "*.pdf" -exec sh -c 'stat --format="<tr><td><a href=\"%n\">%n</a></td><td>%s</td><td>%y</td></tr>" "{}" | sed "s|>./|>|" | sed "s|.pdf<|<|"' \;
 }
 
 links=$(generate_root "$pdf_path")
