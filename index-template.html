@@ -8,28 +8,27 @@
             h1 {
                 color: #c46243;
             }
-
+            th {
+                color: #c46243;
+            }
             th,
             td {
+                text-align: left;
                 padding-top: 0.4em;
             }
-
             img {
                 width: 100%;
                 height: auto;
             }
-
             #header {
                 width: 80%;
                 margin-left: 10%;
                 align-items: center;
                 position: relative;
             }
-
             #header h1 {
                 display: inline-block;
             }
-
             #header a {
                 position: absolute;
                 right: 0px;
@@ -37,23 +36,19 @@
                 transform: translateY(-50%);
                 width: fit-content;
             }
-
             #header a img {
                 width: 48px;
             }
-
             table {
                 width: 80%;
                 margin-left: 10%;
                 color: #787878;
             }
-
             a {
+                &:hover {
+                    color: #c46243;
+                }
                 color: #787878;
-            }
-
-            a:hover {
-                color: #c46243;
             }
         </style>
     </head>
@@ -62,7 +57,7 @@
         <div id="header">
             <h1>Adamanteye's Note</h1>
             <a href="https://github.com/adamanteye/note">
-                <img src="assets/github-142-svgrepo-com.svg" />
+                <img src="/assets/github-142-svgrepo-com.svg" />
             </a>
         </div>
 
@@ -76,7 +71,17 @@
                 </tr>
             </thead>
             <tbody>
-                {{Links}}
+                {{files}}
+            </tbody>
+            <thead>
+                <tr>
+                    <th>Directory Name</th>
+                    <th>Size [Bytes]</th>
+                    <th>Last Built</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{dirs}}
             </tbody>
         </table>
     </body>

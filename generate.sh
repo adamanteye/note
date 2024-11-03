@@ -4,20 +4,48 @@ pdf_path=$1
 root_template=$2
 page_template=$3
 
-generate_root() {
-    local dir=$1
-    local depth=0
-    find "$dir" -type f -name "*.pdf" -exec sh -c 'stat --format="<tr><td><a href=\"%n\">%n</a></td><td>%s</td><td>%y</td></tr>" "{}" | sed "s|>./|>|" | sed "s|.pdf<|<|"' \;
+print_files() {
+    find "$1" -maxdepth 1 -type f -name "*.pdf" -exec sh -c '
+        for file; do
+            name=$(basename "$file")
+            stat --format="<tr><td><a href=\"$name\">$name</a></td><td>%s</td><td>%y</td></tr>" "$file"
+        done
+    ' sh {} +
 }
 
-links=$(generate_root "$pdf_path")
+print_dirs() {
+    find "$1" -mindepth 1 -maxdepth 1 -type d ! -name '.' ! -name '..' ! -name 'assets' -exec sh -c '
+        for dir; do
+            name=$(basename "$dir")
+            stat --format="<tr><td><a href=\"$name\">$name</a></td><td>%s</td><td>%y</td></tr>" "$dir"
+        done
+    ' sh {} +
+}
 
-# 读取模板文件并替换占位符
-output_path="$pdf_path/index.html"
-awk -v links="$links" '{
-    if ($0 ~ /{{Links}}/) {
-        print links;
-    } else {
-        print $0;
-    }
-}' "$root_template" > "$output_path"
+render_html() {
+    local dir=$1
+    mkdir -p "$dir"
+    local template=$2
+    local files
+    files=$(print_files "$dir")
+    local dirs
+    dirs=$(print_dirs "$dir")
+
+    awk -v files="$(printf '%s\n' "$files")" -v dirs="$(printf '%s\n' "$dirs")" '{
+        if ($0 ~ /{{files}}/) {
+            print files;
+        } else if ($0 ~ /{{dirs}}/) {
+            print dirs;
+        } else {
+            print $0;
+        }
+    }' "$template" > "$dir/index.html"
+
+    for subdir in "$dir"/*; do
+        if [[ -d $subdir && $(basename "$subdir") != '.' && $(basename "$subdir") != '..' && $(basename "$subdir") != 'assets' ]]; then
+            render_html "$subdir" "$template"
+        fi
+    done
+}
+
+render_html "$pdf_path" "$root_template"
