@@ -22,7 +22,7 @@ build/assets/: assets/
 
 build/index.html: $(TYP_BUILDS) $(TEX_BUILDS) build/assets/ generate.sh index-template.html
 	@mkdir -p $(@D)
-	cd $(@D) && ../generate.sh . ../index-template.html ../page-template.html
+	cd $(@D) && ../generate.sh . ../index-template.html
 
 print:
 	@for pdf in $(TYP_BUILDS); do \

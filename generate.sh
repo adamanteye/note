@@ -1,8 +1,7 @@
 #!/bin/bash
 
 pdf_path=$1
-root_template=$2
-page_template=$3
+template=$2
 
 print_files() {
     find "$1" -maxdepth 1 -type f -name "*.pdf" -exec sh -c '
@@ -17,7 +16,7 @@ print_dirs() {
     find "$1" -mindepth 1 -maxdepth 1 -type d ! -name '.' ! -name '..' ! -name 'assets' -exec sh -c '
         for dir; do
             name=$(basename "$dir")
-            stat --format="<tr><td><a href=\"$name\">$name</a></td><td>%s</td><td>%y</td></tr>" "$dir"
+            stat --format="<tr><td><a href=\"$name/\">$name</a></td><td>%s</td><td>%y</td></tr>" "$dir"
         done
     ' sh {} +
 }
@@ -48,4 +47,4 @@ render_html() {
     done
 }
 
-render_html "$pdf_path" "$root_template"
+render_html "$pdf_path" "$template"
