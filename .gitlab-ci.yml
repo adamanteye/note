@@ -10,7 +10,7 @@ note-tex:
   cache:
     paths:
       - build/
-    key: "$CI_COMMIT_REF_SLUG"
+    key: "persist_cache"
   tags:
     - latex
     - typst
