@@ -12,36 +12,31 @@
 #import "@preview/physica:0.9.3": *
 #import "@preview/ctheorems:1.1.3": *
 #show: thmrules
-#let pst = thmbox(
-  "thm",
-  "公设",
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph
-)
+#set quote(block: true)
+
 #let def = thmbox(
   "thm",
-  "定义",
+  "定义",inset: (x: 0em, top: 0em),
   namefmt: x => [(#(strong(x)))],
-  titlefmt: emph
+  titlefmt: emph, base: none
 )
 #let thm = thmbox(
   "thm",
-  "定理",
+  "定理",inset: (x: 0em, top: 0em),
   namefmt: x => [(#(strong(x)))],
-  titlefmt: emph,
+  titlefmt: emph, base: none
 )
 #let coll = thmbox(
   "coll",
-  "推论",
+  "推论",inset: (x: 0em, top: 0em),
   namefmt: x => [(#(strong(x)))],
   titlefmt: emph,
   base: "thm",
 )
-#let exmp = thmbox("exmp", "例", titlefmt: emph, base: "thm")
-#let sol = thmplain("sol", "解答", titlefmt: emph, base: "exmp").with(numbering: none)
+#let exmp = thmbox("exmp",inset: (x: 0em, top: 0em), "例", titlefmt: emph, base: "thm")
 #let proof = thmproof(
   "proof",
-  "证明",
+  "证明",inset: (x: 0em, top: 0em),
   titlefmt: emph,
   base: "thm"
 )
@@ -143,6 +138,10 @@ $ f_Y (y)=cases(f_X (h(y)) abs(h'(y)) &"if" alpha < y< beta,0 &"elsewhere") $
 ]
 = 二维随机变量
 注意$X$,$Y$来自同一个样本空间,意味着$X$,$Y$可以不独立.
+= 期望
+#thm("柯西-施瓦茨不等式")[
+$ E(X^2)E(Y^2)>=E(X Y)^2 $
+]
 = 大数定律
 #thm("Chebyshev不等式")[
 设随机变量$X$有数学期望$E(X)=mu$和方差$"Var"(X)=sigma^2$,则:$ forall epsilon>0, P(abs(x-mu)>=epsilon)<=sigma^2/epsilon^2 $
@@ -234,4 +233,72 @@ $ P(k|p,n)&=binom(n,k)p^k(1-p)^(n-k)\ &=h(k) exp(T(k) eta(p)-B(p)) $
 ]
 #exmp("正态分布属于指数分布族")[
 $ f(x|mu,sigma^2)&=1/sqrt(2pi sigma^2) exp(-(x-mu)^2/(2sigma^2)) $
+]
+= 统计学概论
+#def("箱线图")[
+箱线图是一种用作显示一组数据分散情况的统计图表,显示了一组数据的最大值,最小值,中位数,上四分位数和下四分位数.
+
+这五个分位数分别称为$"Min",Q_1,M,Q_3,"Max"$.
+
+常用于比较不同组别的数据分布情况.
+]
+= 统计量
+#def("样本均值")[
+设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+$ overline(X)=1/n sum_(i=1)^n X_i $
+]
+#def("样本方差")[
+设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+$ S^2=1/(n-1) sum_(i=1)^n (X_i-overline(X))^2 $
+]
+#def("样本标准差")[
+设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+$ S=sqrt(S^2) $
+]
+#def([样本$k$阶原点矩])[
+设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+$ A_k=1/n sum_(i=1)^n X_i^k $
+]
+#def([样本$k$阶中心矩])[
+设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+$ B_k=1/n sum_(i=1)^n (X_i-overline(X))^k $
+]
+#thm("偏差平方和最小")[
+数据观察值与样本均值的偏差平方和最小,即在形如$sum_(i=1)^n (X_i -c)^2$的函数中,$sum_(i=1)^n (X_i -overline(X))^2$
+]
+#thm("样本均值方差和矩的联系")[
+- $E(overline(X))=mu$
+- $"Var"(overline(X))=sigma^2\/n$
+- $E(S^2)=sigma^2$
+]
+#proof[
+由于$(X_1,X_2,dots,X_n)$独立同分布于$X$,从而有
+$ "Var"(overline(X))&=sum_(i=1)^n "Var"(1/n X_i)\ &= sum_(i=1)^n 1/n^2 "Var"(X)\ &= sigma^2/n $
+$ E(B_2)&=E(1/n sum_(i=1)^n X_i^2)-E(overline(X)^2)\ &=1/n (n("Var"(X)+E^2(X)))-("Var"(overline(X))+E^2(overline(X)))\ &="Var"(X)+(E^2(X))/n -1/n "Var"(X)-1/n E^2(X)\ &=(n-1)/n "Var"(X) $
+由于$E(B_2)=(n-1)/n E(S^2)$,从而得证.
+]
+#thm("中心极限定理")[
+设$X_1,X_2,dots,X_n$是来自某个总体的样本,$overline(X)$是样本均值.
+- 若总体分布为$N(mu,sigma^2)$,则$overline(X)~ N(mu,sigma^2/n)$
+- 若总体分布未知或不是正态分布,但$E(X)=mu,"Var"(X)=sigma^2$存在,则$n$较大时,$overline(X)$的渐进分布为$N(mu,sigma^2/n)$
+]
+如何理解$chi^2$分布在自由度越大的时候越接近正态分布?
+#quote[具有可加性的分布,因为中心极限定理,当自由度越大时,分布的形状越接近正态分布.]
+#def([$F$分布])[
+设随机变量$X ~ chi^2(n),Y ~ chi^2(m)$,且$X,Y$相互独立.
+称$ F=(X/n)\/(Y/m) $为服从第一自由度为$n$,第二自由度为$m$的$F$分布.
+$ f_F (x)=(Gamma((m+n)/2)binom(n,m)^(n/2))/(Gamma(m/2)Gamma(n/2))x^(n/2-1)(1+n/m x)^(-(m+n)/2) $
+]
+#thm([$F$分布的特性])[
+- 若$F ~ F(n,m)$,则$1/F ~ F(m,n)$
+- $F_(1-alpha) (n,m)=1/(F_alpha (m,n))$
+]
+#def([$T$分布])[
+设随机变量$X ~ N(0,1),Y ~ chi^2(n)$,且$X,Y$相互独立.
+称$ T=X/sqrt(Y\/n) $为服从自由度为$n$的$T$分布.
+$ f_T (t)=t f_T^2 (t^2)=Gamma((n+1)/2)/Gamma(n/2)sqrt(n pi)(1+t^2/n)^(-(n+1)/2), t in (-infinity,+infinity) $
+]
+#thm("两个正态总体的比较")[
+设总体$X~N(mu,sigma^2)$,样本为$(X_1,X_2,dots,X_n)$,又设总体$X' ~ N(mu',sigma'^2)$,样本为$(X'_1,X'_2,dots,X'_n)$,则
+$ S^2/sigma^2 S'^2/sigma'^2 ~ F(n-1,n'-1) $
 ]
