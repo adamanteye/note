@@ -10,27 +10,24 @@
 #show link: it => underline(text(fill: rgb("#8c0000"), it))
 #set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
 #import "@preview/physica:0.9.3": *
-#import "@preview/ctheorems:1.1.2": *
+#import "@preview/ctheorems:1.1.3": *
 #import "@preview/cetz:0.3.0"
+#import "@preview/unify:0.6.0": *
 #show: thmrules
 
-#let pst = thmbox(
-  "thm",
-  "公设",
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph
-)
 #let def = thmbox(
   "thm",
   "定义",
   namefmt: x => [(#(strong(x)))],
-  titlefmt: emph
+  titlefmt: emph,
+  inset: (x: 0em, top: 0em), base: none
 )
 #let thm = thmbox(
   "thm",
   "定理",
   namefmt: x => [(#(strong(x)))],
-  titlefmt: emph
+  titlefmt: emph,
+  inset: (x: 0em, top: 0em), base: none
 )
 #let coll = thmbox(
   "coll",
@@ -69,15 +66,16 @@
 / 增值材料: 通过俘获中子，并通过放射性衰变嬗变到易裂变材料的材料
 #def("微观截面")[
 中子与单个原子核发生相互作用概率的一种度量
+
+散射截面是不能直接测量的,通过总截面减去其他反应道截面得到.
 ]
 #def("宏观截面")[
 $ Sigma=N sigma $
 中子与单位体积中的所有原子核发生相互作用(核反应)的概率的一种度量
 ]
 #def("平均自由程")[
-宏观截面的倒数
+宏观截面的倒数$ lambda=1/Sigma $
 ]
-散射截面是不能直接测量的,通过总截面减去其他反应道截面得到的.
 == 描述中子的几个宏观量
 #def("角中子数密度")[
 位于物理空间$va(r)$处单位几何体积内与速度空间$va(v)$处单位速度体积内期望的自由中子数量,它是某个运动速度附近的中子数密度,也是一个宏观量,具有量纲$"m"^(-6)"s"^3$
@@ -86,11 +84,11 @@ $ n(va(r),va(v))dd(va(r))dd(va(v))=n(va(r),va(v))dd(va(r))v^2dd(v)dd(va(Omega))=
 #def("中子数密度")[
 对@angular_neutron_density 在速度空间积分得到
 $ n(va(r))=integral_va(v)n(va(r),va(v))dd(va(v)) $
-量纲为$"m"^(-3)$.
+量纲为$unit("m^-3")$.
 ]
 #def("角中子注量率")[
 位于物理空间$va(r)$处单位几何体积内与速度空间$va(v)$处单位速度体积内的中子,在单位时间内穿过垂直于$va(v)$的单位面积的中子数.
-$ psi(va(r),va(v))=v n(va(r),va(v)) $其中$v$是速率.角中子注量率的量纲是$"m"^(-2)"s"^(-1)$
+$ psi(va(r),va(v))=v n(va(r),va(v)) $其中$v$是速率.角中子注量率的量纲是$unit("cm^-2 s^-1")$
 ]
 #def("中子注量率")[
 对角中子注量率进行速度空间内所有方向的积分可以得到与中子速率相关的中子注量率
@@ -100,7 +98,7 @@ $ phi(va(r))&=integral_0^infinity phi(va(r),v)dd(v)\ &=integral_va(v) v n(va(r),
 
 $phi(va(r))$表示空间$va(r))$处中子数密度与中子平均速率之乘积,它是标量不是矢量.
 #grid(columns: 2, column-gutter: 1em,
-[表示单位时间内从所有方向进入以空间某点为中心的单位小球的中子数与球体赤道截面积之比.常用单位是$"cm"^(-2)"s"^(-1)$.],
+[表示单位时间内从所有方向进入以空间某点为中心的单位小球的中子数与球体赤道截面积之比.常用单位是$unit("cm^-2 s^-1")$.],
 cetz.canvas({
   import cetz.draw: *
   circle((0,0),radius: 0.8,fill:color.mix(blue,white))
@@ -111,7 +109,7 @@ cetz.canvas({
 中子注量率的大小直接反映堆芯内核反应功率的大小，在热中子动力堆内，热中子注量率的数量级一般为$10^(13)~10^(15)$ $"cm"^(-2)"s"^(-1)$.
 ] <neutron_flux>
 #def("净中子流密度")[
-净中子流密度是标量,定义为单位时间内穿过方向为$vu(n)$的单位面积的中子数.常用单位是$"cm"^(-2)"s"^(-1)$.
+净中子流密度是标量,定义为单位时间内穿过方向为$vu(n)$的单位面积的中子数.常用单位是$unit("cm^-2 s^-1")$.
 $ J(va(r))&=integral_va(v) vu(n) dprod va(Omega)psi(va(r),va(v))\ &=vu(n) dprod integral_va(v) va(Omega)psi(va(r),va(v))\ &=vu(n) dprod va(J)(va(r)) $
 常称为*中子流密度*.
 ]
@@ -119,6 +117,18 @@ $ J(va(r))&=integral_va(v) vu(n) dprod va(Omega)psi(va(r),va(v))\ &=vu(n) dprod 
 确定慢化时间,要从中子能谱开始.
 / 热谱:在单次碰撞的平均能损与散射和吸收截面比都很大的介质中,中子的能量分布将接近热平衡态.
 / 快谱:处在具有较小的减速与吸收比的系统中,中子在发生明显减速之前就已经被吸收了,能量分布接近裂变谱,称为快谱或硬谱.
+
+#figure(table(columns:3, stroke: none,
+table.hline(),
+table.header([慢化剂],[慢化能力$xi Sigma_S [unit("cm^-1")]$],[慢化比$xi Sigma_S\/Sigma_a$]),
+table.hline(),
+[$isotope(H)_2 isotope(O)$],[1.350],[71],
+[$isotope(D)_2 isotope(O)$],[0.176],[5670],
+[$isotope("Be")$],[0.158],[143],
+[石墨],[0.060],[192],table.hline(),
+),caption: [几种慢化剂的对比])
+重水具有良好的慢化性能,但价格略贵.轻水慢化能力最大,用轻水作慢化剂的反应堆可以具有较小的堆芯体积,但吸收截面较重水大,因此轻水堆必须用富集铀作为燃料.石墨的慢化性能也不错,但慢化能力较小,因此石墨堆的堆芯体积较大.
+
 中子能谱以中子数密度表示
 $n'''(E)dd(E)$是在$E$与$E+dd(E)$之间的中子数,满足归一化条件
 $ n'''=integral_0^infinity n'''(E)dd(E) $
@@ -190,6 +200,8 @@ $ v Sigma_f (x,y,z) phi(x,y,z)dd(x,y,z) $
 #thm("Fick")[
 $ va(J)(va(r))=-D grad n(va(r)) $
 其中$D$表示扩散系数
+
+对于散射截面占总截面的比率$ c=Sigma_s/Sigma_t $如果$c<0.7$,那么由于吸收过强,Fick近似将失去有效性.
 ] <fick>
 #thm("中子扩散方程")[
 考虑到@fick,@neutron_balance 可以写成
