@@ -33,11 +33,11 @@
   titlefmt: emph,
   base: "thm",
 )
-#let exmp = thmbox("exmp",inset: (x: 0em, top: 0em), "例", titlefmt: emph, base: "thm")
+#let exmp = thmbox("thm",inset: (x: 0em, top: 0em),namefmt: x => [(#(strong(x)))], "例", titlefmt: emph, base: none)
 #let proof = thmproof(
   "proof",
   "证明",inset: (x: 0em, top: 0em),
-  titlefmt: emph,
+  titlefmt: emph,namefmt: x => [(#(strong(x)))],
   base: "thm"
 )
 
@@ -301,4 +301,90 @@ $ f_T (t)=t f_T^2 (t^2)=Gamma((n+1)/2)/Gamma(n/2)sqrt(n pi)(1+t^2/n)^(-(n+1)/2),
 #thm("两个正态总体的比较")[
 设总体$X~N(mu,sigma^2)$,样本为$(X_1,X_2,dots,X_n)$,又设总体$X' ~ N(mu',sigma'^2)$,样本为$(X'_1,X'_2,dots,X'_n)$,则
 $ S^2/sigma^2 S'^2/sigma'^2 ~ F(n-1,n'-1) $
+]
+= 统计推断
+== 前言
+/ 参数估计与非参数估计:
+  / 参数估计: 当推断的对象是有限个,例如高斯总体的期望,方差
+  / 非参数估计: 当推断的对象是无限个,例如未知分布总体的期望,方差,分布
+
+/ 参数估计类型:
+  / 点估计: 估计未知参数的值
+  / 区间估计: 估计未知参数的取值范围,并使此范围包含未知参数真值的概率为给定的值
+#exmp[
+$X~N(mu, sigma^2)$,若$mu, sigma$未知,通过构建统计量,给出它们的估计值(点估计)或取值范围(区间估计)就是参数估计的内容.
+]
+== 参数估计方法
+#def("点估计")[
+用一个数值作为未知参数的估计值称为点估计.
+
+设总体$X$的分布函数的形式已知,$theta$是待估参数,$(X_1,X_2,dots,X_n)$为总体的一个样本.
+
+点估计构造一个恰当的统计量$hat(theta) (X_1, X_2,dots,X_n)$,用它的观察值$hat(theta) (x_1, x_2,dots,x_n)$作为待估参数$theta$的近似.
+]
+#def("矩估计")[
+用样本$k$阶矩作为总体$k$阶矩的估计量,建立含待估参数的方程,从而解出待估参数.
+
+设随机变量$X~f(x;theta_1,theta_2,dots,theta_k)$,其中$theta_1,theta_2,dots,theta_k$为待估参数.假设样本总体的前$k$阶矩存在
+$ E(X^r)=mu_r (theta_1,theta_2,dots,theta_k), 1<=r<=k $
+假设$(X_1,X_2,dots,X_n)$为来自$X$的一个样本,$r$阶样本矩$A_r=1/n sum_(i=1)^n X_i^r$.
+
+$A_r$及其函数依概率收敛于相应的总体矩.因此可以
+- 用样本矩作为相应的总体矩的估计量
+- 用样本矩的函数作为相应的总体矩函数的估计量
+
+总体的前$k$阶矩构成联立方程组,含$k$个未知参数.一般情况下可以解出这$k$个参数$theta_1,theta_2,dots,theta_k$.
+$ cases(mu_1=mu_1(theta_1,theta_2,dots,theta_k),
+  mu_2=mu_2(theta_1,theta_2,dots,theta_k),dots.v,
+  mu_k=mu_k (theta_1,theta_2,dots,theta_k)
+) =>
+cases(theta_1=theta_1(mu_1,mu_2,dots,mu_k),
+  theta_2=theta_2(mu_1,mu_2,dots,mu_k),dots.v,
+  theta_k=theta_k (mu_1,mu_2,dots,mu_k)
+) $
+用样本矩$A_r$代替总体矩$mu_r$阶得到待估参数的估计量,称为*矩估计量*.
+$ hat(theta)_i=theta_i (A_1,A_2,dots,A_k), i=1,2,dots,k $
+矩估计量的观测值称为*矩估计值*.
+]
+#exmp("最大似然法的引入")[
+设总体$X$服从0-1分布,且$P(X=1)=p$,用最大似然法求$p$的估计值
+设$x_1,x_2,dots,x_n$为总体的样本的估计值,则得到该样本值的概率为
+$ P&(X_1=x_1,dots,X_n=x_n)\ &=product_(i=1)^n P(X_i=x_i)\ &=p^(sum_(i=1)^n x_i) (1-p)^(1-sum_(i=1)^n x_i) =: L(p) $
+对于不同的$p$,有$L(p)$不同,取$p$使这个事件发生的概率最大
+$ hat(p)=arg max L(p) = arg max log L(p) $
+由于 $ dv(,p)log L=(sum_(i=1)^n x_i )/p- (n-sum_(i=1)^n x_i)/(1-p)\ => hat(p)=overline(x) $
+]
+#def("似然函数")[
+  - 设$X$为离散型随机变量,分布律为$P(X=x)=p(x,theta)$,则似然函数定义为
+  $ L(va(x),theta)=product_(i=1)^n p(x_i,theta) $
+  - 设$X$是连续型随机变量,取$f(X,theta)$为$X$的密度函数,则似然函数定义为
+  $ L(va(x),theta)=product_(i=1)^n f(x_i,theta) $
+]
+#def("最大似然估计,maximum likelihood estimation")[
+  $ hat(va(theta)) (va(x),theta)=arg max L(va(x);va(theta)) $
+称为最大似然估计估计值,称统计量$hat(va(theta)) (X_1,X_2,dots,X_n)$为参数$va(theta)$的最大参数估计量.
+]
+#exmp("均匀分布的矩估计和最大似然估计")[
+设$X~U(a,b)$,有$X_1,X_2,dots,X_n$是$X$的一个样本.求$a,b$的矩估计和最大似然估计.
+
+使用矩估计有
+$ mu_1=E(X)=(a+b)/2\ mu_2=E(X^2)="Var"(X)+E^2(X)=(b-a)^2/12+(a+b)^2/4 $
+解得
+$ va(a)&=A_1-sqrt(3(A_2-A_1^2))=A_1-sqrt(3 B_2)\ va(b)&=A_1+sqrt(3(A_2-A_1^2))=A_1+sqrt(3 B_2) $
+使用最大似然估计有
+$ L(a,b)=cases(1/(b-a)^2 &"where" a<x_i<b,0 &"elsewhere") $
+当$a=min x_i,b=max x_i$时,$L(a,b)$最大,所以
+$ hat(a)=min X_i, hat(b)=max X_i $
+*这两种估计的结果不同.*
+]
+== 估计的评价
+#thm("期望方差")[
+  设$hat(theta)_n (X_1,dots,X_n)$是$theta$的一个估计量.若
+  $ lim_(n->infinity) E(hat(theta)_n)=theta, lim_(n->infinity) "Var"(hat(theta)_n)=0 $
+  则$hat(theta)_n$是$theta$的相合估计量的相合估计量.
+] <evaluation_1>
+
+#thm("均方误差")[
+  $ "MSE" (hat(theta)_n)=E(hat(theta)_n-theta)^2="Var"(hat(theta)_n)-E^2(hat(theta)_n-theta) $
+  等价于 @evaluation_1.
 ]
