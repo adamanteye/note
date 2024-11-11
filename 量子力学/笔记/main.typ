@@ -1,70 +1,9 @@
-#set text(
-  font: ("Libertinus Serif", "Source Han Serif"),
-  lang: "zh",
-  region: "cn",
+#import "../../note_zh.typ": *
+#show: conf.with(
+  title: "量子力学笔记",
+  author: "杨哲涵",
+  numbered-equation: true,
 )
-#let title = [量子力学笔记]
-#let thisauthor = "杨哲涵"
-#set document(title: [#title], author: thisauthor)
-#set heading(numbering: "1.")
-#show link: it => underline(text(fill: rgb("#8c0000"), it))
-#set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
-#import "@preview/physica:0.9.3": *
-#import "@preview/ctheorems:1.1.3": *
-#show: thmrules
-
-#set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])
-
-#let pst = thmbox(
-  "thm",
-  "公设",
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph,
-  inset: (x: 0.5em, top: 0em),
-)
-#let def = thmbox(
-  "thm",
-  "定义",
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph,
-  inset: (x: 0.5em, top: 0em),
-)
-#let thm = thmbox(
-  "thm",
-  "定理",
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph,
-  inset: (x: 0.5em, top: 0em),
-)
-#let coll = thmbox(
-  "coll",
-  "推论",
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph,
-  inset: (x: 0.5em, top: 0em),
-  base: "thm",
-)
-#let exmp = thmbox("exmp", "例", titlefmt: emph, inset: (x: 0.5em, top: 0em))
-#let sol = thmplain("sol", "解答", titlefmt: emph, inset: (x: 0.5em, top: 0em), base: "exmp").with(numbering: none)
-#let proof = thmproof(
-  "proof",
-  "证明",
-  inset: (x: 0.5em, top: 0em),
-  titlefmt: emph,
-  base: "thm",
-)
-
-#align(center, text(17pt)[
-  *#title*
-])
-
-#align(center, text(15pt)[
-  #thisauthor
-])
-
-#set par(leading: 0.8em)
-#set block(spacing: 0.6em)
-
 #figure(table(
   stroke: none,
   columns: 5,
@@ -103,8 +42,6 @@
   [$mu kappa\/hbar$],
   table.hline(),
 ), caption: [自然单位制])
-
-#show: rest => columns(2, rest)
 
 = 数学速查
 #thm(
@@ -575,7 +512,6 @@ $ E_n=-(mu e^4)/(2 hbar^2) Z^2/n^2=-e^2/(2 a)Z^2/n^2 $
 = 散射
 
 #set text(
-  font: ("Linux Libertine", "Source Han Serif"),
   lang: "en",
   region: "us",
 )

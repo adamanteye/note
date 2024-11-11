@@ -1,62 +1,8 @@
-#set text(
-  font: ("Libertinus Serif", "Source Han Serif"),
-  lang: "zh",
-  region: "cn",
+#import "../../note_zh.typ": *
+#show: conf.with(
+  title: "核工程原理笔记",
+  author: "杨哲涵"
 )
-#let title = "核工程原理笔记"
-#let thisauthor = "杨哲涵"
-#set document(title: [#title], author: thisauthor)
-#set heading(numbering: "1.")
-#show link: it => underline(text(fill: rgb("#8c0000"), it))
-#set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
-#import "@preview/physica:0.9.3": *
-#import "@preview/ctheorems:1.1.3": *
-#import "@preview/cetz:0.3.0"
-#import "@preview/unify:0.6.0": *
-#show: thmrules
-
-#let def = thmbox(
-  "thm",
-  "定义",
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph,
-  inset: (x: 0em, top: 0em), base: none
-)
-#let thm = thmbox(
-  "thm",
-  "定理",
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph,
-  inset: (x: 0em, top: 0em), base: none
-)
-#let coll = thmbox(
-  "coll",
-  "推论",
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph,
-  base: "thm",
-)
-#let exmp = thmbox("exmp", "例", titlefmt: emph)
-#let sol = thmplain("sol", "解答", titlefmt: emph, base: "exmp").with(numbering: none)
-#let proof = thmproof(
-  "proof",
-  "证明",
-  titlefmt: emph,
-  base: "thm"
-)
-
-#align(center, text(17pt)[
-  *#title*
-])
-
-#align(center, text(15pt)[
-  #thisauthor
-])
-
-#set par(leading: 1em)
-#set block(spacing: 1.5em)
-
-#show: rest => columns(2, rest)
 = 前言
 说实话不太想上核工程原理,因为怀疑未来用不上这些知识,有时间不如学一学电子学的东西.但听闻部分系里的老师坚持认为工物系的学生要会核工程,所以这门课始终留在必修里.
 
@@ -233,3 +179,12 @@ $ L=sqrt(D/Sigma_a) $
 
 因此, $Sigma_f=0$且$D$与$Sigma_a$为常量,使得@neutron_diffusion 变为
 $ -laplacian phi(va(r))+1/L^2 phi(va(r))=1/D s'''(va(r)) $
+
+= 核反应堆临界理论
+#def("反应堆物理三类/五代方法的划分")[
+/ 一代: 中子循环分析方法(四/六因子公式)
+/ 二代: 单群扩散方法,适用于快堆
+/ 三代: 多群扩散理论,目前大多数核电厂设计工具都基于此
+/ 四代: 输运理论,基于确定论方法求解玻尔兹曼中子输运方程
+/ 五代: 蒙特卡罗方法,根据真实几何,材料,能量和时间准确建模,分析中子群的整体行为
+]

@@ -2,12 +2,13 @@ TEX_DIRS = $(shell find . -type f -name "main.tex" -exec dirname {} \;)
 TYP_DIRS = $(shell find . -type f -name "main.typ" -exec dirname {} \;)
 TEX_BUILDS = $(foreach dir,$(TEX_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
 TYP_BUILDS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
+ROOT_DIR = $(shell pwd)
 
-.PHONY: site clean help remove print
+.PHONY: site latex typ clean help remove print
 
-build/%.pdf: %/main.typ %/
+build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note_zh.typ
 	@mkdir -p $(@D)
-	typst compile $(<D)/main.typ $@
+	typst compile --root $(ROOT_DIR)  $(<D)/main.typ $@
 
 build/%.pdf: %/main.tex %/
 	@mkdir -p $(@D)
@@ -20,7 +21,11 @@ build/assets/: assets/
 	@mkdir -p $(@D)
 	cp -r $(<D)/* $(@D)
 
-build/index.html: $(TYP_BUILDS) $(TEX_BUILDS) build/assets/ generate.sh index-template.html
+latex: $(TEX_BUILDS)
+
+typ: $(TYP_BUILDS)
+
+build/index.html: latex typ build/assets/ generate.sh index-template.html
 	@mkdir -p $(@D)
 	cd $(@D) && ../generate.sh . ../index-template.html
 

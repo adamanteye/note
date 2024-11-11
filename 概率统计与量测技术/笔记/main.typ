@@ -1,57 +1,8 @@
-#set text(
-  font: ("Libertinus Serif", "Source Han Serif"),
-  lang: "zh",
-  region: "cn",
+#import "../../note_zh.typ": *
+#show: conf.with(
+  title: "概率统计分析与量测技术笔记",
+  author: "杨哲涵"
 )
-#let title = "概率统计与量测技术笔记"
-#let thisauthor = "杨哲涵"
-#set document(title: [#title], author: thisauthor)
-#set heading(numbering: "1.")
-#show link: it => underline(text(fill: rgb("#8c0000"), it))
-#set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
-#import "@preview/physica:0.9.3": *
-#import "@preview/ctheorems:1.1.3": *
-#show: thmrules
-#set quote(block: true)
-
-#let def = thmbox(
-  "thm",
-  "定义",inset: (x: 0em, top: 0em),
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph, base: none
-)
-#let thm = thmbox(
-  "thm",
-  "定理",inset: (x: 0em, top: 0em),
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph, base: none
-)
-#let coll = thmbox(
-  "coll",
-  "推论",inset: (x: 0em, top: 0em),
-  namefmt: x => [(#(strong(x)))],
-  titlefmt: emph,
-  base: "thm",
-)
-#let exmp = thmbox("thm",inset: (x: 0em, top: 0em),namefmt: x => [(#(strong(x)))], "例", titlefmt: emph, base: none)
-#let proof = thmproof(
-  "proof",
-  "证明",inset: (x: 0em, top: 0em),
-  titlefmt: emph,namefmt: x => [(#(strong(x)))],
-  base: "thm"
-)
-
-#align(center, text(17pt)[
-  *#title*
-])
-
-#align(center, text(15pt)[
-  #thisauthor
-])
-
-#set par(leading: 1em)
-
-#show: rest => columns(2, rest)
 = 集合以及事件
 #def([$sigma$-field])[
   $sigma$-field, or $sigma$-algebra, is a collection of subsets of a set $S$ that is closed under countable unions, countable intersections, and complements.
