@@ -249,6 +249,23 @@ $ f_F (x)=(Gamma((m+n)/2)binom(n,m)^(n/2))/(Gamma(m/2)Gamma(n/2))x^(n/2-1)(1+n/m
 称$ T=X/sqrt(Y\/n) $为服从自由度为$n$的$T$分布.
 $ f_T (t)=t f_T^2 (t^2)=Gamma((n+1)/2)/Gamma(n/2)sqrt(n pi)(1+t^2/n)^(-(n+1)/2), t in (-infinity,+infinity) $
 ]
+使用R语言绘制$F(10,2)$与$T(10)$,可以参考#link("https://ggplot2.tidyverse.org/reference/geom_function.html")[geom_function]了解更多如何绘制连续函数
+```R
+library(ggplot2)
+base <- ggplot() + xlim(-5, 5)
+base +
+  geom_function(
+    aes(colour = "F(10,2)"),
+    fun = df,
+    args=list(df1 = 10, df2 = 2)
+  ) +
+  geom_function(
+    aes(colour = "T(10)"),
+    fun = dt,
+    args = list(df = 10)
+  )
+ggsave("f_t.pdf")
+```
 #thm("两个正态总体的比较")[
 设总体$X~N(mu,sigma^2)$,样本为$(X_1,X_2,dots,X_n)$,又设总体$X' ~ N(mu',sigma'^2)$,样本为$(X'_1,X'_2,dots,X'_n)$,则
 $ S^2/sigma^2 S'^2/sigma'^2 ~ F(n-1,n'-1) $
