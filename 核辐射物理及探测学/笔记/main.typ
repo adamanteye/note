@@ -1,37 +1,8 @@
-#set text(
-  font: ("Linux Libertine", "Source Han Serif"),
-  lang: "zh",
-  region: "cn",
+#import "../../note_zh.typ": *
+#show: conf.with(
+  title: "核辐射物理与探测学笔记",
+  author: "杨哲涵"
 )
-#set heading(numbering: "1.")
-#let title = [核辐射物理与探测学笔记]
-#set document(title: [#title])
-#import "@preview/physica:0.9.2": *
-#set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
-#set math.equation(numbering: "(1)", supplement: [式.], number-align: bottom + right)
-#show link: it => underline(text(fill: rgb("#8c0000"), it))
-
-#import "@preview/ctheorems:1.1.2": *
-#show: thmrules
-#let pst = thmbox("thm", "公设", inset: (x: 0em, top: 0em), base: none)
-#let def = thmbox("thm", "定义", inset: (x: 0em, top: 0em), base: none)
-#let thm = thmbox("thm", "定理", inset: (x: 0em, top: 0em), base: none)
-#let exmp = thmbox("exmp", "例", inset: (x: 0em, top: 0em), base: none)
-#let sol = thmplain("sol", "解答", inset: (x: 0em, top: 0em), base: "thm", titlefmt: strong).with(numbering: none)
-#let proof = thmproof(
-  "proof",
-  "证明",
-  inset: (x: 0em, top: 0em),
-  titlefmt: strong,
-  base: "thm",
-)
-
-#align(center, text(17pt)[
-  *#title*
-])
-
-#show: rest => columns(2, rest)
-
 #figure(table(
   stroke: none,
   columns: 3,
