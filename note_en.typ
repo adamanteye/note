@@ -4,7 +4,7 @@
 #import "@preview/unify:0.6.0": *
 #let def = thmbox(
   "thm",
-  "定义",
+  "Def",
   inset: (x: 0em, top: 0em),
   namefmt: x => [(#(strong(x)))],
   titlefmt: emph,
@@ -12,7 +12,7 @@
 )
 #let pst = thmbox(
   "thm",
-  "公设",
+  "Post",
   inset: (x: 0em, top: 0em),
   namefmt: x => [(#(strong(x)))],
   titlefmt: emph,
@@ -20,7 +20,7 @@
 )
 #let thm = thmbox(
   "thm",
-  "定理",
+  "Thm",
   inset: (x: 0em, top: 0em),
   namefmt: x => [(#(strong(x)))],
   titlefmt: emph,
@@ -28,7 +28,7 @@
 )
 #let coll = thmbox(
   "coll",
-  "推论",
+  "Coll",
   inset: (x: 0em, top: 0em),
   namefmt: x => [(#(strong(x)))],
   titlefmt: emph,
@@ -36,7 +36,7 @@
 )
 #let exmp = thmbox(
   "thm",
-  "例",
+  "Exmp",
   inset: (x: 0em, top: 0em),
   namefmt: x => [(#(strong(x)))],
   titlefmt: emph,
@@ -44,7 +44,7 @@
 )
 #let sol = thmbox(
   "exmp",
-  "解答",
+  "Sol",
   inset: (x: 0em, top: 0em),
   namefmt: x => [(#(strong(x)))],
   titlefmt: emph,
@@ -52,7 +52,7 @@
 )
 #let proof = thmproof(
   "proof",
-  "证明",
+  "Proof",
   inset: (x: 0em, top: 0em),
   titlefmt: emph,
   namefmt: x => [(#(strong(x)))],
@@ -78,9 +78,9 @@
   set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
   set text(
     size: 12pt,
-    font: ("Libertinus Serif", "LXGW WenKai TC"),
-    lang: "zh",
-    region: "cn",
+    font: "Libertinus Serif",
+    lang: "en",
+    region: "us",
   )
   set quote(block: true)
   set par(leading: 1em)
@@ -96,7 +96,7 @@
   show: rest => columns(2, rest)
   set align(left)
   if numbered-equation {
-    set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])
+    set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [Eq.])
     doc
   } else {
     doc
