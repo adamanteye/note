@@ -6,6 +6,4 @@
 *.xdv
 *.fdb_latexmk
 *.fls
-node_modules/
-.vscode/
 build/
