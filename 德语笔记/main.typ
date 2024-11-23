@@ -23,11 +23,17 @@
 #set heading(offset: 1)
 #include "形容词.typ"
 #set heading(offset: 0)
-] 动词
+]
+= 动词
 #set heading(offset: 1)
 #include "动词.typ"
 #set heading(offset: 0)
-]
 #include "动词表.typ"
+#columns(2)[
+= 数词
+#set heading(offset: 1)
+#include "数词.typ"
+#set heading(offset: 0)
+]
 = 阅读和翻译练习
 #include "阅读和翻译练习.typ"
