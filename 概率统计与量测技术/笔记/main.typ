@@ -87,6 +87,26 @@ $x_0=0,gamma=1$的特例被称为标准柯西分布.
 $ f_Y (y)=cases(f_X (h(y)) abs(h'(y)) &"if" alpha < y< beta,0 &"elsewhere") $
 其中$h(y)$是$g(x)$的反函数$ alpha=min(g(-infinity),g(infinity)),beta=max(g(-infinity),g(infinity)) $
 ]
+#thm("正态分布的可加性")[
+    对于$n$个独立正态随机变量之和$Z=X_1+X_2+dots+X_n$,有
+    $ Z~N(mu_1+mu_2+dots+mu_n,sigma_1^2+sigma_2^2+dots+sigma_n^2) $
+]
+#def([$Gamma$分布])[
+    对于$X~Gamma(alpha,theta)$
+    $ f_X (x)=cases(1/(theta^alpha Gamma(alpha))x^(alpha-1)e^(-x/theta) &"where" x>0,0 &"elsewhere") $
+] <gamma-dist>
+#def([$Gamma$函数])[
+    $ Gamma(alpha)=:integral_0^infinity x^(alpha-1)e^(-x)dd(x) $
+]
+#thm([$Gamma$分布的可加性])[
+    设$X,Y$互相独立,分别服从参数为$alpha,theta;beta,theta$的$Gamma$分布,则$X+Y$服从参数为$alpha+beta,theta$的$Gamma$分布.
+]
+#proof()[
+    注意使用概率密度的归一性.
+]
+#def("Beta函数")[
+    $ B(alpha,beta)&=:integral_0^1 t^(alpha-1)(1-t)^(beta -1)dd(t),alpha,beta>0\ &=(Gamma(alpha)Gamma(beta))/Gamma(alpha+beta) $
+]
 = 二维随机变量
 注意$X$,$Y$来自同一个样本空间,意味着$X$,$Y$可以不独立.
 = 期望
@@ -99,6 +119,7 @@ $ E(X^2)E(Y^2)>=E(X Y)^2 $
 ]
 #def("Khinchin")[辛钦大数定律是弱大数定律,设$X_1,X_2,dots$是相互独立,服从同一分布的随机变量序列,且具有数学期望$E(X_k)=mu,k=1,2,dots$,则$forall epsilon >0$,有
 $ lim_(n->infinity) P(abs(1/n sum_(k=1)^n X_k -mu)<epsilon)=1 $
+即 $overline(X)-->^P mu$
 ]
 #coll("Bernoulli")[伯努利大数定律是辛钦大数定律的重要推论,设$f_A$是$n$次独立重复试验中事件$A$发生的次数,$p$是事件$A$在每次试验中发生的概率,则$forall epsilon >0$,有
 $ lim_(n->infinity) P(abs(f_A/n-p)<epsilon)=1 $
@@ -114,6 +135,10 @@ $ lim_(n->infinity) P(abs(f_A/n-p)>=epsilon)=0 $
   - 独立同分布
     - 林德伯格-列维
     - 棣莫弗-拉普拉斯
+#def("依概率收敛")[
+    设$X_1,X_2,dots,X_n,dots$是一个随机变量序列,$a$是一个常数,若对于任意的$epsilon>0$,有$ lim_(n->infinity) P(abs(X_n-a)<epsilon)=1 $
+    则称随机变量序列$X_1,X_2,dots,X_n,dots$依概率收敛于常数$a$,记作$X_n-->^P a$
+]
 #thm("Lindberg Levi")[
 假设随机变量序列$X_1,X_2,dots$独立同分布,且数学期望和方差存在$ E(X_k)=mu, "Var"(X_k)=sigma^2>0 $
 则随机变量之和$X=:sum_(k=1)^n X_k$的标准化变量
@@ -142,7 +167,7 @@ $ lim_(n->infinity) P((Y_n-n p)/sqrt(n p(1-p))<=x)=1/sqrt(2pi)integral_(-infinit
 $ lim_(n->infinity) 1/B_n^(2+delta) sum_(k=1)^n E(abs(X_k-mu_k))=0 $
 成立,则随机变量之和$X=:sum_(k=1)^n X_k$的标准化变量$ Y_n=(sum_(i=1)^n X_k-sum_(k=1)^n mu_k)/B_n $
 的分布函数$F_n (x)$对于任意$x$满足$ lim_(n->infinity) F_n (x)=Phi(x) $
-]
+] <lyapunov>
 #exmp[
 对于柯西分布,由于其方差不存在,所以中心极限定理不成立.
 ]
@@ -228,13 +253,29 @@ $ "Var"(overline(X))&=sum_(i=1)^n "Var"(1/n X_i)\ &= sum_(i=1)^n 1/n^2 "Var"(X)\
 $ E(B_2)&=E(1/n sum_(i=1)^n X_i^2)-E(overline(X)^2)\ &=1/n (n("Var"(X)+E^2(X)))-("Var"(overline(X))+E^2(overline(X)))\ &="Var"(X)+(E^2(X))/n -1/n "Var"(X)-1/n E^2(X)\ &=(n-1)/n "Var"(X) $
 由于$E(B_2)=(n-1)/n E(S^2)$,从而得证.
 ]
-#thm("中心极限定理")[
+再论中心极限定理
+
 设$X_1,X_2,dots,X_n$是来自某个总体的样本,$overline(X)$是样本均值.
 - 若总体分布为$N(mu,sigma^2)$,则$overline(X)~ N(mu,sigma^2/n)$
-- 若总体分布未知或不是正态分布,但$E(X)=mu,"Var"(X)=sigma^2$存在,则$n$较大时,$overline(X)$的渐进分布为$N(mu,sigma^2/n)$
-]
+- 若总体分布未知或不是正态分布,但$E(X)=mu,"Var"(X)=sigma^2$存在,则$n$较大时,$overline(X)$的渐进分布为$N(mu,sigma^2/n)$,参考@lyapunov.
+
 如何理解$chi^2$分布在自由度越大的时候越接近正态分布?
+
 #quote[具有可加性的分布,因为中心极限定理,当自由度越大时,分布的形状越接近正态分布.]
+
+#def([$chi^2$分布])[
+    自由度为$n$的卡方分布是$n$个独立标准正态分布的平方和的分布.
+    $ chi^2=X_1^2+X_2^2+dots+X_n^2~chi^2(n),X_i~N(0,1) $
+    $chi^2(n)$分布的概率密度为$ f(y)=cases(1/(2^(n\/2)Gamma(n/2))y^(n\/2-1)e^(-y\/2) &"where" y>0,0 &"elsewhere") $
+    注意@gamma-dist,$chi^2(1)~Gamma(1/2,2)$
+]
+
+#thm([$chi^2$分布是可加的])[$ chi_1^2+chi_2^2~chi^2 (n_1+n_2) $]
+
+#thm([$chi^2$分布的数学期望和方差])[设$X~chi^2(n)$
+$ E(chi^2)=n, D(chi^2)=2n $
+]
+
 #def([$F$分布])[
 设随机变量$X ~ chi^2(n),Y ~ chi^2(m)$,且$X,Y$相互独立.
 称$ F=(X/n)\/(Y/m) $为服从第一自由度为$n$,第二自由度为$m$的$F$分布.
@@ -247,7 +288,26 @@ $ f_F (x)=(Gamma((m+n)/2)binom(n,m)^(n/2))/(Gamma(m/2)Gamma(n/2))x^(n/2-1)(1+n/m
 #def([$T$分布])[
 设随机变量$X ~ N(0,1),Y ~ chi^2(n)$,且$X,Y$相互独立.
 称$ T=X/sqrt(Y\/n) $为服从自由度为$n$的$T$分布.
-$ f_T (t)=t f_T^2 (t^2)=Gamma((n+1)/2)/Gamma(n/2)sqrt(n pi)(1+t^2/n)^(-(n+1)/2), t in (-infinity,+infinity) $
+$ f_T (t)\ &=t f_(T^2) (t^2), t in (-infinity,+infinity) \ &=Gamma((n+1)/2)/Gamma(n/2)sqrt(n pi)(1+t^2/n)^(-(n+1)/2), t in (-infinity,+infinity) $
+]
+#proof()[
+    $ T^2=(X^2/1)\/(Y/n) => T^2~F(1,n) $利用$T=sqrt(T^2)$推得$T$分布的概率密度函数.
+]
+#thm([$T$分布的性质])[
+    ```R
+    install.packages("ggplot2")
+    library(ggplot2)
+    x <- seq(-5, 5, length.out=100)
+    t_df <- data.frame(x=c(), pd=c(), n=c())
+    for (n in c(1, 2, 9, 25, 3600)) {
+        t_df <- rbind(t_df, data.frame(x=x, pd=dt(x, df=n), n=n))
+    }
+    t_df$n <- as.factor(t_df$n)
+    plot <- ggplot(t_df, aes(x=x, y=pd, color=n)) + geom_line()
+    print(plot + labs(y="概率密度", color="自由度"))
+    ```
+    - $n->infinity$时为标准正态分布
+    - $f_n (t)$是偶函数
 ]
 使用R语言绘制$F(10,2)$与$T(10)$,可以参考#link("https://ggplot2.tidyverse.org/reference/geom_function.html")[geom_function]了解更多如何绘制连续函数
 ```R
@@ -266,8 +326,20 @@ base +
   )
 ggsave("f_t.pdf")
 ```
-#thm("两个正态总体的比较")[
-设总体$X~N(mu,sigma^2)$,样本为$(X_1,X_2,dots,X_n)$,又设总体$X' ~ N(mu',sigma'^2)$,样本为$(X'_1,X'_2,dots,X'_n)$,则
+#thm("正态总体的性质")[
+    设$X_1,X_2,dots,X_n$是来自正态总体$N(mu,sigma^2)$的样本,$overline(X)$和$S^2$分别是样本均值和样本方差.
+    - $E(overline(X))=mu,D(overline(X))=sigma^2/n$
+    - $E(S^2)=sigma^2$
+    - $((n-1)S^2)/sigma^2~chi^2(n-1)$
+    - $overline(X)$与$S^2$相互独立
+    - $(overline(X)-mu)/(S\/sqrt(n))~t(n-1)$
+]
+
+#thm("两个正态总体的样本均值和样本方差")[
+设总体$X~N(mu,sigma^2)$,样本为$(X_1,X_2,dots,X_n)$,又设总体$X' ~ N(mu',sigma'^2)$,样本为$(X'_1,X'_2,dots,X'_n)$,
+$ overline(X)=1/n sum_(i=1)^n X_i,overline(X')=1/n' sum_(i=1)^n' X'_i $
+$ S^2=1/(n-1) sum_(i=1)^n (X_i-overline(X)) $
+则
 $ S^2/sigma^2 S'^2/sigma'^2 ~ F(n-1,n'-1) $
 ]
 = 统计推断
@@ -284,12 +356,13 @@ $X~N(mu, sigma^2)$,若$mu, sigma$未知,通过构建统计量,给出它们的估
 ]
 == 参数估计方法
 #def("点估计")[
-用一个数值作为未知参数的估计值称为点估计.
+从总体的一个样本估计未知参数的值称为点估计.
 
 设总体$X$的分布函数的形式已知,$theta$是待估参数,$(X_1,X_2,dots,X_n)$为总体的一个样本.
 
 点估计构造一个恰当的统计量$hat(theta) (X_1, X_2,dots,X_n)$,用它的观察值$hat(theta) (x_1, x_2,dots,x_n)$作为待估参数$theta$的近似.
 ]
+常见的两种构造估计量的方法有@methods-of-moments 以及@maximum-likelihood-estimation.
 #def("矩估计")[
 用样本$k$阶矩作为总体$k$阶矩的估计量,建立含待估参数的方程,从而解出待估参数.
 
@@ -313,7 +386,7 @@ cases(theta_1=theta_1(mu_1,mu_2,dots,mu_k),
 用样本矩$A_r$代替总体矩$mu_r$阶得到待估参数的估计量,称为*矩估计量*.
 $ hat(theta)_i=theta_i (A_1,A_2,dots,A_k), i=1,2,dots,k $
 矩估计量的观测值称为*矩估计值*.
-]
+] <methods-of-moments>
 #exmp("最大似然法的引入")[
 设总体$X$服从0-1分布,且$P(X=1)=p$,用最大似然法求$p$的估计值
 设$x_1,x_2,dots,x_n$为总体的样本的估计值,则得到该样本值的概率为
@@ -328,31 +401,61 @@ $ hat(p)=arg max L(p) = arg max log L(p) $
   - 设$X$是连续型随机变量,取$f(X,theta)$为$X$的密度函数,则似然函数定义为
   $ L(va(x),theta)=product_(i=1)^n f(x_i,theta) $
 ]
-#def("最大似然估计,maximum likelihood estimation")[
+#def("最大似然估计")[
   $ hat(va(theta)) (va(x),theta)=arg max L(va(x);va(theta)) $
 称为最大似然估计估计值,称统计量$hat(va(theta)) (X_1,X_2,dots,X_n)$为参数$va(theta)$的最大参数估计量.
-]
+] <maximum-likelihood-estimation>
 #exmp("均匀分布的矩估计和最大似然估计")[
 设$X~U(a,b)$,有$X_1,X_2,dots,X_n$是$X$的一个样本.求$a,b$的矩估计和最大似然估计.
-
+]
+#sol[
 使用矩估计有
-$ mu_1=E(X)=(a+b)/2\ mu_2=E(X^2)="Var"(X)+E^2(X)=(b-a)^2/12+(a+b)^2/4 $
+$ mu_1&=E(X)=(a+b)/2\ mu_2&=E(X^2)="Var"(X)+E^2(X)\ &=(b-a)^2/12+(a+b)^2/4 $
 解得
 $ va(a)&=A_1-sqrt(3(A_2-A_1^2))=A_1-sqrt(3 B_2)\ va(b)&=A_1+sqrt(3(A_2-A_1^2))=A_1+sqrt(3 B_2) $
 使用最大似然估计有
-$ L(a,b)=cases(1/(b-a)^2 &"where" a<x_i<b,0 &"elsewhere") $
+$ L(a,b)=cases(1/(b-a)^n &"where" a<x_i<b,0 &"elsewhere") $
+得到$a<=x_1,x_2,dots,x_n,b>=x_1,x_2,dots,x_n$
+
 当$a=min x_i,b=max x_i$时,$L(a,b)$最大,所以
 $ hat(a)=min X_i, hat(b)=max X_i $
 *这两种估计的结果不同.*
 ]
+#thm("最大似然估计的不变性")[
+    如果$hat(theta)$是$theta$的最大似然估计.
+
+    那么$g(hat(theta))$是$g(theta)$的最大似然估计.
+]
 == 估计的评价
-#thm("期望方差")[
-  设$hat(theta)_n (X_1,dots,X_n)$是$theta$的一个估计量.若
+#def("无偏性")[
+   若估计量$hat(theta)$的数学期望存在,且$E(hat(theta))=theta$,则称$hat(theta)$是$theta$的无偏估计量.
+]
+无偏估计的实际意义是无系统误差.
+#exmp()[设$X_1,X_2,dots,X_n$是来自总体$X~b(n,p)$的一个样本,求$p^2$的无偏估计量]
+#sol()[求出$hat(p^2)$后注意验证无偏性]
+#def("有效性")[
+  若两个估计量$hat(theta)_1$和$hat(theta)_2$都是$theta$的无偏估计量,且对于任意$theta in Theta$,有
+  $ "Var"(hat(theta)_1)<="Var"(hat(theta)_2) $
+  则称$hat(theta)_1$比$hat(theta)_2$有效.
+]
+#def("一致最小方差无偏估计")[如果一个估计量比任何其它估计量都有效,则称之为一致最小方差无偏估计(uniformly minimum variance unbiased estimator, UMVUE)]
+#thm("最大似然估计量理论")[
+    - 如果参数存在有效无偏估计量,那么它一定是最大似然估计量
+    - 一般情况下,最大似然估计量是一致的
+    - 最大似然估计量渐进服从正态分布
+]
+#def("相合性之一")[
+    设$hat(theta) (X_1,X_2,dots,X_n)$是$theta$的估计量,若
+    $ hat(theta) (X_1,X_2,dots,X_n) -->^P theta $
+    那么称$hat(theta)$是$theta$的相合估计量.
+]
+#def("相合性之二")[
+  设$hat(theta)_n (X_1,dots,X_n)$是$theta$的估计量.若
   $ lim_(n->infinity) E(hat(theta)_n)=theta, lim_(n->infinity) "Var"(hat(theta)_n)=0 $
-  则$hat(theta)_n$是$theta$的相合估计量的相合估计量.
+  则$hat(theta)_n$是$theta$的相合估计量.
 ] <evaluation_1>
 
-#thm("均方误差")[
+#def("均方误差")[
   $ "MSE" (hat(theta)_n)=E(hat(theta)_n-theta)^2="Var"(hat(theta)_n)-E^2(hat(theta)_n-theta) $
-  等价于 @evaluation_1.
+  要求MSE最小就等价于 @evaluation_1.
 ]
