@@ -6,11 +6,13 @@
 
 -   软件包
     -   `xelatex`: `XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023)`
-    -   `typst`: `typst 0.11.1 (50115102)`
+    -   `typst`: `typst 0.12.0 (737895d7)`
 -   LaTex 模板
     -   [THUCOURSEWORK：清华大学课程作业模板](https://github.com/zhaofeng-shu33/THU-coursework-template)
 -   字体
+    -   [LXGW WenKai TC](https://github.com/lxgw/LxgwWenkaiTC)
     -   Source Han Serif [Region Specific Subset OTFs Simplified Chinese (简体中文)](https://github.com/adobe-fonts/source-han-serif/releases/tag/2.002R)
+-   Typst 库 (不再一一列举)
 
 ## 删除不再使用的静态资源
 
