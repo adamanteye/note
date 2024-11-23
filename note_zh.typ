@@ -2,11 +2,14 @@
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/cetz:0.3.0"
 #import "@preview/unify:0.6.0": *
+#import "@preview/codly:1.0.0": *
+#import "@preview/codly-languages:0.1.1": *
+#let red = rgb("#8c0000")
 #let def = thmbox(
   "thm",
   "定义",
   inset: (x: 0em, top: 0em),
-  namefmt: x => [(#(strong(x)))],
+  namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
   base: none
 )
@@ -14,7 +17,7 @@
   "thm",
   "公设",
   inset: (x: 0em, top: 0em),
-  namefmt: x => [(#(strong(x)))],
+  namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
   base: none
 )
@@ -22,7 +25,7 @@
   "thm",
   "定理",
   inset: (x: 0em, top: 0em),
-  namefmt: x => [(#(strong(x)))],
+  namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
   base: none
 )
@@ -30,7 +33,7 @@
   "coll",
   "推论",
   inset: (x: 0em, top: 0em),
-  namefmt: x => [(#(strong(x)))],
+  namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
   base: "thm",
 )
@@ -38,7 +41,7 @@
   "thm",
   "例",
   inset: (x: 0em, top: 0em),
-  namefmt: x => [(#(strong(x)))],
+  namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
   base: none
 )
@@ -46,7 +49,7 @@
   "exmp",
   "解答",
   inset: (x: 0em, top: 0em),
-  namefmt: x => [(#(strong(x)))],
+  namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
   base: none
 )
@@ -54,8 +57,7 @@
   "proof",
   "证明",
   inset: (x: 0em, top: 0em),
-  titlefmt: emph,
-  namefmt: x => [(#(strong(x)))],
+  titlefmt: x => text(fill: red, x),
   base: "thm"
 )
 #let scr(it) = text(
@@ -74,11 +76,13 @@
     set document(title: title)
   }
   set heading(numbering: "1.")
-  show link: it => underline(text(fill: rgb("#8c0000"), it))
+  show link: it => underline(text(fill: red, it), offset: 0.2em)
+  show: codly-init.with()
+  codly(languages: codly-languages)
   set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
   set text(
     size: 12pt,
-    font: ("Libertinus Serif", "LXGW WenKai TC"),
+    font: ("Libertinus Serif", "霞鶩文楷 TC"),
     lang: "zh",
     region: "cn",
   )
