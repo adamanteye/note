@@ -5,7 +5,7 @@
   inset: (x: 0em, top: 0em),
   namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
-  base: none
+  base: none,
 )
 #let pst = thmbox(
   "thm",
@@ -13,7 +13,7 @@
   inset: (x: 0em, top: 0em),
   namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
-  base: none
+  base: none,
 )
 #let thm = thmbox(
   "thm",
@@ -21,7 +21,7 @@
   inset: (x: 0em, top: 0em),
   namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
-  base: none
+  base: none,
 )
 #let coll = thmbox(
   "coll",
@@ -37,21 +37,21 @@
   inset: (x: 0em, top: 0em),
   namefmt: x => strong(text(fill: red, x)),
   titlefmt: emph,
-  base: none
+  base: none,
 )
 #let sol = thmproof(
   "sol",
   "Sol",
   inset: (x: 0em, top: 0em),
   titlefmt: x => strong(text(fill: red, x)),
-  base: "exmp"
+  base: "exmp",
 )
 #let proof = thmproof(
   "proof",
   "Proof",
   inset: (x: 0em, top: 0em),
   titlefmt: x => text(fill: red, x),
-  base: "thm"
+  base: "thm",
 )
 #let conf(
   title: none,
@@ -77,15 +77,27 @@
   )
   set quote(block: true)
   set par(leading: 1em)
-  align(center, text(1.4em)[
-    *#title*
-  ])
+  align(
+    center,
+    text(1.4em)[
+      *#title*
+    ],
+  )
   if author != none {
-    align(center, text(1.2em)[
-      #author
-    ])
+    align(
+      center,
+      text(1.2em)[
+        #author
+      ],
+    )
   }
   show: thmrules
+  show figure.where(kind: table): set block(breakable: true)
+  set enum(numbering: n => text(fill: red, numbering("1.", n)))
+  set list(marker: n => text(fill: red, "•"))
+  show raw.where(block: false): it => (
+    h(0.5em) + box(fill: red.lighten(80%), outset: 0.25em, text(fill: red, it)) + h(0.5em)
+  )
   show: rest => columns(2, rest)
   set align(left)
   if numbered-equation {

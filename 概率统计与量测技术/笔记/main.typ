@@ -1,7 +1,7 @@
 #import "../../note_zh.typ": *
 #show: conf.with(
   title: "概率统计分析与量测技术笔记",
-  author: "杨哲涵"
+  author: "杨哲涵",
 )
 = 集合以及事件
 #def([$sigma$-field])[
@@ -47,7 +47,7 @@
 古典概型的局限是样本空间离散,基本事件数有限.
 
 当随机试验的样本空间是某连续区域$S$,并且任意一点落在度量(长度,面积,体积)相同的子区域是等可能的,则事件$A$的概率可定义为
-$ P(A)=m(A)/m(S) $
+$ P(A)=m(A) / m(S) $
 几何概型基于现代的 "测度" 的概念,
 == 贝叶斯概率
 贝叶斯概率的样本空间中的样本点为一系列*假设(hypotheses)*
@@ -69,7 +69,11 @@ $ P(A)=m(A)/m(S) $
   若$X~"Exp"(lambda)$,则$P(X>s+t|X>s)=P(X>t)$. 指数分布是 "永远年轻" 的分布.
 ]
 #proof[
-  $ P(X>s+t|X>s)=&P(X>s+t)/P(X>s)\ =&(1-P(X<=s+t))/(1-P(X<=s))\ =&(1-F(s+t))/(1-F(s))\ =&e^(-lambda(s+t))/e^(-lambda s)\ =&e^(-lambda t)=P(X>t) $
+  $
+    P(X>s+t|X>s)=&P(X>s+t) / P(X>s)\ =&(1-P(X<=s+t)) / (1-P(X<=s))\ =&(1-F(s+t)) / (1-F(
+      s
+    ))\ =&e^(-lambda(s+t)) / e^(-lambda s)\ =&e^(-lambda t)=P(X>t)
+  $
 ]
 指数分布作为 "寿命" 分布的近似,并不是例如人的寿命的实际分布.
 
@@ -77,54 +81,58 @@ $ P(A)=m(A)/m(S) $
 
 离散型随机变量是右连续的.
 #def("柯西分布")[
-又称Breit-Wigner分布,概率密度函数为
-$ f(x;x_0,gamma)=1/pi gamma/((x-x_0)^2+gamma^2) $
-$x_0=0,gamma=1$的特例被称为标准柯西分布.
+  又称Breit-Wigner分布,概率密度函数为
+  $ f(x;x_0,gamma)=1 / pi gamma / ((x-x_0)^2+gamma^2) $
+  $x_0=0,gamma=1$的特例被称为标准柯西分布.
 ]
 
 #thm("随机变量概率密度的复合")[
-设随机变量$X$具有概率密度$f_X (x),-infinity<x<infinity$.设函数$g(x)$处处可导且恒有$g'(x)>0$或$g'(x)<0$.则随机变量$Y=g(X)$是连续型随机变量,其概率密度为
-$ f_Y (y)=cases(f_X (h(y)) abs(h'(y)) &"if" alpha < y< beta,0 &"elsewhere") $
-其中$h(y)$是$g(x)$的反函数$ alpha=min(g(-infinity),g(infinity)),beta=max(g(-infinity),g(infinity)) $
+  设随机变量$X$具有概率密度$f_X (x),-infinity<x<infinity$.设函数$g(x)$处处可导且恒有$g'(x)>0$或$g'(x)<0$.则随机变量$Y=g(X)$是连续型随机变量,其概率密度为
+  $ f_Y (y)=cases(f_X (h(y)) abs(h'(y)) &"if" alpha < y< beta,0 &"elsewhere") $
+  其中$h(y)$是$g(x)$的反函数$ alpha=min(g(-infinity),g(infinity)),beta=max(g(-infinity),g(infinity)) $
 ]
 #thm("正态分布的可加性")[
-    对于$n$个独立正态随机变量之和$Z=X_1+X_2+dots+X_n$,有
-    $ Z~N(mu_1+mu_2+dots+mu_n,sigma_1^2+sigma_2^2+dots+sigma_n^2) $
+  对于$n$个独立正态随机变量之和$Z=X_1+X_2+dots+X_n$,有
+  $ Z~N(mu_1+mu_2+dots+mu_n,sigma_1^2+sigma_2^2+dots+sigma_n^2) $
 ]
 #def([$Gamma$分布])[
-    对于$X~Gamma(alpha,theta)$
-    $ f_X (x)=cases(1/(theta^alpha Gamma(alpha))x^(alpha-1)e^(-x/theta) &"where" x>0,0 &"elsewhere") $
+  对于$X~Gamma(alpha,theta)$
+  $ f_X (x)=cases(1/(theta^alpha Gamma(alpha))x^(alpha-1)e^(-x/theta) &"where" x>0,0 &"elsewhere") $
 ] <gamma-dist>
 #def([$Gamma$函数])[
-    $ Gamma(alpha)=:integral_0^infinity x^(alpha-1)e^(-x)dd(x) $
+  $ Gamma(alpha)=:integral_0^infinity x^(alpha-1)e^(-x)dd(x) $
 ]
 #thm([$Gamma$分布的可加性])[
-    设$X,Y$互相独立,分别服从参数为$alpha,theta;beta,theta$的$Gamma$分布,则$X+Y$服从参数为$alpha+beta,theta$的$Gamma$分布.
+  设$X,Y$互相独立,分别服从参数为$alpha,theta;beta,theta$的$Gamma$分布,则$X+Y$服从参数为$alpha+beta,theta$的$Gamma$分布.
 ]
 #proof()[
-    注意使用概率密度的归一性.
+  注意使用概率密度的归一性.
 ]
 #def("Beta函数")[
-    $ B(alpha,beta)&=:integral_0^1 t^(alpha-1)(1-t)^(beta -1)dd(t),alpha,beta>0\ &=(Gamma(alpha)Gamma(beta))/Gamma(alpha+beta) $
+  $
+    B(alpha,beta)&=:integral_0^1 t^(alpha-1)(
+      1-t
+    )^(beta -1)dd(t),alpha,beta>0\ &=(Gamma(alpha)Gamma(beta)) / Gamma(alpha+beta)
+  $
 ]
 = 二维随机变量
 注意$X$,$Y$来自同一个样本空间,意味着$X$,$Y$可以不独立.
 = 期望
 #thm("柯西-施瓦茨不等式")[
-$ E(X^2)E(Y^2)>=E(X Y)^2 $
+  $ E(X^2)E(Y^2)>=E(X Y)^2 $
 ]
 = 大数定律
 #thm("Chebyshev不等式")[
-设随机变量$X$有数学期望$E(X)=mu$和方差$"Var"(X)=sigma^2$,则:$ forall epsilon>0, P(abs(x-mu)>=epsilon)<=sigma^2/epsilon^2 $
+  设随机变量$X$有数学期望$E(X)=mu$和方差$"Var"(X)=sigma^2$,则:$ forall epsilon>0, P(abs(x-mu)>=epsilon)<=sigma^2/epsilon^2 $
 ]
 #def("Khinchin")[辛钦大数定律是弱大数定律,设$X_1,X_2,dots$是相互独立,服从同一分布的随机变量序列,且具有数学期望$E(X_k)=mu,k=1,2,dots$,则$forall epsilon >0$,有
-$ lim_(n->infinity) P(abs(1/n sum_(k=1)^n X_k -mu)<epsilon)=1 $
-即 $overline(X)-->^P mu$
+  $ lim_(n->infinity) P(abs(1/n sum_(k=1)^n X_k -mu)<epsilon)=1 $
+  即 $overline(X)-->^P mu$
 ]
 #coll("Bernoulli")[伯努利大数定律是辛钦大数定律的重要推论,设$f_A$是$n$次独立重复试验中事件$A$发生的次数,$p$是事件$A$在每次试验中发生的概率,则$forall epsilon >0$,有
-$ lim_(n->infinity) P(abs(f_A/n-p)<epsilon)=1 $
-或
-$ lim_(n->infinity) P(abs(f_A/n-p)>=epsilon)=0 $
+  $ lim_(n->infinity) P(abs(f_A/n-p)<epsilon)=1 $
+  或
+  $ lim_(n->infinity) P(abs(f_A/n-p)>=epsilon)=0 $
 ]
 
 = 极限定理
@@ -136,122 +144,130 @@ $ lim_(n->infinity) P(abs(f_A/n-p)>=epsilon)=0 $
     - 林德伯格-列维
     - 棣莫弗-拉普拉斯
 #def("依概率收敛")[
-    设$X_1,X_2,dots,X_n,dots$是一个随机变量序列,$a$是一个常数,若对于任意的$epsilon>0$,有$ lim_(n->infinity) P(abs(X_n-a)<epsilon)=1 $
-    则称随机变量序列$X_1,X_2,dots,X_n,dots$依概率收敛于常数$a$,记作$X_n-->^P a$
+  设$X_1,X_2,dots,X_n,dots$是一个随机变量序列,$a$是一个常数,若对于任意的$epsilon>0$,有$ lim_(n->infinity) P(abs(X_n-a)<epsilon)=1 $
+  则称随机变量序列$X_1,X_2,dots,X_n,dots$依概率收敛于常数$a$,记作$X_n-->^P a$
 ]
 #thm("Lindberg Levi")[
-假设随机变量序列$X_1,X_2,dots$独立同分布,且数学期望和方差存在$ E(X_k)=mu, "Var"(X_k)=sigma^2>0 $
-则随机变量之和$X=:sum_(k=1)^n X_k$的标准化变量
-$ Y_n=(X-n mu)/(sqrt(n)sigma) $
-的分布函数$F_n (x)$对于任意实数$x$满足
-$ lim_(n->infinity) F_n (x)=integral_(-infinity)^x 1/sqrt(2pi) e^(-t^2/2) dd(t)=Phi(x) $
-$n$足够大时, $X$近似服从$N(n mu,n sigma^2)$
+  假设随机变量序列$X_1,X_2,dots$独立同分布,且数学期望和方差存在$ E(X_k)=mu, "Var"(X_k)=sigma^2>0 $
+  则随机变量之和$X=:sum_(k=1)^n X_k$的标准化变量
+  $ Y_n=(X-n mu) / (sqrt(n)sigma) $
+  的分布函数$F_n (x)$对于任意实数$x$满足
+  $ lim_(n->infinity) F_n (x)=integral_(-infinity)^x 1 / sqrt(2pi) e^(-t^2 / 2) dd(t)=Phi(x) $
+  $n$足够大时, $X$近似服从$N(n mu,n sigma^2)$
 ]
 #proof[
-对于$ Y_n=(sum_(k=1)^n X_k-n mu)/(sqrt(n)sigma)=sum_(i=1)^n (X_i-mu)/(sqrt(n)sigma) $
-$ => phi_(Y_n) (t)=(phi_(X_i)-mu (t/(sqrt(n)sigma)))^n $
+  对于$ Y_n=(sum_(k=1)^n X_k-n mu)/(sqrt(n)sigma)=sum_(i=1)^n (X_i-mu)/(sqrt(n)sigma) $
+  $ => phi_(Y_n) (t)=(phi_(X_i)-mu (t / (sqrt(n)sigma)))^n $
 ]
 #coll("De Moivre-Laplace")[
-这是Lindberg-Levi中心极限定理的二项分布特例.
+  这是Lindberg-Levi中心极限定理的二项分布特例.
 
-设$Y_n~b(n,p), 0<p<1, n=1,2,dots$,则$forall x in RR$,有
-$ lim_(n->infinity) P((Y_n-n p)/sqrt(n p(1-p))<=x)=1/sqrt(2pi)integral_(-infinity)^x e^(-t^2/2) dd(t)=Phi(x) $
+  设$Y_n~b(n,p), 0<p<1, n=1,2,dots$,则$forall x in RR$,有
+  $ lim_(n->infinity) P((Y_n-n p) / sqrt(n p(1-p))<=x)=1 / sqrt(2pi)integral_(-infinity)^x e^(-t^2 / 2) dd(t)=Phi(x) $
 ]
 如何理解中心极限定理?
 
 卷积操作是高斯分布的不动点.
 #thm("Lyapunov")[
-李雅普诺夫定理说,设$X_1,X_2,dots$是独立随机变量序列,且数学期望和方差存在$ E(X_k)=mu_k, "Var"(X_k)=sigma_k^2>0, 1<=k<=n $
-记$B_n^2=sum_(k=1)^n sigma_k^2$.
-如果存在$delta>0$,使得Lyapunov条件
-$ lim_(n->infinity) 1/B_n^(2+delta) sum_(k=1)^n E(abs(X_k-mu_k))=0 $
-成立,则随机变量之和$X=:sum_(k=1)^n X_k$的标准化变量$ Y_n=(sum_(i=1)^n X_k-sum_(k=1)^n mu_k)/B_n $
-的分布函数$F_n (x)$对于任意$x$满足$ lim_(n->infinity) F_n (x)=Phi(x) $
+  李雅普诺夫定理说,设$X_1,X_2,dots$是独立随机变量序列,且数学期望和方差存在$ E(X_k)=mu_k, "Var"(X_k)=sigma_k^2>0, 1<=k<=n $
+  记$B_n^2=sum_(k=1)^n sigma_k^2$.
+  如果存在$delta>0$,使得Lyapunov条件
+  $ lim_(n->infinity) 1 / B_n^(2+delta) sum_(k=1)^n E(abs(X_k-mu_k))=0 $
+  成立,则随机变量之和$X=:sum_(k=1)^n X_k$的标准化变量$ Y_n=(sum_(i=1)^n X_k-sum_(k=1)^n mu_k)/B_n $
+  的分布函数$F_n (x)$对于任意$x$满足$ lim_(n->infinity) F_n (x)=Phi(x) $
 ] <lyapunov>
 #exmp[
-对于柯西分布,由于其方差不存在,所以中心极限定理不成立.
+  对于柯西分布,由于其方差不存在,所以中心极限定理不成立.
 ]
 #thm("马尔科夫中心极限定理")[
-对于相互不独立的随机变量,即设$X_1,X_2,dots$是随机变量序列,且满足无后效性,即$P(X_j|X_(j-1),X_(j-2),dots)=P(X_j|X_(j-1))$
-且满足可逆性和可达性条件,使它成为一个马尔科夫链,那么
-$ mu=E(X_1) $
-$ sigma^2="Var"(X_1)+2sum_(k=1)^infinity "Cov"(X_1,X_(1+k))<+infinity $
+  对于相互不独立的随机变量,即设$X_1,X_2,dots$是随机变量序列,且满足无后效性,即$P(X_j|X_(j-1),X_(j-2),dots)=P(X_j|X_(j-1))$
+  且满足可逆性和可达性条件,使它成为一个马尔科夫链,那么
+  $ mu=E(X_1) $
+  $ sigma^2="Var"(X_1)+2sum_(k=1)^infinity "Cov"(X_1,X_(1+k))<+infinity $
 ]
 = 蒙特卡罗方法
 #def("第一类舍选法")[
-希望采样分布$X=x in [a,b], X~f(x)$且$L=max{f(x)|a<=x<=b}$
-+ 对$[a,b]cprod[0,1]$区域内均匀分布的二维随机变量$(U,V)$抽样
-+ 保留曲线$v=f(u)/L$下方的点,取其横坐标$ {u_i|v_i<=f(u_i)/L,i=1,2,dots,n}={x_1,x_2,dots,x_n} $
+  希望采样分布$X=x in [a,b], X~f(x)$且$L=max{f(x)|a<=x<=b}$
+  + 对$[a,b]cprod[0,1]$区域内均匀分布的二维随机变量$(U,V)$抽样
+  + 保留曲线$v=f(u)/L$下方的点,取其横坐标$ {u_i|v_i<=f(u_i)/L,i=1,2,dots,n}={x_1,x_2,dots,x_n} $
 ]
 #thm("舍选法效率的期望")[
-$ E=1/((b-a)L) $
+  $ E=1 / ((b-a)L) $
 ]
 #proof[
-舍选法可以采样到希望的分布,是因为
-$ P(X<=x)&=P(U<=x|V<=f(U)/L)\ &=P(U<=x,V<=f(U)/L)/P(V<=f(U)/L)\ &=(integral_a^x dd(u) integral_0^(f(u)/L) dd(v) g(u,v))/(integral_a^b dd(u) integral_0^(f(u)/L) dd(v) g(u,v))\ &=integral_a^x dd(u) f(u) $
-其中$g(u,v)=1/(b-a)$.此外,效率的期望为
-$ E&=P(V<=f(U)/L)\ &=integral_a^b dd(u)integral_0^(f(u)/L)dd(v)g(u,v)\ &=1/((b-a)L) $
+  舍选法可以采样到希望的分布,是因为
+  $
+    P(X<=x)&=P(U<=x|V<=f(U) / L)\ &=P(U<=x,V<=f(U) / L) / P(V<=f(U) / L)\ &=(integral_a^x dd(u) integral_0^(f(
+      u
+    ) / L) dd(v) g(u,v)) / (integral_a^b dd(u) integral_0^(f(u) / L) dd(v) g(u,v))\ &=integral_a^x dd(u) f(u)
+  $
+  其中$g(u,v)=1/(b-a)$.此外,效率的期望为
+  $ E&=P(V<=f(U) / L)\ &=integral_a^b dd(u)integral_0^(f(u) / L)dd(v)g(u,v)\ &=1 / ((b-a)L) $
 ]
 = 分布族
 #def("指数分布族")[
-一族的分布,它们的概率密度函数或分布律记为$f(x|va(theta))$,如果有如下的形式,则称为$s$维指数分布族
-$ f(x|va(theta))=exp(sum_(i=1)^s eta_i (va(theta)) T_i (x)-B(va(theta))) h(x) $
+  一族的分布,它们的概率密度函数或分布律记为$f(x|va(theta))$,如果有如下的形式,则称为$s$维指数分布族
+  $ f(x|va(theta))=exp(sum_(i=1)^s eta_i (va(theta)) T_i (x)-B(va(theta))) h(x) $
 ]
 #def("指数分布族标准形式")[
-把 $eta_i (va(theta))$当作自变量反解$theta$,那么形式有进一步化简.
-$ f(x|va(eta))=exp(sum_(i=1)^s eta_i T_i (x)-A(va(eta))) h(x) $
-其中$eta_i=eta_i (va(theta)),A(eta(va(theta)))=B(va(theta))$
+  把 $eta_i (va(theta))$当作自变量反解$theta$,那么形式有进一步化简.
+  $ f(x|va(eta))=exp(sum_(i=1)^s eta_i T_i (x)-A(va(eta))) h(x) $
+  其中$eta_i=eta_i (va(theta)),A(eta(va(theta)))=B(va(theta))$
 ]
 #thm[指数分布族的期望和方差为$ E(X)=A'(eta) $$ "Var"(X)=A''(eta) $]
 #exmp("二项分布属于指数分布族")[
-$ P(k|p,n)&=binom(n,k)p^k(1-p)^(n-k)\ &=h(k) exp(T(k) eta(p)-B(p)) $
-其中$ h(k)=binom(n,k),T(k)=k,eta(p)=ln(p/(1-p)),B(p)=-n ln(1-p) $
+  $ P(k|p,n)&=binom(n,k)p^k(1-p)^(n-k)\ &=h(k) exp(T(k) eta(p)-B(p)) $
+  其中$ h(k)=binom(n,k),T(k)=k,eta(p)=ln(p/(1-p)),B(p)=-n ln(1-p) $
 ]
 #exmp("正态分布属于指数分布族")[
-$ f(x|mu,sigma^2)&=1/sqrt(2pi sigma^2) exp(-(x-mu)^2/(2sigma^2)) $
+  $ f(x|mu,sigma^2)&=1 / sqrt(2pi sigma^2) exp(-(x-mu)^2/(2sigma^2)) $
 ]
 = 统计学概论
 #def("箱线图")[
-箱线图是一种用作显示一组数据分散情况的统计图表,显示了一组数据的最大值,最小值,中位数,上四分位数和下四分位数.
+  箱线图是一种用作显示一组数据分散情况的统计图表,显示了一组数据的最大值,最小值,中位数,上四分位数和下四分位数.
 
-这五个分位数分别称为$"Min",Q_1,M,Q_3,"Max"$.
+  这五个分位数分别称为$"Min",Q_1,M,Q_3,"Max"$.
 
-常用于比较不同组别的数据分布情况.
+  常用于比较不同组别的数据分布情况.
 ]
 = 统计量
 #def("样本均值")[
-设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
-$ overline(X)=1/n sum_(i=1)^n X_i $
+  设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+  $ overline(X)=1 / n sum_(i=1)^n X_i $
 ]
 #def("样本方差")[
-设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
-$ S^2=1/(n-1) sum_(i=1)^n (X_i-overline(X))^2 $
+  设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+  $ S^2=1 / (n-1) sum_(i=1)^n (X_i-overline(X))^2 $
 ]
 #def("样本标准差")[
-设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
-$ S=sqrt(S^2) $
+  设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+  $ S=sqrt(S^2) $
 ]
 #def([样本$k$阶原点矩])[
-设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
-$ A_k=1/n sum_(i=1)^n X_i^k $
+  设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+  $ A_k=1 / n sum_(i=1)^n X_i^k $
 ]
 #def([样本$k$阶中心矩])[
-设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
-$ B_k=1/n sum_(i=1)^n (X_i-overline(X))^k $
+  设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
+  $ B_k=1 / n sum_(i=1)^n (X_i-overline(X))^k $
 ]
 #thm("偏差平方和最小")[
-数据观察值与样本均值的偏差平方和最小,即在形如$sum_(i=1)^n (X_i -c)^2$的函数中,$sum_(i=1)^n (X_i -overline(X))^2$
+  数据观察值与样本均值的偏差平方和最小,即在形如$sum_(i=1)^n (X_i -c)^2$的函数中,$sum_(i=1)^n (X_i -overline(X))^2$
 ]
 #thm("样本均值方差和矩的联系")[
-- $E(overline(X))=mu$
-- $"Var"(overline(X))=sigma^2\/n$
-- $E(S^2)=sigma^2$
+  - $E(overline(X))=mu$
+  - $"Var"(overline(X))=sigma^2\/n$
+  - $E(S^2)=sigma^2$
 ]
 #proof[
-由于$(X_1,X_2,dots,X_n)$独立同分布于$X$,从而有
-$ "Var"(overline(X))&=sum_(i=1)^n "Var"(1/n X_i)\ &= sum_(i=1)^n 1/n^2 "Var"(X)\ &= sigma^2/n $
-$ E(B_2)&=E(1/n sum_(i=1)^n X_i^2)-E(overline(X)^2)\ &=1/n (n("Var"(X)+E^2(X)))-("Var"(overline(X))+E^2(overline(X)))\ &="Var"(X)+(E^2(X))/n -1/n "Var"(X)-1/n E^2(X)\ &=(n-1)/n "Var"(X) $
-由于$E(B_2)=(n-1)/n E(S^2)$,从而得证.
+  由于$(X_1,X_2,dots,X_n)$独立同分布于$X$,从而有
+  $ "Var"(overline(X))&=sum_(i=1)^n "Var"(1 / n X_i)\ &= sum_(i=1)^n 1 / n^2 "Var"(X)\ &= sigma^2 / n $
+  $
+    E(B_2)&=E(1 / n sum_(i=1)^n X_i^2)-E(overline(X)^2)\ &=1 / n (n("Var"(X)+E^2(X)))-(
+      "Var"(overline(X))+E^2(overline(X))
+    )\ &="Var"(X)+(E^2(X)) / n -1 / n "Var"(X)-1 / n E^2(X)\ &=(n-1) / n "Var"(X)
+  $
+  由于$E(B_2)=(n-1)/n E(S^2)$,从而得证.
 ]
 再论中心极限定理
 
@@ -264,50 +280,54 @@ $ E(B_2)&=E(1/n sum_(i=1)^n X_i^2)-E(overline(X)^2)\ &=1/n (n("Var"(X)+E^2(X)))-
 #quote[具有可加性的分布,因为中心极限定理,当自由度越大时,分布的形状越接近正态分布.]
 
 #def([$chi^2$分布])[
-    自由度为$n$的卡方分布是$n$个独立标准正态分布的平方和的分布.
-    $ chi^2=X_1^2+X_2^2+dots+X_n^2~chi^2(n),X_i~N(0,1) $
-    $chi^2(n)$分布的概率密度为$ f(y)=cases(1/(2^(n\/2)Gamma(n/2))y^(n\/2-1)e^(-y\/2) &"where" y>0,0 &"elsewhere") $
-    注意@gamma-dist,$chi^2(1)~Gamma(1/2,2)$
+  自由度为$n$的卡方分布是$n$个独立标准正态分布的平方和的分布.
+  $ chi^2=X_1^2+X_2^2+dots+X_n^2~chi^2(n),X_i~N(0,1) $
+  $chi^2(n)$分布的概率密度为$ f(y)=cases(1/(2^(n\/2)Gamma(n/2))y^(n\/2-1)e^(-y\/2) &"where" y>0,0 &"elsewhere") $
+  注意@gamma-dist,$chi^2(1)~Gamma(1/2,2)$
 ]
 
 #thm([$chi^2$分布是可加的])[$ chi_1^2+chi_2^2~chi^2 (n_1+n_2) $]
 
 #thm([$chi^2$分布的数学期望和方差])[设$X~chi^2(n)$
-$ E(chi^2)=n, D(chi^2)=2n $
+  $ E(chi^2)=n, D(chi^2)=2n $
 ]
 
 #def([$F$分布])[
-设随机变量$X ~ chi^2(n),Y ~ chi^2(m)$,且$X,Y$相互独立.
-称$ F=(X/n)\/(Y/m) $为服从第一自由度为$n$,第二自由度为$m$的$F$分布.
-$ f_F (x)=(Gamma((m+n)/2)binom(n,m)^(n/2))/(Gamma(m/2)Gamma(n/2))x^(n/2-1)(1+n/m x)^(-(m+n)/2) $
+  设随机变量$X ~ chi^2(n),Y ~ chi^2(m)$,且$X,Y$相互独立.
+  称$ F=(X/n)\/(Y/m) $为服从第一自由度为$n$,第二自由度为$m$的$F$分布.
+  $ f_F (x)=(Gamma((m+n)/2)binom(n,m)^(n / 2)) / (Gamma(m/2)Gamma(n/2))x^(n / 2-1)(1+n / m x)^(-(m+n) / 2) $
 ]
 #thm([$F$分布的特性])[
-- 若$F ~ F(n,m)$,则$1/F ~ F(m,n)$
-- $F_(1-alpha) (n,m)=1/(F_alpha (m,n))$
+  - 若$F ~ F(n,m)$,则$1/F ~ F(m,n)$
+  - $F_(1-alpha) (n,m)=1 / (F_alpha (m,n))$
 ]
 #def([$T$分布])[
-设随机变量$X ~ N(0,1),Y ~ chi^2(n)$,且$X,Y$相互独立.
-称$ T=X/sqrt(Y\/n) $为服从自由度为$n$的$T$分布.
-$ f_T (t)\ &=t f_(T^2) (t^2), t in (-infinity,+infinity) \ &=Gamma((n+1)/2)/Gamma(n/2)sqrt(n pi)(1+t^2/n)^(-(n+1)/2), t in (-infinity,+infinity) $
+  设随机变量$X ~ N(0,1),Y ~ chi^2(n)$,且$X,Y$相互独立.
+  称$ T=X/sqrt(Y\/n) $为服从自由度为$n$的$T$分布.
+  $
+    f_T (t)\ &=t f_(T^2) (t^2), t in (-infinity,+infinity) \ &=Gamma((n+1)/2) / Gamma(n/2)sqrt(n pi)(
+      1+t^2 / n
+    )^(-(n+1) / 2), t in (-infinity,+infinity)
+  $
 ]
 #proof()[
-    $ T^2=(X^2/1)\/(Y/n) => T^2~F(1,n) $利用$T=sqrt(T^2)$推得$T$分布的概率密度函数.
+  $ T^2=(X^2 / 1)\/(Y / n) => T^2~F(1,n) $利用$T=sqrt(T^2)$推得$T$分布的概率密度函数.
 ]
 #thm([$T$分布的性质])[
-    ```R
-    install.packages("ggplot2")
-    library(ggplot2)
-    x <- seq(-5, 5, length.out=100)
-    t_df <- data.frame(x=c(), pd=c(), n=c())
-    for (n in c(1, 2, 9, 25, 3600)) {
-        t_df <- rbind(t_df, data.frame(x=x, pd=dt(x, df=n), n=n))
-    }
-    t_df$n <- as.factor(t_df$n)
-    plot <- ggplot(t_df, aes(x=x, y=pd, color=n)) + geom_line()
-    print(plot + labs(y="概率密度", color="自由度"))
-    ```
-    - $n->infinity$时为标准正态分布
-    - $f_n (t)$是偶函数
+  ```R
+  install.packages("ggplot2")
+  library(ggplot2)
+  x <- seq(-5, 5, length.out=100)
+  t_df <- data.frame(x=c(), pd=c(), n=c())
+  for (n in c(1, 2, 9, 25, 3600)) {
+      t_df <- rbind(t_df, data.frame(x=x, pd=dt(x, df=n), n=n))
+  }
+  t_df$n <- as.factor(t_df$n)
+  plot <- ggplot(t_df, aes(x=x, y=pd, color=n)) + geom_line()
+  print(plot + labs(y="概率密度", color="自由度"))
+  ```
+  - $n->infinity$时为标准正态分布
+  - $f_n (t)$是偶函数
 ]
 使用R语言绘制$F(10,2)$与$T(10)$,可以参考#link("https://ggplot2.tidyverse.org/reference/geom_function.html")[geom_function]了解更多如何绘制连续函数
 ```R
@@ -327,20 +347,20 @@ base +
 ggsave("f_t.pdf")
 ```
 #thm("正态总体的性质")[
-    设$X_1,X_2,dots,X_n$是来自正态总体$N(mu,sigma^2)$的样本,$overline(X)$和$S^2$分别是样本均值和样本方差.
-    - $E(overline(X))=mu,D(overline(X))=sigma^2/n$
-    - $E(S^2)=sigma^2$
-    - $((n-1)S^2)/sigma^2~chi^2(n-1)$
-    - $overline(X)$与$S^2$相互独立
-    - $(overline(X)-mu)/(S\/sqrt(n))~t(n-1)$
+  设$X_1,X_2,dots,X_n$是来自正态总体$N(mu,sigma^2)$的样本,$overline(X)$和$S^2$分别是样本均值和样本方差.
+  - $E(overline(X))=mu,D(overline(X))=sigma^2 / n$
+  - $E(S^2)=sigma^2$
+  - $((n-1)S^2) / sigma^2~chi^2(n-1)$
+  - $overline(X)$与$S^2$相互独立
+  - $(overline(X)-mu) / (S\/sqrt(n))~t(n-1)$
 ]
 
 #thm("两个正态总体的样本均值和样本方差")[
-设总体$X~N(mu,sigma^2)$,样本为$(X_1,X_2,dots,X_n)$,又设总体$X' ~ N(mu',sigma'^2)$,样本为$(X'_1,X'_2,dots,X'_n)$,
-$ overline(X)=1/n sum_(i=1)^n X_i,overline(X')=1/n' sum_(i=1)^n' X'_i $
-$ S^2=1/(n-1) sum_(i=1)^n (X_i-overline(X)) $
-则
-$ S^2/sigma^2 S'^2/sigma'^2 ~ F(n-1,n'-1) $
+  设总体$X~N(mu,sigma^2)$,样本为$(X_1,X_2,dots,X_n)$,又设总体$X' ~ N(mu',sigma'^2)$,样本为$(X'_1,X'_2,dots,X'_n)$,
+  $ overline(X)=1 / n sum_(i=1)^n X_i,overline(X')=1 / n' sum_(i=1)^n' X'_i $
+  $ S^2=1 / (n-1) sum_(i=1)^n (X_i-overline(X)) $
+  则
+  $ S^2 / sigma^2 S'^2 / sigma'^2 ~ F(n-1,n'-1) $
 ]
 = 统计推断
 == 前言
@@ -352,48 +372,50 @@ $ S^2/sigma^2 S'^2/sigma'^2 ~ F(n-1,n'-1) $
   / 点估计: 估计未知参数的值
   / 区间估计: 估计未知参数的取值范围,并使此范围包含未知参数真值的概率为给定的值
 #exmp[
-$X~N(mu, sigma^2)$,若$mu, sigma$未知,通过构建统计量,给出它们的估计值(点估计)或取值范围(区间估计)就是参数估计的内容.
+  $X~N(mu, sigma^2)$,若$mu, sigma$未知,通过构建统计量,给出它们的估计值(点估计)或取值范围(区间估计)就是参数估计的内容.
 ]
 == 参数估计方法
 #def("点估计")[
-从总体的一个样本估计未知参数的值称为点估计.
+  从总体的一个样本估计未知参数的值称为点估计.
 
-设总体$X$的分布函数的形式已知,$theta$是待估参数,$(X_1,X_2,dots,X_n)$为总体的一个样本.
+  设总体$X$的分布函数的形式已知,$theta$是待估参数,$(X_1,X_2,dots,X_n)$为总体的一个样本.
 
-点估计构造一个恰当的统计量$hat(theta) (X_1, X_2,dots,X_n)$,用它的观察值$hat(theta) (x_1, x_2,dots,x_n)$作为待估参数$theta$的近似.
+  点估计构造一个恰当的统计量$hat(theta) (X_1, X_2,dots,X_n)$,用它的观察值$hat(theta) (x_1, x_2,dots,x_n)$作为待估参数$theta$的近似.
 ]
 常见的两种构造估计量的方法有@methods-of-moments 以及@maximum-likelihood-estimation.
 #def("矩估计")[
-用样本$k$阶矩作为总体$k$阶矩的估计量,建立含待估参数的方程,从而解出待估参数.
+  用样本$k$阶矩作为总体$k$阶矩的估计量,建立含待估参数的方程,从而解出待估参数.
 
-设随机变量$X~f(x;theta_1,theta_2,dots,theta_k)$,其中$theta_1,theta_2,dots,theta_k$为待估参数.假设样本总体的前$k$阶矩存在
-$ E(X^r)=mu_r (theta_1,theta_2,dots,theta_k), 1<=r<=k $
-假设$(X_1,X_2,dots,X_n)$为来自$X$的一个样本,$r$阶样本矩$A_r=1/n sum_(i=1)^n X_i^r$.
+  设随机变量$X~f(x;theta_1,theta_2,dots,theta_k)$,其中$theta_1,theta_2,dots,theta_k$为待估参数.假设样本总体的前$k$阶矩存在
+  $ E(X^r)=mu_r (theta_1,theta_2,dots,theta_k), 1<=r<=k $
+  假设$(X_1,X_2,dots,X_n)$为来自$X$的一个样本,$r$阶样本矩$A_r=1/n sum_(i=1)^n X_i^r$.
 
-$A_r$及其函数依概率收敛于相应的总体矩.因此可以
-- 用样本矩作为相应的总体矩的估计量
-- 用样本矩的函数作为相应的总体矩函数的估计量
+  $A_r$及其函数依概率收敛于相应的总体矩.因此可以
+  - 用样本矩作为相应的总体矩的估计量
+  - 用样本矩的函数作为相应的总体矩函数的估计量
 
-总体的前$k$阶矩构成联立方程组,含$k$个未知参数.一般情况下可以解出这$k$个参数$theta_1,theta_2,dots,theta_k$.
-$ cases(mu_1=mu_1(theta_1,theta_2,dots,theta_k),
+  总体的前$k$阶矩构成联立方程组,含$k$个未知参数.一般情况下可以解出这$k$个参数$theta_1,theta_2,dots,theta_k$.
+  $
+    cases(mu_1=mu_1(theta_1,theta_2,dots,theta_k),
   mu_2=mu_2(theta_1,theta_2,dots,theta_k),dots.v,
   mu_k=mu_k (theta_1,theta_2,dots,theta_k)
 ) =>
-cases(theta_1=theta_1(mu_1,mu_2,dots,mu_k),
+    cases(theta_1=theta_1(mu_1,mu_2,dots,mu_k),
   theta_2=theta_2(mu_1,mu_2,dots,mu_k),dots.v,
   theta_k=theta_k (mu_1,mu_2,dots,mu_k)
-) $
-用样本矩$A_r$代替总体矩$mu_r$阶得到待估参数的估计量,称为*矩估计量*.
-$ hat(theta)_i=theta_i (A_1,A_2,dots,A_k), i=1,2,dots,k $
-矩估计量的观测值称为*矩估计值*.
+)
+  $
+  用样本矩$A_r$代替总体矩$mu_r$阶得到待估参数的估计量,称为*矩估计量*.
+  $ hat(theta)_i=theta_i (A_1,A_2,dots,A_k), i=1,2,dots,k $
+  矩估计量的观测值称为*矩估计值*.
 ] <methods-of-moments>
 #exmp("最大似然法的引入")[
-设总体$X$服从0-1分布,且$P(X=1)=p$,用最大似然法求$p$的估计值
-设$x_1,x_2,dots,x_n$为总体的样本的估计值,则得到该样本值的概率为
-$ P&(X_1=x_1,dots,X_n=x_n)\ &=product_(i=1)^n P(X_i=x_i)\ &=p^(sum_(i=1)^n x_i) (1-p)^(1-sum_(i=1)^n x_i) =: L(p) $
-对于不同的$p$,有$L(p)$不同,取$p$使这个事件发生的概率最大
-$ hat(p)=arg max L(p) = arg max log L(p) $
-由于 $ dv(,p)log L=(sum_(i=1)^n x_i )/p- (n-sum_(i=1)^n x_i)/(1-p)\ => hat(p)=overline(x) $
+  设总体$X$服从0-1分布,且$P(X=1)=p$,用最大似然法求$p$的估计值
+  设$x_1,x_2,dots,x_n$为总体的样本的估计值,则得到该样本值的概率为
+  $ P&(X_1=x_1,dots,X_n=x_n)\ &=product_(i=1)^n P(X_i=x_i)\ &=p^(sum_(i=1)^n x_i) (1-p)^(1-sum_(i=1)^n x_i) =: L(p) $
+  对于不同的$p$,有$L(p)$不同,取$p$使这个事件发生的概率最大
+  $ hat(p)=arg max L(p) = arg max log L(p) $
+  由于 $ dv(,p)log L=(sum_(i=1)^n x_i )/p- (n-sum_(i=1)^n x_i)/(1-p)\ => hat(p)=overline(x) $
 ]
 #def("似然函数")[
   - 设$X$为离散型随机变量,分布律为$P(X=x)=p(x,theta)$,则似然函数定义为
@@ -403,32 +425,32 @@ $ hat(p)=arg max L(p) = arg max log L(p) $
 ]
 #def("最大似然估计")[
   $ hat(va(theta)) (va(x),theta)=arg max L(va(x);va(theta)) $
-称为最大似然估计估计值,称统计量$hat(va(theta)) (X_1,X_2,dots,X_n)$为参数$va(theta)$的最大参数估计量.
+  称为最大似然估计估计值,称统计量$hat(va(theta)) (X_1,X_2,dots,X_n)$为参数$va(theta)$的最大参数估计量.
 ] <maximum-likelihood-estimation>
 #exmp("均匀分布的矩估计和最大似然估计")[
-设$X~U(a,b)$,有$X_1,X_2,dots,X_n$是$X$的一个样本.求$a,b$的矩估计和最大似然估计.
+  设$X~U(a,b)$,有$X_1,X_2,dots,X_n$是$X$的一个样本.求$a,b$的矩估计和最大似然估计.
 ]
 #sol[
-使用矩估计有
-$ mu_1&=E(X)=(a+b)/2\ mu_2&=E(X^2)="Var"(X)+E^2(X)\ &=(b-a)^2/12+(a+b)^2/4 $
-解得
-$ va(a)&=A_1-sqrt(3(A_2-A_1^2))=A_1-sqrt(3 B_2)\ va(b)&=A_1+sqrt(3(A_2-A_1^2))=A_1+sqrt(3 B_2) $
-使用最大似然估计有
-$ L(a,b)=cases(1/(b-a)^n &"where" a<x_i<b,0 &"elsewhere") $
-得到$a<=x_1,x_2,dots,x_n,b>=x_1,x_2,dots,x_n$
+  使用矩估计有
+  $ mu_1&=E(X)=(a+b) / 2\ mu_2&=E(X^2)="Var"(X)+E^2(X)\ &=(b-a)^2 / 12+(a+b)^2 / 4 $
+  解得
+  $ va(a)&=A_1-sqrt(3(A_2-A_1^2))=A_1-sqrt(3 B_2)\ va(b)&=A_1+sqrt(3(A_2-A_1^2))=A_1+sqrt(3 B_2) $
+  使用最大似然估计有
+  $ L(a,b)=cases(1/(b-a)^n &"where" a<x_i<b,0 &"elsewhere") $
+  得到$a<=x_1,x_2,dots,x_n,b>=x_1,x_2,dots,x_n$
 
-当$a=min x_i,b=max x_i$时,$L(a,b)$最大,所以
-$ hat(a)=min X_i, hat(b)=max X_i $
-*这两种估计的结果不同.*
+  当$a=min x_i,b=max x_i$时,$L(a,b)$最大,所以
+  $ hat(a)=min X_i, hat(b)=max X_i $
+  *这两种估计的结果不同.*
 ]
 #thm("最大似然估计的不变性")[
-    如果$hat(theta)$是$theta$的最大似然估计.
+  如果$hat(theta)$是$theta$的最大似然估计.
 
-    那么$g(hat(theta))$是$g(theta)$的最大似然估计.
+  那么$g(hat(theta))$是$g(theta)$的最大似然估计.
 ]
 == 估计的评价
 #def("无偏性")[
-   若估计量$hat(theta)$的数学期望存在,且$E(hat(theta))=theta$,则称$hat(theta)$是$theta$的无偏估计量.
+  若估计量$hat(theta)$的数学期望存在,且$E(hat(theta))=theta$,则称$hat(theta)$是$theta$的无偏估计量.
 ]
 无偏估计的实际意义是无系统误差.
 #exmp()[设$X_1,X_2,dots,X_n$是来自总体$X~b(n,p)$的一个样本,求$p^2$的无偏估计量]
@@ -440,14 +462,14 @@ $ hat(a)=min X_i, hat(b)=max X_i $
 ]
 #def("一致最小方差无偏估计")[如果一个估计量比任何其它估计量都有效,则称之为一致最小方差无偏估计(uniformly minimum variance unbiased estimator, UMVUE)]
 #thm("最大似然估计量理论")[
-    - 如果参数存在有效无偏估计量,那么它一定是最大似然估计量
-    - 一般情况下,最大似然估计量是一致的
-    - 最大似然估计量渐进服从正态分布
+  - 如果参数存在有效无偏估计量,那么它一定是最大似然估计量
+  - 一般情况下,最大似然估计量是一致的
+  - 最大似然估计量渐进服从正态分布
 ]
 #def("相合性之一")[
-    设$hat(theta) (X_1,X_2,dots,X_n)$是$theta$的估计量,若
-    $ hat(theta) (X_1,X_2,dots,X_n) -->^P theta $
-    那么称$hat(theta)$是$theta$的相合估计量.
+  设$hat(theta) (X_1,X_2,dots,X_n)$是$theta$的估计量,若
+  $ hat(theta) (X_1,X_2,dots,X_n) -->^P theta $
+  那么称$hat(theta)$是$theta$的相合估计量.
 ]
 #def("相合性之二")[
   设$hat(theta)_n (X_1,dots,X_n)$是$theta$的估计量.若
@@ -458,4 +480,30 @@ $ hat(a)=min X_i, hat(b)=max X_i $
 #def("均方误差")[
   $ "MSE" (hat(theta)_n)=E(hat(theta)_n-theta)^2="Var"(hat(theta)_n)-E^2(hat(theta)_n-theta) $
   要求MSE最小就等价于 @evaluation_1.
+]
+= 假设检验
+== 方差分析
+方差分析又称F检验(纪念Fisher),Analysis of Variance,简称AoV/ANOVA.
+#def("偏差平方和")[
+  $
+    S_T&=: sum_i sum_j (X_(i j)-overline(X))^2\ S_T&=sum_i sum_j (X_(i j)-overline(X)_(i dot))^2+sum_i sum_j (
+      overline(X)-overline(X)_(i dot)
+    )^2
+  $
+  称上式中第一项为误差平方和$S_E$,第二项为效应平方和$S_A$.
+]
+#thm([$S_A$与$S_E$的关系])[
+  - $S_A$与$S_E$相互独立
+  - 因此平方和与自由度具有可加性
+]
+问如何判断$S_A$是否显著(相比$S_E$)?
+
+构造统计量$ F=(S_A\/nu_A)/(S_E\/nu_E) $
+== 多因素试验
+== 回归分析
+#def("log1P")[
+  $ "log1P"(N)=log(1+N) $
+]
+#def("泊松回归")[
+  观测量$y_i$相对于预测量$E(Y_i)=e^(a+b x_i)$为泊松分布的回归模型,称泊松回归.
 ]
