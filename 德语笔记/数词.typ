@@ -7,11 +7,11 @@
 / 2 ~ 19: 基数词 + 词尾 t
 / 20 及以上: 基数词 + 词尾 st
 / 不规则:
-    - 1: erste
-    - 3: dritte
-    - 7: siebte
-    - 8: achte
-    - 102: hundertzweite
+  - 1: erste
+  - 3: dritte
+  - 7: siebte
+  - 8: achte
+  - 102: hundertzweite
 
 == 使用
 
@@ -37,18 +37,18 @@ z.B.
 - $>$ 一天,用 **in**
 
 #quote[
-- am Morgen, am Vormittag
-- am Montag, am Dienstag, am Mittwoch
-- am 10. März
+  - am Morgen, am Vormittag
+  - am Montag, am Dienstag, am Mittwoch
+  - am 10. März
 ]
 #quote[
-    - in der woche
-    - in dem Monat
-    - im Januar, im Februar
+  - in der woche
+  - in dem Monat
+  - im Januar, im Februar
 ]
 特例:
-    - **Uhrzeiten**: um 12 Uhr
-    - **Nacht**: in der Nacht
+- **Uhrzeiten**: um 12 Uhr
+- **Nacht**: in der Nacht
 
 描述钟点时刻使用介词 *um*,此外,*Nacht* 不同于 *Morgen* 等,使用介词 *in*.
 

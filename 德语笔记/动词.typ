@@ -12,7 +12,6 @@
 
 Rauchen Sie und Trinken Sie nicht!
 
-
 == du的命令式
 
 - 人称代词du必须省略.
@@ -59,33 +58,41 @@ Erledigt das selbst!
 
 动词 sein 的构成命令时形式比较特殊,如下:
 
-#figure(table(align: left,columns: 3,
-  table.header([人称],[现在时],[命令式]),
-  [du],[bist],[sei],
-  [wir],[sind],[seien],
-  [ihr],[seid],[seid],
-  [sie],[sind],[seien],
-))
+#figure(
+  table(
+    align: left,
+    columns: 3,
+    table.header([人称], [现在时], [命令式]),
+    [du], [bist], [sei],
+    [wir], [sind], [seien],
+    [ihr], [seid], [seid],
+    [sie], [sind], [seien],
+  ),
+)
 
 Sei vorsichtig!
 
 Sei fleißig!
 
-Seid ruhig!   *请你们安静！*
+Seid ruhig! *请你们安静！*
 
-Seien Sie nett!   *请您包涵！*
+Seien Sie nett! *请您包涵！*
 
 = Reflexivpronnomen und reflexive Verben
 
-#figure(table(align: left,columns: 3,
-  table.header([],[A.],[D.]),
-  [ich],[mich],[mir],
-  [du],[dich],[dir],
-  [er, sie, es],[sich],[sich],
-  [wir],[uns],[uns],
-  [ihr],[euch],[euch],
-  [sie, Sie],[sich],[sich],
-))
+#figure(
+  table(
+    align: left,
+    columns: 3,
+    table.header([], [A.], [D.]),
+    [ich], [mich], [mir],
+    [du], [dich], [dir],
+    [er, sie, es], [sich], [sich],
+    [wir], [uns], [uns],
+    [ihr], [euch], [euch],
+    [sie, Sie], [sich], [sich],
+  ),
+)
 
 == 反身动词的位置
 / 普通陈述句: 反身动词紧跟变位动词
