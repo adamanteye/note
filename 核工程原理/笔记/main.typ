@@ -3,6 +3,7 @@
   title: "核工程原理笔记",
   author: "杨哲涵",
 )
+#show: rest => columns(2, rest)
 = 前言
 说实话不太想上核工程原理,因为怀疑未来用不上这些知识,有时间不如学一学电子学的东西.但听闻部分系里的老师坚持认为工物系的学生要会核工程,所以这门课始终留在必修里.
 
@@ -26,9 +27,7 @@
 #def("角中子数密度")[
   位于物理空间$va(r)$处单位几何体积内与速度空间$va(v)$处单位速度体积内期望的自由中子数量,它是某个运动速度附近的中子数密度,也是一个宏观量,具有量纲$"m"^(-6)"s"^3$
   $
-    n(va(r),va(v))dd(va(r))dd(va(v))=n(va(r),va(v))dd(va(r))v^2dd(v)dd(va(Omega))=n(
-      va(r),va(v),va(Omega)
-    )dd(va(r))dd(v)dd(Omega)\ =n(va(r),E,va(Omega))dd(va(r))dd(E)dd((va(Omega)))
+    n(va(r),va(v))dd(va(r))dd(va(v))=n(va(r),va(v))dd(va(r))v^2dd(v)dd(va(Omega))=n( va(r),va(v),va(Omega) )dd(va(r))dd(v)dd(Omega)\ =n(va(r),E,va(Omega))dd(va(r))dd(E)dd((va(Omega)))
   $
 ] <angular_neutron_density>
 #def("中子数密度")[
@@ -63,11 +62,7 @@
 #def("净中子流密度")[
   净中子流密度是标量,定义为单位时间内穿过方向为$vu(n)$的单位面积的中子数.常用单位是$unit("cm^-2 s^-1")$.
   $
-    J(
-      va(r)
-    )&=integral_va(v) vu(n) dprod va(Omega)psi(va(r),va(v))\ &=vu(n) dprod integral_va(v) va(Omega)psi(va(r),va(v))\ &=vu(n) dprod va(J)(
-      va(r)
-    )
+    J( va(r) )&=integral_va(v) vu(n) dprod va(Omega)psi(va(r),va(v))\ &=vu(n) dprod integral_va(v) va(Omega)psi(va(r),va(v))\ &=vu(n) dprod va(J)( va(r) )
   $
   常称为*中子流密度*.
 ]
@@ -217,9 +212,7 @@ $ -laplacian phi(va(r))+1 / L^2 phi(va(r))=1 / D s'''(va(r)) $
 #def("裸堆")[无反射层的反应堆.]
 #def("裸堆扩散方程")[
   $
-    pdv(n(va(r),t),t)=& 1 / v pdv(phi(va(r),t),t) \ =&s'''(va(r),t)-Sigma_a phi(va(r),t)-div va(J)(
-      va(r),t
-    ) \ =&v Sigma_f phi-Sigma_a phi+D grad^2 phi
+    pdv(n(va(r),t),t)=& 1 / v pdv(phi(va(r),t),t) \ =&s'''(va(r),t)-Sigma_a phi(va(r),t)-div va(J)( va(r),t ) \ =&v Sigma_f phi-Sigma_a phi+D grad^2 phi
   $
 ]
 对于裸堆扩散方程的求解,分离变量$phi(va(r),t)=phi(va(r))T(t)$,有

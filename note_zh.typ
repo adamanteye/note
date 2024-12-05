@@ -3,7 +3,7 @@
   "thm",
   "定义",
   inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
+  namefmt: strong,
   titlefmt: emph,
   base: none,
 )
@@ -11,7 +11,7 @@
   "thm",
   "公设",
   inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
+  namefmt: strong,
   titlefmt: emph,
   base: none,
 )
@@ -19,7 +19,7 @@
   "thm",
   "定理",
   inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
+  namefmt: strong,
   titlefmt: emph,
   base: none,
 )
@@ -27,7 +27,7 @@
   "coll",
   "推论",
   inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
+  namefmt: strong,
   titlefmt: emph,
   base: "thm",
 )
@@ -35,7 +35,7 @@
   "thm",
   "例",
   inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
+  namefmt: strong,
   titlefmt: emph,
   base: none,
 )
@@ -43,14 +43,14 @@
   "sol",
   "解答",
   inset: (x: 0em, top: 0em),
-  titlefmt: x => strong(text(fill: red, x)),
+  titlefmt: strong,
   base: "exmp",
 )
 #let proof = thmproof(
   "proof",
   "证明",
   inset: (x: 0em, top: 0em),
-  titlefmt: x => text(fill: red, x),
+  titlefmt: strong,
   base: "thm",
 )
 #let conf(
@@ -77,6 +77,7 @@
   )
   set quote(block: true)
   set par(leading: 1em)
+  show strong: set text(fill: red)
   align(
     center,
     text(1.4em)[
@@ -98,7 +99,6 @@
   show raw.where(block: false): it => (
     h(0.5em) + box(fill: red.lighten(80%), outset: 0.25em, text(fill: red, it)) + h(0.5em)
   )
-  show: rest => columns(2, rest)
   set align(left)
   if numbered-equation {
     set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])
@@ -106,5 +106,4 @@
   } else {
     doc
   }
-
 }

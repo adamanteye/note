@@ -1,34 +1,38 @@
 #import "../../note_zh.typ": *
 #show: conf.with(
   title: "核辐射物理与探测学笔记",
-  author: "杨哲涵"
+  author: "杨哲涵",
 )
-#figure(table(
-  stroke: none,
-  columns: 3,
-  table.hline(),
-  table.header([量], [值], [注释]),
-  table.hline(),
-  [$k_B T$],
-  [25.3meV],
-  [也是热中子的动能],
-  [$e^2/(4pi epsilon.alt_0)$],
-  [1.44 MeV fm],
-  [],
-  [$h c$],
-  [1240 MeV fm],
-  [],
-  [$m_e c^2$],
-  [0.511 MeV],
-  [],
-  [Ry],
-  [13.6 eV],
-  [Rydberg constant],
-  [u$c^2$],
-  [931.494 MeV],
-  [],
-  table.hline(),
-), caption: [常数表])
+#show: rest => columns(2, rest)
+#figure(
+  table(
+    stroke: none,
+    columns: 3,
+    table.hline(),
+    table.header([量], [值], [注释]),
+    table.hline(),
+    [$k_B T$],
+    [25.3meV],
+    [也是热中子的动能],
+    [$e^2 / (4pi epsilon.alt_0)$],
+    [1.44 MeV fm],
+    [],
+    [$h c$],
+    [1240 MeV fm],
+    [],
+    [$m_e c^2$],
+    [0.511 MeV],
+    [],
+    [Ry],
+    [13.6 eV],
+    [Rydberg constant],
+    [u$c^2$],
+    [931.494 MeV],
+    [],
+    table.hline(),
+  ),
+  caption: [常数表],
+)
 = 原子核的基本性质
 / 不确定度关系:
   - 动量-位置不确定关系
@@ -44,20 +48,25 @@
 / 液滴模型: 体积能,表面能,库伦能
 $ B=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3) $
 / Weizacker公式: 半经验结合能公式
-$ B(Z,A)=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
--a_"sym" (A\/2-Z)^2A^(-1)+B_P \ B_p=cases(+a_P A^(-1\/2) &"even-even", 0 &"odd", -a_P A^(-1\/2) &"odd-odd") $
-#figure(table(
-  stroke: none,
-  columns: 5,
-  table.hline(),
-  table.header([$a_V$], [$a_S$], [$a_C$], [$a_"sym"$], [$a_P$]),
-  [15.835],
-  [18.33],
-  [0.714],
-  [92.90],
-  [11.2],
-  table.hline(),
-), caption: [Weizacker公式参数(MeV)])
+$
+  B(Z,A)=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
+  -a_"sym" (A\/2-Z)^2A^(-1)+B_P \ B_p=cases(+a_P A^(-1\/2) &"even-even", 0 &"odd", -a_P A^(-1\/2) &"odd-odd")
+$
+#figure(
+  table(
+    stroke: none,
+    columns: 5,
+    table.hline(),
+    table.header([$a_V$], [$a_S$], [$a_C$], [$a_"sym"$], [$a_P$]),
+    [15.835],
+    [18.33],
+    [0.714],
+    [92.90],
+    [11.2],
+    table.hline(),
+  ),
+  caption: [Weizacker公式参数(MeV)],
+)
 == 核力及核势垒
 === 核力的性质
 - 短程强作用力
@@ -95,8 +104,10 @@ $ B(Z,A)=a_V A-a_S A^(2\/3)-a_C Z^2A^(-1\/3)\
 / 衰变常数: $ N(t)=N(0)e^(-lambda t) $
 / 半衰期: $ e^(-lambda T_(1\/2))&=0.5\ lambda T_(1\/2)&=ln(2) $
 / 平均寿命: 放射性原子核的平均生存时间或存活概率为0的时间
-$ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
-   &=integral_0^infinity t lambda e^(-lambda t)dd(t)=1/lambda=1.44T_(1\/2) $
+$
+  tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t)) / N(0)\
+  &=integral_0^infinity t lambda e^(-lambda t)dd(t)=1 / lambda=1.44T_(1\/2)
+$
 / 能级宽度: $Gamma tau=hbar$
   - $Gamma=hbar lambda$
 / 活度: $A(t)=lambda N(t)$
@@ -104,7 +115,7 @@ $ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
   - $1 "Ci"=3.7times 10^10 "Bq"=3.7times 10^10 s^(-1)$
 / 衰变率: $J(t)=lambda N(t)$
   - 与活度定义相同,主要用来描述衰变过程
-/ 比活度: $a=A/m$
+/ 比活度: $a=A / m$
   - 单位质量放射源的放射性活度
 === 测量半衰期
 - 对中等寿命,可直接观察到活度的指数衰减,得到半衰期
@@ -114,12 +125,14 @@ $ tau&=integral t dot (-dd(N(t)))=(integral_0^infinity t lambda N(t)dd(t))/N(0)\
 涉及核素$isotope(A),isotope(B)$以及稳定核素$isotope(C)$
 
 $t_m$主要由衰变常数大的,即半衰期短的决定:
-$ t_m=1/(lambda_2-lambda_1)ln(lambda_2/lambda_1) $
+$ t_m=1 / (lambda_2-lambda_1)ln(lambda_2/lambda_1) $
 总活度为:
-$ A(t)=N_10 lambda_1 (e^(-lambda_1 t) +&\ lambda_2/(lambda_2-lambda_1) &(e^(-lambda_1 t)-e^(-lambda_2 t))) $
+$ A(t)=N_10 lambda_1 (e^(-lambda_1 t) +&\ lambda_2 / (lambda_2-lambda_1) &(e^(-lambda_1 t)-e^(-lambda_2 t))) $
 === 多次连续衰变规律
 对于从数量为$N_10$的核素开始的多次连续衰变,衰变链中第$n$个核素的数量为
-$ N_1(t)&=N_10 e^(-lambda_1 t) \ N_(n!=1) (t)&=N_10 product_(j=1)^n c_(n,j) e^(-lambda_j t) \ c_(n!=1,i)&=(product_(j=1)^(n-1)lambda_j)/(product_(j=1,j!=i)^n lambda_j-lambda_i) $
+$
+  N_1(t)&=N_10 e^(-lambda_1 t) \ N_(n!=1) (t)&=N_10 product_(j=1)^n c_(n,j) e^(-lambda_j t) \ c_(n!=1,i)&=(product_(j=1)^(n-1)lambda_j) / (product_(j=1,j!=i)^n lambda_j-lambda_i)
+$
 === 长期平衡
 
 == 放射系
@@ -142,8 +155,10 @@ $ P=N_"target"sigma_0Phi $
 - $sigma_0$是靶核的热中子截面
 - $Phi$是热中子的注量率
 考虑制得的核素自身以$lambda$衰变,则照射时间为$t$时数量及活度为
-$ N(t)&=P/lambda (1-e^(-lambda t)) \
-A(t)&=P (1-e^(-lambda t)) $
+$
+  N(t)&=P / lambda (1-e^(-lambda t)) \
+  A(t)&=P (1-e^(-lambda t))
+$
 定义$S=1-e^(-lambda t)$为饱和因子,那么$S(t approx 6.65T_(1\/2))=0.99$.
 因此通常制备时照射时间以六七倍半衰期为好.
 - 这5个影响活度的因素,在照射时间足够长时,退化为3个
@@ -155,20 +170,20 @@ A(t)&=P (1-e^(-lambda t)) $
 $ isotope(X, a: A, z: Z) -> isotope(Y, a: A-4, z: Z-2) + isotope("He", z: 2, a: 4) $
 / 衰变能: $ E_0=T_alpha+T_Y=(m_X-(m_Y+m_alpha))c^2 $
 由于动量守恒,有:
-$ E_0=(m_Y+m_alpha)/m_Y T_alpha approx A/(A-4) T_alpha $
+$ E_0=(m_Y+m_alpha) / m_Y T_alpha approx A / (A-4) T_alpha $
 - 实际中测量的是$T_alpha$,而$T_Y$由于Y核前进距离太小等原因难以测量
 - 探测器中测得的$alpha$能谱有宽度,这是由于探测本身的分辨能力
 / 讨论:
 - A,Z越大,$alpha$衰变能越大
 === 势垒穿透模型
-/ Geiger-Nuttall Rule: $ lg(lambda)&=A-B E_0^(-1/2) $
-/ $alpha$粒子相对母核的势函数: $ V(r)=cases(-V_0 &"where" r<R, e^2/(4pi epsilon_0) (Z_alpha Z_Y )/r &"where" r>R) $ 当$alpha$粒子要带走角动量时,势能要被修正为 $ V(r)+(l(l+1)hbar^2)/(2 M_alpha r^2) "where" r>R $
-/ 势垒高度: $ V_c=V(R) \ "where" R=R_Y+R_alpha=r_0(A_Y^(1/3)+A_alpha^(1/3)) $
+/ Geiger-Nuttall Rule: $ lg(lambda)&=A-B E_0^(-1 / 2) $
+/ $alpha$粒子相对母核的势函数: $
+    V(r)=cases(-V_0 &"where" r<R, e^2/(4pi epsilon_0) (Z_alpha Z_Y )/r &"where" r>R)
+  $ 当$alpha$粒子要带走角动量时,势能要被修正为 $ V(r)+(l(l+1)hbar^2)/(2 M_alpha r^2) "where" r>R $
+/ 势垒高度: $ V_c=V(R) \ "where" R=R_Y+R_alpha=r_0(A_Y^(1 / 3)+A_alpha^(1 / 3)) $
 - 其他重核衰变,如$isotope(C, a: 12)$衰变难以发生,原因在于势垒高度与$Z_isotope(C, a: 12)$成正比,这几乎是$alpha$衰变的势垒高度的3倍
-/ 势垒宽度: $ b=(Z_alpha Z_Y e^2)/(4pi epsilon_0 E_0) $
-#def(
-  "Gamow factor",
-)[$ G=(2 sqrt(2mu E_0))/hbar integral_R^b (b/r-1)^(1/2)dd(r) $]
+/ 势垒宽度: $ b=(Z_alpha Z_Y e^2) / (4pi epsilon_0 E_0) $
+#def("Gamow factor")[$ G=(2 sqrt(2mu E_0)) / hbar integral_R^b (b / r-1)^(1 / 2)dd(r) $]
 === 守恒
 == $beta$衰变
 / 半衰期范围: $10^(-3)$ s 到 $10^24$ a
@@ -189,28 +204,24 @@ $ isotope(X, a: A, z: Z)->isotope(Y, a: A, z: Z-1)+e^++nu_e $
 === 轨道电子俘获(EC)
 $ isotope(X, a: A, z: Z)+e_i^- ->isotope(Y, a: A, z: Z-1)+nu_e $
 / 衰变能: $ E_0(epsilon)=Delta(Z, A)-Delta(Z-1, A)-B_i $
-#thm(
-  "电子结合能公式",
-)[$ B_K (Z)&approx "Ry" (Z-1)^2\ B_L (Z)&approx 1/4 "Ry" (Z-5)^2\ B_M (Z)&approx 1/9 "Ry" (Z-13)^2 $]
+#thm("电子结合能公式")[$
+    B_K (Z)&approx "Ry" (Z-1)^2\ B_L (Z)&approx 1 / 4 "Ry" (Z-5)^2\ B_M (Z)&approx 1 / 9 "Ry" (Z-13)^2
+  $]
 == $gamma$跃迁
-/ 衰变能:$E_gamma$是$gamma$光子的能量,$T_R$是子核反冲能$ E_0=E_i-E_f=E_gamma+T_R $
+/ 衰变能: $E_gamma$是$gamma$光子的能量,$T_R$是子核反冲能$ E_0=E_i-E_f=E_gamma+T_R $
 === 穆斯堡尔效应
 === 多级性
-#thm(
-  [$gamma$跃迁宇称守恒],
-)[$gamma$跃迁是电磁相互作用,因此宇称守恒,设$pi_gamma$是光子宇称,有$ pi_gamma=pi_i/pi_f $]
-#thm(
-  [$gamma$跃迁角动量守恒],
-)[设跃迁前后原子核角动量分别为$va(I_i)$与$va(I_f)$,有$va(L)=va(I_i)-va(I_f)$$ L=|I_i-I_f|,|I_i-I_f|+1,dots,|I_i+I_f| $] <gamma-am-conserve>
+#thm([$gamma$跃迁宇称守恒])[$gamma$跃迁是电磁相互作用,因此宇称守恒,设$pi_gamma$是光子宇称,有$ pi_gamma=pi_i/pi_f $]
+#thm([$gamma$跃迁角动量守恒])[设跃迁前后原子核角动量分别为$va(I_i)$与$va(I_f)$,有$va(L)=va(I_i)-va(I_f)$$ L=|I_i-I_f|,|I_i-I_f|+1,dots,|I_i+I_f| $] <gamma-am-conserve>
 #thm("电多级辐射光子宇称")[$pi_gamma=(-1)^L$]
 #thm("磁多级辐射光子宇称")[$pi_gamma=(-1)^(L+1)$]
 / 讨论:
 - 光子带走的角动量不能为0
 === 概率公式
-#thm(
-  "Weisskopf单质子模型",
-)[Weisskopf假定$gamma$跃迁是核内1个质子状态变化导致的$ lambda_E (L)=1/(4pi epsilon_0) (2(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hbar c) (k R)^(2L) omega $
-  $ lambda_M (L)=1/(4pi epsilon_0) (20(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hbar c) (hbar/(m_P c R))^2 (k R)^(2L) omega $]
+#thm("Weisskopf单质子模型")[Weisskopf假定$gamma$跃迁是核内1个质子状态变化导致的$ lambda_E (L)=1/(4pi epsilon_0) (2(L+1))/(L((2L+1)!!)^2)\ (3/(L+3))^2 e^2/(hbar c) (k R)^(2L) omega $
+  $
+    lambda_M (L)=1 / (4pi epsilon_0) (20(L+1)) / (L((2L+1)!!)^2)\ (3 / (L+3))^2 e^2 / (hbar c) (hbar / (m_P c R))^2 (k R)^(2L) omega
+  $]
 / 讨论:
 - $lambda_M (L)$一般与$lambda_E (L+1)$有相同的量级
 === 选择定则
@@ -231,7 +242,7 @@ $ isotope(X, a: A, z: Z)+e_i^- ->isotope(Y, a: A, z: Z-1)+nu_e $
 / 内转换电子的动能: $ T_e=E_i-E_f-B_i=E_gamma-B_i $
 这里$B_i$是第$i$层电子的结合能
 #figure(image("internalconversion.png", width: 95%))
-/ 内转换系数: $ alpha:=lambda_e/lambda_gamma=n_e/n_gamma $
+/ 内转换系数: $ alpha:=lambda_e / lambda_gamma=n_e / n_gamma $
 注意$lambda_gamma (1+alpha)$才是两个能级间跃迁过程对应的衰变常数
 #figure(image("internalconversion-1.png", width: 95%))
 / 讨论:
@@ -248,23 +259,21 @@ $ isotope(X, a: A, z: Z)+e_i^- ->isotope(Y, a: A, z: Z-1)+nu_e $
 == 核反应和Q方程
 $ isotope(a)+isotope(A) -> isotope(b) + isotope(B) $
 #thm("核反应中的能量守恒")[$ (m_a+m_A)^2+(T_a+T_A)=(m_b+m_B)^2+(T_b+T_B) $]
-#def(
-  "反应能Q",
-)[$ Q&=(T_b+T_B)-(T_a+T_A)\ &=(m_a+m_A)c^2-(m_b+m_B)^c^2\ &approx (Delta_a+Delta_A)-(Delta_b+Delta_B)\ &= (B_b+B_B)-(B_a+B_A) $]
+#def("反应能Q")[$
+    Q&=(T_b+T_B)-(T_a+T_A)\ &=(m_a+m_A)c^2-(m_b+m_B)^c^2\ &approx (Delta_a+Delta_A)-(Delta_b+Delta_B)\ &= (B_b+B_B)-(B_a+B_A)
+  $]
 - $Q>0$: 放能反应
 - $Q<0$: 吸能反应
 - 如果余核处在激发态$E^*$,那么有$m_B^*=m_B+E^* /c^2$,$Q'=Q-E^*$
-#thm(
-  "Q方程",
-)[假设靶核$isotope(A)$静止,Q方程将出射粒子的动能$T_b$与入射粒子动能$T_a$,出射粒子的方向$theta$,反应能$Q$把这四个量联系起来$ Q=(1+m_b/m_B)T_b-(1-m_a/m_B)T_a \ - (2sqrt(m_a m_b T_a T_b))/m_b cos theta $$ sqrt(T_b)=plus.minus (((A_B-A_a)/(A_B+A_b)+(A_a A_b)/(A_B+A_b)^2 cos^2theta)T_a\ +A_B/(A_B+A_b)Q)&^(1\/2)+sqrt(A_a A_b T_a)/(A_B+A_b) cos theta $]
+#thm("Q方程")[假设靶核$isotope(A)$静止,Q方程将出射粒子的动能$T_b$与入射粒子动能$T_a$,出射粒子的方向$theta$,反应能$Q$把这四个量联系起来$ Q=(1+m_b/m_B)T_b-(1-m_a/m_B)T_a \ - (2sqrt(m_a m_b T_a T_b))/m_b cos theta $$
+    sqrt(T_b)=plus.minus (((A_B-A_a) / (A_B+A_b)+(A_a A_b) / (A_B+A_b)^2 cos^2theta)T_a\ +A_B / (A_B+A_b)Q)&^(1\/2)+sqrt(A_a A_b T_a) / (A_B+A_b) cos theta
+  $]
 #figure(
   grid(
     columns: 2,
     row-gutter: 2mm,
-    image("14cpn14n-1.png"),
-    image("14cpn14n-2.png"),
-    [能量阈值],
-    [$T_b$几乎不随$theta_L$变化],
+    image("14cpn14n-1.png"), image("14cpn14n-2.png"),
+    [能量阈值], [$T_b$几乎不随$theta_L$变化],
   ),
   caption: [$isotope(C, a: 14)(isotope(p),isotope(n))isotope(N, a: 14)$反应],
 )
