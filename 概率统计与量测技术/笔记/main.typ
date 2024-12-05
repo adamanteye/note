@@ -3,6 +3,18 @@
   title: "概率统计分析与量测技术笔记",
   author: "杨哲涵",
 )
+#figure(
+  table(stroke: none,
+    columns: 4,
+    table.hline(),
+    table.header([分布], [分布律], [期望], [方差]),
+    table.hline(),
+    [$"Exp"(theta)$],[$f(x)=cases(1/theta e^(-x/theta) "where" x>0,0 "elsewhere")$],[$theta$],[$theta^2$],
+    table.hline()
+  ),
+  caption: "常见概率分布表",
+)
+#show: rest => columns(2, rest)
 = 集合以及事件
 #def([$sigma$-field])[
   $sigma$-field, or $sigma$-algebra, is a collection of subsets of a set $S$ that is closed under countable unions, countable intersections, and complements.
@@ -70,9 +82,7 @@ $ P(A)=m(A) / m(S) $
 ]
 #proof[
   $
-    P(X>s+t|X>s)=&P(X>s+t) / P(X>s)\ =&(1-P(X<=s+t)) / (1-P(X<=s))\ =&(1-F(s+t)) / (1-F(
-      s
-    ))\ =&e^(-lambda(s+t)) / e^(-lambda s)\ =&e^(-lambda t)=P(X>t)
+    P(X>s+t|X>s)=&P(X>s+t) / P(X>s)\ =&(1-P(X<=s+t)) / (1-P(X<=s))\ =&(1-F(s+t)) / (1-F( s ))\ =&e^(-lambda(s+t)) / e^(-lambda s)\ =&e^(-lambda t)=P(X>t)
   $
 ]
 指数分布作为 "寿命" 分布的近似,并不是例如人的寿命的实际分布.
@@ -110,9 +120,7 @@ $ P(A)=m(A) / m(S) $
 ]
 #def("Beta函数")[
   $
-    B(alpha,beta)&=:integral_0^1 t^(alpha-1)(
-      1-t
-    )^(beta -1)dd(t),alpha,beta>0\ &=(Gamma(alpha)Gamma(beta)) / Gamma(alpha+beta)
+    B(alpha,beta)&=:integral_0^1 t^(alpha-1)( 1-t )^(beta -1)dd(t),alpha,beta>0\ &=(Gamma(alpha)Gamma(beta)) / Gamma(alpha+beta)
   $
 ]
 = 二维随机变量
@@ -197,9 +205,7 @@ $ P(A)=m(A) / m(S) $
 #proof[
   舍选法可以采样到希望的分布,是因为
   $
-    P(X<=x)&=P(U<=x|V<=f(U) / L)\ &=P(U<=x,V<=f(U) / L) / P(V<=f(U) / L)\ &=(integral_a^x dd(u) integral_0^(f(
-      u
-    ) / L) dd(v) g(u,v)) / (integral_a^b dd(u) integral_0^(f(u) / L) dd(v) g(u,v))\ &=integral_a^x dd(u) f(u)
+    P(X<=x)&=P(U<=x|V<=f(U) / L)\ &=P(U<=x,V<=f(U) / L) / P(V<=f(U) / L)\ &=(integral_a^x dd(u) integral_0^(f( u ) / L) dd(v) g(u,v)) / (integral_a^b dd(u) integral_0^(f(u) / L) dd(v) g(u,v))\ &=integral_a^x dd(u) f(u)
   $
   其中$g(u,v)=1/(b-a)$.此外,效率的期望为
   $ E&=P(V<=f(U) / L)\ &=integral_a^b dd(u)integral_0^(f(u) / L)dd(v)g(u,v)\ &=1 / ((b-a)L) $
@@ -263,9 +269,7 @@ $ P(A)=m(A) / m(S) $
   由于$(X_1,X_2,dots,X_n)$独立同分布于$X$,从而有
   $ "Var"(overline(X))&=sum_(i=1)^n "Var"(1 / n X_i)\ &= sum_(i=1)^n 1 / n^2 "Var"(X)\ &= sigma^2 / n $
   $
-    E(B_2)&=E(1 / n sum_(i=1)^n X_i^2)-E(overline(X)^2)\ &=1 / n (n("Var"(X)+E^2(X)))-(
-      "Var"(overline(X))+E^2(overline(X))
-    )\ &="Var"(X)+(E^2(X)) / n -1 / n "Var"(X)-1 / n E^2(X)\ &=(n-1) / n "Var"(X)
+    E(B_2)&=E(1 / n sum_(i=1)^n X_i^2)-E(overline(X)^2)\ &=1 / n (n("Var"(X)+E^2(X)))-( "Var"(overline(X))+E^2(overline(X)) )\ &="Var"(X)+(E^2(X)) / n -1 / n "Var"(X)-1 / n E^2(X)\ &=(n-1) / n "Var"(X)
   $
   由于$E(B_2)=(n-1)/n E(S^2)$,从而得证.
 ]
@@ -305,9 +309,7 @@ $ P(A)=m(A) / m(S) $
   设随机变量$X ~ N(0,1),Y ~ chi^2(n)$,且$X,Y$相互独立.
   称$ T=X/sqrt(Y\/n) $为服从自由度为$n$的$T$分布.
   $
-    f_T (t)\ &=t f_(T^2) (t^2), t in (-infinity,+infinity) \ &=Gamma((n+1)/2) / Gamma(n/2)sqrt(n pi)(
-      1+t^2 / n
-    )^(-(n+1) / 2), t in (-infinity,+infinity)
+    f_T (t)\ &=t f_(T^2) (t^2), t in (-infinity,+infinity) \ &=Gamma((n+1)/2) / Gamma(n/2)sqrt(n pi)( 1+t^2 / n )^(-(n+1) / 2), t in (-infinity,+infinity)
   $
 ]
 #proof()[
@@ -483,12 +485,10 @@ ggsave("f_t.pdf")
 ]
 = 假设检验
 == 方差分析
-方差分析又称F检验(纪念Fisher),Analysis of Variance,简称AoV/ANOVA.
+方差分析又称F检验(纪念Fisher), Analysis of Variance,简称AoV/ANOVA.
 #def("偏差平方和")[
   $
-    S_T&=: sum_i sum_j (X_(i j)-overline(X))^2\ S_T&=sum_i sum_j (X_(i j)-overline(X)_(i dot))^2+sum_i sum_j (
-      overline(X)-overline(X)_(i dot)
-    )^2
+    S_T&=: sum_i sum_j (X_(i j)-overline(X))^2\ S_T&=sum_i sum_j (X_(i j)-overline(X)_(i dot))^2+sum_i sum_j ( overline(X)-overline(X)_(i dot) )^2
   $
   称上式中第一项为误差平方和$S_E$,第二项为效应平方和$S_A$.
 ]
@@ -501,9 +501,34 @@ ggsave("f_t.pdf")
 构造统计量$ F=(S_A\/nu_A)/(S_E\/nu_E) $
 == 多因素试验
 == 回归分析
+#def("回归函数")[
+  对于随机变量$Y$和普通变量$x$,如果$E(Y)$存在并且值随着$x$的取值而定,则$E(Y)$是$x$的函数,并且记为$mu(x)$
+]
+#def("一元线性回归模型")[
+  假设对于$x$的每一个值,有
+  $ Y=a+b x + epsilon, epsilon~N(0,sigma^2) $
+  未知参数$a,b$及$sigma^2$都不依赖于$x$.
+]
+#def("经验回归方程")[
+  $ hat(y)=hat(a)+hat(b)x $
+  $
+    hat(b)=&(sum_(i=1)^n (x_i-overline(x))(y_i-overline(y))) / (sum_(i=1)^n (x_i-overline(x))^2)\ hat(a)=&overline(y)-hat(b)overline(x)
+  $
+]
 #def("log1P")[
-  $ "log1P"(N)=log(1+N) $
+  $ "log1P"(N)=:log(1+N) $
 ]
 #def("泊松回归")[
   观测量$y_i$相对于预测量$E(Y_i)=e^(a+b x_i)$为泊松分布的回归模型,称泊松回归.
+
+  泊松回归假设因变量$Y$是泊松分布,并假设它期望值$E(Y)$的对数$log E(Y)$可由一组未知参数进行线性表达.
+]
+#def("泊松分布对数似然距离")[
+  预测值$E(va(Y))$
+]
+#def("变权迭代最小二乘法")[
+]
+== 广义线性回归
+#def("指数离散分布族")[
+  *Exponential Dispersion Family*是指数分布族上再配上一项$phi>0$
 ]
