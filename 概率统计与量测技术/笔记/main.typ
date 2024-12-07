@@ -66,7 +66,7 @@ $ P(A)=m(A) / m(S) $
 = 连续型随机变量
 #def("连续型随机变量")[
   设$X$是随机变量,若存在一个非负可积函数$f(x)$,使得$ F(x)=integral_(-infinity)^x f(t) dd(t),-infinity<x<+infinity $
-  则称$X$是连续性随机变量,函数$F(x)$是它的分布函数,函数$f(x)$是它的概率密度函数,简称概率密度或密度函数.
+  则称$X$是*连续性随机变量*,函数$F(x)$是它的*分布函数*(*distribution function*),函数$f(x)$是它的*概率密度函数*,简称概率密度或密度函数.
 ]
 分布函数的有用之处在于,把连续型随机变量与离散型随机变量统一了起来.
 #def("指数分布")[
@@ -236,6 +236,7 @@ $ P(A)=m(A) / m(S) $
 
   常用于比较不同组别的数据分布情况.
 ]
+R语言中分位函数(quantile function)可以用于计算对于给定概率的分位数.
 = 统计量
 #def("样本均值")[
   设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
@@ -355,8 +356,7 @@ ggsave("f_t.pdf")
   - $((n-1)S^2) / sigma^2~chi^2(n-1)$
   - $overline(X)$与$S^2$相互独立
   - $(overline(X)-mu) / (S\/sqrt(n))~t(n-1)$
-]
-
+] <normal-dist-prop>
 #thm("两个正态总体的样本均值和样本方差")[
   设总体$X~N(mu,sigma^2)$,样本为$(X_1,X_2,dots,X_n)$,又设总体$X' ~ N(mu',sigma'^2)$,样本为$(X'_1,X'_2,dots,X'_n)$,
   $ overline(X)=1 / n sum_(i=1)^n X_i,overline(X')=1 / n' sum_(i=1)^n' X'_i $
@@ -429,6 +429,18 @@ ggsave("f_t.pdf")
   $ hat(va(theta)) (va(x),theta)=arg max L(va(x);va(theta)) $
   称为最大似然估计估计值,称统计量$hat(va(theta)) (X_1,X_2,dots,X_n)$为参数$va(theta)$的最大参数估计量.
 ] <maximum-likelihood-estimation>
+用R语言做最大似然估计
+```R
+file <- read.csv("samples.csv")
+sample <- file$sample
+exp_func <- function(theta, x) {
+  n <- length(x)
+  logL <- n * log(theta) - theta * sum(x)
+  return(-logL)
+}
+theta <- optimize(exp_func, c(0, 1), x = sample)
+print(1 / theta$minimum)
+```
 #exmp("均匀分布的矩估计和最大似然估计")[
   设$X~U(a,b)$,有$X_1,X_2,dots,X_n$是$X$的一个样本.求$a,b$的矩估计和最大似然估计.
 ]
@@ -484,6 +496,81 @@ ggsave("f_t.pdf")
   要求MSE最小就等价于 @evaluation_1.
 ]
 = 假设检验
+/ 问题: 提出假设$H_0$,如何判断$H_0$是否成立?
+/ 要求: 使得$H_0$为真时拒绝$H_0$的概率不超过$alpha$.
+根据$alpha$可以定出合适的*拒绝域*(其边界称为*临界点*),常见的正态分布的双边检验的临界点为$k=z_(a\/2)$.
+#def("备择假设")[
+  在原假设被拒绝后可选择的假设称为备择假设.
+]
+#def("一类错误")[
+  当$H_0$为真时拒绝$H_0$的错误称为一类错误.
+]
+#def("二类错误")[
+  当$H_0$为假时接受$H_0$的错误称为二类错误.
+]
+#def("显著性检验")[
+  只控制一类错误的概率,不考虑二类错误,称为显著性检验.
+]
+== $Z$检验
+$Z$检验是$sigma^2$已知,关于$mu$的检验.
+#def([$Z$检验统计量])[
+  $ Z=(overline(X)-mu_0) / (sigma\/sqrt(n)) $
+]
+== $t$检验
+$t$检验是$sigma^2$未知,关于$mu$的检验.
+#def([$t$检验])[注意到$S^2$是$sigma^2$的无偏估计
+  $ t=(overline(X)-mu_0) / (S\/sqrt(n)) $
+  根据@normal-dist-prop,有$t~t(n-1)$.
+  $ P_(mu_0) ((overline(X)-mu_0) / (S\/sqrt(n))>=k)=alpha $
+  从而对双边检验,有
+  $ |t|>=k=t_(alpha\/2) (n-1) $
+  如果是单边检验,注意更换分位数.
+]
+用R语言做单边检验的例子如下
+```R
+sample_data <- c(16, 25, 21, 20, 23, 21, 19, 15, 13, 23, 17, 20, 29, 18, 22, 16, 22)
+print(t.test(sample_data, mu = 21, alternative = "less", conf.level = 0.95))
+```
+`t.test`会给出95%置信区间的值
+```txt
+95 percent confidence interval:
+     -Inf 21.68713
+```
+说明接受原假设.
+
+当然,也可以使用`qt`函数计算临界值并手动进行比较.
+```R
+qt(0.05, 17 - 1)
+```
+== 正态分布均值的比较
+比较两样本均值是否相同,可以使用$t$检验.前提假设为两样本方差相等(尽管未知).
+== 正态分布方差的比较
+#def([$chi^2$检验])[根据@normal-dist-prop,有$ ((n-1)S^2) / sigma_0^2~chi^2(n-1) $
+  如果取
+  $ chi^2=((n-1)S^2) / sigma_0^2 $
+  对于双边检验,习惯上取
+  $ P_(sigma_0^2) (((n-1)S^2) / sigma_0^2<=k_1)&=alpha / 2 \ P_(sigma_0^2) (((n-1)S^2) / sigma_0^2>=k_2)&=alpha / 2 $
+  对于单边检验,例如$H_0:sigma^2<=sigma_0^2$,取
+  $ P_(sigma^2<=sigma_0^2) (((n-1)S^2) / sigma^2 >= ((n-1)k) / sigma_0^2)=alpha $
+  可得拒绝域为
+  $ s^2>=k=sigma_0^2 / (n-1) chi_a^2(n-1) $
+]
+R语言当中的`chisq.test`是做独立性检验的,为了检验$H_0:sigma^2<=sigma_0^2$,可以手动计算
+```R
+a <- c(90, 105, 101, 95, 100, 100, 101, 105, 93, 97)
+n <- length(a)
+alpha <- 0.01
+sigma0 <- 14
+print(qchisq(1 - alpha, n - 1) * sigma0^2 / (n - 1))
+print(var(a))
+```
+#def([$F$检验])[
+  对于两个不同总体$N(mu_1,sigma_1^2)$以及$N(mu_2,sigma_2^2)$,考虑它们的方差的大小关系.即$H_0:sigma_1^2<=sigma_2^2$.
+
+  拒绝域的形式为
+  $ s_1^2 / s_2^2 >= k = F_alpha (n_1-1,n_2-1) $
+  如果两总体方差相等,则称它们有*方差齐性*.
+]
 == 方差分析
 方差分析又称F检验(纪念Fisher), Analysis of Variance,简称AoV/ANOVA.
 #def("偏差平方和")[
@@ -530,5 +617,5 @@ ggsave("f_t.pdf")
 ]
 == 广义线性回归
 #def("指数离散分布族")[
-  *Exponential Dispersion Family*是指数分布族上再配上一项$phi>0$
+  指数离散分布族称为*Exponential Dispersion Family*,是指数分布族上再配上一项$phi>0$
 ]

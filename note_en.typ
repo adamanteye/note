@@ -95,9 +95,7 @@
   show figure.where(kind: table): set block(breakable: true)
   set enum(numbering: n => text(fill: red, numbering("1.", n)))
   set list(marker: n => text(fill: red, "•"))
-  show raw.where(block: false): it => (
-    h(0.5em) + box(fill: red.lighten(80%), outset: 0.25em, text(fill: red, it)) + h(0.5em)
-  )
+  show raw.where(block: false): it => text(fill: red, it)
   show: rest => columns(2, rest)
   set align(left)
   if numbered-equation {
@@ -106,5 +104,4 @@
   } else {
     doc
   }
-
 }
