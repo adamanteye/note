@@ -575,18 +575,45 @@ print(var(a))
 方差分析又称F检验(纪念Fisher), Analysis of Variance,简称AoV/ANOVA.
 #def("偏差平方和")[
   $
-    S_T&=: sum_i sum_j (X_(i j)-overline(X))^2\ S_T&=sum_i sum_j (X_(i j)-overline(X)_(i dot))^2+sum_i sum_j ( overline(X)-overline(X)_(i dot) )^2
+    S_T&=sum_j^s sum_i^(n_j) (X_(i j)-overline(X))^2=sum_j^s sum_i^(n_j) X_(i j)^2-T_(dot dot)^2 / n\
+    S_A&=sum_j^s n_j overline(X)_(dot j)^2-n overline(X)^2=sum_j^s T^2_(dot j) / n_j-T_(dot dot)^2 / n\
+    S_E&=S_T-S_A\
+    T_(dot j)&=sum_i^n_j X_(i j), T_(dot dot)=sum_j^s T_(dot j)
   $
-  称上式中第一项为误差平方和$S_E$,第二项为效应平方和$S_A$.
+  称$S_E$为*误差平方和*,$S_A$为*效应平方和*.
 ]
 #thm([$S_A$与$S_E$的关系])[
   - $S_A$与$S_E$相互独立
   - 因此平方和与自由度具有可加性
 ]
-问如何判断$S_A$是否显著(相比$S_E$)?
-
+/ 问题: 如何判断$S_A$是否显著(相比$S_E$)?
 构造统计量$ F=(S_A\/nu_A)/(S_E\/nu_E) $
-== 多因素试验
+#figure(
+  table(stroke: none,columns: 5, table.hline(),table.header(
+      [],
+      [自由度\ `Df`],
+      [平方和\ `Sum Sq`],
+      [均方\ `Mean Sq`],
+      [$F$比\ `F value`],
+    ),
+    table.hline(),
+    [效应],[$s-1$],[$S_A$],[$overline(S_A)=S_A\/(s-1)$],[$overline(S_A)\/overline(S_E)$],
+    [误差],[$n-s$],[$S_E$],[$overline(S_E)=S_E\/(n-s)$],[],
+    [总和],[$n-1$],[$S_T$],[],[],
+    table.hline()
+  ),
+  caption: "单因素试验的方差分析表",
+)
+/ 拒绝域: 对于$H_0:mu_1=mu_2=dots=mu_s$,在显著性水平$alpha$下
+$ F=overline(S_A) / overline(S_E)>=F_(alpha)(s-1,n-s) $
+用R语言做单因素方差分析的例子为
+```R
+value <- c(c(8, 6, 4, 2), c(6, 6, 4, 4), c(8, 10, 10, 10, 12), c(4, 4, 2))
+group <- c(rep("A", 4), rep("B", 4), rep("C", 5), rep("D", 3))
+data <- data.frame(group = group, value = value)
+summary(aov(value ~ group, data))
+print(qf(0.05, 3, 12))
+```
 == 回归分析
 #def("回归函数")[
   对于随机变量$Y$和普通变量$x$,如果$E(Y)$存在并且值随着$x$的取值而定,则$E(Y)$是$x$的函数,并且记为$mu(x)$
