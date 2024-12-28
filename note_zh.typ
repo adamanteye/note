@@ -57,6 +57,7 @@
   title: none,
   author: none,
   numbered-equation: false,
+  font: ("Libertinus Serif", "霞鶩文楷 TC"),
   doc,
 ) = {
   if author != none {
@@ -71,7 +72,7 @@
   set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
   set text(
     size: 12pt,
-    font: ("Libertinus Serif", "霞鶩文楷 TC"),
+    font: font,
     lang: "zh",
     region: "cn",
   )
