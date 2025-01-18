@@ -4,12 +4,13 @@
   author: "杨哲涵",
 )
 #figure(
-  table(stroke: none,
+  table(
+    stroke: none,
     columns: 4,
     table.hline(),
     table.header([分布], [分布律], [期望], [方差]),
     table.hline(),
-    [$"Exp"(theta)$],[$f(x)=cases(1/theta e^(-x/theta) "where" x>0,0 "elsewhere")$],[$theta$],[$theta^2$],
+    [$"Exp"(theta)$], [$f(x)=cases(1/theta e^(-x/theta) "where" x>0,0 "elsewhere")$], [$theta$], [$theta^2$],
     table.hline()
   ),
   caption: "常见概率分布表",
@@ -229,6 +230,13 @@ $ P(A)=m(A) / m(S) $
   $ f(x|mu,sigma^2)&=1 / sqrt(2pi sigma^2) exp(-(x-mu)^2/(2sigma^2)) $
 ]
 = 统计学概论
+#def("分位数")[
+  对于$alpha$,称$x_alpha$,$x'_alpha$为下侧$alpha$-分位数和上侧$alpha$-分位数,若
+  $ P(X<=x_alpha)=F(x_alpha)=alpha, P(X>=x'_alpha)=alpha $
+]
+#def("中位数")[
+  $x_(0.5)$称为中位数.
+]
 #def("箱线图")[
   箱线图是一种用作显示一组数据分散情况的统计图表,显示了一组数据的最大值,最小值,中位数,上四分位数和下四分位数.
 
@@ -238,6 +246,9 @@ $ P(A)=m(A) / m(S) $
 ]
 R语言中分位函数(quantile function)可以用于计算对于给定概率的分位数.
 = 统计量
+#def("简单随机样本")[
+  设$(X_1,X_2,dots,X_n)$是来自总体$X$的一个样本,若$(X_1,X_2,dots,X_n)$相互独立,且都服从同一分布,则称$(X_1,X_2,dots,X_n)$为来自总体$X$的一个简单随机样本.
+]
 #def("样本均值")[
   设$(X_1,X_2,dots,X_n)$是来自总体$X$的样本
   $ overline(X)=1 / n sum_(i=1)^n X_i $
@@ -300,7 +311,9 @@ R语言中分位函数(quantile function)可以用于计算对于给定概率的
 #def([$F$分布])[
   设随机变量$X ~ chi^2(n),Y ~ chi^2(m)$,且$X,Y$相互独立.
   称$ F=(X/n)\/(Y/m) $为服从第一自由度为$n$,第二自由度为$m$的$F$分布.
-  $ f_F (x)=(Gamma((m+n)/2)binom(n,m)^(n / 2)) / (Gamma(m/2)Gamma(n/2))x^(n / 2-1)(1+n / m x)^(-(m+n) / 2) $
+  $
+    f_F (x)=cases((Gamma((m+n)/2)binom(n,m)^(n / 2)) / (Gamma(m/2)Gamma(n/2))x^(n / 2-1)(1+n / m x)^(-(m+n) / 2) &"elsewhere",0 &"where" x<=0)
+  $
 ]
 #thm([$F$分布的特性])[
   - 若$F ~ F(n,m)$,则$1/F ~ F(m,n)$
@@ -310,28 +323,30 @@ R语言中分位函数(quantile function)可以用于计算对于给定概率的
   设随机变量$X ~ N(0,1),Y ~ chi^2(n)$,且$X,Y$相互独立.
   称$ T=X/sqrt(Y\/n) $为服从自由度为$n$的$T$分布.
   $
-    f_T (t)\ &=t f_(T^2) (t^2), t in (-infinity,+infinity) \ &=Gamma((n+1)/2) / Gamma(n/2)sqrt(n pi)( 1+t^2 / n )^(-(n+1) / 2), t in (-infinity,+infinity)
+    f_T (t)&=t f_(T^2) (t^2), t in (-infinity,+infinity) \ &=Gamma((n+1)/2) / Gamma(n/2)sqrt(n pi)( 1+t^2 / n )^(-(n+1) / 2), t in (-infinity,+infinity)
   $
 ]
 #proof()[
   $ T^2=(X^2 / 1)\/(Y / n) => T^2~F(1,n) $利用$T=sqrt(T^2)$推得$T$分布的概率密度函数.
 ]
 #thm([$T$分布的性质])[
-  ```R
-  install.packages("ggplot2")
-  library(ggplot2)
-  x <- seq(-5, 5, length.out=100)
-  t_df <- data.frame(x=c(), pd=c(), n=c())
-  for (n in c(1, 2, 9, 25, 3600)) {
-      t_df <- rbind(t_df, data.frame(x=x, pd=dt(x, df=n), n=n))
-  }
-  t_df$n <- as.factor(t_df$n)
-  plot <- ggplot(t_df, aes(x=x, y=pd, color=n)) + geom_line()
-  print(plot + labs(y="概率密度", color="自由度"))
-  ```
   - $n->infinity$时为标准正态分布
   - $f_n (t)$是偶函数
 ]
+```R
+# install.packages("ggplot2")
+library(ggplot2)
+x <- seq(-5, 5, length.out=100)
+t_df <- data.frame(x=c(), pd=c(), n=c())
+# t 分布在 n 越大时越接近正态分布
+for (n in c(1, 2, 9, 25, 3600)) {
+    t_df <- rbind(t_df, data.frame(x=x, pd=dt(x, df=n), n=n))
+}
+t_df$n <- as.factor(t_df$n)
+plot <- ggplot(t_df, aes(x=x, y=pd, color=n)) + geom_line()
+plot + labs(y="概率密度", color="自由度")
+ggsave("t.svg")
+```
 使用R语言绘制$F(10,2)$与$T(10)$,可以参考#link("https://ggplot2.tidyverse.org/reference/geom_function.html")[geom_function]了解更多如何绘制连续函数
 ```R
 library(ggplot2)
@@ -347,7 +362,7 @@ base +
     fun = dt,
     args = list(df = 10)
   )
-ggsave("f_t.pdf")
+ggsave("f_t.svg")
 ```
 #thm("正态总体的性质")[
   设$X_1,X_2,dots,X_n$是来自正态总体$N(mu,sigma^2)$的样本,$overline(X)$和$S^2$分别是样本均值和样本方差.
@@ -362,16 +377,14 @@ ggsave("f_t.pdf")
   $ overline(X)=1 / n sum_(i=1)^n X_i,overline(X')=1 / n' sum_(i=1)^n' X'_i $
   $ S^2=1 / (n-1) sum_(i=1)^n (X_i-overline(X)) $
   则
-  $ S^2 / sigma^2 S'^2 / sigma'^2 ~ F(n-1,n'-1) $
+  $ (S^2 \/S'^2) / (sigma^2 \/ sigma'^2) ~ F(n-1,n'-1) $
 ]
 = 统计推断
 == 前言
-/ 参数估计与非参数估计:
-  / 参数估计: 当推断的对象是有限个,例如高斯总体的期望,方差
+/ 参数估计与非参数估计: / 参数估计: 当推断的对象是有限个,例如高斯总体的期望,方差
   / 非参数估计: 当推断的对象是无限个,例如未知分布总体的期望,方差,分布
 
-/ 参数估计类型:
-  / 点估计: 估计未知参数的值
+/ 参数估计类型: / 点估计: 估计未知参数的值
   / 区间估计: 估计未知参数的取值范围,并使此范围包含未知参数真值的概率为给定的值
 #exmp[
   $X~N(mu, sigma^2)$,若$mu, sigma$未知,通过构建统计量,给出它们的估计值(点估计)或取值范围(区间估计)就是参数估计的内容.
@@ -589,7 +602,8 @@ print(var(a))
 / 问题: 如何判断$S_A$是否显著(相比$S_E$)?
 构造统计量$ F=(S_A\/nu_A)/(S_E\/nu_E) $
 #figure(
-  table(stroke: none,columns: 5, table.hline(),table.header(
+  table(
+    stroke: none, columns: 5, table.hline(), table.header(
       [],
       [自由度\ `Df`],
       [平方和\ `Sum Sq`],
@@ -597,9 +611,9 @@ print(var(a))
       [$F$比\ `F value`],
     ),
     table.hline(),
-    [效应],[$s-1$],[$S_A$],[$overline(S_A)=S_A\/(s-1)$],[$overline(S_A)\/overline(S_E)$],
-    [误差],[$n-s$],[$S_E$],[$overline(S_E)=S_E\/(n-s)$],[],
-    [总和],[$n-1$],[$S_T$],[],[],
+    [效应], [$s-1$], [$S_A$], [$overline(S_A)=S_A\/(s-1)$], [$overline(S_A)\/overline(S_E)$],
+    [误差], [$n-s$], [$S_E$], [$overline(S_E)=S_E\/(n-s)$], [],
+    [总和], [$n-1$], [$S_T$], [], [],
     table.hline()
   ),
   caption: "单因素试验的方差分析表",
@@ -640,8 +654,7 @@ print(qf(0.05, 3, 12))
 #def("泊松分布对数似然距离")[
   预测值$E(va(Y))$
 ]
-#def("变权迭代最小二乘法")[
-]
+#def("变权迭代最小二乘法")[ ]
 == 广义线性回归
 #def("指数离散分布族")[
   指数离散分布族称为*Exponential Dispersion Family*,是指数分布族上再配上一项$phi>0$
