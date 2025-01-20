@@ -7,6 +7,7 @@
 / 2 ~ 19: 基数词 + 词尾 t
 / 20 及以上: 基数词 + 词尾 st
 / 不规则:
+
   - 1: erste
   - 3: dritte
   - 7: siebte
@@ -33,8 +34,8 @@ z.B.
 
 == 介词的用法
 
-- $<=$ 一天,用 **an**
-- $>$ 一天,用 **in**
+- $<=$ 一天,用 *an*
+- $>$ 一天,用 *in*
 
 #quote[
   - am Morgen, am Vormittag
@@ -47,14 +48,14 @@ z.B.
   - im Januar, im Februar
 ]
 特例:
-- **Uhrzeiten**: um 12 Uhr
-- **Nacht**: in der Nacht
+- *Uhrzeiten*: um 12 Uhr
+- *Nacht*: in der Nacht
 
 描述钟点时刻使用介词 *um*,此外,*Nacht* 不同于 *Morgen* 等,使用介词 *in*.
 
 == 年份
 
-**1000-1099, 2000-2099**: 用 tausend
+*1000-1099, 2000-2099*: 用 tausend
 
 + 2012 zweitausendzwölf
 + 2000 zweitausend
