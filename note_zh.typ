@@ -57,7 +57,8 @@
   title: none,
   author: none,
   numbered-equation: false,
-  font: ("Libertinus Serif", "霞鶩文楷 TC"),
+  font: ("Libertinus Serif", "LXGW Bright Code TC"),
+  mono-font: "LXGW Bright Code TC",
   doc,
 ) = {
   if author != none {
@@ -98,6 +99,7 @@
   set enum(numbering: n => text(fill: red, numbering("1.", n)))
   set list(marker: n => text(fill: red, "•"))
   show raw.where(block: false): it => text(fill: red, it)
+  show raw: set text(font: mono-font)
   set align(left)
   if numbered-equation {
     set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])
