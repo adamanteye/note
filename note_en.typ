@@ -96,7 +96,7 @@
   show figure.where(kind: table): set block(breakable: true)
   set enum(numbering: n => text(fill: red, numbering("1.", n)))
   set list(marker: n => text(fill: red, "•"))
-  show raw.where(block: false): it => text(fill: red, it)
+  show raw.where(block: false): it => text(fill: maroon, it)
   show raw: set text(font: mono-font)
   show: rest => columns(2, rest)
   set align(left)
