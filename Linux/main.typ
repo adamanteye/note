@@ -1,4 +1,4 @@
-#import "../note_zh.typ": *
+#import "../../note_zh.typ": *
 #show: conf.with(
   title: "Linux 使用笔记",
   author: "杨哲涵",
@@ -10,7 +10,7 @@
 ```sh
 w
 ```
-```txt
+```
  23:18:07 up  2:43,  1 user,  load average: 2.12, 3.14, 3.20
 USER     TTY       LOGIN@   IDLE   JCPU   PCPU  WHAT
 adamante tty1      20:34    2:43m  6:51m   ?    footclient
@@ -18,12 +18,27 @@ adamante tty1      20:34    2:43m  6:51m   ?    footclient
 ```sh
 who
 ```
-```txt
+```
 adamanteye tty1         2025-01-25 20:34
 ```
 = 网络设置
 == NetworkManager
-/ 自动切换有线,无线连接: 编写dispatcher,详见#link("https://neilzone.co.uk/2023/04/networkmanager-automatically-switch-between-ethernet-and-wi-fi/")[NetworkManager: automatically switch between Ethernet and Wi-Fi].
+编写dispatcher可以实现自动切换有线,无线连接,详见#link("https://neilzone.co.uk/2023/04/networkmanager-automatically-switch-between-ethernet-and-wi-fi/")[NetworkManager: automatically switch between Ethernet and Wi-Fi].
+
+`dnsmasq`可以作为`NetworkManager`的本地DNS缓存服务器.且可以为不同的域名选择不同的DNS服务器.
+```
+# /etc/NetworkManager/dnsmasq.d/server.conf
+server=/tsinghua.edu.cn/166.111.8.28
+server=/tsinghua.edu.cn/2402:f000:1:801::8:28
+server=/cn/101.6.6.6
+server=101.101.101.101
+server=2001:de4::101
+```
+```
+# /etc/NetworkManager/NetworkManager.conf
+[main]
+dns=dnsmasq
+```
 = 软件分发
 == 手册页
 #link("https://git.sr.ht/~sircmpwn/scdoc")[scdoc]自定义了与Markdown相近的语法,可以用来生成man手册页:
@@ -74,8 +89,12 @@ dmesg -w
 watch -n 3 "ps aux | grep node"
 ```
 == 别名
-在`.gitconfig`中设置`git`别名:
+用`alias`为命令创建别名
 ```sh
+alias hx=helix
+```
+对于`git`子命令,在`.gitconfig`中设置`git`别名:
+```
 [alias]
     ss = status
     kmt = commit
@@ -84,3 +103,14 @@ watch -n 3 "ps aux | grep node"
     ps = push
 ```
 随后可以用`git kmt`代替`git commit`.
+= 实用程序
+== 编辑器
+#link("https://github.com/helix-editor/helix")[helix-editor/helix]在绝大多数发行版都已经得到了支持,但是debian尚且没有打包.
+== 终端与Shell
+`foot`是轻量的wayland终端,支持`img2sixel`.
+
+`fish`相比`zsh`速度更快,且4.0版本已经成功用Rust重写.
+== 配置管理
+GNU `stow`利用软链接集中地管理配置文件,可以配合git进行版本控制和备份.
+== 待办管理
+#link("https://taskwarrior.org/")[Taskwarrior]功能丰富,更新到3.0版本后改变了远程同步的方式.
