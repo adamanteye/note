@@ -47,12 +47,22 @@ scdoc < foot.1.scd > foot.1
 gzip foot.1
 man ./foot.1.gz
 ```
-== shell补全
+== Shell补全
 === fish
 `fish_update_completions`可以从系统man pages生成补全.
 == Arch Linux 打包
 `namcap`可以方便地检查`PKGBUILD`和打好的包当中出现的错误.
-= shell技巧
+= Shell技巧
+== Bash编程
+`echo`可以输出二进制数据:
+```sh
+echo -e -n "\x48\x65\x6c\x6c\x6f" > hello.txt
+```
+
+`cut`可以用来提取文本中的字段:
+```sh
+echo "john,21" | cut -d "," -f 1
+```
 == 彩色输出
 以下是一些可启用彩色输出的命令:
 ```
@@ -113,4 +123,19 @@ alias hx=helix
 == 配置管理
 GNU `stow`利用软链接集中地管理配置文件,可以配合git进行版本控制和备份.
 == 待办管理
-#link("https://taskwarrior.org/")[Taskwarrior]功能丰富,更新到3.0版本后改变了远程同步的方式.
+#link("https://taskwarrior.org/")[Taskwarrior]功能丰富,更新到3.0版本后改变了远程同步的方式,可以自己托管远程同步服务.
+
+Taskwarrior创建循环任务:
+```sh
+task recur:2d due:eod add 吃山楂片
+```
+== 音视频处理
+使用`ffmpeg`连接视频:
+```sh
+ffmpeg -f concat -i filelist.txt -c copy out.mp4
+```
+其中`filelist.txt`的内容为
+```
+file '1.mp4'
+file '2.mp4'
+```
