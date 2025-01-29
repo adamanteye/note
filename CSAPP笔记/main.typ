@@ -65,5 +65,6 @@ ATT格式(`gcc`, `objdump`的默认格式)与Intel格式(Intel, 微软的默认�
   ),
   caption: [Size of C data types in x86-64],
 )
+x86历史上实现过`10`字节的浮点数扩展,在C中通过声明`long double`使用.#footnote[#link("https://en.wikipedia.org/wiki/Long_double")[long double - Wikipedia]]但如果不是x86平台,那么`long double`可能回退到`double`,并且`10`字节浮点数的性能也不如`float`或`double`.
 = 附录
 北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.

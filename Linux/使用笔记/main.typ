@@ -55,19 +55,6 @@ man ./foot.1.gz
 == Arch Linux 打包
 `namcap`可以方便地检查`PKGBUILD`和打好的包当中出现的错误.
 = Shell技巧
-== Bash编程
-Bash使用`int64`.
-#link("https://askubuntu.com/questions/385528/how-to-increment-a-variable-in-bash")[how-to-increment-a-variable-in-bash]介绍了Bash当中定义整数以及迭代的办法.
-
-`echo`可以输出二进制数据:
-```sh
-echo -e -n "\x48\x65\x6c\x6c\x6f" > hello.txt
-```
-
-`cut`可以用来提取文本中的字段:
-```sh
-echo "john,21" | cut -d "," -f 1
-```
 == 彩色输出
 以下是一些可启用彩色输出的命令:
 ```sh
@@ -131,7 +118,9 @@ alias hx=helix
 == 输入法
 aur/fcitx5-pinyin-sougou-dict-git 提供了搜狗词库.
 == 配置管理
-GNU `stow`利用软链接集中地管理配置文件,可以配合git进行版本控制和备份.
+GNU `stow`利用软链接集中地管理配置文件,可以配合`git`进行版本控制和备份.
+
+我自己的配置文件管理在#link("https://github.com/adamanteye/dotfiles")[adamanteye/dotfiles].
 == 待办管理
 #link("https://taskwarrior.org/")[Taskwarrior]功能丰富,更新到3.0版本后改变了远程同步的方式,可以自己托管远程同步服务.
 
@@ -151,3 +140,30 @@ file '2.mp4'
 ```
 = 网络服务
 == Web服务器
+= 编程
+== Bash
+使用Bash严格模式,参考#link("http://redsymbol.net/articles/unofficial-bash-strict-mode/")[Bash Strict Mode].
+```sh
+set -euo pipefail
+```
+
+Bash使用`int64`.
+#link("https://askubuntu.com/questions/385528/how-to-increment-a-variable-in-bash")[how-to-increment-a-variable-in-bash]介绍了Bash当中定义整数以及迭代的办法.
+
+`awk`可以进行浮点数计算
+```sh
+awk "BEGIN {printf \"%.2f\n\", 1000 / 3600}"
+```
+
+`echo`可以输出二进制数据:
+```sh
+echo -e -n "\x48\x65\x6c\x6c\x6f" > hello.txt
+```
+
+`cut`可以用来提取文本中的字段:
+```sh
+echo "john,21" | cut -d "," -f 1
+```
+== Rust
+#link("https://doc.rust-lang.org/std/macro.dbg.html")[dbg!]宏用于打印到`stderr`.
+可以在`cargo test`下使用,也可以调试release构建下出现的问题.
