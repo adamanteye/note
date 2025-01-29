@@ -100,6 +100,7 @@
   show raw: set text(font: mono-font)
   show: rest => columns(2, rest)
   set align(left)
+  set table(stroke: none)
   if numbered-equation {
     set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [Eq.])
     doc

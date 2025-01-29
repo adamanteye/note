@@ -105,6 +105,7 @@
   ) // 西文等宽字体对比中文容易看着太小
   show raw: set text(font: mono-font)
   set align(left)
+  set table(stroke: none)
   if numbered-equation {
     set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])
     doc
