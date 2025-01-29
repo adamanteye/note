@@ -38,3 +38,32 @@ $ "T2U"_w(x)&=x+x_(w-1)2^w\ "U2T"_w(x)&=x-x_(w-1)2^w $
 
 常量乘法的优化: 编译器会将`x * 14`这样的常量乘法优化为`(x >> 4) - (x >> 1)`.后面会提到`lea`指令,更详细地讨论这个问题.
 == Floating Point
+= Machine-Level Representation of Programs
+== Historical Perspective
+8086(1978, 29K晶体管)是第一代x86系列处理器, 16位寄存器. i386(1985, 275K晶体管)扩展到32位,成为第一个可以运行UNIX的x86处理器. Pentium 4E(2004, 125M晶体管)引入超线程技术与EM64T(现在称为x86-64). Core i7, Sandy Bridge(2011, 1.16B晶体管)引入了AVX指令集.
+== Program Encodings
+对`gcc`或`clang`, `-S`编译选项输出汇编文件(以`.s`结尾). `-c`编译选项输出目标文件(以`.o`结尾). `-o`编译选项指定输出文件名.
+
+ATT格式(`gcc`, `objdump`的默认格式)与Intel格式(Intel, 微软的默认格式)都是汇编语言的表示方式. Intel格式中操作数逆向排列.
+
+如果要在C中使用汇编代码,可以通过`asm`关键字内联使用,也可以链接汇编文件.
+== Data Formats
+#figure(
+  table(
+    columns: 4,
+    table.hline(),
+    table.header([C declaration], [Intel data type], [Assembly-code suffix], [Size(bytes)]),
+    table.hline(),
+    [`char`], [Byte], [b], [1],
+    [`short`], [Word], [w], [2],
+    [`int`], [Double word], [l], [4],
+    [`long`], [Quad word], [q], [8],
+    [`char *`], [Quad word], [q], [8],
+    [`float`], [Single precision], [s], [4],
+    [`double`], [Double precision], [l], [8],
+    table.hline(),
+  ),
+  caption: [Size of C data types in x86-64],
+)
+= 附录
+北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.

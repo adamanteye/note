@@ -22,6 +22,8 @@ who
 adamanteye tty1         2025-01-25 20:34
 ```
 = 网络设置
+== IP
+访问#link("https://4.ipw.cn")[4.ipw.cn]与#link("https://6.ipw.cn")[6.ipw.cn]可以看到出口IP地址.
 == NetworkManager
 编写dispatcher可以实现自动切换有线,无线连接,详见#link("https://neilzone.co.uk/2023/04/networkmanager-automatically-switch-between-ethernet-and-wi-fi/")[NetworkManager: automatically switch between Ethernet and Wi-Fi].
 
@@ -54,6 +56,9 @@ man ./foot.1.gz
 `namcap`可以方便地检查`PKGBUILD`和打好的包当中出现的错误.
 = Shell技巧
 == Bash编程
+Bash使用`int64`.
+#link("https://askubuntu.com/questions/385528/how-to-increment-a-variable-in-bash")[how-to-increment-a-variable-in-bash]介绍了Bash当中定义整数以及迭代的办法.
+
 `echo`可以输出二进制数据:
 ```sh
 echo -e -n "\x48\x65\x6c\x6c\x6f" > hello.txt
@@ -65,7 +70,7 @@ echo "john,21" | cut -d "," -f 1
 ```
 == 彩色输出
 以下是一些可启用彩色输出的命令:
-```
+```sh
 alias ls='ls --color=auto'
 alias ip='ip --color=auto'
 alias grep='grep --color=auto'
@@ -103,8 +108,9 @@ watch -n 3 "ps aux | grep node"
 ```sh
 alias hx=helix
 ```
-对于`git`子命令,在`.gitconfig`中设置`git`别名:
+对于`git`子命令,可以设置`git`别名:
 ```
+# ~/.gitconfig
 [alias]
     ss = status
     kmt = commit
@@ -120,6 +126,10 @@ alias hx=helix
 `foot`是轻量的wayland终端,支持`img2sixel`.
 
 `fish`相比`zsh`速度更快,且4.0版本已经成功用Rust重写.
+== 文档手册
+#link("https://github.com/tealdeer-rs/tealdeer")[tealdeer]提供了相当好的`tldr`体验,可以查看大部分命令的简短文档.
+== 输入法
+aur/fcitx5-pinyin-sougou-dict-git 提供了搜狗词库.
 == 配置管理
 GNU `stow`利用软链接集中地管理配置文件,可以配合git进行版本控制和备份.
 == 待办管理
@@ -139,3 +149,5 @@ ffmpeg -f concat -i filelist.txt -c copy out.mp4
 file '1.mp4'
 file '2.mp4'
 ```
+= 网络服务
+== Web服务器
