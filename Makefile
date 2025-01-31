@@ -6,7 +6,7 @@ ROOT_DIR = $(shell pwd)
 
 .PHONY: site latex typ clean help remove print
 
-build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note_zh.typ
+build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note_zh.typ $(ROOT_DIR)/note_en.typ
 	@mkdir -p $(@D)
 	typst compile --root $(ROOT_DIR)  $(<D)/main.typ $@
 
@@ -25,7 +25,7 @@ latex: $(TEX_BUILDS)
 
 typ: $(TYP_BUILDS)
 
-build/index.html: latex typ build/assets/ generate.sh index-template.html
+build/index.html: typ build/assets/ generate.sh index-template.html
 	@mkdir -p $(@D)
 	cd $(@D) && ../generate.sh . ../index-template.html
 
