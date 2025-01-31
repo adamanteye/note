@@ -21,9 +21,11 @@ who
 ```
 adamanteye tty1         2025-01-25 20:34
 ```
-= 网络设置
-== IP
+= 网络管理
+== 地址与路由
 访问#link("https://4.ipw.cn")[4.ipw.cn]与#link("https://6.ipw.cn")[6.ipw.cn]可以看到出口IP地址.
+== 端口
+`ss`命令由`iproute2`提供,功能与`netstat`类似,但信息更全.
 == NetworkManager
 编写dispatcher可以实现自动切换有线,无线连接,详见#link("https://neilzone.co.uk/2023/04/networkmanager-automatically-switch-between-ethernet-and-wi-fi/")[NetworkManager: automatically switch between Ethernet and Wi-Fi].
 
@@ -106,6 +108,8 @@ alias hx=helix
     ps = push
 ```
 随后可以用`git kmt`代替`git commit`.
+== 定时任务
+#link("https://crontab.guru/")[crontab guru]可以在线编辑验证`crontab`语法.
 = 实用程序
 == 编辑器
 #link("https://github.com/helix-editor/helix")[helix-editor/helix]在绝大多数发行版都已经得到了支持,但是debian尚且没有打包.
