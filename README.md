@@ -1,6 +1,6 @@
-## 如何使用
+# Adamanteye's Note
 
-您可以通过本页仓库简介处的 Badge 访问生成的[最新构建](https://note.adamanteye.cc).
+![build](https://github.com/adamanteye/note/actions/workflows/build.yml/badge.svg)
 
 ## 编译要求
 
