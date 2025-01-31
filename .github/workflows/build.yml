@@ -1,0 +1,33 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: [self-hosted, linux, typst, web-service] 
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check upstream updates
+        run: |
+          rsync -azu ${{ secrets.ARTIFACTS_DIR }} build/
+          make remove
+          make site
+          make clean
+          minify -ars -o . build
+          rsync -rzuhv --delete build/ ${{ secrets.ARTIFACTS_DIR }}
