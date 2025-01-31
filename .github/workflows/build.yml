@@ -9,13 +9,6 @@ on:
       - 'README.md'
       - 'LICENSE'
       - '.gitignore'
-  pull_request:
-    branches:
-      - master
-    paths-ignore:
-      - 'README.md'
-      - 'LICENSE'
-      - '.gitignore'
 
 jobs:
   build-and-deploy:
@@ -23,10 +16,14 @@ jobs:
     runs-on: [self-hosted, linux, typst, web-service] 
     steps:
       - uses: actions/checkout@v4
-      - name: Check upstream updates
+      - name: Restore Cache
         run: |
-          rsync -azu ${{ secrets.ARTIFACTS_DIR }} build/
+          rsync -azu --delete ${{ secrets.ARTIFACTS_DIR }} build/
+      - name: Build
+        run: |
           make remove
           make site
           minify -ars -o . build
+      - name: Deploy
+        run: |
           rsync -rzuhv --delete build/ ${{ secrets.ARTIFACTS_DIR }}
