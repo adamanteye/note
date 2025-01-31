@@ -28,6 +28,5 @@ jobs:
           rsync -azu ${{ secrets.ARTIFACTS_DIR }} build/
           make remove
           make site
-          make clean
           minify -ars -o . build
           rsync -rzuhv --delete build/ ${{ secrets.ARTIFACTS_DIR }}
