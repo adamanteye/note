@@ -142,6 +142,14 @@ ffmpeg -f concat -i filelist.txt -c copy out.mp4
 file '1.mp4'
 file '2.mp4'
 ```
+
+图形化剪辑软件#link("https://www.shotcut.org/")[shotcut]使用`qt6`,界面现代.
+= 包管理
+== pacman
+列出所有显式安装的包:
+```sh
+pacman -Qe
+```
 = 网络服务
 == Web服务器
 = 编程
