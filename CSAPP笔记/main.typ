@@ -75,7 +75,6 @@ x86-64架构有16个64位的通用寄存器,它们既存储整数,也存储指�
 #figure(
   table(
     columns: 5,
-    align: left,
     table.hline(),
     table.header([`63`], [`31`], [`15`], [`7`], [Purpose]),
     table.hline(),
@@ -105,5 +104,41 @@ x86-64架构有16个64位的通用寄存器,它们既存储整数,也存储指�
 
 `%rsp`寄存器指向栈顶,其他15个寄存器的使用更为灵活.
 === Operand Specifiers
+#figure(
+  table(
+    columns: 4,
+    table.hline(),
+    table.header([Type], [Form], [Operand value], [Name]),
+    table.hline(),
+    [Immediate], [$\$"Imm"$], [$"Imm"$], [Immediate],
+    [Register], [$r_a$], [$R[r_a]$], [Register],
+    [Memory], [$"Imm"$], [$M["Imm"]$], [Absolute],
+    [Memory], [$(r_a)$], [$M[R[r_a]]$], [Indirect],
+    [Memory], [$"Imm"(r_b)$], [$M["Imm"+R[r_b]]$], [Base + displacement],
+    [Memory], [$(r_b, r_i)$], [$M[R[r_b]+R[r_i]]$], [Indexed],
+    [Memory], [$"Imm"(r_b, r_i)$], [$M["Imm"+R[r_b]+R[r_i]]$], [Indexed],
+    [Memory], [$(r_b, r_i, s)$], [$M[R[r_b]+R[r_i]dprod s]$], [Scaled indexed],
+    [Memory], [$"Imm"(r_b, r_i, s)$], [$M["Imm"+R[r_b]+R[r_i]dprod s]$], [Scaled indexed],
+    table.hline(),
+  ),
+  caption: [Operand forms],
+) <operand-forms>
+@operand-forms 中的$s$只能是`1`, `2`, `4`, `8`中的一个.
+== Data Movement Instructions
+#figure(
+  table(
+    columns: 2, table.hline(), table.header([Instruction], [Discription]),
+    table.hline(),
+    [`movb S, D`], [Move byte],
+    [`movw S, D`], [Move word],
+    [`movl S, D`], [Move double word],
+    [`movq S, D`], [Move quad word],
+    [`movabsq S, D`], [Move quad word],
+    table.hline(),
+  ),
+  caption: [Simple data movement Instructions],
+)
+x86-64规定,移动指令的目标和源不能都是内存地址,如果确实有这样的需求,应当先将内存地址上的值加载到寄存器中,再从寄存器中存入内存地址.
+
 = 附录
 北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.

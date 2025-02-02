@@ -6,7 +6,7 @@
 #show: rest => columns(2, rest)
 = 多用户管理
 == 登入用户信息
-`who`与`w`命令可以查询当前登入的用户,不过在gentoo prefix下运行不会查到任何用户.
+`who`与`w`命令可以查询当前登入的用户,不过在gentoo prefix下运行不会查到任何用户:
 ```sh
 w
 ```
@@ -29,7 +29,7 @@ adamanteye tty1         2025-01-25 20:34
 == NetworkManager
 编写dispatcher可以实现自动切换有线,无线连接,详见#link("https://neilzone.co.uk/2023/04/networkmanager-automatically-switch-between-ethernet-and-wi-fi/")[NetworkManager: automatically switch between Ethernet and Wi-Fi].
 
-`dnsmasq`可以作为`NetworkManager`的本地DNS缓存服务器.且可以为不同的域名选择不同的DNS服务器.
+`dnsmasq`可以作为`NetworkManager`的本地DNS缓存服务器.且可以为不同的域名选择不同的DNS服务器:
 ```
 # /etc/NetworkManager/dnsmasq.d/server.conf
 server=/tsinghua.edu.cn/166.111.8.28
@@ -64,7 +64,7 @@ alias ls='ls --color=auto'
 alias ip='ip --color=auto'
 alias grep='grep --color=auto'
 ```
-使用`bat`来代替`cat`和`less`,可以无感知实现大多数语言的语法高亮.
+使用`bat`来代替`cat`和`less`,可以无感知实现大多数语言的语法高亮:
 ```sh
 alias cat='bat --style=plain --paging=never'
 alias less='bat  --style=plain'
@@ -88,12 +88,12 @@ docker compose logs -f
 ```sh
 dmesg -w
 ```
-此外,可以利用`watch`以固定间隔更新输出.
+此外,可以利用`watch`以固定间隔更新输出:
 ```sh
 watch -n 3 "ps aux | grep node"
 ```
 == 别名
-用`alias`为命令创建别名
+用`alias`为命令创建别名:
 ```sh
 alias hx=helix
 ```
@@ -110,6 +110,21 @@ alias hx=helix
 随后可以用`git kmt`代替`git commit`.
 == 定时任务
 #link("https://crontab.guru/")[crontab guru]可以在线编辑验证`crontab`语法.
+== ssh
+配置ssh转发可以在服务器上使用本地的私钥
+```
+Host foo
+  ForwardAgent yes
+```
+
+如果端口被阻断,需要配置网络代理以通过代理服务器访问ssh服务器:
+```
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+  ProxyCommand nc -X connect -x [::1]:10801 %h %p
+```
+Arch Linux的#link("https://archlinux.org/packages/extra/x86_64/openbsd-netcat/")[openbsd-netcat]提供了`nc`命令.
 = 实用程序
 == 编辑器
 #link("https://github.com/helix-editor/helix")[helix-editor/helix]在绝大多数发行版都已经得到了支持,但是debian尚且没有打包.
@@ -137,7 +152,7 @@ task recur:2d due:eod add 吃山楂片
 ```sh
 ffmpeg -f concat -i filelist.txt -c copy out.mp4
 ```
-其中`filelist.txt`的内容为
+其中`filelist.txt`的内容为:
 ```
 file '1.mp4'
 file '2.mp4'
@@ -154,7 +169,7 @@ pacman -Qe
 == Web服务器
 = 编程
 == Bash
-使用Bash严格模式,参考#link("http://redsymbol.net/articles/unofficial-bash-strict-mode/")[Bash Strict Mode].
+使用Bash严格模式,参考#link("http://redsymbol.net/articles/unofficial-bash-strict-mode/")[Bash Strict Mode]:
 ```sh
 set -euo pipefail
 ```
@@ -162,7 +177,7 @@ set -euo pipefail
 Bash使用`int64`.
 #link("https://askubuntu.com/questions/385528/how-to-increment-a-variable-in-bash")[how-to-increment-a-variable-in-bash]介绍了Bash当中定义整数以及迭代的办法.
 
-`awk`可以进行浮点数计算
+`awk`可以进行浮点数计算:
 ```sh
 awk "BEGIN {printf \"%.2f\n\", 1000 / 3600}"
 ```
