@@ -38,6 +38,31 @@ $ "T2U"_w(x)&=x+x_(w-1)2^w\ "U2T"_w(x)&=x-x_(w-1)2^w $
 
 常量乘法的优化: 编译器会将`x * 14`这样的常量乘法优化为`(x >> 4) - (x >> 1)`.后面会提到`lea`指令,更详细地讨论这个问题.
 == Floating Point
+IEEE 754标准规定了浮点数与浮点运算,这套体系被称为IEEE浮点数.
+
+二进制浮点数只能精确表示可以写成$x times 2^y$形式的小数.
+=== IEEE Floating-Point Representation
+IEEE浮点数使用以下表示:
+$ V=(-1)^s M 2^E $
+- $s$是符号位,对于表示`0`的情况则有特殊处理
+- $M$的范围是$[0,1-epsilon)$或$[1,2-epsilon)$,位数记为$n$
+- $E$的位数记为$k$
+- 规定$"Bias"=2^(k-1)-1$
+/ 32位浮点数: `23`位$M$, `8`位$E$
+/ 64位浮点数: `52`位$M$, `11`位$E$
+如何解读上述表述,分为3种情况:
+/ Normalized Values: `exp`不是全`0`,也不是全`1`
+  $ E&=e-"Bias"\ &=e_(k-1)dots e_1e_0-(2^(k-1)-1) $
+  因此对于32位和64位浮点数,$E$的范围分别是$[-127,+128]$以及$[-1023,+1024]$.但考虑到这里`exp`不能是全`0`或者全`1`,因此最终为$[-126,+127]$以及$[-1022,+1023]$.
+
+  `frac`解释为$M=1+f=1. f_(n-1)dots f_1 f_0$.这是为了无开销地增加一位精度.
+/ Denormalized Values: `exp`全`0`
+  $ E=1-"Bias",M=f $
+  这种情况可以表示$+0.0$与$-0.0$,也利于表示非常接近$0.0$的数.
+/ Special Values: `exp`全`1`
+  - `frac`全`0`,表示$plus.minus infinity$
+  - `frac`不是全`0`,称为`NaN`(Not a number)
+从最大的Denormalized Value到最小Normalized Value的过渡是平滑的.此外,如果将浮点数解读为无符号整数,仍然保持原先的大小关系.这是有意设计,使得浮点数的排序可以转化为整数,然后进行排序.
 = Machine-Level Representation of Programs
 == Historical Perspective
 8086(1978, 29K晶体管)是第一代x86系列处理器, 16位寄存器. i386(1985, 275K晶体管)扩展到32位,成为第一个可以运行UNIX的x86处理器. Pentium 4E(2004, 125M晶体管)引入超线程技术与EM64T(现在称为x86-64). Core i7, Sandy Bridge(2011, 1.16B晶体管)引入了AVX指令集.
