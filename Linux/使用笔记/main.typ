@@ -1,7 +1,7 @@
 #import "../../note_zh.typ": *
 #show: conf.with(
   title: "Linux 使用笔记",
-  author: "杨哲涵",
+  author: "adamanteye",
 )
 #show: rest => columns(2, rest)
 = 多用户管理
@@ -146,7 +146,7 @@ Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 == 文档手册
 #link("https://github.com/tealdeer-rs/tealdeer")[tealdeer]提供了相当好的`tldr`体验,可以查看大部分命令的简短文档.
 == 输入法
-aur/fcitx5-pinyin-sougou-dict-git 提供了搜狗词库.
+#link("https://aur.archlinux.org/packages/fcitx5-pinyin-sougou-dict-git")[aur/fcitx5-pinyin-sougou-dict-git]提供了搜狗词库.
 == 配置管理
 GNU `stow`利用软链接集中地管理配置文件,可以配合`git`进行版本控制和备份.
 
@@ -177,7 +177,12 @@ file '2.mp4'
 pacman -Qe
 ```
 = 网络服务
-== Web服务器
+== nginx
+启用#link("https://en.wikipedia.org/wiki/OCSP_stapling")[OSCP Stapling]:
+```
+ssl_stapling on;
+ssl_stapling_verify on;
+```
 = 编程
 == Bash
 使用Bash严格模式,参考#link("http://redsymbol.net/articles/unofficial-bash-strict-mode/")[Bash Strict Mode]:
