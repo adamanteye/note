@@ -132,6 +132,17 @@ Arch Linux的#link("https://archlinux.org/packages/extra/x86_64/openbsd-netcat/"
 `foot`是轻量的wayland终端,支持`img2sixel`.
 
 `fish`相比`zsh`速度更快,且4.0版本已经成功用Rust重写.
+== 浏览器
+`firefox`与`zotero`都可以配置多个profile,从而实现插件,设置,书签等的隔离:
+```sh
+firefox --profile "$HOME.mozilla/firefox/crawler/"
+```
+
+通过改变浏览器UA,可以绕开相当多的#link("https://type.cyhsu.xyz/2023/02/on-paywalls-01/")[付费墙]. 例如`firefox`在`about:config`选项卡中,设置`general.useragent.override`为:
+```
+Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+```
+经过测试,这对#link("https://theinitium.com/opinion/20250204-culture-barbie-hsu-and-big-s-taiwan-actress")[端传媒]有效.可以为google bot UA配置与日常使用隔离的profile.
 == 文档手册
 #link("https://github.com/tealdeer-rs/tealdeer")[tealdeer]提供了相当好的`tldr`体验,可以查看大部分命令的简短文档.
 == 输入法
@@ -194,3 +205,8 @@ echo "john,21" | cut -d "," -f 1
 == Rust
 #link("https://doc.rust-lang.org/std/macro.dbg.html")[dbg!]宏用于打印到`stderr`.
 可以在`cargo test`下使用,也可以调试release构建下出现的问题.
+= 容器部署
+删除所有未使用镜像(不止dangling):
+```sh
+docker image prune -a
+```
