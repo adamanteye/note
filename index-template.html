@@ -13,7 +13,8 @@
     :root {
       --primary-color: #d20f39;
       --secondary-color: #ea76cb;
-      --url-color: #e64553;
+      --teal-color: #179299;
+      --url-color: #e39067;
       --text-color: #4c4f69;
       --background-color: #eff1f5;
       --font-family: "LXGW WenKai TC";
@@ -29,37 +30,41 @@
       color: var(--primary-color);
     }
 
-    .container {
+    #main-grid {
       display: grid;
-      grid-template-columns: 1fr 4fr;
+      grid-template-columns: 2fr 5fr;
       grid-template-areas:
-        "header header"
+        "header main"
         "nav main"
         "footer footer";
       min-height: 100vh;
       grid-template-rows: auto 1fr auto;
     }
 
+    nav {
+      grid-area: nav;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+
+    nav section:first-child p {
+      text-indent: 2em;
+    }
+
     header {
       grid-area: header;
-      margin: auto;
     }
 
-    nav {
-      margin-left: 0%;
-      grid-area: nav;
-    }
-
-    ul>li {
+    li {
       display: inline-block;
-      list-style: none;
     }
 
-    ul>li:not(:last-child)::after {
+    li:not(:last-child)::after {
       content: '|';
-      color: var(--url-color);
       margin-right: 0.25em;
       margin-left: 0.25em;
+      color: var(--text-color);
     }
 
     main {
@@ -93,12 +98,16 @@
       margin-top: 2em;
     }
 
-    a {
+    li {
       color: var(--url-color);
     }
 
-    i {
-      color: var(--url-color)
+    li a {
+      color: inherit;
+    }
+
+    tr a {
+      color: var(--url-color);
     }
 
     footer>a {
@@ -107,21 +116,49 @@
   </style>
 </head>
 
-<body class="container">
+<body id="main-grid">
   <header>
     <h1>Adamanteye's Note</h1>
   </header>
   <nav>
-    <ul>
-      <li>
-        <a href="https://github.com/adamanteye" target="_blank"><b>GitHub</b></a>
-        <sup><i class="fa-brands fa-github"></i></sup>
-      </li>
-      <li>
-        <a href="https://status.adamanteye.cc" target="_blank"><b>Status Page</b></a>
-        <sup><i class="fa-solid fa-check-double"></i></sup>
-      </li>
-    </ul>
+    <section>
+      <h2>
+        关于
+      </h2>
+      <p>笔记集合，初衷是为了方便用手机看笔记。</p>
+      <p>逐渐地，记笔记本身也成了乐趣。</p>
+    </section>
+    <section>
+      <h2>链接</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/adamanteye" target="_blank"><b>GitHub</b></a>
+          <sup><i class="fa-brands fa-github"></i></sup>
+        </li>
+        <li style="color: var(--teal-color);">
+          <a href="https://status.adamanteye.cc" target="_blank"><b>Status
+              Page</b></a>
+          <sup><i class="fa-solid fa-check-double"></i></sup>
+        </li>
+        <li style="color: var(--secondary-color);">
+          <a href="https://t.me/adamanteye" target="_blank"><b>Telegram</b></a>
+          <sup><i class="fa-brands fa-telegram"></i></sup>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>朋友们</h2>
+      <ul>
+        <li style="color: var(--secondary-color);">
+          <a href="https://github.com/Master-Hash" target="_blank"><b>Hash</b></a>
+          <sup><i class="fa-solid fa-hashtag"></i></sup>
+        </li>
+        <li>
+          <a href="https://github.com/Leverimmy" target="_blank"><b>Clever_Jimmy</b></a>
+          <sup><i class="fa-solid fa-poo-storm"></i></sup>
+        </li>
+      </ul>
+    </section>
   </nav>
   <main>
     <table>

@@ -18,6 +18,7 @@ build/%.pdf: %/main.tex %/
 site: build/index.html
 
 build/assets/: assets/
+	@rm -rf $(@D)
 	@mkdir -p $(@D)
 	cp -r $(<D)/* $(@D)
 
