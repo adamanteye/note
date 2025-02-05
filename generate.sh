@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 pdf_path=$1
 template=$2
@@ -7,7 +7,8 @@ print_files() {
     find "$1" -maxdepth 1 -type f -name "*.pdf" -exec sh -c '
         for file; do
             name=$(basename "$file")
-            stat --format="<tr><td><a href=\"$name\">$name</a></td><td>%s</td><td>%y</td></tr>" "$file"
+            size=$(du -sk "$file" | awk "{print \$1}")
+            stat --format="<tr><td><a href=\"$name\" target=\"_blank\">$name</a></td><td>$size</td><td>%y</td></tr>" "$file"
         done
     ' sh {} +
 }
@@ -16,7 +17,8 @@ print_dirs() {
     find "$1" -mindepth 1 -maxdepth 1 -type d ! -name '.' ! -name '..' ! -name 'assets' -exec sh -c '
         for dir; do
             name=$(basename "$dir")
-            stat --format="<tr><td><a href=\"$name/\">$name</a></td><td>%s</td><td>%y</td></tr>" "$dir"
+            size=$(du -sk "$dir" | awk "{print \$1}")
+            stat --format="<tr><td><a href=\"$name/\">$name</a></td><td>$size</td><td>%y</td></tr>" "$dir"
         done
     ' sh {} +
 }
@@ -38,7 +40,7 @@ render_html() {
         } else {
             print $0;
         }
-    }' "$template" > "$dir/index.html"
+    }' "$template" >"$dir/index.html"
 
     for subdir in "$dir"/*; do
         if [[ -d $subdir && $(basename "$subdir") != '.' && $(basename "$subdir") != '..' && $(basename "$subdir") != 'assets' ]]; then

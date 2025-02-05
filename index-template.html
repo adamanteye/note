@@ -1,114 +1,159 @@
 <!doctype html>
 <html lang="zh">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap"
-            rel="stylesheet"
-        />
-        <title>Adamanteye's Note</title>
-        <style>
-            .wenkai {
-                font-family: "LXGW WenKai TC", cursive;
-                font-weight: 400;
-                font-style: normal;
-            }
-            body {
-                display: flex;
-                flex-direction: column;
-                height: 100vh;
-            }
-            hr {
-                width: 80%;
-                color: #c46243;
-            }
-            h1 {
-                color: #c46243;
-            }
-            th {
-                color: #c46243;
-            }
-            th,
-            td {
-                text-align: left;
-                padding-top: 0.4em;
-            }
-            img {
-                width: 100%;
-                height: auto;
-            }
-            div.spacer {
-                flex: 0 0 100%;
-            }
-            #header {
-                width: 80%;
-                margin-left: 10%;
-                align-items: center;
-                position: relative;
-            }
-            #header h1 {
-                display: inline-block;
-            }
-            #header a {
-                position: absolute;
-                right: 0px;
-                top: 50%;
-                transform: translateY(-50%);
-                width: fit-content;
-            }
-            #header a img {
-                width: 48px;
-            }
-            table {
-                flex: 1;
-                width: 80%;
-                margin-left: 10%;
-                overflow: auto;
-                color: #787878;
-            }
-            a {
-                &:hover {
-                    color: #c46243;
-                }
-                color: #787878;
-            }
-        </style>
-    </head>
 
-    <body class="wenkai">
-        <div id="header">
-            <h1>Adamanteye's Note</h1>
-            <a href="https://github.com/adamanteye/note">
-                <img src="/assets/github-142-svgrepo-com.svg" />
-            </a>
-        </div>
-        <hr />
-        <table>
-            <thead>
-                <tr>
-                    <th>File Name</th>
-                    <th>Size [Bytes]</th>
-                    <th>Last Built</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{files}}
-            </tbody>
-            <thead>
-                <tr>
-                    <th>Directory Name</th>
-                    <th>Size [Bytes]</th>
-                    <th>Last Built</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{dirs}}
-            </tbody>
-        </table>
-        <div class="spacer"></div>
-    </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Adamanteye's Note</title>
+  <style>
+    :root {
+      --primary-color: #d20f39;
+      --secondary-color: #ea76cb;
+      --url-color: #e64553;
+      --text-color: #4c4f69;
+      --background-color: #eff1f5;
+      --font-family: "LXGW WenKai TC";
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    th {
+      color: var(--primary-color);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      grid-template-areas:
+        "header header"
+        "nav main"
+        "footer footer";
+      min-height: 100vh;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    header {
+      grid-area: header;
+      margin: auto;
+    }
+
+    nav {
+      margin-left: 0%;
+      grid-area: nav;
+    }
+
+    ul>li {
+      display: inline-block;
+      list-style: none;
+    }
+
+    ul>li:not(:last-child)::after {
+      content: '|';
+      color: var(--url-color);
+      margin-right: 0.25em;
+      margin-left: 0.25em;
+    }
+
+    main {
+      grid-area: main;
+    }
+
+    table {
+      table-layout: fixed;
+      text-align: left;
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 0.4em;
+      margin-bottom: 1em;
+    }
+
+    thead th:nth-child(1) {
+      width: 45%;
+    }
+
+    thead th:nth-child(2) {
+      width: 20%;
+    }
+
+    thead th:nth-child(3) {
+      width: 35%;
+    }
+
+    footer {
+      grid-area: footer;
+      margin: auto;
+      margin-top: 2em;
+    }
+
+    a {
+      color: var(--url-color);
+    }
+
+    i {
+      color: var(--url-color)
+    }
+
+    footer>a {
+      color: var(--secondary-color);
+    }
+  </style>
+</head>
+
+<body class="container">
+  <header>
+    <h1>Adamanteye's Note</h1>
+  </header>
+  <nav>
+    <ul>
+      <li>
+        <a href="https://github.com/adamanteye" target="_blank"><b>GitHub</b></a>
+        <sup><i class="fa-brands fa-github"></i></sup>
+      </li>
+      <li>
+        <a href="https://status.adamanteye.cc" target="_blank"><b>Status Page</b></a>
+        <sup><i class="fa-solid fa-check-double"></i></sup>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Directories</th>
+          <th scope="col">Size [KiB]</th>
+          <th scope="col">Last Built</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{dirs}}
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Files</th>
+          <th scope="col">Size [KiB]</th>
+          <th scope="col">Last Built</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{files}}
+      </tbody>
+    </table>
+  </main>
+  <footer>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+      <b>CC BY-NC-SA 4.0</b>
+    </a>
+  </footer>
+</body>
+
 </html>
