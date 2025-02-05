@@ -35,20 +35,20 @@
       grid-template-columns: 2fr 5fr;
       grid-template-areas:
         "header main"
-        "nav main"
+        "aside main"
         "footer footer";
       min-height: 100vh;
       grid-template-rows: auto 1fr auto;
     }
 
-    nav {
-      grid-area: nav;
+    aside {
+      grid-area: aside;
       display: flex;
       flex-direction: column;
       gap: 1em;
     }
 
-    nav section:first-child p {
+    aside section:first-child p {
       text-indent: 2em;
     }
 
@@ -120,7 +120,7 @@
   <header>
     <h1>Adamanteye's Note</h1>
   </header>
-  <nav>
+  <aside>
     <section>
       <h2>
         关于
@@ -159,7 +159,7 @@
         </li>
       </ul>
     </section>
-  </nav>
+  </aside>
   <main>
     <table>
       <thead>

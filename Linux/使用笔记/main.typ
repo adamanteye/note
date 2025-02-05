@@ -142,7 +142,9 @@ firefox --profile "$HOME.mozilla/firefox/crawler/"
 ```
 Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 ```
-经过测试,这对#link("https://theinitium.com/opinion/20250204-culture-barbie-hsu-and-big-s-taiwan-actress")[端传媒]有效.可以为google bot UA配置与日常使用隔离的profile.
+经过测试,这对#link("https://theinitium.com/opinion/20250204-culture-barbie-hsu-and-big-s-taiwan-actress")[端传媒]有效.可以为google bot UA#footnote[查看其他浏览器UA: #link("https://explore.whatismybrowser.com/useragents/explore/")[List of User Agents]]配置与日常使用隔离的profile.
+
+查看当前的浏览器指纹: #link("https://www.whatismybrowser.com/")[What browser?]
 == 文档手册
 #link("https://github.com/tealdeer-rs/tealdeer")[tealdeer]提供了相当好的`tldr`体验,可以查看大部分命令的简短文档.
 == 输入法
@@ -182,6 +184,15 @@ pacman -Qe
 ```
 ssl_stapling on;
 ssl_stapling_verify on;
+```
+== acme.sh
+#link("https://github.com/acmesh-official/acme.sh")[acmesh-official/acme.sh]可以自动签发与更新证书.
+
+将证书安装到指定位置:
+```sh
+./acme.sh --install-cert -d 'adamanteye.cc' \
+  --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
+  --key-file /srv/cert/all.adamanteye.cc.key
 ```
 = 编程
 == Bash
