@@ -28,11 +28,14 @@
 #figure(
   table(
     columns: 5,
+    table.hline(),
     table.header([], [m], [f], [n], [Pl.]),
+    table.hline(),
     [N.], [e], [e], [e], [en],
     [G.], [en], [en], [en], [en],
     [D.], [en], [en], [en], [en],
     [A.], [en], [e], [e], [en],
+    table.hline(),
   ),
 )
 
@@ -44,11 +47,14 @@ diese(这), jene(那), jede(每一), manche(有的), solche(这样的), welche(�
 #figure(
   table(
     columns: 5,
+    table.hline(),
     table.header([], [m], [f], [n], [Pl.]),
+    table.hline(),
     [N.], [welcher], [welche], [welches], [welche],
     [G.], [welches], [welcher], [welches], [welcher],
     [D.], [welchem], [welcher], [welchem], [welchen],
     [A.], [welchen], [welche], [welches], [welche],
+    table.hline(),
   ),
 )
 == 不定冠词型变格
@@ -56,11 +62,14 @@ diese(这), jene(那), jede(每一), manche(有的), solche(这样的), welche(�
 形容词前面有*不定冠词*,*物主代词*或 *kein*
 #table(
   columns: 5,
+  table.hline(),
   table.header([], [m], [f], [n], [Pl.]),
+  table.hline(),
   [N.], [er], [e], [es], [e],
   [G.], [en], [en], [en], [en],
   [D.], [en], [en], [en], [en],
   [A.], [en], [e], [es], [e],
+  table.hline(),
 )
 
 形容词前为不定冠词时,用 was für ein 来提问,其中 ein 的变格形式与不定冠词相同#footnote[新编大学德语 2 Einheit 1]
@@ -99,11 +108,14 @@ diese(这), jene(那), jede(每一), manche(有的), solche(这样的), welche(�
 不定代词要保持与形容词相同的词尾
 #table(
   columns: 5,
+  table.hline(),
   table.header([], [m], [f], [n], [Pl.]),
+  table.hline(),
   [N.], [er], [e], [es], [e],
   [G.], [en], [en], [en], [en],
   [D.], [en], [en], [en], [en],
   [A.], [en], [e], [es], [e],
+  table.hline(),
 )
 
 == 提问
@@ -127,7 +139,9 @@ diese(这), jene(那), jede(每一), manche(有的), solche(这样的), welche(�
 == 构成
 #table(
   columns: 3,
+  table.hline(),
   table.header([原级], [比较级], [最高级]),
+  table.hline(),
   [klein], [kleiner], [am kleinsten],
   [schön], [schöner], [am schönsten],
   [wenig], [weniger], [am wenigsten],
@@ -140,6 +154,7 @@ diese(这), jene(那), jede(每一), manche(有的), solche(这样的), welche(�
   [viel], [mehr], [am meisten],
   [nah], [näher], [am nächsten],
   [hoch], [höher], [am höchsten],
+  table.hline(),
 )
 1. 比较级在形容词的原形后面加 er
 2. 最高级在形容词的原形前面加 st,如果形容词以 t, d, s, ß, sch, z 结尾,最高级加 est

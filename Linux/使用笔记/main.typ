@@ -43,6 +43,12 @@ server=2001:de4::101
 [main]
 dns=dnsmasq
 ```
+== rfkill
+`rfkill`可以启用/禁用WIFI,蓝牙在内的无线设备.例如:
+```sh
+rfkill # list wireless devices
+rfkill unblock bluetooth
+```
 = 软件分发
 == 手册页
 #link("https://git.sr.ht/~sircmpwn/scdoc")[scdoc]自定义了与Markdown相近的语法,可以用来生成man手册页:
@@ -172,6 +178,8 @@ file '2.mp4'
 ```
 
 图形化剪辑软件#link("https://www.shotcut.org/")[shotcut]使用`qt6`,界面现代.
+== 远程文件系统
+#link("https://wiki.archlinux.org/title/SSHFS")[sshfs]可以通过`ssh`连接挂载远程文件系统.
 = 包管理
 == pacman
 列出所有显式安装的包:

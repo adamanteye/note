@@ -2,7 +2,9 @@
   table(
     align: left,
     columns: 5,
+    table.hline(),
     table.header([不定式], [现在时直陈式], [过去时直陈式], [第二分词], [中文释义]),
+    table.hline(),
     [bitten], [bittet], [bat], [gebeten], [请求，恳求],
     [bleiben], [bleibt], [blieb], [geblieben], [停留，保持],
     [brechen], [bricht], [brach], [gebrochen], [打破，折断],
@@ -29,11 +31,7 @@
     [haben], [hat], [hatte], [gehabt], [有，拥有，具备],
     [halten], [hält], [hielt], [gehalten], [抓住，保持，坚守],
     [hängen#footnote([hängen作为及物动词规则变化为hängt，hängte，gehängt，作为不及物动词规则变化为hängt，hing，gehangen])],
-    [hängt],
-    [hing],
-    [gehangen],
-    [悬挂，附着，悬吊],
-
+    [hängt], [hing], [gehangen], [悬挂，附着，悬吊],
     [hauen], [haut], [haute/hieb], [gehauen], [砍，打，击],
     [heben], [hebt], [hob], [gehoben], [举起，抬起],
     [heißen], [heißt], [hieß], [geheißen], [名叫，意味着],
@@ -89,6 +87,7 @@
     [wissen], [weiß], [wusste], [gewusst], [知道，了解，明白],
     [wollen], [will], [wollte], [gewollt], [想，愿意，需要],
     [ziehen], [zieht], [zog], [gezogen], [拉，拖，转移，渗入],
+    table.hline(),
   ),
   caption: "强变化动词及不规则变化动词表",
 )

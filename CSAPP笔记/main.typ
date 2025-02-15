@@ -63,6 +63,22 @@ $ V=(-1)^s M 2^E $
   - `frac`全`0`,表示$plus.minus infinity$
   - `frac`不是全`0`,称为`NaN`(Not a number)
 从最大的Denormalized Value到最小Normalized Value的过渡是平滑的.此外,如果将浮点数解读为无符号整数,仍然保持原先的大小关系.这是有意设计,使得浮点数的排序可以转化为整数,然后进行排序.
+=== Rounding
+IEEE浮点数标准定义了4种修约(Rounding)模式:
+#figure(
+  caption: [Rounding Modes],
+  table(
+    columns: 2,
+    table.hline(),
+    table.header([Mode], [Description]),
+    table.hline(),
+    [Round-to-even], [find a closest match, or round either upward or downward such that the least significant digit of the result is even],
+    [Round-toward-zero], [downward if greater than zero, upward otherwise],
+    [Round-down], [$x^- <= x$],
+    [Round-up], [$x^+ >= x$],
+    table.hline(),
+  ),
+)
 = Machine-Level Representation of Programs
 == Historical Perspective
 8086(1978, 29K晶体管)是第一代x86系列处理器, 16位寄存器. i386(1985, 275K晶体管)扩展到32位,成为第一个可以运行UNIX的x86处理器. Pentium 4E(2004, 125M晶体管)引入超线程技术与EM64T(现在称为x86-64). Core i7, Sandy Bridge(2011, 1.16B晶体管)引入了AVX指令集.

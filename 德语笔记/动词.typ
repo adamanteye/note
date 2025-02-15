@@ -62,11 +62,14 @@ Erledigt das selbst!
   table(
     align: left,
     columns: 3,
+    table.hline(),
     table.header([人称], [现在时], [命令式]),
+    table.hline(),
     [du], [bist], [sei],
     [wir], [sind], [seien],
     [ihr], [seid], [seid],
     [sie], [sind], [seien],
+    table.hline(),
   ),
 )
 
@@ -84,13 +87,16 @@ Seien Sie nett! *请您包涵！*
   table(
     align: left,
     columns: 3,
+    table.hline(),
     table.header([], [A.], [D.]),
+    table.hline(),
     [ich], [mich], [mir],
     [du], [dich], [dir],
     [er, sie, es], [sich], [sich],
     [wir], [uns], [uns],
     [ihr], [euch], [euch],
     [sie, Sie], [sich], [sich],
+    table.hline(),
   ),
 )
 
@@ -109,14 +115,12 @@ Treffen wir uns um 10 Uhr!
 
 Ruhe dich aus!
 
-/ 一般疑问句、特殊疑问句,某一成分提前的陈述句、从句:
-  - 主语为*名词*,反身动词在主语*前*
+/ 一般疑问句、特殊疑问句,某一成分提前的陈述句、从句: - 主语为*名词*,反身动词在主语*前*
     Hat sich der Schüler heute beim Lehrer entschuldigt?
   - 主语为*代词*,反身动词在主语*后*
     Hat er sich heute beim Lehrer entschuldigt?
 
-  / Beispielsätze:
-    + Er freut sich auf die Ferien.
+  / Beispielsätze: + Er freut sich auf die Ferien.
     + Maria freut sich über das Geschenk.
     + Kannst du dich noch an ihn erinnern?
     + Herr Meier ärgert sich über die Unhöflichkeit seines Sohnes.
