@@ -11,7 +11,7 @@
 w
 ```
 ```
- 23:18:07 up  2:43,  1 user,  load average: 2.12, 3.14, 3.20
+23:18:07 up  2:43,  1 user,  load average: 2.12, 3.14, 3.20
 USER     TTY       LOGIN@   IDLE   JCPU   PCPU  WHAT
 adamante tty1      20:34    2:43m  6:51m   ?    footclient
 ```
@@ -155,6 +155,20 @@ Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 #link("https://github.com/tealdeer-rs/tealdeer")[tealdeer]提供了相当好的`tldr`体验,可以查看大部分命令的简短文档.
 == 输入法
 #link("https://aur.archlinux.org/packages/fcitx5-pinyin-sougou-dict-git")[aur/fcitx5-pinyin-sougou-dict-git]提供了搜狗词库.
+== 排版软件
+#link("https://github.com/typst/typst")[typst]可以替代LaTeX.
+=== 字体
+OpenType字体有一系列feature可以启用,参考#link("https://typst.app/docs/reference/text/text/#parameters-features")[Text Function - Typst Documentation]以及#link("https://learn.microsoft.com/en-us/typography/opentype/spec/featurelist")[Registered features (OpenType 1.9.1) - Typography | Microsoft Learn].
+例如:
+```typ
+#let smcp(it) = {
+  set text(features: ("smcp",))
+  it
+}
+```
+=== 配色
+- #link("https://catppuccin.com/palette")[猫布奇诺调色盘]
+- #link("https://oklch.com/")[OKLCH Color Picker & Converter]
 == 配置管理
 GNU `stow`利用软链接集中地管理配置文件,可以配合`git`进行版本控制和备份.
 
@@ -186,6 +200,12 @@ file '2.mp4'
 ```sh
 pacman -Qe
 ```
+列出所有悬垂包:
+```sh
+pacman -Qtdq
+```
+== AUR
+之前使用#link("https://github.com/Jguer/yay")[Juger/yay],现在我迁移到了#link("https://github.com/Morganamilo/paru")[Morganamilo/paru].
 = 网络服务
 == nginx
 启用#link("https://en.wikipedia.org/wiki/OCSP_stapling")[OSCP Stapling]:
@@ -201,6 +221,12 @@ ssl_stapling_verify on;
 ./acme.sh --install-cert -d 'adamanteye.cc' \
   --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
   --key-file /srv/cert/all.adamanteye.cc.key
+```
+= 日志
+== systemd
+清除10天前的所有日志:
+```sh
+sudo journalctl --vacuum-time 10d
 ```
 = 编程
 == Bash

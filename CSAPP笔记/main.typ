@@ -1,7 +1,7 @@
 #import "../note_zh.typ": *
 #show: conf.with(
   title: "CSAPP 笔记",
-  author: "杨哲涵",
+  author: "adamanteye",
 )
 #show: rest => columns(2, rest)
 
@@ -79,6 +79,7 @@ IEEE浮点数标准定义了4种修约(Rounding)模式:
     table.hline(),
   ),
 )
+Round-to-even是最常用的模式,不会引入统计误差.
 = Machine-Level Representation of Programs
 == Historical Perspective
 8086(1978, 29K晶体管)是第一代x86系列处理器, 16位寄存器. i386(1985, 275K晶体管)扩展到32位,成为第一个可以运行UNIX的x86处理器. Pentium 4E(2004, 125M晶体管)引入超线程技术与EM64T(现在称为x86-64). Core i7, Sandy Bridge(2011, 1.16B晶体管)引入了AVX指令集.
@@ -177,9 +178,19 @@ x86-64架构有16个64位的通用寄存器,它们既存储整数,也存储指�
     [`movabsq S, D`], [Move quad word],
     table.hline(),
   ),
-  caption: [Simple data movement Instructions],
+  caption: [Simple data movement instructions],
 )
+表中为#smcp[mov]系列.
+例如:
+```asm
+movl $0x4050,%eax
+movq %rax,-12(%rbp)
+```
 x86-64规定,移动指令的目标和源不能都是内存地址,如果确实有这样的需求,应当先将内存地址上的值加载到寄存器中,再从寄存器中存入内存地址.
+
+注意`movl`如果以寄存器作为目标,会将高4字节置零,这是之前提到的规则.
+
+除此之外还有#smcp[movz]和#smcp[movs]系列,分别为zero-extending以及sign-extending.
 
 = 附录
 北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.
