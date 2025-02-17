@@ -26,6 +26,15 @@ adamanteye tty1         2025-01-25 20:34
 访问#link("https://4.ipw.cn")[4.ipw.cn]与#link("https://6.ipw.cn")[6.ipw.cn]可以看到出口IP地址.
 == 端口
 `ss`命令由`iproute2`提供,功能与`netstat`类似,但信息更全.
+== interfaces
+这是Debian上的传统方法.
+
+配置DHCP:
+```
+# /etc/network/interfaces
+auto eno1
+iface eno1 inet dhcp
+```
 == NetworkManager
 编写dispatcher可以实现自动切换有线,无线连接,详见#link("https://neilzone.co.uk/2023/04/networkmanager-automatically-switch-between-ethernet-and-wi-fi/")[NetworkManager: automatically switch between Ethernet and Wi-Fi].
 
@@ -48,6 +57,26 @@ dns=dnsmasq
 ```sh
 rfkill # list wireless devices
 rfkill unblock bluetooth
+```
+= 启动引导
+== GRUB
+从grub命令行中引导系统.
+
+`/`分区为btrfs的例子:
+```sh
+grub> ls
+grub> set root=(hd0,gpt2)
+grub> linux /@rootfs/boot/vmlinuz-6.1.0-30-amd64 root=/dev/sda2 rw rootflags=subvol=@rootfs
+grub> initrd /@rootfs/boot/initrd.img-6.1.0-30-amd64
+grub> boot
+```
+`/`分区为ext4的例子:
+```sh
+grub> ls
+grub> set root=(hd0,gpt2)
+grub> linux /boot/vmlinuz-6.1.0-30-amd64 root=/dev/sda2
+grub> initrd /boot/initrd.img-6.1.0-30-amd64
+grub> boot
 ```
 = 软件分发
 == 手册页
@@ -260,3 +289,6 @@ echo "john,21" | cut -d "," -f 1
 ```sh
 docker image prune -a
 ```
+= 服务器
+== Dell Power Edge R630
+我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
