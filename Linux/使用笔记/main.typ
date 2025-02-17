@@ -34,6 +34,7 @@ adamanteye tty1         2025-01-25 20:34
 # /etc/network/interfaces
 auto eno1
 iface eno1 inet dhcp
+iface eno1 inet6 auto
 ```
 == NetworkManager
 编写dispatcher可以实现自动切换有线,无线连接,详见#link("https://neilzone.co.uk/2023/04/networkmanager-automatically-switch-between-ethernet-and-wi-fi/")[NetworkManager: automatically switch between Ethernet and Wi-Fi].
@@ -235,13 +236,6 @@ pacman -Qtdq
 ```
 == AUR
 之前使用#link("https://github.com/Jguer/yay")[Juger/yay],现在我迁移到了#link("https://github.com/Morganamilo/paru")[Morganamilo/paru].
-= 网络服务
-== nginx
-启用#link("https://en.wikipedia.org/wiki/OCSP_stapling")[OSCP Stapling]:
-```
-ssl_stapling on;
-ssl_stapling_verify on;
-```
 == acme.sh
 #link("https://github.com/acmesh-official/acme.sh")[acmesh-official/acme.sh]可以自动签发与更新证书.
 
@@ -284,11 +278,34 @@ echo "john,21" | cut -d "," -f 1
 == Rust
 #link("https://doc.rust-lang.org/std/macro.dbg.html")[dbg!]宏用于打印到`stderr`.
 可以在`cargo test`下使用,也可以调试release构建下出现的问题.
-= 容器部署
+= 服务器
+== Dell Power Edge R630
+我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
+=== 风扇控制
+参考#link("https://gist.github.com/jhatler/855abc7fb8663bcc2c97fec77b10ea03")[jhatler/ipmi-fanctrl-dell_r630.sh]:
+
+```sh
+sudo ipmitool raw 0x30 0x30 0x01 0x00       # enable manual fan control
+sudo ipmitool raw 0x30 0x30 0x02 0xff 0x14  # set fan speed to 20%
+```
+== 文件系统
+配置zfs draid:
+```sh
+zpool create -o ashift=12 oskar draid:2d \
+/dev/disk/by-id/ata-TOSHIBA_MQ02ABF100_Z6NUPPCRT \
+/dev/disk/by-id/scsi-35000cca02d7d75ec \
+/dev/disk/by-id/scsi-35000cca02d7d78f8 \
+-f  # in case they are of different sizes
+```
+== 容器部署
 删除所有未使用镜像(不止dangling):
 ```sh
 docker image prune -a
 ```
-= 服务器
-== Dell Power Edge R630
-我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
+== 网络服务
+=== nginx
+启用#link("https://en.wikipedia.org/wiki/OCSP_stapling")[OSCP Stapling]:
+```
+ssl_stapling on;
+ssl_stapling_verify on;
+```
