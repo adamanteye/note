@@ -236,15 +236,6 @@ pacman -Qtdq
 ```
 == AUR
 之前使用#link("https://github.com/Jguer/yay")[Juger/yay],现在我迁移到了#link("https://github.com/Morganamilo/paru")[Morganamilo/paru].
-== acme.sh
-#link("https://github.com/acmesh-official/acme.sh")[acmesh-official/acme.sh]可以自动签发与更新证书.
-
-将证书安装到指定位置:
-```sh
-./acme.sh --install-cert -d 'adamanteye.cc' \
-  --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
-  --key-file /srv/cert/all.adamanteye.cc.key
-```
 = 日志
 == systemd
 清除10天前的所有日志:
@@ -297,6 +288,25 @@ zpool create -o ashift=12 oskar draid:2d \
 /dev/disk/by-id/scsi-35000cca02d7d78f8 \
 -f  # in case they are of different sizes
 ```
+== NFS
+在服务端上:
+```sh
+apt install nfs-kernel-server
+sudo -e /etc/exports
+```
+写入以下内容:
+```
+/oskar/elisabeth 192.168.0.3(rw,sync,no_root_squash,no_subtree_check)
+```
+在客户端上:
+```sh
+apt install nfs-common
+mount -t nfs4 -o proto=tcp,port=2049 heloise.adamanteye.cc:/oskar/elisabeth /srv
+```
+或者写入`/etc/fstab`:
+```
+heloise.adamanteye.cc:/oskar/elisabeth	/srv/	nfs4	_netdev,auto,defaults	0	0
+```
 == 容器部署
 删除所有未使用镜像(不止dangling):
 ```sh
@@ -308,4 +318,24 @@ docker image prune -a
 ```
 ssl_stapling on;
 ssl_stapling_verify on;
+```
+== 证书
+#link("https://github.com/acmesh-official/acme.sh")[acmesh-official/acme.sh]可以自动签发与更新证书.
+
+将证书安装到指定位置:
+```sh
+./acme.sh --install-cert -d 'adamanteye.cc' \
+  --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
+  --key-file /srv/cert/all.adamanteye.cc.key
+```
+== 温度监控
+读取硬盘温度,使用`smartctl`:
+```sh
+sudo smartctl --all /dev/sda
+```
+
+读取CPU温度,使用`lm-sensors`:
+```sh
+sudo sensors-detect  # 初次配置 lm-sensors
+sensors              # 按照配置读取温度
 ```
