@@ -1,32 +1,25 @@
-#set text(
-  font: ("Linux Libertine", "Source Han Serif"),
-  lang: "zh",
-  region: "cn",
-)
-#set heading(numbering: "1.")
+#import "../note_zh.typ": *
+#show: conf.with()
 #let title = [科研认知与专题研究(2)课程报告]
 #let author = "杨哲涵"
-
-#set document(title: [#title], author: author)
-#import "@preview/physica:0.9.2": *
-#set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
-#set math.equation(numbering: "(1)", supplement: [式.], number-align: bottom + right)
-#show link: it => underline(text(fill: rgb("#8c0000"), it))
-
 #h(10em)
-#align(center, text(17pt)[
-  *#title*
-])
+#align(
+  center,
+  text(17pt)[
+    *#title*
+  ],
+)
 #h(10em)
-#align(center, grid(
-  columns: 2,
-  rows: 2,
-  gutter: 1.5em,
-  [#align(left, text(12pt)[*姓名*])],
-  [#align(right, text(12pt)[*杨哲涵*])],
-  [#align(left, text(12pt)[*指导教师*])],
-  [#align(right, text(12pt)[*续本达*])],
-))
+#align(
+  center,
+  grid(
+    columns: 2,
+    rows: 2,
+    gutter: 1.5em,
+    [#align(left, text(12pt)[*姓名*])], [#align(right, text(12pt)[*杨哲涵*])],
+    [#align(left, text(12pt)[*指导教师*])], [#align(right, text(12pt)[*续本达*])],
+  ),
+)
 #h(5em)
 #show: rest => columns(2, rest)
 

@@ -1,30 +1,10 @@
-#set text(
-  font: ("Linux Libertine", "Source Han Serif"),
-  lang: "en",
-  region: "us",
+#import "../../note_en.typ": *
+#show: conf.with(
+  title: "Radiation Spectroscopy of Gamma-Rays",
+  author: "adamanteye",
+  numbered-equation: true,
 )
-#show link: it => underline(text(fill: rgb("#8c0000"), it))
-#let subft = it => text(10pt)[#it]
-#let title = "Radiation Spectroscopy of Gamma-Rays"
-#let author = "杨哲涵"
-#set document(title: title, author: author)
-#set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
-
-#set math.equation(numbering: "(1)", supplement: [Eq.], number-align: bottom + right)
-
-#set heading(numbering: "1.")
-
-#import "@preview/physica:0.9.3": *
-
-#set page(columns: 2)
-#align(center, text(17pt)[
-  *#title*
-])
-
-#align(center, text(13pt)[
-  工物22 #author _2022011105_
-])
-
+#show: rest => columns(2, rest)
 My reference is the book #link(
   "https://indico-tdli.sjtu.edu.cn/event/171/contributions/2123/attachments/982/1592/Knoll4thEdition.pdf",
 )[_Radiation detection and measurement, 4th ed_] by Glenn F. Knoll. And in this
@@ -71,20 +51,23 @@ energy ranges from few keV ($isotope(z: 11, "Na")$, 1keV) to hundred keV($isotop
 == Compton Sacttering
 
 The result of Compton scattering is a scattered photon and a recoil electron.
-$ h nu'&=(h nu)/((1+(h nu)\/ m_0 c^2)(1-cos theta))\ E_(e^-)&=h nu - h nu' $
+$ h nu'&=(h nu) / ((1+(h nu)\/ m_0 c^2)(1-cos theta))\ E_(e^-)&=h nu - h nu' $
 The angular distribution of scattered gamma rays is predicted by the
 Klein-Nishina formula and is ploted polarly in @comptonscatter.
 
-$ dv(sigma, Omega)=Z r_0^2 (1/(1+alpha(1-cos theta)))^2((1+cos^2theta)/2)\ (1+(alpha^2(1-cos theta^2))/((1+cos^2theta)(1+alpha(1-cos theta))))\ alpha=h nu \/ m_0 c^2, r_0 ="classical electron radius" $
+$
+  dv(sigma, Omega)=Z r_0^2 (1 / (1+alpha(1-cos theta)))^2((1+cos^2theta) / 2)\ (1+(alpha^2(1-cos theta^2)) / ((1+cos^2theta)(1+alpha(1-cos theta))))\ alpha=h nu \/ m_0 c^2, r_0 ="classical electron radius"
+$
 
-#figure(grid(
-  columns: 2,
-  row-gutter: 2mm,
-  image("compton-edge.png"),
-  image("klein.png"),
-  subft("Compton edge"),
-  subft("Klein-Nishina formula"),
-), caption: [Compton sacttering]) <comptonscatter>
+#figure(
+  grid(
+    columns: 2,
+    row-gutter: 2mm,
+    image("compton-edge.png"), image("klein.png"),
+    subft("Compton edge"), subft("Klein-Nishina formula"),
+  ),
+  caption: [Compton sacttering],
+) <comptonscatter>
 
 And generally the shape of the electron energy distribution has a so-called
 Compton edge.
@@ -105,13 +88,14 @@ spectroscopy analysis more complicated as we shall see later.
 We have discussed the three main mechanisms of gamma-ray interactions. Their
 simplest energy spectrum of their own is presented in @3simpleinteractons.
 
-#figure(grid(
-  columns: 3,
-  row-gutter: 2mm,
-  image("photoelectric.png"),
-  image("compton-edge.png"),
-  image("pairproduction.png"),
-), caption: [Three main mechanisms in gamma-ray interactions]) <3simpleinteractons>
+#figure(
+  grid(
+    columns: 3,
+    row-gutter: 2mm,
+    image("photoelectric.png"), image("compton-edge.png"), image("pairproduction.png"),
+  ),
+  caption: [Three main mechanisms in gamma-ray interactions],
+) <3simpleinteractons>
 
 == Ideal Case of Intermediate Detectors
 
@@ -120,14 +104,15 @@ these interactions take place and the properties of the detector material and
 the geometry of the detector will affect the response function as well as the
 cirumstances.
 
-#figure(grid(
-  columns: 2,
-  row-gutter: 2mm,
-  image("smalldetector.png"),
-  image("largedetector.png"),
-  image("smalldetectorre.png"),
-  image("largedetectorre.png"),
-), caption: [Small detector VS extreme large detector]) <detectorsize>
+#figure(
+  grid(
+    columns: 2,
+    row-gutter: 2mm,
+    image("smalldetector.png"), image("largedetector.png"),
+    image("smalldetectorre.png"), image("largedetectorre.png"),
+  ),
+  caption: [Small detector VS extreme large detector],
+) <detectorsize>
 
 As stated in @detectorsize, the spectrum depends on whether all primary and
 Secondary interactions happen within the active volume of the detector or not.
@@ -136,11 +121,13 @@ The real detectors are all of medium size and we can never achieve the ideal
 case of all interactions happening within the active volume since there are
 always interactions near the entrance surface.
 
-#figure(grid(
-  columns: (55%, 45%),
-  image("middetector.png"),
-  image("middetectorre.png"),
-), caption: [Real detector]) <realdetector>
+#figure(
+  grid(
+    columns: (55%, 45%),
+    image("middetector.png"), image("middetectorre.png"),
+  ),
+  caption: [Real detector],
+) <realdetector>
 
 It's worth mentioning that there is #quote[Multiple Compton events]. The
 multiple Compton events arise from the escape of the final scattered photons,
@@ -163,7 +150,7 @@ due to envents loss from the photopeak.
 Radiative processes for charged particles due to coulomb interactions are
 Bremsstrahlung, where energy converts into electromagnetic radiation. The linear
 specific energy loss is:
-$ -(dv(E, x))_r=(N E Z (Z+1)e^4)/(137 m_0^2 c^4)(4 ln (2E)/(m_0c^2)-4/3) $
+$ -(dv(E, x))_r=(N E Z (Z+1)e^4) / (137 m_0^2 c^4)(4 ln (2E) / (m_0c^2)-4 / 3) $
 
 Again for high energy (few MeV and above) gamma-rays and high atomic number
 absorber case, the Bremsstrahlung loss is of importance.
@@ -203,12 +190,14 @@ As discussed before, the energy of backscattered photon is: $ eval(h nu')_(theta
 And in the limit of $h nu >> m_0c^2$, the energy reduces to $m_0c^2\/ 2$. The
 backscatter peak always occurs at 0.255 MeV or less.
 
-#figure(grid(
-  columns: 2,
-  column-gutter: 2em,
-  image("backscattered.png"),
-  image("backscatteredre.png"),
-), caption: [Backscatterd gamma-rays])
+#figure(
+  grid(
+    columns: 2,
+    column-gutter: 2em,
+    image("backscattered.png"), image("backscatteredre.png"),
+  ),
+  caption: [Backscatterd gamma-rays],
+)
 
 ==== Other Secondary Radiations
 
@@ -247,8 +236,7 @@ NaI(Tl)#footnote[BGO has the strong advantage that its high density and atomic n
   grid(
     columns: 2,
     column-gutter: 2em,
-    image("geanticompton.png"),
-    image("geanticomptonef.png"),
+    image("geanticompton.png"), image("geanticomptonef.png"),
     subft[BGO and NaI(Tl) scintillators combined Compton suppression system],
     subft[#grid(
         columns: 1,
@@ -290,20 +278,22 @@ enhance gamma-ray spectra analysis (see @montecarlodeconvolution). These
 methodologies underscore the critical role of advanced computational and
 analytical techniques in gamma-ray spectroscopy.
 
-#figure(grid(
-  columns: (40%, 60%),
-  column-gutter: 2em,
-  image("montecarlo.png"),
-  image("deconvolution.png"),
-  subft[#grid(
-      columns: 1,
-      row-gutter: 1em,
-      align: left,
-      [points: measured],
-      [line: Monte Carlo],
-    )],
-  subft[example of the application of deconvolution methods],
-), caption: [Anticoincidence Compton Suppression]) <montecarlodeconvolution>
+#figure(
+  grid(
+    columns: (40%, 60%),
+    column-gutter: 2em,
+    image("montecarlo.png"), image("deconvolution.png"),
+    subft[#grid(
+        columns: 1,
+        row-gutter: 1em,
+        align: left,
+        [points: measured],
+        [line: Monte Carlo],
+      )],
+    subft[example of the application of deconvolution methods],
+  ),
+  caption: [Anticoincidence Compton Suppression],
+) <montecarlodeconvolution>
 
 == Energy Resolution
 
@@ -350,8 +340,7 @@ But normally the assumption of linearity leads to negligible error.
   grid(
     columns: (40%, 60%),
     column-gutter: 2em,
-    image("comlexenergyorigin.png"),
-    image("energynonlinearity.png"),
+    image("comlexenergyorigin.png"), image("energynonlinearity.png"),
     subft[representation of the possible origins of electrons and photons #footnote[following the photoelectric absorption of an incident X-ray or gamma ray with
         energy $E$ that is above the K-shell binding energy of 33.17 keV]],
     subft[measured light output per unit deposited energy for Nal (Tl), normalized to
@@ -396,50 +385,53 @@ are undoubtedly abundant.
 I refered to #link("https://data.gov.tw/dataset/15418")[電機工程學術名詞] for the
 translation of some terms.
 
-#figure(table(
-  stroke: none,
-  columns: (auto, auto, auto),
-  align: horizon,
-  table.hline(),
-  table.header([*ABBR.*], [*Term*], [*术语*]),
-  [],
-  [attenuation],
-  [衰减],
-  [],
-  [deposit],
-  [沉积],
-  [STP],
-  [standard temperature and pressure],
-  [标准状况],
-  [],
-  [recoil],
-  [反冲],
-  [],
-  [photopeak],
-  [光电峰],
-  [],
-  [photofraction],
-  [峰总比],
-  [],
-  [encapsulation],
-  [封装],
-  [],
-  [graded shield],
-  [梯度屏蔽],
-  [],
-  [true coincidence],
-  [真符合],
-  [],
-  [chance coincidence],
-  [偶然符合],
-  [],
-  [sum peak],
-  [和峰],
-  [BGO],
-  [bismuth germanate oxide],
-  [锗酸铋],
-  [],
-  [scintillation efficiency],
-  [闪烁效率],
-  table.hline(),
-), caption: "Terminologies")
+#figure(
+  table(
+    stroke: none,
+    columns: (auto, auto, auto),
+    align: horizon,
+    table.hline(),
+    table.header([*ABBR.*], [*Term*], [*术语*]),
+    [],
+    [attenuation],
+    [衰减],
+    [],
+    [deposit],
+    [沉积],
+    [STP],
+    [standard temperature and pressure],
+    [标准状况],
+    [],
+    [recoil],
+    [反冲],
+    [],
+    [photopeak],
+    [光电峰],
+    [],
+    [photofraction],
+    [峰总比],
+    [],
+    [encapsulation],
+    [封装],
+    [],
+    [graded shield],
+    [梯度屏蔽],
+    [],
+    [true coincidence],
+    [真符合],
+    [],
+    [chance coincidence],
+    [偶然符合],
+    [],
+    [sum peak],
+    [和峰],
+    [BGO],
+    [bismuth germanate oxide],
+    [锗酸铋],
+    [],
+    [scintillation efficiency],
+    [闪烁效率],
+    table.hline(),
+  ),
+  caption: "Terminologies",
+)

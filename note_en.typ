@@ -1,58 +1,5 @@
 #import "common.typ": *
-#let def = thmbox(
-  "thm",
-  "Def",
-  inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
-  titlefmt: emph,
-  base: none,
-)
-#let pst = thmbox(
-  "thm",
-  "Post",
-  inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
-  titlefmt: emph,
-  base: none,
-)
-#let thm = thmbox(
-  "thm",
-  "Thm",
-  inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
-  titlefmt: emph,
-  base: none,
-)
-#let coll = thmbox(
-  "coll",
-  "Coll",
-  inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
-  titlefmt: emph,
-  base: "thm",
-)
-#let exmp = thmbox(
-  "thm",
-  "Exmp",
-  inset: (x: 0em, top: 0em),
-  namefmt: x => strong(text(fill: red, x)),
-  titlefmt: emph,
-  base: none,
-)
-#let sol = thmproof(
-  "sol",
-  "Sol",
-  inset: (x: 0em, top: 0em),
-  titlefmt: x => strong(text(fill: red, x)),
-  base: "exmp",
-)
-#let proof = thmproof(
-  "proof",
-  "Proof",
-  inset: (x: 0em, top: 0em),
-  titlefmt: x => text(fill: red, x),
-  base: "thm",
-)
+#import "theorem_en.typ": *
 #let conf(
   title: none,
   author: none,
@@ -78,6 +25,7 @@
   )
   set quote(block: true)
   set par(leading: 1em)
+  show strong: set text(fill: red)
   align(
     center,
     text(1.4em)[
@@ -98,7 +46,6 @@
   set list(marker: n => text(fill: red, "•"))
   show raw.where(block: false): it => text(fill: maroon, it)
   show raw: set text(font: mono-font)
-  show: rest => columns(2, rest)
   set align(left)
   set table(stroke: none, align: left)
   if numbered-equation {

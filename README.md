@@ -6,7 +6,7 @@
 
 - 软件包
   - `xelatex`: `XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023)`
-  - `typst`: `typst 0.12.0 (737895d7)`
+  - `typst`: `typst 0.13.0 (8dce676d)`
 - LaTex 模板
   - [THUCOURSEWORK：清华大学课程作业模板](https://github.com/zhaofeng-shu33/THU-coursework-template)
 - 字体

@@ -1,26 +1,8 @@
-#set text(
-  font: ("Linux Libertine", "Source Han Serif"),
-  lang: "en",
-  region: "us",
+#import "../../note_en.typ": *
+#show: conf.with(
+  title: "Notes on Observational Astronomy",
+  author: "adamanteye",
 )
-#set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
-#set heading(numbering: "1.")
-#let title = [Notes on Observational Astronomy]
-#let thisauthor = "Zhehan Yang"
-#set document(title: [#title], author: thisauthor)
-#set math.equation(numbering: "(1)", number-align: bottom + right)
-#show link: it => underline(text(fill: rgb("#8c0000"), it))
-#import "@preview/physica:0.9.2": *
-#import "@preview/unify:0.4.3": unit
-
-#align(center, text(17pt)[
-  *#title*
-])
-
-#align(center, text(15pt)[
-  #thisauthor
-])
-
 #show: rest => columns(2, rest)
 
 Our textbook is _Obeservational Astronomy_ (Birney)
@@ -64,30 +46,33 @@ print(
 
 = Light
 == Convention
-#figure(table(
-  stroke: none,
-  columns: 2,
-  table.hline(),
-  table.header([*Regoin of spectrum*], [*Units*]),
-  table.hline(),
-  [gamma rays],
-  [MeV, GeV],
-  [x-ray],
-  [KeV],
-  [Ultraviolet],
-  [$angstrom$],
-  [infrared(near-IR, IR, far-IR)],
-  [$unit("micro meter")$],
-  [microwave],
-  [$unit("mm")$],
-  [radio],
-  [$unit("cm")$,$unit("m")$,$unit("MHz")$,$unit("GHz")$],
-  table.hline(),
-), caption: [The language of light])
+#figure(
+  table(
+    stroke: none,
+    columns: 2,
+    table.hline(),
+    table.header([*Regoin of spectrum*], [*Units*]),
+    table.hline(),
+    [gamma rays],
+    [MeV, GeV],
+    [x-ray],
+    [KeV],
+    [Ultraviolet],
+    [$angstrom$],
+    [infrared(near-IR, IR, far-IR)],
+    [$unit("micro meter")$],
+    [microwave],
+    [$unit("mm")$],
+    [radio],
+    [$unit("cm")$,$unit("m")$,$unit("MHz")$,$unit("GHz")$],
+    table.hline(),
+  ),
+  caption: [The language of light],
+)
 == Magnitude
 / pogson equation: relationship between magnitude and flux (apparent brightness)
 $ m_1-m_2=-2.5log(F_1/F_2) \ m=-2.5 log(F)+C $
-$ Delta m=-1.086 (Delta F)/F approx -(Delta F)/F $
+$ Delta m=-1.086 (Delta F) / F approx -(Delta F) / F $
 / monochromatic version of Pogson equation: applying to a range of wavelengths
 $ m_lambda=-2.5 log(F_lambda)+C_lambda $
 / bolometeric magnitude: all the electromagnetic radiation is included
@@ -118,13 +103,15 @@ of $upright("arcsec"^2)$.
 )
 == Flux
 / energy flux: amount of light energy per unit in a given bandpass
-$ F=E_"band"/(dd(A) dd(t)) "in unit of" unit("W/cm^2") $
+$ F=E_"band" / (dd(A) dd(t)) "in unit of" unit("W/cm^2") $
 / monochromatic flux: energy flux in a single wavelength or frequency
-$ F_lambda&=E_lambda/(dd(A) dd(t) dd(lambda)) "in unit of" unit("erg/s/cm^2")angstrom^(-1) \ F_nu&=E_nu/(dd(A) dd(t) dd(nu)) "in unit of" unit("erg/s/cm^2/Hz") \ nu F_nu &= lambda F_lambda $
+$
+  F_lambda&=E_lambda / (dd(A) dd(t) dd(lambda)) "in unit of" unit("erg/s/cm^2")angstrom^(-1) \ F_nu&=E_nu / (dd(A) dd(t) dd(nu)) "in unit of" unit("erg/s/cm^2/Hz") \ nu F_nu &= lambda F_lambda
+$
 == Blackbody
 / Wien's displacement law: as the temperature increases, the peak of the blackbody spectrum shifts to
   shorter wavelengths
-$ lambda_"max"=2900000/T "in units of K and nm" $
+$ lambda_"max"=2900000 / T "in units of K and nm" $
 #figure(
   image("blackbody-radiation.jpg", width: 95%),
   caption: [Blackbody radiation],
@@ -149,7 +136,7 @@ $ 1"pc"=3.2615637769"ly" $
 $ L=cal(F)4pi r^2 $
 $ L=4pi R^2 sigma T_"eff"^4 $
 == Mass
-/ Virial theorem: $ 2K+V=0\ 2sum_i 1/2 m_i v_i^2-sum (G m_i m_j)/r_(i j)=0\ (G M)/R=sigma^2 $
+/ Virial theorem: $ 2K+V=0\ 2sum_i 1 / 2 m_i v_i^2-sum (G m_i m_j) / r_(i j)=0\ (G M) / R=sigma^2 $
 == Age
 #figure(
   image("hr-diagram-age.png", width: 80%),
@@ -173,7 +160,7 @@ $ L=4pi R^2 sigma T_"eff"^4 $
 / image formation: 2 beams of light separated by an angular distance are focused to 2 points
 $ S=F tan(theta) approx F theta $
 / plate scale: angular size of the object per unit length on the plate
-$ P_s=theta/S=1/F $
+$ P_s=theta / S=1 / F $
 / image scale: how much of the sky in arcsec each and every pixel can see $ (206.2648 times "pixel size"_"in µm") / F_"in mm" $
 see also to #link(
   "https://www.cloudynights.com/topic/777087-please-explain-image-scalepixel-scale-to-me/",
@@ -183,14 +170,14 @@ see also to #link(
 $ M_L approx 2.7+5log(d) $
 where $d$ is the objective lens diameter in millimeter
 / focal ratio:
-$ R=F/D "as" E prop D^2/F^2 $
+$ R=F / D "as" E prop D^2 / F^2 $
 / field of view:
 $ "fov"=2arctan(w/(2 f))\ "where" w "is the sensor width" $
 #figure(image("fov.png", width: 80%), caption: [Field of view])
 == Resolution
 / #link("https://en.wikipedia.org/wiki/Airy_disk")[Ariy disk]: The circular aperture has a diffraction pattern described by the Bessel
   function, whose first zero is at 1.22
-$ sin theta=1.22 lambda/d $
+$ sin theta=1.22 lambda / d $
 / #link("https://en.wikipedia.org/wiki/Astronomical_seeing")[Seeing]: the degradation of the image of an astronomical object due to turbulence in the
   atmosphere of Earth that may become visible as blurring, twinkling or variable
   distortion. The strength of seeing is often characterized by the angular
@@ -207,7 +194,7 @@ $ sin theta=1.22 lambda/d $
 #figure(image("ccdqesensitivity.png", width: 80%))
 / ADU: #link("https://www.cloudynights.com/topic/417383-what-is-adu/")[What is ADU]
 == Image reduction
-$ "reduced"=("science"-"dark"-"bias")/("flat"-"dark"-"bias")_"normailzed" $
+$ "reduced"=("science"-"dark"-"bias") / ("flat"-"dark"-"bias")_"normailzed" $
 == Noise
 / SNR: signal to noise ratio
 #figure(
@@ -216,9 +203,9 @@ $ "reduced"=("science"-"dark"-"bias")/("flat"-"dark"-"bias")_"normailzed" $
 )
 / CCD equation:
 $ S_"net"=(S+B) - B_"estimated"-D $
-$ B_"estimated"=n_s/n_B B_"total" $
-$ sigma_B=n_s^2/n_B^2 B_"total" $
-$ "SNR"=S_"net"/sqrt(S_"total"+sigma_B^2+N_d+n_s N_r^2) $
+$ B_"estimated"=n_s / n_B B_"total" $
+$ sigma_B=n_s^2 / n_B^2 B_"total" $
+$ "SNR"=S_"net" / sqrt(S_"total"+sigma_B^2+N_d+n_s N_r^2) $
 #table(
   stroke: none,
   columns: (auto, auto, auto),
@@ -231,7 +218,7 @@ $ "SNR"=S_"net"/sqrt(S_"total"+sigma_B^2+N_d+n_s N_r^2) $
 )
 / Howell, Koehn, Bowell, Hoffan equation:
 = Spectroscopy
-/ #link("https://en.wikipedia.org/wiki/Redshift")[Redshift]: $ z=(lambda_"obs"-lambda_"emit")/lambda_"emit" $
+/ #link("https://en.wikipedia.org/wiki/Redshift")[Redshift]: $ z=(lambda_"obs"-lambda_"emit") / lambda_"emit" $
 = Concepts and their translations
 中文术语参考自#link("https://nadc.china-vo.org/astrodict/")[天文学名词]
 #table(

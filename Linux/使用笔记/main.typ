@@ -289,6 +289,9 @@ zpool create -o ashift=12 oskar draid:2d \
 -f  # in case they are of different sizes
 ```
 == NFS
+参考链接:
+- #link("https://wiki.debian.org/NFSServerSetup")[NFSServerSetup - Debian Wiki]
+- #link("https://help.ubuntu.com/community/NFSv4Howto")[NFSv4Howto - Community Help Wiki]
 在服务端上:
 ```sh
 apt install nfs-kernel-server

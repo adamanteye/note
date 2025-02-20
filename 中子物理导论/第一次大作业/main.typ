@@ -1,23 +1,16 @@
-#import "@preview/touying:0.5.3": *
-#import themes.university: *
-#import "@preview/unify:0.6.0": *
-#import "@preview/physica:0.9.3": *
-
-#set text(font: ("Libertinus Serif", "Source Han Serif"), lang: "zh", region: "cn")
-#show figure.caption: set text(size: 0.9em)
-#show heading.where(level: 1): set heading(numbering: "1.")
+#import "../../slide_zh.typ": *
 #show: university-theme.with(
   aspect-ratio: "16-9",
   config-info(
     title: [中子质量精确测量调研报告],
     subtitle: [中子物理导论第一次大作业],
-    authors: ("杨哲涵","司书屹"),
+    authors: ("杨哲涵", "司书屹"),
     date: datetime.today(),
     institution: [工程物理系],
     logo: none,
   ),
   config-colors(
-    primary: rgb(106,8,116),
+    primary: rgb(106, 8, 116),
     secondary: rgb("#6908749c"),
     tertiary: rgb("#7DB9DE"),
     neutral-lightest: rgb("#ffffff"),
@@ -64,26 +57,32 @@
 == GAMS-4装置
 #figure(image("4.png", height: 90%), caption: [GAMS-4双晶谱仪 @kessler_gams4_2001])
 == Bragg衍射
-#grid(columns: (1.5fr,1fr),[
-  布拉格衍射(又称X射线衍射的布拉格形式),最早由Sir William Lawrence Bragg及Sir William Henry Bragg于1913年提出.
+#grid(
+  columns: (1.5fr, 1fr),
+  [
+    布拉格衍射(又称X射线衍射的布拉格形式),最早由Sir William Lawrence Bragg及Sir William Henry Bragg于1913年提出.
 
-  $ n lambda=2d sin theta $
+    $ n lambda=2d sin theta $
 
-  模型中晶体为一组各自分离的平行平面,相邻平面间的距离皆为一常数$d$
+    模型中晶体为一组各自分离的平行平面,相邻平面间的距离皆为一常数$d$
 
-  如果各平面反射出来的X射线成相长干涉的话,那么入射的X射线经晶体反射后会产生尖峰
+    如果各平面反射出来的X射线成相长干涉的话,那么入射的X射线经晶体反射后会产生尖峰
 
-],figure(image("2.svg", height: 70%), caption: "Bragg衍射示意图"))
+  ],
+  figure(image("2.svg", height: 70%), caption: "Bragg衍射示意图"),
+)
 
 == 双晶谱仪测量$gamma$射线能量
-#grid(columns: (1.5fr,1fr),[
-  双晶谱仪是一种用于测量$gamma$射线衍射角的仪器, @two-flat-crystal 展示了双晶谱仪的结构和工作状态,它由3个准直器和2个晶体构成.第1个晶体与第2个晶体都可以独立调整衍射级别.
+#grid(
+  columns: (1.5fr, 1fr),
+  [
+    双晶谱仪是一种用于测量$gamma$射线衍射角的仪器, @two-flat-crystal 展示了双晶谱仪的结构和工作状态,它由3个准直器和2个晶体构成.第1个晶体与第2个晶体都可以独立调整衍射级别.
 
-  其优点在于,第1个晶体确保了只有高度准直的,几乎单色的辐射可以落在第二个晶体上
+    其优点在于,第1个晶体确保了只有高度准直的,几乎单色的辐射可以落在第二个晶体上
 
-  实验中,用$(m,n)$表示第1,2两个晶体的衍射级别,共进行了3种不同级别的测量,分别为$(1,2)$,$(1,-2)$,$(1,3)$,$(1,-3)$,$(2,2)$,$(2,-1)$.
-],
-[#figure(image("1.png", height: 90%), caption: [双晶方法$(1,-1)$及$(1,1)$]) <two-flat-crystal>]
+    实验中,用$(m,n)$表示第1,2两个晶体的衍射级别,共进行了3种不同级别的测量,分别为$(1,2)$,$(1,-2)$,$(1,3)$,$(1,-3)$,$(2,2)$,$(2,-1)$.
+  ],
+  [#figure(image("1.png", height: 90%), caption: [双晶方法$(1,-1)$及$(1,1)$]) <two-flat-crystal>],
 )
 == 测量结果
 #figure(image("3.png"), caption: [论文 @kessler_deuteron_1999 给出的测量结果])
@@ -95,5 +94,5 @@
 - $A_r (isotope(H,a:2))-A_r (isotope(H,a:1))=qty("1.00627674630+-0.00000000071","u")$
 
 #show: appendix
-#set text(font: ("Linux Libertine", "Source Han Serif SC"), lang: "en", region: "us")
+#set text(lang: "en", region: "us")
 #bibliography("ref.bib", style: "american-physics-society", title: "参考文献")

@@ -1,23 +1,9 @@
-#set text(
-  font: ("Linux Libertine", "Source Han Serif"),
-  lang: "zh",
-  region: "cn",
+#import "../note_zh.typ": *
+#show: conf.with(
+  title: "学科前沿讲座笔记",
+  author: "杨哲涵",
 )
-#let title = "学科前沿讲座笔记"
-#let author = "杨哲涵"
-#set heading(numbering: "1.")
-#show link: it => underline(text(fill: rgb("#8c0000"), it))
-#set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
-#import "@preview/physica:0.9.3": *
-#align(center, text(17pt)[
-  *#title*
-])
-#align(center, text(15pt)[
-  #author
-])
-
 #show: rest => columns(2, rest)
-
 = 出勤情况
 在一共8次讲座中,我听了以下6次讲座
 - 物质最深处 | 高原宁
@@ -134,14 +120,13 @@ PandaX-xT是数十吨级深地液氙实验,逐步升级至43吨靶,建设期9年
 / 国际竞争: 欧洲XENON(6.5吨),美国LZ(7吨)
 == 超级陶粲装置STCF
 STCF是运行在陶粲能区的正负电子对撞机,将成为国际上非微扰强相互作用研究和电弱精确测量专用研究平台,具有重大的科学发现潜力.预算45亿元,建设周期5-7年.
-/ 科学目标: 
-  + 强相互作用的本质和强子结构
+/ 科学目标: + 强相互作用的本质和强子结构
   + 味物理与CP破坏
   + 超越SM新物理
 / 战略价值: 将成为国际上唯一运行在陶粲能区的正负电子对撞机,引领国际陶粲物理和强子物理研究
 == 中微子项目
 - 江门无中微子双$beta$衰变实验(JUNO-0$nu$$beta beta$)
-  
+
   JUNO实验是一个多用途的中微子观测站,当前正在中国开平建设中.其主要目标是在六年测量后,以超过3$sigma$的显著性测量中微子质量排序.为实现这一结果,JUNO将$3%\/sqrt(E_"vis" "MeV")$的能量分辨率作为首要设计目标.因此,JUNO使用了2万吨的液体闪烁体,并配备了17612个20英寸PMT和大约25600个3英寸PMT.
 
   JUNO-0$nu$$beta beta$是江门实验的升级,以2万吨液闪容纳百吨级双$beta$衰变核素,利用极低本底,高能量分辨率的优势,对中微子绝对质量的灵敏度提高至meV水平

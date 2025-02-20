@@ -1,5 +1,5 @@
 #set text(
-  font: ("Linux Libertine", "Source Han Serif"),
+  font: ("Libertinus Serif", "Source Han Serif"),
   lang: "zh",
   region: "cn",
   size: 12pt,
@@ -9,25 +9,39 @@
 #let subtitle = [邓小平以及改革中的中国]
 #let author = [工物22 杨哲涵]
 #show link: it => underline(text(fill: rgb("#8c0000"), it))
-#set page("a4", numbering: "1", margin: (x: 30pt, top: 50pt), header: [
-  #set text(10pt)
-  2024年春-毛泽东思想和中国特色社会主义理论体系概论
-  #h(1fr)
-  期末读书报告
-])
+#set page(
+  "a4",
+  numbering: "1",
+  margin: (x: 30pt, top: 50pt),
+  header: [
+    #set text(10pt)
+    2024年春-毛泽东思想和中国特色社会主义理论体系概论
+    #h(1fr)
+    期末读书报告
+  ],
+)
 #set par(first-line-indent: 2em, leading: 1em, justify: true)
 
-#align(center, text(16pt)[
-  *#title*#footnote[这是陈明凡毛概课的评分作业,报告在内的总评是A-]
-])
+#align(
+  center,
+  text(16pt)[
+    *#title*#footnote[这是陈明凡毛概课的评分作业,报告在内的总评是A-]
+  ],
+)
 
-#align(center, text(14pt)[
-  *#subtitle*
-])
+#align(
+  center,
+  text(14pt)[
+    *#subtitle*
+  ],
+)
 
-#align(center, text(13pt)[
-  #author
-])
+#align(
+  center,
+  text(13pt)[
+    #author
+  ],
+)
 
 在学习了八周的毛泽东思想与中国特色社会主义理论概论后，我对邓小平主导的改革开放很感兴趣，因此选择了著名东亚研究专家傅高义撰写的《邓小平时代》进行阅读。该书译者冯克利说，#quote[……耄耋老人，不辞辛苦，用自己晚年的宝贵时光研究邓小平，读来为之动容]@fengkeli2012。尽管我是一名零零后，我出生的时候邓小平也已故去。但从某种角度来说，千禧年也仍在“邓小平时代”的余波中前行，他的制度设计和执政风格仍然影响着当今的中国。
 
