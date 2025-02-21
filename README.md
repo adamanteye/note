@@ -9,9 +9,10 @@
 其他课程项目:
 
 - [adamanteye/rusty_query: 2024 年秋季学期数据库系统概论大作业](https://github.com/adamanteye/rusty_query)
-- [adamanteye/veloquent-core: 软件工程即时通讯系统大作业后端](https://github.com/adamanteye/veloquent-core)
+- [adamanteye/veloquent-core: 2024 年软件工程即时通讯系统大作业后端](https://github.com/adamanteye/veloquent-core)
+- [adamanteye/mkl25-keyer: 2024 年数字电路与嵌入式系统大作业](https://github.com/adamanteye/mkl25-keyer)
 - [adamanteye/cordle: 2023 年夏计算机程序设计基础（20740102）Wordle 大作业](https://github.com/adamanteye/cordle)
-- [adamanteye/mkl25-keyer: 数字电路与嵌入式系统大作业](https://github.com/adamanteye/mkl25-keyer)
+- [adamanteye/dsa: 2023 年数据结构与算法](https://github.com/adamanteye/dsa)
 
 ## 编译要求
 
