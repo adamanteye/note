@@ -72,14 +72,15 @@
 / 快谱: 处在具有较小的减速与吸收比的系统中,中子在发生明显减速之前就已经被吸收了,能量分布接近裂变谱,称为快谱或硬谱.
 
 #figure(
-  table(columns: 3, stroke: none,
+  table(
+    columns: 3, stroke: none,
     table.hline(),
     table.header([慢化剂], [慢化能力$xi Sigma_S [unit("cm^-1")]$], [慢化比$xi Sigma_S\/Sigma_a$]),
     table.hline(),
-    [$isotope(H)_2 isotope(O)$],[1.350],[71],
-    [$isotope(D)_2 isotope(O)$],[0.176],[5670],
-    [$isotope("Be")$],[0.158],[143],
-    [石墨],[0.060],[192],table.hline(),
+    [$isotope(H)_2 isotope(O)$], [1.350], [71],
+    [$isotope(D)_2 isotope(O)$], [0.176], [5670],
+    [$isotope("Be")$], [0.158], [143],
+    [石墨], [0.060], [192], table.hline(),
   ),
   caption: [几种慢化剂的对比],
 )

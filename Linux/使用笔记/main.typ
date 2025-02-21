@@ -92,6 +92,9 @@ man ./foot.1.gz
 `fish_update_completions`可以从系统man pages生成补全.
 == Arch Linux 打包
 `namcap`可以方便地检查`PKGBUILD`和打好的包当中出现的错误.
+== Debian 打包
+参考:
+- #link("https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.zh_CN.pdf")[Debian 打包教程]
 = Shell技巧
 == 彩色输出
 以下是一些可启用彩色输出的命令:
@@ -161,6 +164,11 @@ Host github.com
   ProxyCommand nc -X connect -x [::1]:10801 %h %p
 ```
 Arch Linux的#link("https://archlinux.org/packages/extra/x86_64/openbsd-netcat/")[openbsd-netcat]提供了`nc`命令.
+== 临时文件
+创建临时文件或临时文件夹:
+```sh
+mktemp example.XXXXXXXX
+```
 = 实用程序
 == 编辑器
 #link("https://github.com/helix-editor/helix")[helix-editor/helix]在绝大多数发行版都已经得到了支持,但是debian尚且没有打包.
@@ -181,6 +189,8 @@ Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 经过测试,这对#link("https://theinitium.com/opinion/20250204-culture-barbie-hsu-and-big-s-taiwan-actress")[端传媒]有效.可以为google bot UA#footnote[查看其他浏览器UA: #link("https://explore.whatismybrowser.com/useragents/explore/")[List of User Agents]]配置与日常使用隔离的profile.
 
 查看当前的浏览器指纹: #link("https://www.whatismybrowser.com/")[What browser?]
+== 文件管理器
+#link("https://github.com/sxyazi/yazi")[sxyazi/yazi]是使用Rust编写的命令行文件管理器.
 == 文档手册
 #link("https://github.com/tealdeer-rs/tealdeer")[tealdeer]提供了相当好的`tldr`体验,可以查看大部分命令的简短文档.
 == 输入法

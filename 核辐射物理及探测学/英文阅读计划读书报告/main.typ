@@ -5,6 +5,7 @@
   numbered-equation: true,
 )
 #show: rest => columns(2, rest)
+#let subft = it => text(10pt)[#it]
 My reference is the book #link(
   "https://indico-tdli.sjtu.edu.cn/event/171/contributions/2123/attachments/982/1592/Knoll4thEdition.pdf",
 )[_Radiation detection and measurement, 4th ed_] by Glenn F. Knoll. And in this
@@ -367,8 +368,6 @@ are undoubtedly abundant.
   image("absorptionefficiency.png"),
   caption: [Absorption efficiency of NaI of different thicknesses],
 ),
-
-#set page(columns: 1)
 
 #set heading(numbering: none)
 
