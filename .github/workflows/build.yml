@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Restore Cache
         run: |
-          rsync -azu --delete ${{ secrets.ARTIFACTS_DIR }} build/
+          rsync -azu --delete --checksum ${{ secrets.ARTIFACTS_DIR }} build/
       - name: Build
         run: |
           make remove
@@ -26,4 +26,4 @@ jobs:
           minify -ars -o . build
       - name: Deploy
         run: |
-          rsync -rzuhv --delete build/ ${{ secrets.ARTIFACTS_DIR }}
+          rsync -rzuhv --delete --checksum build/ ${{ secrets.ARTIFACTS_DIR }}
