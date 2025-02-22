@@ -94,7 +94,23 @@ man ./foot.1.gz
 `namcap`可以方便地检查`PKGBUILD`和打好的包当中出现的错误.
 == Debian 打包
 参考:
-- #link("https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.zh_CN.pdf")[Debian 打包教程]
+- #link("https://www.debian.org/doc/debian-policy/policy.pdf")[Debian Policy Manual]
+- #link("https://www.debian.org/doc/manuals/debmake-doc/debmake-doc.zh-cn.pdf")[Debian维护者指南]
+- #link("https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.zh_CN.pdf")[Debian打包教程]
+
+Debian打包体系随时间演化,在#link("https://trends.debian.net/#build-systems")[Debian Trends]可以看到不同源码格式,打包工具的使用比例.
+
+我构建了一个debian的docker环境,#link("https://github.com/adamanteye/images/tree/master/debian-builder")[adamanteye/images/debian-builder],用来完成在干净系统下的打包.
+
+一般的打包流程:
+```sh
+tar xaf example-0.1.0.tar.gz
+cd example-0.1.0
+debmake -b':sh' -x1   # 选一个模板
+vim debian/control    # 以及其他文件
+rm -rf debian/patches # 以及其他用不到的文件
+debuild
+```
 = Shell技巧
 == 彩色输出
 以下是一些可启用彩色输出的命令:
@@ -246,6 +262,19 @@ pacman -Qtdq
 ```
 == AUR
 之前使用#link("https://github.com/Jguer/yay")[Juger/yay],现在我迁移到了#link("https://github.com/Morganamilo/paru")[Morganamilo/paru].
+== dkpg & apt
+解压`deb`包:
+```sh
+ar x example_0.1.0-1_all.deb
+```
+列出文件:
+```sh
+dpkg-deb -c example_0.1.0-1_all.deb
+```
+显示元信息:
+```sh
+dpkg-deb -I example_0.1.0-1_all.deb
+```
 = 日志
 == systemd
 清除10天前的所有日志:
@@ -320,7 +349,15 @@ mount -t nfs4 -o proto=tcp,port=2049 heloise.adamanteye.cc:/oskar/elisabeth /srv
 ```
 heloise.adamanteye.cc:/oskar/elisabeth	/srv/	nfs4	_netdev,auto,defaults	0	0
 ```
-== 容器部署
+== docker
+从含`Dockerfile`的路径构建镜像:
+```sh
+docker buildx build --tag nvchecker:master .
+```
+交互式运行容器,设置代理,挂载本地路径:
+```sh
+docker run -it --rm --name debian --network host -e HTTP_PROXY=http://[::1]:10801 -v "$HOME/Documents/debian:/home/debian:rw" -v "/etc/wgetrc:/etc/wgetrc:ro" -e DEBFULLNAME -e DEBEMAIL ghcr.io/adamanteye/debian-builder:master 
+```
 删除所有未使用镜像(不止dangling):
 ```sh
 docker image prune -a
