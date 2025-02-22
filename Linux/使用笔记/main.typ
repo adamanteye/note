@@ -112,6 +112,22 @@ rm -rf debian/patches # 以及其他用不到的文件
 debuild
 ```
 = Shell技巧
+== readline 键位
+- `Ctrl A`跳到行首
+- `Ctrl E`跳到行尾
+- `Ctrl U`删除光标位置到行首的所有内容
+- `Ctrl K`删除光标位置到行尾的所有内容
+- `Ctrl W`删除光标位置前一个单词
+- `Ctrl Y`粘贴最后一次删除的内容
+- `Ctrl L`清屏
+- `Ctrl F`向前移动一个字符
+- `Ctrl B`向后移动一个字符
+- `Alt F`向前移动一个单词
+- `Alt B`向后移动一个单词
+- `Ctrl R`启动反向搜索历史命令
+- `Ctrl S`启动正向搜索历史命令
+- `Ctrl G`取消搜索
+常见shell和emacs都支持这些键位.
 == 彩色输出
 以下是一些可启用彩色输出的命令:
 ```sh
@@ -308,6 +324,22 @@ echo "john,21" | cut -d "," -f 1
 == Rust
 #link("https://doc.rust-lang.org/std/macro.dbg.html")[dbg!]宏用于打印到`stderr`.
 可以在`cargo test`下使用,也可以调试release构建下出现的问题.
+=== 超好用的库
+==== 错误处理
+- #link("https://github.com/dtolnay/anyhow")[dtolnay/anyhow: Flexible concrete Error type built on std::error::Error]
+==== 输入输出
+- #link("https://github.com/kkawakam/rustyline")[kkawakam/rustyline: Readline Implementation in Rust]
+- #link("https://github.com/nukesor/comfy-table")[Nukesor/comfy-table: Build beautiful terminal tables with automatic content wrapping]
+- #link("https://github.com/clap-rs/clap")[clap-rs/clap: A full featured, fast Command Line Argument Parser for Rust]
+==== 异步
+无脑tokio全家桶就对了:
+- #link("https://github.com/tokio-rs/tokio")[tokio-rs/tokio: A runtime for writing reliable asynchronous applications with Rust. Provides I/O, networking, scheduling, timers, ...]
+支持并发读写的容器:
+- #link("https://github.com/xacrimon/dashmap")[xacrimon/dashmap: Blazing fast concurrent HashMap for Rust]
+==== 内存分配
+- #link("https://github.com/purpleprotocol/mimalloc_rust")[purpleprotocol/mimalloc_rust: A Rust wrapper over Microsoft's MiMalloc memory allocator]
+==== 解析器
+- #link("https://github.com/zesterer/chumsky")[zesterer/chumsky: Write expressive, high-performance parsers with ease]
 = 服务器
 == Dell Power Edge R630
 我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
@@ -356,7 +388,7 @@ docker buildx build --tag nvchecker:master .
 ```
 交互式运行容器,设置代理,挂载本地路径:
 ```sh
-docker run -it --rm --name debian --network host -e HTTP_PROXY=http://[::1]:10801 -v "$HOME/Documents/debian:/home/debian:rw" -v "/etc/wgetrc:/etc/wgetrc:ro" -e DEBFULLNAME -e DEBEMAIL ghcr.io/adamanteye/debian-builder:master 
+docker run -it --rm --name debian --network host -e HTTP_PROXY=http://[::1]:10801 -v "$HOME/Documents/debian:/home/debian:rw" -v "/etc/wgetrc:/etc/wgetrc:ro" -e DEBFULLNAME -e DEBEMAIL ghcr.io/adamanteye/debian-builder:master
 ```
 删除所有未使用镜像(不止dangling):
 ```sh

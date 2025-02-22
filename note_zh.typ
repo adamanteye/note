@@ -14,7 +14,7 @@
     set document(title: title)
   }
   set heading(numbering: "1.")
-  show link: it => underline(text(fill: red, it), offset: 0.2em)
+  show link: it => underline(text(fill: orange, it), offset: 0.2em)
   show: codly-init.with()
   codly(languages: codly-languages)
   set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
