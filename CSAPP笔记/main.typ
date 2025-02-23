@@ -36,7 +36,7 @@ $ "T2U"_w(x)&=x+x_(w-1)2^w\ "U2T"_w(x)&=x-x_(w-1)2^w $
   ```
 + 对于`x`, `y`同号的减法(肯定不会溢出),为了处理`x`是`0x80000000`的边界情况,需要写成`~x+y-1`.
 
-常量乘法的优化: 编译器会将`x * 14`这样的常量乘法优化为`(x >> 4) - (x >> 1)`.后面会提到`lea`指令,更详细地讨论这个问题.
+常量乘法的优化: 编译器会将`x * 14`这样的常量乘法优化为`(x >> 4) - (x >> 1)`.后面会提到#smcp[lea]指令,更详细地讨论这个问题.
 == Floating Point
 IEEE 754标准规定了浮点数与浮点运算,这套体系被称为IEEE浮点数.
 
@@ -207,7 +207,67 @@ subq $8,%rsp
 movq %rbp,(%rsp)
 ```
 == Arithmetic and Logical Operations
+#figure(
+  caption: [Integer arithmetic operations],
+  table(
+    columns: 4, table.hline(),
+    table.header([Instr], [Operand], [Effect], [Description]), table.hline(),
+    [`leaq`], [ `S, D`], [`D <- &S`], [Load effective address],
+    table.hline(),
+    smcp[inc], [ `D`], [`D <- D + 1`], [Increment],
+    smcp[dec], [ `D`], [`D <- D - 1`], [Decrement],
+    smcp[neg ], [`D`], [`D <- -D`], [Negate],
+    smcp[not ], [`D`], [`D <- ~D`], [Complement],
+    table.hline(),
+    smcp[add ], [`S, D`], [`D <- D + S`], [Add],
+    smcp[sub ], [`S, D`], [`D <- D - S`], [Substract],
+    smcp[imul], [`S, D`], [`D <- D * 1`], [Multiply],
+    smcp[xor], [`S, D`], [`D <- D - 1`], [Exclusive-or],
+    smcp[or], [`S, D`], [`D <- D | S`], [Or],
+    smcp[and], [`S, D`], [`D <- D & S`], [And],
+    table.hline(),
+    smcp[sal], [`k, D`], [`D <- D << k`], [Left shift],
+    smcp[shl], [`k, D`], [`D <- D << k`], [Left shift(same as #smcp[sal])],
+    smcp[sar], [`k, D`], [`D <- D >> k`], [Arithmetic right shift],
+    smcp[shr], [`k, D`], [`D <- D >> k`], [Logical right shift],
+    table.hline(),
+  ),
+)
 == Control
+=== Condition Codes
+/ `CF`: Carry flag. The most recent operation generated a carry out of the most significant bit. Used to detect overflow yielded zero.
+/ `ZF`: Zero flag. The most recent operation yielded zero
+/ `SF`: Sign flag. The most recent operation yielded a negative value.
+/ `OF`: Overflow flag. The most recent operation caused a two's-complement overflow: either negative or positive.
+注意`leaq`不对上面四个标志产生影响,因为操作的是"内存地址".
+#figure(
+  caption: [Comparsion and test instructions],
+  table(
+    columns: 3, table.hline(),
+    table.header([Instr], [Operand], [Based on]), table.hline(),
+    smcp[cmp], [`S1, S2`], [`S2 - S1`],
+    smcp[test], [`S1, S2`], [`S2 & S1`],
+    table.hline()
+  ),
+)
+#smcp[cmp]与#smcp[test]只会操作四个标志,不修改操作数.
 
+#smcp[test]常用于测试单个寄存器是否满足某条件,例如:
+```asm
+testq %rax,%rax
+```
+#figure(
+  caption: [The #smcp[set] instructions],
+  table(
+    columns: 4, table.hline(),
+    table.header([Instr], [Synonym], [Effect], [Set condition]), table.hline(),
+    [`sete D`], [`setz`], [`D <- ZF`], [Zero],
+    [`setne D`], [`setnz`], [`D <- ZF`], [Not zero],
+    table.hline(),
+    [`sets D`], [], [`D <- SF`], [Negative],
+    [`setns D`], [], [`D <- ~SF`], [Nonnegative],
+    table.hline(),
+  ),
+)
 = 附录
 北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.

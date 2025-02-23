@@ -343,12 +343,18 @@ echo "john,21" | cut -d "," -f 1
 = 服务器
 == Dell Power Edge R630
 我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
+
+双路E5-2680处理器,2条32GB内存,外加4个2.5英寸硬盘在开机空载时的耗电量大约为161W.仅主板通电的功率为10W左右.
 === 风扇控制
 参考#link("https://gist.github.com/jhatler/855abc7fb8663bcc2c97fec77b10ea03")[jhatler/ipmi-fanctrl-dell_r630.sh]:
 
 ```sh
 sudo ipmitool raw 0x30 0x30 0x01 0x00       # enable manual fan control
 sudo ipmitool raw 0x30 0x30 0x02 0xff 0x14  # set fan speed to 20%
+```
+=== 功率监控
+```sh
+ipmitool dcmi power reading
 ```
 == 文件系统
 配置zfs draid:
