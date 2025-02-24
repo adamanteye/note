@@ -1,6 +1,6 @@
 #import "../../note_zh.typ": *
 #show: conf.with(
-  title: "Linux 使用笔记",
+  title: "Linux使用笔记",
   author: "adamanteye",
 )
 #show: rest => columns(2, rest)
@@ -227,6 +227,8 @@ Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 #link("https://github.com/tealdeer-rs/tealdeer")[tealdeer]提供了相当好的`tldr`体验,可以查看大部分命令的简短文档.
 == 输入法
 #link("https://aur.archlinux.org/packages/fcitx5-pinyin-sougou-dict-git")[aur/fcitx5-pinyin-sougou-dict-git]提供了搜狗词库.
+== 邮件客户端
+thunderbird几乎开箱即用,不过一些高级用户会选择#link("https://neomutt.org/guide/index")[neomutt].
 == 排版软件
 #link("https://github.com/typst/typst")[typst]可以替代LaTeX.
 === 字体
@@ -252,6 +254,8 @@ Taskwarrior创建循环任务:
 ```sh
 task recur:2d due:eod add 吃山楂片
 ```
+== 密码管理
+#link("https://www.passwordstore.org/")[pass]基于`gpg`,在本地管理密码,并且支持用`git`进行版本控制,可以一同配置GitHub远程仓库来备份.
 == 音视频处理
 使用`ffmpeg`连接视频:
 ```sh
@@ -267,6 +271,9 @@ file '2.mp4'
 == 远程文件系统
 #link("https://wiki.archlinux.org/title/SSHFS")[sshfs]可以通过`ssh`连接挂载远程文件系统.
 = 包管理
+体验过`pacman`, `apt`, `emerge`,其中还是`pacman`的体验最好(毕竟是功能最简陋的).
+
+#link("https://repology.org/")[Repology]列出了常见发行版上的打包情况,不过没有gentoo的.
 == pacman
 列出所有显式安装的包:
 ```sh
@@ -297,49 +304,6 @@ dpkg-deb -I example_0.1.0-1_all.deb
 ```sh
 sudo journalctl --vacuum-time 10d
 ```
-= 编程
-== Bash
-使用Bash严格模式,参考#link("http://redsymbol.net/articles/unofficial-bash-strict-mode/")[Bash Strict Mode]:
-```sh
-set -euo pipefail
-```
-
-Bash使用`int64`.
-#link("https://askubuntu.com/questions/385528/how-to-increment-a-variable-in-bash")[how-to-increment-a-variable-in-bash]介绍了Bash当中定义整数以及迭代的办法.
-
-`awk`可以进行浮点数计算:
-```sh
-awk "BEGIN {printf \"%.2f\n\", 1000 / 3600}"
-```
-
-`echo`可以输出二进制数据:
-```sh
-echo -e -n "\x48\x65\x6c\x6c\x6f" > hello.txt
-```
-
-`cut`可以用来提取文本中的字段:
-```sh
-echo "john,21" | cut -d "," -f 1
-```
-== Rust
-#link("https://doc.rust-lang.org/std/macro.dbg.html")[dbg!]宏用于打印到`stderr`.
-可以在`cargo test`下使用,也可以调试release构建下出现的问题.
-=== 超好用的库
-==== 错误处理
-- #link("https://github.com/dtolnay/anyhow")[dtolnay/anyhow: Flexible concrete Error type built on std::error::Error]
-==== 输入输出
-- #link("https://github.com/kkawakam/rustyline")[kkawakam/rustyline: Readline Implementation in Rust]
-- #link("https://github.com/nukesor/comfy-table")[Nukesor/comfy-table: Build beautiful terminal tables with automatic content wrapping]
-- #link("https://github.com/clap-rs/clap")[clap-rs/clap: A full featured, fast Command Line Argument Parser for Rust]
-==== 异步
-无脑tokio全家桶就对了:
-- #link("https://github.com/tokio-rs/tokio")[tokio-rs/tokio: A runtime for writing reliable asynchronous applications with Rust. Provides I/O, networking, scheduling, timers, ...]
-支持并发读写的容器:
-- #link("https://github.com/xacrimon/dashmap")[xacrimon/dashmap: Blazing fast concurrent HashMap for Rust]
-==== 内存分配
-- #link("https://github.com/purpleprotocol/mimalloc_rust")[purpleprotocol/mimalloc_rust: A Rust wrapper over Microsoft's MiMalloc memory allocator]
-==== 解析器
-- #link("https://github.com/zesterer/chumsky")[zesterer/chumsky: Write expressive, high-performance parsers with ease]
 = 服务器
 == Dell Power Edge R630
 我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
