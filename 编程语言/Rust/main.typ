@@ -5,6 +5,7 @@
 )
 #show: rest => columns(2, rest)
 
+- #link("https://cheats.rs/")[Rust单页手册]
 = 调试技巧
 #link("https://doc.rust-lang.org/std/macro.dbg.html")[dbg!]宏用于打印到`stderr`.
 可以在`cargo test`下使用,也可以调试release构建下出现的问题.

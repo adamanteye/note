@@ -228,7 +228,16 @@ Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 == 输入法
 #link("https://aur.archlinux.org/packages/fcitx5-pinyin-sougou-dict-git")[aur/fcitx5-pinyin-sougou-dict-git]提供了搜狗词库.
 == 邮件客户端
-thunderbird几乎开箱即用,不过一些高级用户会选择#link("https://neomutt.org/guide/index")[neomutt].
+`thunderbird`几乎开箱即用,不过一些高级用户会选择#link("https://neomutt.org/guide/index")[neomutt].
+
+对于`neomutt`,可以使用#link("https://wiki.archlinux.org/title/OfflineIMAP")[offlineimap]以及#link("https://wiki.archlinux.org/title/Msmtp")[msmtp]
+
+参考配置教程:
+- #link("https://fancyseeker.github.io/2015/08/19/mutt/")[Mutt: 阅读邮件列表 | FancySeeker]
+- #link("https://mirrors.tuna.tsinghua.edu.cn/tuna/tunight/2020-11-21-mutt/slides.pdf")[Mutt配置: 一种实践的部署方式]
+- #link("https://www.offlineimap.org/doc/conf_examples.html")[OfflineIMAP examples]
+== RSS订阅
+如果熟悉`mutt`,对#link("https://wiki.archlinux.org/title/Newsboat")[newsboat]应当同样很有好感.
 == 排版软件
 #link("https://github.com/typst/typst")[typst]可以替代LaTeX.
 === 字体
