@@ -27,16 +27,21 @@ render_html() {
     local dir=$1
     mkdir -p "$dir"
     local template=$2
-    local files
-    files=$(print_files "$dir")
-    local dirs
-    dirs=$(print_dirs "$dir")
-
-    awk -v files="$(printf '%s\n' "$files")" -v dirs="$(printf '%s\n' "$dirs")" '{
+    local depth=$3
+    local files=$(print_files "$dir")
+    local dirs=$(print_dirs "$dir")
+    if [[ $depth -ne 0 ]]; then
+        local backwards="<nav><a href=../>Back</a></nav>"
+    else
+        local backwards=""
+    fi
+    awk -v files="$(printf '%s\n' "$files")" -v dirs="$(printf '%s\n' "$dirs")" -v backwards="$(printf '%s\n' "$backwards")" '{
         if ($0 ~ /{{files}}/) {
             print files;
         } else if ($0 ~ /{{dirs}}/) {
             print dirs;
+        } else if ($0 ~ /{{backwards}}/) {
+            print backwards;
         } else {
             print $0;
         }
@@ -44,9 +49,9 @@ render_html() {
 
     for subdir in "$dir"/*; do
         if [[ -d $subdir && $(basename "$subdir") != '.' && $(basename "$subdir") != '..' && $(basename "$subdir") != 'assets' ]]; then
-            render_html "$subdir" "$template"
+            render_html "$subdir" "$template" $((depth + 1))
         fi
     done
 }
 
-render_html "$pdf_path" "$template"
+render_html "$pdf_path" "$template" 0
