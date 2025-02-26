@@ -6,7 +6,7 @@ ROOT_DIR = $(shell pwd)
 
 .PHONY: site latex typ clean help remove print
 
-build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note_zh.typ $(ROOT_DIR)/note_en.typ
+build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note_zh.typ $(ROOT_DIR)/note_en.typ $(ROOT_DIR)/common.typ $(ROOT_DIR)/theorem_en.typ $(ROOT_DIR)/theorem_zh.typ $(ROOT_DIR)/physics.typ $(ROOT_DIR)/slide_zh.typ
 	@mkdir -p $(@D)
 	typst compile --root $(ROOT_DIR)  $(<D)/main.typ $@
 
