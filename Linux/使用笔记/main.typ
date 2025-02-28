@@ -228,14 +228,24 @@ Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 == 输入法
 #link("https://aur.archlinux.org/packages/fcitx5-pinyin-sougou-dict-git")[aur/fcitx5-pinyin-sougou-dict-git]提供了搜狗词库.
 == 邮件客户端
-`thunderbird`几乎开箱即用,不过一些高级用户会选择#link("https://neomutt.org/guide/index")[neomutt].
+`thunderbird`几乎开箱即用,不过一些高级用户会选择#link("https://neomutt.org/guide/index")[neomutt]/`mutt`,两者配置基本兼容.
 
-对于`neomutt`,可以使用#link("https://wiki.archlinux.org/title/OfflineIMAP")[offlineimap]以及#link("https://wiki.archlinux.org/title/Msmtp")[msmtp]
+对于`mutt`,既可以用自带的IMAP协议,也可以使用外部收取程序,如#link("https://wiki.archlinux.org/title/OfflineIMAP")[offlineimap]以及#link("https://wiki.archlinux.org/title/Msmtp")[msmtp].
 
 参考配置教程:
 - #link("https://fancyseeker.github.io/2015/08/19/mutt/")[Mutt: 阅读邮件列表 | FancySeeker]
 - #link("https://mirrors.tuna.tsinghua.edu.cn/tuna/tunight/2020-11-21-mutt/slides.pdf")[Mutt配置: 一种实践的部署方式]
 - #link("https://www.offlineimap.org/doc/conf_examples.html")[OfflineIMAP examples]
+== 桌面通知
+`libnotify`提供了以下命令:
+```sh
+notify-send -t 5000 "Your Title or App Name" "a message that will be displayed for 5000ms"
+```
+如果还想播放声音,可以使用`libpulse`提供的`paplay`:
+```sh
+paplay /usr/share/sounds/freedesktop/stereo/message.oga
+```
+注意音频由`sound-theme-freedesktop`提供.
 == RSS订阅
 如果熟悉`mutt`,对#link("https://wiki.archlinux.org/title/Newsboat")[newsboat]应当同样很有好感.
 == 排版软件
@@ -279,6 +289,8 @@ file '2.mp4'
 图形化剪辑软件#link("https://www.shotcut.org/")[shotcut]使用`qt6`,界面现代.
 == 远程文件系统
 #link("https://wiki.archlinux.org/title/SSHFS")[sshfs]可以通过`ssh`连接挂载远程文件系统.
+== 逆向
+Hash推荐我用`binaryninja-free`.
 = 包管理
 体验过`pacman`, `apt`, `emerge`,其中还是`pacman`的体验最好(毕竟是功能最简陋的).
 
@@ -294,7 +306,7 @@ pacman -Qtdq
 ```
 == AUR
 之前使用#link("https://github.com/Jguer/yay")[Juger/yay],现在我迁移到了#link("https://github.com/Morganamilo/paru")[Morganamilo/paru].
-== dkpg & apt
+== dpkg & apt
 解压`deb`包:
 ```sh
 ar x example_0.1.0-1_all.deb
@@ -380,6 +392,8 @@ docker image prune -a
 ssl_stapling on;
 ssl_stapling_verify on;
 ```
+=== caddy
+#link("https://github.com/mholt/caddy-webdav")[mholt/caddy-webdav]为`caddy`扩展了webdav模块.
 == 证书
 #link("https://github.com/acmesh-official/acme.sh")[acmesh-official/acme.sh]可以自动签发与更新证书.
 
