@@ -202,6 +202,10 @@ Arch Linux的#link("https://archlinux.org/packages/extra/x86_64/openbsd-netcat/"
 mktemp example.XXXXXXXX
 ```
 = 实用程序
+== 桌面环境
+`sway`就很好,之前用`hyprland`,发现#link("https://github.com/hyprwm/Hyprland/issues/8850")[依赖太重],于是切换到`sway`.
+
+此外之前也用过很久的`KDE`,同样因为太笨重而切换了平铺式桌面管理器.
 == 编辑器
 #link("https://github.com/helix-editor/helix")[helix-editor/helix]在绝大多数发行版都已经得到了支持,但是debian尚且没有打包.
 == 终端与Shell
@@ -236,6 +240,9 @@ Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 - #link("https://fancyseeker.github.io/2015/08/19/mutt/")[Mutt: 阅读邮件列表 | FancySeeker]
 - #link("https://mirrors.tuna.tsinghua.edu.cn/tuna/tunight/2020-11-21-mutt/slides.pdf")[Mutt配置: 一种实践的部署方式]
 - #link("https://www.offlineimap.org/doc/conf_examples.html")[OfflineIMAP examples]
+== tmux
+- 左右布局: `Ctrl B, %`
+- 向左切换布局: `Ctrl B, 方向左`
 == 桌面通知
 `libnotify`提供了以下命令:
 ```sh
