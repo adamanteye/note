@@ -207,6 +207,9 @@ pushq %rbp
 subq $8,%rsp
 movq %rbp,(%rsp)
 ```
+
+关于代码和数据的地址空间是否独立,以及哈佛架构,可以参考这些文章:
+- #link("https://pointersgonewild.com/2023/03/12/memory-pages-mmap-and-linear-address-spaces/")[Memory, Pages, mmap, and Linear Address Spaces]
 == Arithmetic and Logical Operations
 #figure(
   caption: [Integer arithmetic operations],

@@ -111,6 +111,9 @@ vim debian/control    # 以及其他文件
 rm -rf debian/patches # 以及其他用不到的文件
 debuild
 ```
+= 规范
+== 时间日期
+查看`strftime(3)`了解可用的格式化选项,例如`2025 03 05`对应`%Y %m %d`.
 = Shell技巧
 == readline 键位
 - `Ctrl A`跳到行首
@@ -326,6 +329,11 @@ dpkg-deb -c example_0.1.0-1_all.deb
 ```sh
 dpkg-deb -I example_0.1.0-1_all.deb
 ```
+= 守护程序
+== macOS
+macOS所使用的守护进程管理是`launchd`,管理系统级或用户级的守护程序.
+
+要编写`<LABEL>.plist`文件,参考#link("https://wiki.lazarus.freepascal.org/macOS_daemons_and_agents")[macOS daemons and agents].
 = 日志
 == systemd
 清除10天前的所有日志:

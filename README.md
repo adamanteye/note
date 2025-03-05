@@ -14,6 +14,10 @@
 - [adamanteye/cordle: 2023 年夏计算机程序设计基础（20740102）Wordle 大作业](https://github.com/adamanteye/cordle)
 - [adamanteye/dsa: 2023 年数据结构与算法](https://github.com/adamanteye/dsa)
 
+没填完的坑 (以后再写叭):
+
+- [adamanteye/csapp-lab: CS:APP Labs](https://github.com/adamanteye/csapp-lab)
+
 ## 编译要求
 
 - 软件包
