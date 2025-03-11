@@ -4,6 +4,24 @@
   author: "adamanteye",
 )
 #show: rest => columns(2, rest)
+= 发行版选择
+以下评述基于我或朋友们的看法,其中我只尝试过`Arch`, `Gentoo`, `Debian`三种发行版.
+== Arch
+兜兜转转最喜欢的发行版,因为`pacman`好用,软件包丰富,文档最完善,脚本`PKGBUILD`很好写, AUR对用户很友好.
+
+缺点是打包比较粗,这方面Debian, OpenSUSE或许算是打包细致的范例.
+== eweOS
+跟Arch的哲学很像,但是`musl`,现在还处于开发中.
+== Debian
+自己的服务器上都在跑Debian,因为它自由稳定,不喜欢Ubuntu正因为其是大公司的推广.
+== Gentoo
+拿来在服务器上跑也会比较合适,不过源码分发比较折磨人.
+
+`emerge`以及一众工具好细碎,另外好慢.
+== Fedora
+软件包更新甚至比Gentoo激进.
+== OpenSUSE
+被称为最适合`KDE`的发行版,大概都是德国人开发的吧.
 = 多用户管理
 == 登入用户信息
 `who`与`w`命令可以查询当前登入的用户,不过在gentoo prefix下运行不会查到任何用户:
@@ -423,6 +441,10 @@ ssl_stapling_verify on;
 ./acme.sh --install-cert -d 'adamanteye.cc' \
   --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
   --key-file /srv/cert/all.adamanteye.cc.key
+```
+== CPU信息
+```sh
+cat /proc/cpuinfo
 ```
 == 温度监控
 读取硬盘温度,使用`smartctl`:
