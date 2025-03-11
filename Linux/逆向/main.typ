@@ -15,7 +15,7 @@
 ```
 下断点:
 ```sh
-(lldb) breakpoint set --name pahse_2
+(lldb) breakpoint set --name phase_2
 ```
 步进:
 ```sh

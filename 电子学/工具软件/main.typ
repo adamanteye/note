@@ -8,4 +8,6 @@
 == 安装
 #link("https://aur.archlinux.org/packages/ltspice")[AUR (en) - ltspice]上提供了使用`wine`的版本.
 == 使用
+=== 常用快捷键
+/ 移动器件: `M`
 = KiCAD

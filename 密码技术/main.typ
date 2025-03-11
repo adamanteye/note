@@ -78,6 +78,7 @@ Secure Hash Algorithm-3在2012年被确定为Keccak算法.
 == 攻击
 / 弱碰撞: 知道散列值,寻找另一条消息
 / 强碰撞: 知道消息,寻找另一条散列值相同的消息
+/ 洪水攻击#footnote[#link("https://www.zhihu.com/question/286529973/answer/676290355")[什么是哈希洪水攻击]]: 提交一堆准备好的频繁碰撞的键,进行拒绝服务攻击.应对方法为带密钥哈希算法.
 = 消息认证码
 消息认证码(Message Authentication Code)承担以下功能:
 - 确认完整性

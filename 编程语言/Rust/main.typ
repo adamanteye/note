@@ -21,6 +21,9 @@
 - #link("https://github.com/tokio-rs/tokio")[tokio-rs/tokio: A runtime for writing reliable asynchronous applications with Rust. Provides I/O, networking, scheduling, timers, ...]
 支持并发读写的容器:
 - #link("https://github.com/xacrimon/dashmap")[xacrimon/dashmap: Blazing fast concurrent HashMap for Rust]
+== 并行
+多线程并行化:
+- #link("https://github.com/rayon-rs/rayon")[rayon-rs/rayon: Rayon: A data parallelism library for Rust]
 == 内存分配
 - #link("https://github.com/purpleprotocol/mimalloc_rust")[purpleprotocol/mimalloc_rust: A Rust wrapper over Microsoft's MiMalloc memory allocator]
 == 解析器

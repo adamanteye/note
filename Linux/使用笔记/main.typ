@@ -204,6 +204,12 @@ Arch Linux的#link("https://archlinux.org/packages/extra/x86_64/openbsd-netcat/"
 ```sh
 mktemp example.XXXXXXXX
 ```
+== 文本处理
+`grep`, `sed`, `awk`是最常使用的文本处理程序.
+
+```sh
+cat /usr/share/fortune/chinese | sed 's/\[[^m]*m//g' > chinese-without-color
+```
 = 实用程序
 == 桌面环境
 `sway`就很好,之前用`hyprland`,发现#link("https://github.com/hyprwm/Hyprland/issues/8850")[依赖太重],于是切换到`sway`.
@@ -333,7 +339,7 @@ dpkg-deb -I example_0.1.0-1_all.deb
 == macOS
 macOS所使用的守护进程管理是`launchd`,管理系统级或用户级的守护程序.
 
-要编写`<LABEL>.plist`文件,参考#link("https://wiki.lazarus.freepascal.org/macOS_daemons_and_agents")[macOS daemons and agents].
+要编写`<LABEL>.plist`文件,参考#link("https://wiki.lazarus.freepascal.org/macOS_daemons_and_agents")[macOS daemons and agents]以及#link("https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html")[Creating Launch Daemons and Agents].
 = 日志
 == systemd
 清除10天前的所有日志:
