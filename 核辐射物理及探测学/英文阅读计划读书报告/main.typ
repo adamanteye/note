@@ -187,7 +187,7 @@ Bremsstrahlung.
 
 ==== Backscatterd Gamma-Rays
 
-As discussed before, the energy of backscattered photon is: $ eval(h nu')_(theta=pi)=(h nu)/(1+2h nu\/ m_0c^2)\ $
+As discussed before, the energy of backscattered photon is: $ evaluated(h nu')_(theta=pi)=(h nu)/(1+2h nu\/ m_0c^2)\ $
 And in the limit of $h nu >> m_0c^2$, the energy reduces to $m_0c^2\/ 2$. The
 backscatter peak always occurs at 0.255 MeV or less.
 
