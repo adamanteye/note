@@ -10,6 +10,8 @@
 兜兜转转最喜欢的发行版,因为`pacman`好用,软件包丰富,文档最完善,脚本`PKGBUILD`很好写, AUR对用户很友好.
 
 缺点是打包比较粗,这方面Debian, OpenSUSE或许算是打包细致的范例.
+== Alpine
+目前只在`docker`中用过,听说Alpine Edge也可以被拿来当桌面发行版.
 == eweOS
 跟Arch的哲学很像,但是`musl`,现在还处于开发中.
 == Debian

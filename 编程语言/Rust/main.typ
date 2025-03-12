@@ -33,3 +33,5 @@
 - #link("https://github.com/zesterer/chumsky")[zesterer/chumsky: Write expressive, high-performance parsers with ease]
 == 网页服务器
 自己一直习惯用`axum`来着,虽然上手会费劲一点,但感觉逻辑还是很自洽的,其他著名的库还有`actix-web`, `poem`, `rocket`,前者开发不顺,后两者没有试过.
+
+此外,支持OpenAPI规范的`utoipa`也是简化文档编写的利器.
