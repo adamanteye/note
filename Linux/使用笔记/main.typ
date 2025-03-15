@@ -383,7 +383,7 @@ sudo ipmitool raw 0x30 0x30 0x02 0xff 0x14  # set fan speed to 20%
 ipmitool dcmi power reading
 ```
 == 文件系统
-配置zfs draid:
+=== ZFS dRAID
 ```sh
 zpool create -o ashift=12 oskar draid:2d \
 /dev/disk/by-id/ata-TOSHIBA_MQ02ABF100_Z6NUPPCRT \
@@ -391,13 +391,22 @@ zpool create -o ashift=12 oskar draid:2d \
 /dev/disk/by-id/scsi-35000cca02d7d78f8 \
 -f  # in case they are of different sizes
 ```
-draid是raidz(1-3)的封装,手册中给出的创建格式为:
+dRAID是raidz(1-3)的封装,手册中给出的创建格式为:
 ```
 draid[parity][:datad][:childrenc][:sparess]
+...
+In regards to I/O, performance is similar to raidz since, for any read, all D data disks must be accessed. Delivered random IOPS can be reasonably approximated as floor((N-S)/(D+P))*single_drive_IOPS.
+
+A dRAID with N disks of size X, D data disks per redundancy group, P parity level, and S distributed hot spares can hold approximately (N-S)*(D/(D+P))*X bytes and can withstand P devices failing without losing data.
 ```
-`children`是所有盘(包括热备盘)的数量,`parity`指定奇偶校验级别(1-3),默认为1.
+`children`是所有盘(包括热备盘)的数量, `parity`指定奇偶校验级别(1-3),默认为1.
 
 例如`draid2:7d:10c:1s`表示10个磁盘中设置1个热备盘,剩下9个磁盘为一个`group`,含有7个数据盘以及2个校验盘.这可以承受2个磁盘的损坏,并在第一个损坏发生时立刻投入1个热备盘进行恢复(所以实际上能承受3个磁盘损坏而不丢失数据).
+
+单个`group`相对于单块硬盘的吞吐量为:$ floor((c-s)/(d+p)) $
+其中$c$是`children`的数量.
+
+单个`group`相对于单块硬盘的存储量为:$ (d(c-s))/(d+p) $
 
 注意奇偶校验和热备实际上是分散在所有磁盘上的,这也是为什么不能创建后再修改热备盘的数量.
 
@@ -407,7 +416,8 @@ draid[parity][:datad][:childrenc][:sparess]
 - #link("https://farseerfc.me/zhs/file-size-histogram.html")[系统中的大多数文件有多大？ - Farseerfc的小窝]
 - #link("https://openzfs.github.io/openzfs-docs/man/master/7/zpoolconcepts.7.html")[zpoolconcepts.7 — OpenZFS documentation]
 - #link("https://forums.truenas.com/t/openzfs-draid-a-complete-guide/2440")[OpenZFS dRAID - A Complete Guide - Resources - TrueNAS Community Forums]
-== NFS
+=== Btrfs
+=== NFS
 参考:
 - #link("https://wiki.debian.org/NFSServerSetup")[NFSServerSetup - Debian Wiki]
 - #link("https://help.ubuntu.com/community/NFSv4Howto")[NFSv4Howto - Community Help Wiki]
