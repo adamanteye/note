@@ -7,9 +7,16 @@
 = 参考资料
 == 书籍
 - 模拟电子技术基础(第六版),童诗白,华成英原著,华成英主编
+- _Microelectronic Circuits, Sedra, Smith, 7th edition_
 == 在线资源
 - #link("https://wiki.analog.com/university/courses/electronics/text/electronics-toc")[Electronics I and II: [Analog Devices Wiki]]
 - 维基百科
+= 信号
+#thm("Norton")[
+  理想电压源和内阻串联而成的两端点的电路,可以等效为理想电流源与电阻并联的电路.
+
+  前者称为*Thevenin form*,常用于阻值较小的情况.后者称为*Norton form*,常用于阻值较大的情况.
+]
 = 半导体
 == 本征半导体
 常用的半导体材料有Si, Ge.
@@ -88,6 +95,29 @@ Schottky diode,是导通电压降较低,允许高速切换的二极管,利用了
 / 最高工作频率$f_M$: 上限截止频率,超过后因为结电容的作用,二极管将不再体现单向导电性
 = 集成运放
 集成放大电路最初多用于各种模拟信号的运算(如比例,求和,求差,积分,微分)上,因此被称为运算放大电路,简称集成运放.因为高性能低价位,在大多数情况下已经取代了分立元件放大电路.
+
+集成运放由输入级,中间级,输出极和偏置电路四部分组成.
+/ 输入级: 也称前置级,往往是双端输入的高性能差分放大电路.
+/ 中间级: 集成运放的主放大器
+/ 输出极: 应当具有输出电压线性范围宽,输出电阻小,非线性失真小等特点.集成运放的输出极多采用互补输出电路
+/ 偏置电路: 用来设置集成运放各级放大电路的静态工作点
+
+集成运放的输出电压$u_O$与输入电压$(u_P-u_N)$之间的关系曲线称为*电压传输特性*.
+
+在线性区时,有$ u_O=A_"od" (u_P-u_N) $
+称$A_"od"$为*差模开环放大倍数*.通常$A_"od"$可以达到几十万倍.
+
+/ 理想电压反馈运算放大器的特点:
+  - 无限输入阻抗
+  - 无限带宽
+  - 无限电压增益
+  - 输出只与差模信号有关
+  - 零输出阻抗
+  - 零功耗
+== 零点温度漂移
+在直接耦合放大电路中,由于前后级直接相连,前一级的漂移电压会和有用信号一起被送到下一级,而且逐级放大.
+
+采用高质量的稳压电源和使用经过老化试验的元件就可以大大减小因此而产生的漂移.
 = 行话
 == Rail to Rail
 由电源单元提供的电源线称为电源轨,从电源线的最大电压(VCC)到其最小电压(GND或最小负电压，VEE)的整个范围称为轨对轨#footnote[参见#link("https://toshiba.semicon-storage.com/us/semiconductor/knowledge/faq/linear_opamp/what-does-rail-to-rail-mean.html")[What does rail-to-rail mean (Rail-to-Rail Op amp) ? | Toshiba Electronic Devices & Storage Corporation]].
