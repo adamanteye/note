@@ -327,6 +327,12 @@ file '2.mp4'
 #link("https://wiki.archlinux.org/title/SSHFS")[sshfs]可以通过`ssh`连接挂载远程文件系统.
 == 逆向
 Hash推荐我用`binaryninja-free`.
+== 资源监控
+`ncdu`是采用`ncurses`界面的磁盘占用统计工具,比`du`命令更好用,带有彩色模式:
+```
+# /etc/ncdu.conf
+--color dark-bg
+```
 = 包管理
 体验过`pacman`, `apt`, `emerge`,其中还是`pacman`的体验最好(毕竟是功能最简陋的).
 
@@ -339,6 +345,14 @@ pacman -Qe
 列出所有悬垂包:
 ```sh
 pacman -Qtdq
+```
+更新文件数据库:
+```sh
+pacman -Fy
+```
+寻找包含指定文件名的包:
+```sh
+pacman -F tldr
 ```
 == AUR
 之前使用#link("https://github.com/Jguer/yay")[Juger/yay],现在我迁移到了#link("https://github.com/Morganamilo/paru")[Morganamilo/paru].
@@ -383,7 +397,8 @@ sudo ipmitool raw 0x30 0x30 0x02 0xff 0x14  # set fan speed to 20%
 ipmitool dcmi power reading
 ```
 == 文件系统
-=== ZFS dRAID
+=== ZFS
+`zpool history`可以查看操作历史,包括`zpool create`, `zpool add`等的记录.前提是`pool`还在,如果已经被`zpool destroy`了,相应的历史都会删除.
 ```sh
 zpool create -o ashift=12 oskar draid:2d \
 /dev/disk/by-id/ata-TOSHIBA_MQ02ABF100_Z6NUPPCRT \
@@ -404,13 +419,26 @@ A dRAID with N disks of size X, D data disks per redundancy group, P parity leve
 例如`draid2:7d:10c:1s`表示10个磁盘中设置1个热备盘,剩下9个磁盘为一个`group`,含有7个数据盘以及2个校验盘.这可以承受2个磁盘的损坏,并在第一个损坏发生时立刻投入1个热备盘进行恢复(所以实际上能承受3个磁盘损坏而不丢失数据).
 
 单个`group`相对于单块硬盘的吞吐量为:$ floor((c-s)/(d+p)) $
-其中$c$是`children`的数量.
+其中$c$是`children`的数量.注意这里是理论值,实际上还受内存缓存,是否开启压缩等因素影响.
 
 单个`group`相对于单块硬盘的存储量为:$ (d(c-s))/(d+p) $
 
 注意奇偶校验和热备实际上是分散在所有磁盘上的,这也是为什么不能创建后再修改热备盘的数量.
 
+为ZFS文件系统添加dataset:
+```sh
+sudo zfs create -o compression=zstd -o mountpoint=/home oskar/home
+```
+也可以改变挂载点
+```sh
+sudo zfs set mountpoint=/srv oskar/home
+```
 参考:
+- `zpoolconcepts(7)`
+- `zpool-create(8)`
+- `zfs-create(8)`
+- `zfsprops(7)`
+- #link("https://www.thomas-krenn.com/en/wiki/ZFS_dRAID_Basics_and_Configuration")[ZFS dRAID Basics and Configuration - Thomas-Krenn-Wiki-en]
 - #link("http://www.linvon.cn/posts/linux%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E6%B5%85%E8%B0%88/")[Linux文件大小浅谈]
 - #link("https://github.com/openzfs/zfs/discussions/14542")[What does the ZFS Metadata Special Device do? · openzfs/zfs · Discussion #14542]
 - #link("https://farseerfc.me/zhs/file-size-histogram.html")[系统中的大多数文件有多大？ - Farseerfc的小窝]
@@ -438,6 +466,11 @@ mount -t nfs4 -o proto=tcp,port=2049 heloise.adamanteye.cc:/oskar/elisabeth /srv
 或者写入`/etc/fstab`:
 ```
 heloise.adamanteye.cc:/oskar/elisabeth	/srv/	nfs4	_netdev,auto,defaults	0	0
+```
+=== 测试
+使用`fio`测试顺序读写,随机读写等情景下的性能:
+```sh
+fio -filename=/home/adamanteye/test -direct=1 -iodepth 1 -thread -rw=randrw -bs=4k -size=2G -numjobs=5 -runtime=10 -group_reporting -name=mytest | tee randrw.log
 ```
 == docker
 从含`Dockerfile`的路径构建镜像:
