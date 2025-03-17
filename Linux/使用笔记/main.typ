@@ -236,7 +236,7 @@ cat /usr/share/fortune/chinese | sed 's/\[[^m]*m//g' > chinese-without-color
 / `commit-msg`: 在提交信息编辑完成后,最终提交前执行. 可以验证或修改最终的提交信息.
 / `prepare-commit-msg`: 在生成提交信息后,打开编辑器前执行.在提交时增加额外信息.
 == 桌面环境
-`sway`就很好,之前用`hyprland`,发现#link("https://github.com/hyprwm/Hyprland/issues/8850")[依赖太重],于是切换到`sway`.
+之前用`hyprland`,发现#link("https://github.com/hyprwm/Hyprland/issues/8850")[依赖太重],于是切换到`niri`.此外`niri`的标签页交互很舒适.
 
 此外之前也用过很久的`KDE`,同样因为太笨重而切换了平铺式桌面管理器.
 == 编辑器
@@ -525,3 +525,7 @@ ssl_stapling_verify on;
   --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
   --key-file /srv/cert/all.adamanteye.cc.key
 ```
+=== 代理
+代理使用者会有相当多的特征,可以依次进行#link("https://proxy.incolumitas.com/proxy_detect.html")[探测]#footnote[参见#link("https://github.com/net4people/bbs/issues/445")[Avoiding Live `VPN/Proxy Detection` · Issue #445 · net4people/bbs]].
+=== Telegram Bot
+首先阅读#link("https://core.telegram.org/bots/tutorial")[From BotFather to 'Hello World'],这里讲解了机器人开发的基础知识.
