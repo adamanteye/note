@@ -231,6 +231,10 @@ mktemp example.XXXXXXXX
 cat /usr/share/fortune/chinese | sed 's/\[[^m]*m//g' > chinese-without-color
 ```
 = 实用程序
+== Git
+=== Hooks
+/ `commit-msg`: 在提交信息编辑完成后,最终提交前执行. 可以验证或修改最终的提交信息.
+/ `prepare-commit-msg`: 在生成提交信息后,打开编辑器前执行.在提交时增加额外信息.
 == 桌面环境
 `sway`就很好,之前用`hyprland`,发现#link("https://github.com/hyprwm/Hyprland/issues/8850")[依赖太重],于是切换到`sway`.
 
@@ -328,10 +332,42 @@ file '2.mp4'
 == 逆向
 Hash推荐我用`binaryninja-free`.
 == 资源监控
+=== 文件系统
 `ncdu`是采用`ncurses`界面的磁盘占用统计工具,比`du`命令更好用,带有彩色模式:
 ```
 # /etc/ncdu.conf
 --color dark-bg
+```
+
+使用`fio`测试顺序读写,随机读写等情景下的性能:
+```sh
+fio -filename=/home/adamanteye/test -direct=1 -iodepth 1 -thread -rw=randrw -bs=4k -size=2G -numjobs=5 -runtime=10 -group_reporting -name=mytest | tee randrw.log
+```
+=== CPU信息
+```sh
+cat /proc/cpuinfo
+```
+=== 温度监控
+读取硬盘温度,使用`smartctl`:
+```sh
+sudo smartctl --all /dev/sda
+```
+
+读取CPU温度,使用`lm-sensors`:
+```sh
+sudo sensors-detect  # 初次配置 lm-sensors
+sensors              # 按照配置读取温度
+```
+=== 风扇控制
+参考#link("https://gist.github.com/jhatler/855abc7fb8663bcc2c97fec77b10ea03")[jhatler/ipmi-fanctrl-dell_r630.sh]:
+
+```sh
+sudo ipmitool raw 0x30 0x30 0x01 0x00       # enable manual fan control
+sudo ipmitool raw 0x30 0x30 0x02 0xff 0x14  # set fan speed to 20%
+```
+=== 功率监控
+```sh
+ipmitool dcmi power reading
 ```
 = 包管理
 体验过`pacman`, `apt`, `emerge`,其中还是`pacman`的体验最好(毕竟是功能最简陋的).
@@ -385,17 +421,6 @@ sudo journalctl --vacuum-time 10d
 我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
 
 双路E5-2680处理器,2条32GB内存,外加4个2.5英寸硬盘在开机空载时的耗电量大约为161W.仅主板通电的功率为10W左右.
-=== 风扇控制
-参考#link("https://gist.github.com/jhatler/855abc7fb8663bcc2c97fec77b10ea03")[jhatler/ipmi-fanctrl-dell_r630.sh]:
-
-```sh
-sudo ipmitool raw 0x30 0x30 0x01 0x00       # enable manual fan control
-sudo ipmitool raw 0x30 0x30 0x02 0xff 0x14  # set fan speed to 20%
-```
-=== 功率监控
-```sh
-ipmitool dcmi power reading
-```
 == 文件系统
 === ZFS
 `zpool history`可以查看操作历史,包括`zpool create`, `zpool add`等的记录.前提是`pool`还在,如果已经被`zpool destroy`了,相应的历史都会删除.
@@ -467,11 +492,6 @@ mount -t nfs4 -o proto=tcp,port=2049 heloise.adamanteye.cc:/oskar/elisabeth /srv
 ```
 heloise.adamanteye.cc:/oskar/elisabeth	/srv/	nfs4	_netdev,auto,defaults	0	0
 ```
-=== 测试
-使用`fio`测试顺序读写,随机读写等情景下的性能:
-```sh
-fio -filename=/home/adamanteye/test -direct=1 -iodepth 1 -thread -rw=randrw -bs=4k -size=2G -numjobs=5 -runtime=10 -group_reporting -name=mytest | tee randrw.log
-```
 == docker
 从含`Dockerfile`的路径构建镜像:
 ```sh
@@ -494,7 +514,7 @@ ssl_stapling_verify on;
 ```
 === caddy
 #link("https://github.com/mholt/caddy-webdav")[mholt/caddy-webdav]为`caddy`扩展了webdav模块.
-== 压力测试
+=== 压力测试
 用#link("https://github.com/hatoo/oha")[hatoo/oha: Ohayou(おはよう)]产生HTTP流量.
 == 证书
 #link("https://github.com/acmesh-official/acme.sh")[acmesh-official/acme.sh]可以自动签发与更新证书.
@@ -504,19 +524,4 @@ ssl_stapling_verify on;
 ./acme.sh --install-cert -d 'adamanteye.cc' \
   --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
   --key-file /srv/cert/all.adamanteye.cc.key
-```
-== CPU信息
-```sh
-cat /proc/cpuinfo
-```
-== 温度监控
-读取硬盘温度,使用`smartctl`:
-```sh
-sudo smartctl --all /dev/sda
-```
-
-读取CPU温度,使用`lm-sensors`:
-```sh
-sudo sensors-detect  # 初次配置 lm-sensors
-sensors              # 按照配置读取温度
 ```
