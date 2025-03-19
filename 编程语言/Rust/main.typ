@@ -5,7 +5,12 @@
 )
 #show: rest => columns(2, rest)
 = 文档及参考
+== 手册
 - #link("https://cheats.rs/")[Rust单页手册]
+== 代码规范
+- #link("https://rust-lang.github.io/api-guidelines/")[Rust API Guidelines]
+== 性能
+- #link("https://nnethercote.github.io/perf-book/")[The Rust Performance Book]
 = 调试技巧
 #link("https://doc.rust-lang.org/std/macro.dbg.html")[dbg!]宏用于打印到`stderr`.
 可以在`cargo test`下使用,也可以调试release构建下出现的问题.
