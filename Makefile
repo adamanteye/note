@@ -11,11 +11,11 @@ ROOT_DIR = $(shell pwd)
 
 build/%.ref: %/main.typ %/
 	@mkdir -p $(@D)
-	@git log -1 --format="%ci %H" -- "$*" > $@
+	@git log -1 --format="%ci %H" -- $* > $@
 
 build/%.ref: %/main.tex %/
 	@mkdir -p $(@D)
-	@git log -1 --format="%ci %H" -- "$*" > $@
+	@git log -1 --format="%ci %H" -- $* > $@
 
 build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note_zh.typ $(ROOT_DIR)/note_en.typ $(ROOT_DIR)/common.typ $(ROOT_DIR)/theorem_en.typ $(ROOT_DIR)/theorem_zh.typ $(ROOT_DIR)/physics.typ $(ROOT_DIR)/slide_zh.typ
 	@mkdir -p $(@D)
