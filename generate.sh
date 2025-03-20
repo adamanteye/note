@@ -4,7 +4,7 @@ pdf_path=$1
 template=$2
 
 print_files() {
-    find "$1" -maxdepth 1 -type f -name "*.pdf" -exec sh -c '
+    find "$1" -maxdepth 1 -type f -name "*.pdf" -exec bash -c '
         for file; do
             repo="https://github.com/adamanteye/note"
             name=$(basename "$file")
@@ -14,7 +14,7 @@ print_files() {
             rm -f "$f"
             stat --format="<tr><td><a href=\"$name\" target=\"_blank\">$name</a></td><td>$size</td><td><a href=\"$repo/commit/$sha1\" target=\"_blank\">$date $time $zone</a></td></tr>" "$file"
         done
-    ' sh {} +
+    ' bash {} +
 }
 
 print_dirs() {
