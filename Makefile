@@ -1,10 +1,21 @@
 TEX_DIRS = $(shell find . -type f -name "main.tex" -exec dirname {} \;)
 TYP_DIRS = $(shell find . -type f -name "main.typ" -exec dirname {} \;)
 TEX_BUILDS = $(foreach dir,$(TEX_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
+TEX_REFS = $(foreach dir,$(TEX_DIRS),build/$(patsubst ./%,%,$(dir)).ref)
 TYP_BUILDS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
+TYP_REFS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).ref)
+
 ROOT_DIR = $(shell pwd)
 
-.PHONY: site latex typ clean help remove print
+.PHONY: site latex tex typ clean help remove print
+
+build/%.ref: %/main.typ %/
+	@mkdir -p $(@D)
+	@git log -1 --format="%ci %H" -- "$*" > $@
+
+build/%.ref: %/main.tex %/
+	@mkdir -p $(@D)
+	@git log -1 --format="%ci %H" -- "$*" > $@
 
 build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note_zh.typ $(ROOT_DIR)/note_en.typ $(ROOT_DIR)/common.typ $(ROOT_DIR)/theorem_en.typ $(ROOT_DIR)/theorem_zh.typ $(ROOT_DIR)/physics.typ $(ROOT_DIR)/slide_zh.typ
 	@mkdir -p $(@D)
@@ -24,9 +35,11 @@ build/assets/: assets/
 
 latex: $(TEX_BUILDS)
 
-typ: $(TYP_BUILDS)
+tex: $(TEX_REFS)
 
-build/index.html: typ build/assets/ generate.sh index-template.html
+typ: $(TYP_BUILDS) $(TYP_REFS)
+
+build/index.html: tex typ build/assets/ generate.sh index-template.html
 	@mkdir -p $(@D)
 	cd $(@D) && ../generate.sh . ../index-template.html
 

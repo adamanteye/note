@@ -6,9 +6,13 @@ template=$2
 print_files() {
     find "$1" -maxdepth 1 -type f -name "*.pdf" -exec sh -c '
         for file; do
+            repo="https://github.com/adamanteye/note"
             name=$(basename "$file")
             size=$(du -sk "$file" | awk "{print \$1}")
-            stat --format="<tr><td><a href=\"$name\" target=\"_blank\">$name</a></td><td>$size</td><td>%y</td></tr>" "$file"
+            f="${file%.*}.ref"
+            read date time zone sha1 <<< $(cat "$f")
+            rm -f "$f"
+            stat --format="<tr><td><a href=\"$name\" target=\"_blank\">$name</a></td><td>$size</td><td><a href=\"$repo/commit/$sha1\" target=\"_blank\">$date $time $zone</a></td></tr>" "$file"
         done
     ' sh {} +
 }
@@ -18,7 +22,7 @@ print_dirs() {
         for dir; do
             name=$(basename "$dir")
             size=$(du -sk "$dir" | awk "{print \$1}")
-            stat --format="<tr><td><a href=\"$name/\">$name</a></td><td>$size</td><td>%y</td></tr>" "$dir"
+            stat --format="<tr><td><a href=\"$name/\">$name</a></td><td>$size</td></tr>" "$dir"
         done
     ' sh {} +
 }

@@ -4,9 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" crossorigin href="https://static.zeoseven.com/zsft/442/main/result.css"
+    onload="this.rel='stylesheet'" onerror="this.href='https://static-host.zeoseven.com/zsft/442/main/result.css'" />
+  <noscript>
+    <link rel="stylesheet" href="https://static.zeoseven.com/zsft/442/main/result.css" />
+  </noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <title>Adamanteye's Note</title>
   <style>
@@ -18,11 +20,12 @@
       --text-color: #4c4f69;
       --mauve-color: #8839ef;
       --background-color: #fffefa;
-      --font-family: "LXGW WenKai TC";
+      --font-family: "Maple Mono NF CN";
     }
 
     body {
       font-family: var(--font-family);
+      font-weight: normal;
       background-color: var(--background-color);
       color: var(--text-color);
     }
@@ -174,7 +177,6 @@
         <tr>
           <th scope="col">Directories</th>
           <th scope="col">Size [KiB]</th>
-          <th scope="col">Last Built</th>
         </tr>
       </thead>
       <tbody>
@@ -186,7 +188,7 @@
         <tr>
           <th scope="col">Files</th>
           <th scope="col">Size [KiB]</th>
-          <th scope="col">Last Built</th>
+          <th scope="col">Last Modified</th>
         </tr>
       </thead>
       <tbody>
