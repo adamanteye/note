@@ -10,9 +10,14 @@
   设$G$是一些元素的集合,记为$G={dots,g,dots}$,如果$G$中定义的二元运算$a*b$满足下面条件:
   + 封闭性: $forall a,b in G,a*b in G$
   + 结合律: $forall a,b,c in G,(a*b)*c=a*(b*c)$
-  + 唯一单位元: 存在唯一的$e$,使得$forall f in G,e*f=f*e=f$
+  + 单位元: 存在$e$,使得$forall f in G,e*f=f*e=f$
   + 逆元存在: $forall f in G,exists f^(-1) in G,f^(-1)*f=f*f^(-1)=e$
   那么称$G$是一个群.
+]
+#coll[
+  对于群$G$有:
+  - 单位元是唯一的
+  - $forall a in G$,逆元$a^(-1)$是唯一的
 ]
 #exmp("空间反演群")[
   定义$E$作用在三维欧氏空间的向量$va(r)$上得到$va(r)$.
@@ -29,6 +34,7 @@
   群的阶有限时,称为*有限群*.反之称为*无限群*.
 ]
 #def("Abel群")[当群的二元运算可以交换时,称为Abel群.]
+#exmp([整数模$n$加法群])[记为$(ZZ_n,+)$]
 #thm("重排定理")[
   对$forall u in G$,当$g_alpha$取遍$G$中所有元素时,有$u*g_alpha$不重复地给出$G$中所有元素.
 ]

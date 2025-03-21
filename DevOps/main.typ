@@ -12,3 +12,5 @@
   with:
     fetch-depth: 0
 ```
+== 参考
+- #link("https://www.feldera.com/blog/the-pain-that-is-github-actions")[The Pain That is Github Actions]
