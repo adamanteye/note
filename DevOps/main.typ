@@ -12,5 +12,22 @@
   with:
     fetch-depth: 0
 ```
+== 自托管运行器
+`~/.config/systemd/user/github-actions-runner.service`配置例子:
+```
+[Unit]
+Description=GitHub Actions Runner Service
+After=network-online.target
+
+[Service]
+ExecStart=%h/actions-runner/run.sh
+WorkingDirectory=%h/actions-runner
+Restart=on-failure
+RestartSec=5
+Environment="PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin"
+
+[Install]
+WantedBy=default.target
+```
 == 参考
 - #link("https://www.feldera.com/blog/the-pain-that-is-github-actions")[The Pain That is Github Actions]
