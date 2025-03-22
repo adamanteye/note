@@ -44,6 +44,15 @@ adamanteye tty1         2025-01-25 20:34
 = 网络管理
 == 地址与路由
 访问#link("https://4.ipw.cn")[4.ipw.cn]与#link("https://6.ipw.cn")[6.ipw.cn]可以看到出口IP地址.
+
+快速`ping`所有主机:
+```sh
+nmap -sn 192.168.1.0/24
+```
+或者
+```sh
+for i in {1..254}; do sudo ping -c 1 -W 1 192.168.1.$i | grep "bytes from" && echo "192.168.1.$i is alive"; done
+```
 == 端口
 `ss`命令由`iproute2`提供,功能与`netstat`类似,但信息更全.
 == interfaces
