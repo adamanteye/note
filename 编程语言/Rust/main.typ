@@ -37,6 +37,9 @@
 == 解析器
 - #link("https://lib.rs/crates/nom")[Nom — Parser]
 - #link("https://github.com/zesterer/chumsky")[zesterer/chumsky: Write expressive, high-performance parsers with ease]
+=== chumsky
+- `choice`是有优先级的,应当先写需要贪心解析的
+- `to_slice`会把整个解析器的输入范围都捕获为原始字符串,所以应该放在可能有的`then_ignore`之前
 == 网页服务器
 自己一直习惯用`axum`来着,虽然上手会费劲一点,但感觉逻辑还是很自洽的,其他著名的库还有`actix-web`, `poem`, `rocket`,前者开发不顺,后两者没有试过.
 

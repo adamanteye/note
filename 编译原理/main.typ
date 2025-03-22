@@ -1,6 +1,6 @@
-#import "../note_zh.typ": *
+#import "../note_en.typ": *
 #show: conf.with(
-  title: "编译原理笔记",
+  title: "Notes on Compilers",
   author: "adamanteye",
 )
 #show: rest => columns(2, rest)
