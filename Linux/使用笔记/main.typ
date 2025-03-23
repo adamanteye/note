@@ -311,6 +311,8 @@ OpenType字体有一系列feature可以启用,参考#link("https://typst.app/doc
 === 配色
 - #link("https://catppuccin.com/palette")[猫布奇诺调色盘]
 - #link("https://oklch.com/")[OKLCH Color Picker & Converter]
+=== 排版原则
+- #link("https://practicaltypography.com/")[Butterick’s Practical Typography]
 == 配置管理
 GNU `stow`利用软链接集中地管理配置文件,可以配合`git`进行版本控制和备份.
 
@@ -425,6 +427,13 @@ macOS所使用的守护进程管理是`launchd`,管理系统级或用户级的�
 ```sh
 sudo journalctl --vacuum-time 10d
 ```
+
+输出特定服务的日志:
+```sh
+sudo journalctl --unit github-actions-runner
+```
+
+注意希望使用如果非`sudo`身份查看日志,需要在`systemd-journal`用户组当中.
 = 服务器
 == Dell Power Edge R630
 我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
