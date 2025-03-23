@@ -57,7 +57,11 @@ remove:
 			rm -f "$$pdf"; \
 		fi \
 	done
-	-@find build/ -type d -empty -exec rmdir {} \;
+	-@find build/ -type d | while read -r dir; do \
+		if [ -z "$$(find "$$dir" -mindepth 1 ! -name 'index.html' 2>/dev/null)" ]; then \
+			rm -rf "$$dir"; \
+		fi \
+	done
 
 clean: $(TEX_DIRS)
 	@for tex in $(TEX_DIRS); do \
