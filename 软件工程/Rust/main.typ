@@ -9,6 +9,8 @@
 - #link("https://cheats.rs/")[Rust单页手册]
 == 代码规范
 - #link("https://rust-lang.github.io/api-guidelines/")[Rust API Guidelines]
+=== 命名
+`crate`的命名应当为`snake_case`,更多讨论参考#link("https://github.com/rust-lang/api-guidelines/discussions/29")[Naming convention for crates · rust-lang/api-guidelines · Discussion #29]
 == 性能
 - #link("https://nnethercote.github.io/perf-book/")[The Rust Performance Book]
 = 调试技巧
