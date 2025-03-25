@@ -338,6 +338,8 @@ file '2.mp4'
 ```
 
 图形化剪辑软件#link("https://www.shotcut.org/")[shotcut]使用`qt6`,界面现代.
+== PDF
+`poppler`包提供了`pdfseparate`以及`pdfunite`两个包,可拆分合并指定页范围的PDF文件.
 == 远程文件系统
 #link("https://wiki.archlinux.org/title/SSHFS")[sshfs]可以通过`ssh`连接挂载远程文件系统.
 == 逆向
@@ -547,3 +549,5 @@ ssl_stapling_verify on;
 代理使用者会有相当多的特征,可以依次进行#link("https://proxy.incolumitas.com/proxy_detect.html")[探测]#footnote[参见#link("https://github.com/net4people/bbs/issues/445")[Avoiding Live `VPN/Proxy Detection` · Issue #445 · net4people/bbs]].
 === Telegram Bot
 首先阅读#link("https://core.telegram.org/bots/tutorial")[From BotFather to 'Hello World'],这里讲解了机器人开发的基础知识.
+= 内核
+== dkms
