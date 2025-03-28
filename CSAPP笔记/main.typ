@@ -254,7 +254,7 @@ movq %rbp,(%rsp)
     table.hline()
   ),
 )
-#smcp[cmp]与#smcp[test]只会操作四个标志,不修改操作数.
+#smcp[cmp]与#smcp[test]只会操作4个标志,不修改操作数.
 
 #smcp[test]常用于测试单个寄存器是否满足某条件,例如:
 ```asm
@@ -273,5 +273,23 @@ testq %rax,%rax
     table.hline(),
   ),
 )
+== Procedures
+=== The Run-Time Stack
+如果要在栈上分配或释放空间:
+```asm
+subq $16, %rsp
+addq $16, %rsp
+```
+=== Data Transfer
+x86-64中,最多有6个寄存器可以传参.如果函数有多于6个参数,剩余的将通过栈传参.
+
+为了调用函数所做的准备是,首先将参数拷贝到寄存器中,推入最后一个参数,重复进行直推入第7个参数(如果有多于6个参数).推入返回地址.
+
+栈中的变量按照8字节对齐.
+=== Local Storage on the Stack
+一般局部变量会尽可能地分配在寄存器上,但在下面三种情况下需要分配在栈上:
+- 局部变量的地址要被使用,例如传递给其他要调用的函数
+- 寄存器不够用
+- 需要通过指针访问的数组,结构体等
 = 附录
 北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.
