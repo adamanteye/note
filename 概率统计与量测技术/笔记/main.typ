@@ -22,7 +22,7 @@
 ]
 #thm()[
   Let $cal(O)$ be one of the 8 set operations, let ${cal(C)_t,t in T}$ be an indexed family of subsets such that for each $t$, $cal(C)_t$ is closed under $cal(O)$. Then
-  $ cal(C)=sect_(t in T) "is closed under" cal(O) $
+  $ cal(C)=inter_(t in T) "is closed under" cal(O) $
 ]
 #coll()[
   The intersection of a $sigma$ fields is a $sigma$ field.

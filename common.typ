@@ -1,6 +1,6 @@
 #import "physics.typ": *
 #import "@preview/cetz:0.3.4"
-#import "@preview/codly:1.2.0": *
+#import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.8": *
 #let red = rgb("#8c0000")
 #let maroon = rgb("#e64553")
