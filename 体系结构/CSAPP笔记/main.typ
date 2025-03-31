@@ -260,6 +260,7 @@ movq %rbp,(%rsp)
 ```asm
 testq %rax,%rax
 ```
+=== Accessing the Condition Codes
 #figure(
   caption: [The #smcp[set] instructions],
   table(
@@ -270,16 +271,51 @@ testq %rax,%rax
     table.hline(),
     [`sets D`], [], [`D <- SF`], [Negative],
     [`setns D`], [], [`D <- ~SF`], [Nonnegative],
-    [`setg D`], [], [`D <- ~(SF^OF)&~ZF`], [Greater (Signed)],
-    [`setge D`], [], [`D <- ~(SF^OF)`], [Greater or Equal (Signed)],
-    [`setl D`], [], [`D <- SF^OF`], [Less (Signed)],
-    [`setle D`], [], [`D <- (SF^OF)|ZF`], [Less or Equal (Signed)],
-    [`seta D`], [], [`D <- ~CF&~ZF`], [Above (Unsigned)],
-    [`setb D`], [], [`D <- CF`], [Below (Unsigned)],
+    table.hline(),
+    [`setg D`], [`setnle`], [`D <- ~(SF^OF)&~ZF`], [Greater (Signed)],
+    [`setge D`], [`setnl`], [`D <- ~(SF^OF)`], [Greater or Equal (Signed)],
+    table.hline(),
+    [`setl D`], [`setnge`], [`D <- SF^OF`], [Less (Signed)],
+    [`setle D`], [`setng`], [`D <- (SF^OF)|ZF`], [Less or Equal (Signed)],
+    table.hline(),
+    [`seta D`], [`setnbe`], [`D <- ~CF&~ZF`], [Above (Unsigned)],
+    [`setae D`], [`setnb`], [`D <- ~CF`], [Above or equal (Unsigned)],
+    table.hline(),
+    [`setb D`], [`setnae`], [`D <- CF`], [Below (Unsigned)],
+    [`setbe D`], [`setna`], [`D <- CF|ZF`], [Below or equal (Unsigned)],
     table.hline(),
   ),
 )
 注意#smcp[set]操作1字节大小的寄存器或内存.
+=== Jump Instructions
+#figure(
+  caption: [The #smcp[jump] instructions],
+  table(
+    columns: 4, table.hline(),
+    table.header([Instr], [Synonym], [Jump condition], [Description]), table.hline(),
+    [`jmp Label`], [], [`1`], [Direct jump],
+    [`jmp *Operand`], [], [`1`], [Indirect jump],
+    table.hline(),
+    [`je Label`], [`jz`], [`ZF`], [Equal or zero],
+    [`jne Label`], [`jnz`], [`~SF`], [Not equal or not zero],
+    table.hline(),
+    [`js Label`], [], [`SF`], [Negative],
+    [`jns Label`], [], [`~SF`], [Nonnegative],
+    table.hline(),
+    [`jg Label`], [`jnle`], [`~(SF^OF)&~ZF`], [Greater (Signed)],
+    [`jge Label`], [`jnl`], [`~(SF^OF)`], [Greater or equal (Signed)],
+    table.hline(),
+    [`jl Label`], [`jnge`], [`SF^OF`], [Less (Signed)],
+    [`jle Label`], [`jng`], [`(SF^OF)|ZF`], [Less or Equal (Signed)],
+    table.hline(),
+    [`ja Label`], [`jnbe`], [`~CF&~ZF`], [Above (Unsigned)],
+    [`jae Label`], [`jnb`], [`~CF`], [Above or equal (Unsigned)],
+    table.hline(),
+    [`jb Label`], [`jnae`], [`CF`], [Below (Unsigned)],
+    [`jbe Label`], [`jna`], [`CF|ZF`], [Below or equal (Unsigned)],
+    table.hline(),
+  ),
+)
 == Procedures
 === The Run-Time Stack
 如果要在栈上分配或释放空间:
@@ -287,12 +323,15 @@ testq %rax,%rax
 subq $16, %rsp
 addq $16, %rsp
 ```
+注意x86-64约定,进入函数后,`%rsp`应该对齐到16字节.而#smcp[call]指令会将8字节的返回地址压栈,所以调用#smcp[call]之前,应该保证`%rsp`模16余8.
+
+如果不会调用其他函数,那么恢复`%rsp`即可,没有其他限制.
 === Data Transfer
 x86-64中,最多有6个寄存器可以传参.如果函数有多于6个参数,剩余的将通过栈传参.
 
 为了调用函数所做的准备是,首先将参数拷贝到寄存器中,推入最后一个参数,重复进行直推入第7个参数(如果有多于6个参数).推入返回地址.
 
-栈中的变量按照8字节对齐.
+以上调用约定等是ABI(Application Binary Interface)规范的一部分,不同的平台(Linux, Windows)以及不同的架构都有自己的ABI规范.
 === Local Storage on the Stack
 一般局部变量会尽可能地分配在寄存器上,但在下面三种情况下需要分配在栈上:
 - 局部变量的地址要被使用,例如传递给其他要调用的函数

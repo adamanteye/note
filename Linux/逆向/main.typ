@@ -25,3 +25,5 @@
 ```sh
 (lldb) q
 ```
+= Binary Ninja
+注意默认以简化Intel格式显示x86-64汇编,可改为AT&T格式.
