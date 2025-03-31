@@ -1,4 +1,4 @@
-#import "../note_zh.typ": *
+#import "../../note_zh.typ": *
 #show: conf.with(
   title: "DevOps笔记",
   author: "adamanteye",
