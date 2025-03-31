@@ -1,4 +1,4 @@
-#import "../note_zh.typ": *
+#import "../../note_zh.typ": *
 #show: conf.with(
   title: "CSAPP 笔记",
   author: "adamanteye",
@@ -270,9 +270,16 @@ testq %rax,%rax
     table.hline(),
     [`sets D`], [], [`D <- SF`], [Negative],
     [`setns D`], [], [`D <- ~SF`], [Nonnegative],
+    [`setg D`], [], [`D <- ~(SF^OF)&~ZF`], [Greater (Signed)],
+    [`setge D`], [], [`D <- ~(SF^OF)`], [Greater or Equal (Signed)],
+    [`setl D`], [], [`D <- SF^OF`], [Less (Signed)],
+    [`setle D`], [], [`D <- (SF^OF)|ZF`], [Less or Equal (Signed)],
+    [`seta D`], [], [`D <- ~CF&~ZF`], [Above (Unsigned)],
+    [`setb D`], [], [`D <- CF`], [Below (Unsigned)],
     table.hline(),
   ),
 )
+注意#smcp[set]操作1字节大小的寄存器或内存.
 == Procedures
 === The Run-Time Stack
 如果要在栈上分配或释放空间:
