@@ -47,3 +47,6 @@
 自己一直习惯用`axum`来着,虽然上手会费劲一点,但感觉逻辑还是很自洽的,其他著名的库还有`actix-web`, `poem`, `rocket`,前者开发不顺,后两者没有试过.
 
 此外,支持OpenAPI规范的`utoipa`也是简化文档编写的利器.
+
+关于后端服务性能调优,可以参考:
+- #link("https://sander.saares.eu/2025/03/31/structural-changes-for-48-throughput-in-a-rust-web-service/")[Structural changes for +48-89% throughput in a Rust web service – Sander Saares]

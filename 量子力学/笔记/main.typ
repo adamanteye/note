@@ -127,7 +127,8 @@ $ integral_0^(+infinity)r^n e^(-r\/a)dd(r)=n! a^(n+1) $
 #pst[$braket(alpha, beta)=braket(beta, alpha)^*$]
 #pst("positive definite metric")[$braket(alpha)>=0$]
 = 算符
-参考格里菲斯@griffiths_introduction_2005 以及樱井纯@sakurai_modern_2020.== 基本假设
+参考格里菲斯@griffiths_introduction_2005 以及樱井纯@sakurai_modern_2020.
+== 基本假设
 #def("伴随算符")[$A$的伴随算符#footnote[这里为了书写简便,算符均省略hat,注意区分算符,可观测量以及算符的矩阵表示]定义为$A^dagger$,有 $ A ket(psi)=bra(psi) A^dagger $]
 #def("厄米算符")[称$A$为厄米算符当且仅当 $ A=A^dagger <==> braket(psi, A, phi)=(braket(phi, A, psi))^* \ "for arbitray" psi,phi $]
 #def("投影算符")[对某表象中的基矢$ket(k)$,称$P_k$为投影算符,作用在任意$ket(psi)$上可得到$ket(psi)$在$ket(k)$方向上的部分$ P_k=ket(k)bra(k) $]
