@@ -82,12 +82,14 @@ server=2001:de4::101
 [main]
 dns=dnsmasq
 ```
-== rfkill
+== 设备管理
 `rfkill`可以启用/禁用WIFI,蓝牙在内的无线设备.例如:
 ```sh
 rfkill # list wireless devices
 rfkill unblock bluetooth
 ```
+== 网络测绘
+参考#link("https://aajax.top/2025/04/27/ToMapNetwork/")[进行网络测绘的方法与挑战 | Ajax's Blog].
 = 启动引导
 == GRUB
 从grub命令行中引导系统.

@@ -1,7 +1,7 @@
 #import "../../note_zh.typ": *
 #show: conf.with(
   title: "为什么关系型数据库不可替代",
-  author: "杨哲涵",
+  author: "adamanteye",
 )
 #show: rest => columns(2, rest)
 

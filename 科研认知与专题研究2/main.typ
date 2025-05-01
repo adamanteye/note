@@ -1,7 +1,7 @@
 #import "../note_zh.typ": *
 #show: conf.with()
 #let title = [科研认知与专题研究(2)课程报告]
-#let author = "杨哲涵"
+#let author = "adamanteye"
 #h(10em)
 #align(
   center,

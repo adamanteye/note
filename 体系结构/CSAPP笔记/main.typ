@@ -338,6 +338,9 @@ x86-64中,最多有6个寄存器可以传参.如果函数有多于6个参数,剩
 - 寄存器不够用
 - 需要通过指针访问的数组,结构体等
 === Local Storage in Registers
-寄存器`%rbx`, `%rbp`以及`%r12`至`%r15`都是被调用者保存(callee-saved).其他除了`%rsp`的寄存器都是调用者保存.
+寄存器`%rbx`, `%rbp`以及`%r12`至`%r15`都是被调用者保存(callee-saved).其他除了`%rsp`的寄存器都是调用者保存(caller-saved).
+== Array Allocation and Access
+
+== Floting-Point Code
 = 附录
 北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.

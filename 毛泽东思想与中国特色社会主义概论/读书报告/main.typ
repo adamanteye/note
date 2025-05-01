@@ -7,7 +7,7 @@
 #set heading(numbering: "1.")
 #let title = [期末读书报告：《邓小平时代》]
 #let subtitle = [邓小平以及改革中的中国]
-#let author = [工物22 杨哲涵]
+#let author = [adamanteye]
 #show link: it => underline(text(fill: rgb("#8c0000"), it))
 #set page(
   "a4",

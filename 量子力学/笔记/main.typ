@@ -1,7 +1,7 @@
 #import "../../note_zh.typ": *
 #show: conf.with(
   title: "量子力学笔记",
-  author: "杨哲涵",
+  author: "adamanteye",
   numbered-equation: true,
 )
 #figure(
