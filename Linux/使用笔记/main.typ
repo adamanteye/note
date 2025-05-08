@@ -239,7 +239,8 @@ mktemp example.XXXXXXXX
 `grep`, `sed`, `awk`是最常使用的文本处理程序.
 
 ```sh
-cat /usr/share/fortune/chinese | sed 's/\x1B\[[0-9;]*[a-zA-Z]//g' > chinese-without-color
+cat /usr/share/fortune/chinese | sed 's/\x1B\[[0-9:;<=>?]*[!-/\x20]*[@-~]//g' > chinese-without-color
+# 删去所有 ANSI CSI
 ```
 = 实用程序
 == Git
