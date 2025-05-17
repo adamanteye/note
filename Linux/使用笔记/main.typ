@@ -142,6 +142,8 @@ vim debian/control    # 以及其他文件
 rm -rf debian/patches # 以及其他用不到的文件
 debuild
 ```
+== 证书
+在Arch的打包中,需要为`license`变量指定对应的SPDX标识符#footnote[#link("https://spdx.org/licenses/")[SPDX License List | Software Package Data Exchange (SPDX)]],常见许可证的文本存储于`/usr/share/licenses/spdx/`.
 = 规范
 == 时间日期
 查看`strftime(3)`了解可用的格式化选项,例如`2025 03 05`对应`%Y %m %d`.

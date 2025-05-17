@@ -4,6 +4,10 @@
   author: "adamanteye",
 )
 #show: rest => columns(2, rest)
+= Cloudflare Workers
+== Wrangler
+更新wrangler版本时注意查看
+#link("https://developers.cloudflare.com/workers/configuration/compatibility-flags/")[Compatibility flags]以了解是否出现兼容性问题.
 = GitHub Actions
 == 代码检出
 默认的检出方式是浅克隆,即只包含最新提交,如果需要根据提交历史生成修改变更等,应当禁用浅克隆:
