@@ -25,6 +25,28 @@
 == OpenSUSE
 被称为最适合`KDE`的发行版,大概都是德国人开发的吧.
 = 多用户管理
+== SSH
+#link("https://github.com/jbeverly/pam_ssh_agent_auth")[pam_ssh_agent_auth]允许登入的用户通过ssh-agent获得权限,在服务器上的配置参考`pam_ssh_agent_auth(8)`.
+例如:
+```
+# /etc/pam.d/sudo
+auth sufficient pam_ssh_agent_auth.so file=~/.ssh/authorized_keys
+# /etc/sudoers:
+Defaults:%sudo env_keep += "SSH_AUTH_SOCK"
+```
+从而不再需要为服务器sudo用户组的用户设置密码,由于`SSH_AUTH_SOCK`被保留,鉴权会通过`pam-ssh-agent-auth`进行.
+== sudo
+用`env_keep`可以保留一些有用的环境变量:
+```
+# /etc/sudoers
+
+# 保留编辑器设置
+Defaults:%wheel env_keep += "SUDO_EDITOR EDITOR VISUAL"
+# 可以用 sudo 执行 rsync, scp
+Defaults:%wheel env_keep += "SSH_AGENT_PID SSH_AUTH_SOCK"
+# 保留 HTTPS 与 HTTP 代理
+Defaults:%wheel env_keep += "all_proxy"
+```
 == 登入用户信息
 `who`与`w`命令可以查询当前登入的用户,不过在gentoo prefix下运行不会查到任何用户:
 ```sh
@@ -232,6 +254,12 @@ Host github.com
   ProxyCommand nc -X connect -x [::1]:10801 %h %p
 ```
 Arch Linux的#link("https://archlinux.org/packages/extra/x86_64/openbsd-netcat/")[openbsd-netcat]提供了`nc`命令.
+
+多跳连接:
+```sh
+ssh -J kaiser elisabeth -D 1080 -N
+```
+首先跳到kaiser,其次到elisabeth.
 == 临时文件
 创建临时文件或临时文件夹:
 ```sh
