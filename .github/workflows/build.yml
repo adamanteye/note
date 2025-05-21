@@ -17,7 +17,7 @@ jobs:
     container:
       image: ghcr.io/adamanteye/typst:master
       volumes:
-        - ${{ secrets.ARTIFACTS_DIR }}/${{ secrets.ARTIFACTS_DIR }}
+        - /srv/note:/srv/note:rw
     steps:
       - uses: actions/checkout@v4
         with:
