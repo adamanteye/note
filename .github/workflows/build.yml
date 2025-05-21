@@ -27,6 +27,7 @@ jobs:
           rsync -azu --delete --checksum ${{ secrets.ARTIFACTS_DIR }} build/
       - name: Build
         run: |
+          git config --global safe.directory "*"
           make remove
           make site
           minify -ars -o . build
