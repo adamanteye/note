@@ -15,7 +15,7 @@ jobs:
     name: Build and Deploy
     runs-on: [self-hosted, linux, typst, web-service]
     container:
-      image: ghcr.io/adamanteye/typst:master
+      image: ghcr.io/adamanteye/typst:latest
       volumes:
         - /srv/note:/srv/note:rw
     steps:
