@@ -169,6 +169,24 @@ debuild
 = 规范
 == 时间日期
 查看`strftime(3)`了解可用的格式化选项,例如`2025 03 05`对应`%Y %m %d`.
+== 文件编码
+在Windows上保存的文件在Linux中打开以及用版本管理系统进行管理时,存在兼容性问题.
+=== UTF-8-BOM
+BOM(byte-order mark)是用来指示编码方案以及端序的,常见的是`EF BB BF`,表示接下来的内容以UTF-8编码.
+
+然而例如在PHP中,由于`<?php`(这是文件开头)之前不得有其他字符,如果有BOM,可能会造成PHP在设置headers之前就返回内容.
+
+Windows下保存的`h5`文件在MacOS或Linux下打开也有可能出现列名包含非可显示字符的错误,以至于明明索引了正确的列名但无法取到相应的数组,这也是因为BOM引起的.
+== CRLF
+打字机时代,换行包含两个动作,移到第一列,移到下一行, Windows遵循了这种惯例.
+
+在Unix中换行只是`\n`,因此在版本控制系统中需要注意两者的转换,可以在git中设置遵循其中一种格式:
+```
+# .gitconfig
+[core]
+	eol = lf
+```
+在`git checkout`等场景下,文本文件的换行符会被设置为`\n`.
 = Shell技巧
 == readline 键位
 - `Ctrl A`跳到行首
@@ -192,6 +210,12 @@ debuild
 alias ls='ls --color=auto'
 alias ip='ip --color=auto'
 alias grep='grep --color=auto'
+```
+使用#link("https://github.com/lsd-rs/lsd")[lsd]代替`ls`,可以提供彩色输出.
+
+此外`lsd`可以代替`tree`.
+```sh
+lsd --tree
 ```
 使用`bat`来代替`cat`和`less`,可以无感知实现大多数语言的语法高亮:
 ```sh
