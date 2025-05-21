@@ -558,6 +558,20 @@ docker run -it --rm --name debian --network host -e HTTP_PROXY=http://[::1]:1080
 ```sh
 docker image prune -a
 ```
+== 最小化打包
+使用alpine镜像,并且从alpine安装软件包时使用`--no-cache`选项:
+```sh
+apk add --no-cache bash
+# 等价于
+apk update && apk add bash && rm -rf /var/cache/apk/*
+```
+如果使用debian镜像,类似的减少体积的方式是
+```sh
+apt-get update && \
+apt-get install -y --no-install-recommends bash && \
+rm -rf /var/lib/apt/lists/*
+```
+== 可重复构建
 == 网络服务
 === nginx
 启用#link("https://en.wikipedia.org/wiki/OCSP_stapling")[OSCP Stapling]:
