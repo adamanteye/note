@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 REPO="https://github.com/adamanteye/note"
 pdf_path=$1
@@ -11,7 +11,7 @@ print_files() {
         local f="${file%.*}.ref"
         read date time zone sha1 <<<"$(cat "$f")"
         rm -f "$f"
-        stat --format="<tr><td><a href=\"$name\" target=\"_blank\">$name</a></td><td>$size</td><td><a href=\"$REPO/commit/$sha1\" target=\"_blank\">$date $time $zone</a></td></tr>" "$file"
+        echo "<tr><td><a href=\"$name\" target=\"_blank\">$name</a></td><td>$size</td><td><a href=\"$REPO/commit/$sha1\" target=\"_blank\">$date $time $zone</a></td></tr>"
     done
 }
 
@@ -19,7 +19,7 @@ print_dirs() {
     find "$1" -mindepth 1 -maxdepth 1 -type d ! -name '.' ! -name '..' ! -name 'assets' | sort | while read -r dir; do
         local name=$(basename "$dir")
         local size=$(du -sk "$dir" | awk "{print \$1}")
-        stat --format="<tr><td><a href=\"$name/\">$name</a></td><td>$size</td></tr>" "$dir"
+        echo "<tr><td><a href=\"$name/\">$name</a></td><td>$size</td></tr>"
     done
 }
 
