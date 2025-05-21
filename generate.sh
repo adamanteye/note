@@ -36,11 +36,11 @@ render_html() {
         local backwards=""
     fi
     awk -v files="$(printf '%s\n' "$files")" -v dirs="$(printf '%s\n' "$dirs")" -v backwards="$(printf '%s\n' "$backwards")" '{
-        if ($0 ~ /{{files}}/) {
+        if ($0 ~ /\{\{files\}\}/) {
             print files;
-        } else if ($0 ~ /{{dirs}}/) {
+        } else if ($0 ~ /\{\{dirs\}\}/) {
             print dirs;
-        } else if ($0 ~ /{{backwards}}/) {
+        } else if ($0 ~ /\{\{backwards\}\}/) {
             print backwards;
         } else {
             print $0;
