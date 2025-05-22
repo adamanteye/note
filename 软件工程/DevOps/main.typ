@@ -4,8 +4,36 @@
   author: "adamanteye",
 )
 #show: rest => columns(2, rest)
-= Cloudflare Workers
-== Wrangler
+= Cloudflare
+== Tunnel
+CF Tunnel可以方便地在中国地区搭建服务.
+
+比如:
+```yml
+services:
+  nginx:
+    image: nginx:1.27.5-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - /srv/:/srv/:ro
+    restart: unless-stopped
+    networks:
+      - tunnel-net
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: [ "tunnel", "--no-autoupdate", "run", "--token", "your-token" ]
+    depends_on:
+      - nginx
+    networks:
+      - tunnel-net
+
+networks:
+  tunnel-net:
+```
+注意在面板中为服务`http://nginx:80`配置相应的域名.
+== Workers and Wrangler
 更新wrangler版本时注意查看
 #link("https://developers.cloudflare.com/workers/configuration/compatibility-flags/")[Compatibility flags]以了解是否出现兼容性问题.
 = GitHub Security

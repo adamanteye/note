@@ -29,7 +29,7 @@ jobs:
         run: |
           git config --global safe.directory "*"
           make remove
-          make site
+          make site -j$(nproc)
           minify -ars -o . build
       - name: Deploy
         run: |
