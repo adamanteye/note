@@ -3,8 +3,6 @@
   title: "CSAPP 笔记",
   author: "adamanteye",
 )
-#show: rest => columns(2, rest)
-
 = Representing and Manipulating Information
 == Integer
 `char`类型是`signed`还是`unsigned`,取决于编译器(大部分编译器认为是`signed`).如果需要明确指定,可以使用`signed char`或者`unsigned char`.
@@ -343,4 +341,5 @@ x86-64中,最多有6个寄存器可以传参.如果函数有多于6个参数,剩
 
 == Floting-Point Code
 = 附录
-北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.
+- 北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.
+- #link("https://maskray.me/blog/2021-10-31-relative-relocations-and-relr")[Relative relocations and RELR | 宋方睿]

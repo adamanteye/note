@@ -4,7 +4,7 @@
   title: none,
   author: none,
   numbered-equation: false,
-  font: ("Libertinus Serif", "LXGW Bright Code TC"),
+  font: ("Libertinus Serif", "Source Han Serif SC"),
   mono-font: "LXGW Bright Code TC",
   doc,
 ) = {

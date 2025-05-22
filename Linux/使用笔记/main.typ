@@ -3,7 +3,6 @@
   title: "Linux使用笔记",
   author: "adamanteye",
 )
-#show: rest => columns(2, rest)
 = 发行版选择
 以下评述基于我或朋友们的看法,其中我只尝试过`Arch`, `Gentoo`, `Debian`三种发行版.
 == Arch
