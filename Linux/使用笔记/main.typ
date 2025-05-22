@@ -64,8 +64,24 @@ adamanteye tty1         2025-01-25 20:34
 ```
 = 网络管理
 == 地址与路由
-访问#link("https://4.ipw.cn")[4.ipw.cn]与#link("https://6.ipw.cn")[6.ipw.cn]可以看到出口IP地址.
+访问#link("https://4.ipw.cn")[4.ipw.cn]与#link("https://6.ipw.cn")[6.ipw.cn]可以看到出口IP地址.可以利用它配合`ddclient`更新DNS记录,例如配置`/etc/ddclient.conf`如下:
+```
+# /etc/ddclient.conf
 
+daemon=360
+protocol=cloudflare
+usev4=cmdv4, cmdv4=get-ipv4
+usev6=cmdv6, cmdv6=get-ipv6
+login=token
+password='your-api-token'
+zone=adamanteye.cc
+heloise.adamanteye.cc
+```
+其中的`/usr/local/bin/get-ipv4`命令为:
+```
+#!/bin/bash
+curl 4.ipw.cn
+```
 快速`ping`所有主机:
 ```sh
 nmap -sn 192.168.1.0/24
@@ -498,6 +514,10 @@ sudo journalctl --unit github-actions-runner
 
 双路E5-2680处理器,2条32GB内存,外加4个2.5英寸硬盘在开机空载时的耗电量大约为161W.仅主板通电的功率为10W左右.
 == 文件系统
+获取用于挂载标识的UUID:
+```sh
+sudo blkid /dev/sda2
+```
 === ZFS
 `zpool history`可以查看操作历史,包括`zpool create`, `zpool add`等的记录.前提是`pool`还在,如果已经被`zpool destroy`了,相应的历史都会删除.
 ```sh

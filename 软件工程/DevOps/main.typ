@@ -37,6 +37,7 @@ RestartSec=5
 User=ci-user
 Group=ci-user
 Environment="PATH=/home/ci-user/.local/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="all_proxy=http://[::1]:10801"
 
 [Install]
 WantedBy=multi-user.target
