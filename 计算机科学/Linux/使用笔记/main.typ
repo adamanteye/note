@@ -206,7 +206,7 @@ BOM(byte-order mark)是用来指示编码方案以及端序的,常见的是`EF B
 然而例如在PHP中,由于`<?php`(这是文件开头)之前不得有其他字符,如果有BOM,可能会造成PHP在设置headers之前就返回内容.
 
 Windows下保存的`h5`文件在MacOS或Linux下打开也有可能出现列名包含非可显示字符的错误,以至于明明索引了正确的列名但无法取到相应的数组,这也是因为BOM引起的.
-== CRLF
+=== CRLF
 打字机时代,换行包含两个动作,移到第一列,移到下一行, Windows遵循了这种惯例.
 
 在Unix中换行只是`\n`,因此在版本控制系统中需要注意两者的转换,可以在git中设置遵循其中一种格式:
@@ -216,7 +216,6 @@ Windows下保存的`h5`文件在MacOS或Linux下打开也有可能出现列名�
 	eol = lf
 ```
 在`git checkout`等场景下,文本文件的换行符会被设置为`\n`.
-= Shell技巧
 == readline 键位
 - `Ctrl A`跳到行首
 - `Ctrl E`跳到行尾
@@ -233,6 +232,7 @@ Windows下保存的`h5`文件在MacOS或Linux下打开也有可能出现列名�
 - `Ctrl S`启动正向搜索历史命令
 - `Ctrl G`取消搜索
 常见shell和emacs都支持这些键位.
+= 系统技巧
 == 彩色输出
 以下是一些可启用彩色输出的命令:
 ```sh
@@ -292,14 +292,14 @@ alias hx=helix
 随后可以用`git kmt`代替`git commit`.
 == 定时任务
 #link("https://crontab.guru/")[crontab guru]可以在线编辑验证`crontab`语法.
-== ssh
-配置ssh转发可以在服务器上使用本地的私钥
+== SSH
+配置SSH转发,可以在服务器上使用本地的私钥:
 ```
 Host foo
   ForwardAgent yes
 ```
 
-如果端口被阻断,需要配置网络代理以通过代理服务器访问ssh服务器:
+如果端口被阻断,需要配置网络代理以通过代理服务器访问SSH服务器:
 ```
 Host github.com
   Hostname ssh.github.com
