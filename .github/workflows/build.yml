@@ -16,8 +16,12 @@ jobs:
     runs-on: [self-hosted, linux, docker]
     container:
       image: ghcr.io/adamanteye/typst:latest
+      env:
+        HTTP_PROXY: http://host.docker.internal:10801
+        HTTPS_PROXY: http://host.docker.internal:10801
       volumes:
         - /srv/note:/srv/note:rw
+      options: --add-host=host.docker.internal:host-gateway
     steps:
       - uses: actions/checkout@v4
         with:
