@@ -9,7 +9,10 @@ on:
     paths-ignore:
       - 'README.md'
       - 'LICENSE'
-      - '.gitignore'
+    pull_request:
+      branches:
+        - master
+        - pwned
 
 jobs:
   build-and-deploy:
