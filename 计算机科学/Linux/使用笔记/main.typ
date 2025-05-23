@@ -1,6 +1,6 @@
 #import "../../../note_zh.typ": *
 #show: conf.with(
-  title: "Linux使用笔记",
+  title: "Linux笔记",
   author: "adamanteye",
 )
 = 发行版选择
@@ -92,7 +92,7 @@ for i in {1..254}; do sudo ping -c 1 -W 1 192.168.1.$i | grep "bytes from" && ec
 ```
 == 端口
 `ss`命令由`iproute2`提供,功能与`netstat`类似,但信息更全.
-== interfaces
+== ifup以及ifdown
 这是Debian上的传统方法.
 
 配置DHCP:
@@ -100,8 +100,9 @@ for i in {1..254}; do sudo ping -c 1 -W 1 192.168.1.$i | grep "bytes from" && ec
 # /etc/network/interfaces
 auto eno1
 iface eno1 inet dhcp
-iface eno1 inet6 auto
+iface eno1 inet6 dhcp
 ```
+注意变更配置前,首先应当`ifdown`,因为`ifup`与`ifdown`始终根据当前的`interfaces`文件使用`ip`命令配置网络.
 == NetworkManager
 编写dispatcher可以实现自动切换有线,无线连接,详见#link("https://neilzone.co.uk/2023/04/networkmanager-automatically-switch-between-ethernet-and-wi-fi/")[NetworkManager: automatically switch between Ethernet and Wi-Fi].
 
@@ -130,6 +131,15 @@ rfkill unblock bluetooth
 代理使用者会有相当多可供探测的#link("https://proxy.incolumitas.com/proxy_detect.html")[特征]#footnote[参见#link("https://github.com/net4people/bbs/issues/445")[Avoiding Live `VPN/Proxy Detection` · Issue #445 · net4people/bbs]].
 === 参考
 - #link("https://aajax.top/2025/04/27/ToMapNetwork/")[进行网络测绘的方法与挑战 | Ajax's Blog].
+== 证书
+#link("https://github.com/acmesh-official/acme.sh")[acmesh-official/acme.sh]可以自动签发与更新证书.
+
+将证书安装到指定位置:
+```sh
+./acme.sh --install-cert -d 'adamanteye.cc' \
+  --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
+  --key-file /srv/cert/all.adamanteye.cc.key
+```
 = 启动引导
 == GRUB
 从grub命令行中引导系统.
@@ -150,6 +160,7 @@ grub> linux /boot/vmlinuz-6.1.0-30-amd64 root=/dev/sda2
 grub> initrd /boot/initrd.img-6.1.0-30-amd64
 grub> boot
 ```
+== systemd-boot
 = 软件分发
 == 手册页
 #link("https://git.sr.ht/~sircmpwn/scdoc")[scdoc]自定义了与Markdown相近的语法,可以用来生成man手册页:
@@ -317,7 +328,7 @@ cat /usr/share/fortune/chinese | sed 's/\x1B\[[0-9:;<=>?]*[!-/\x20]*[@-~]//g' > 
 = 实用程序
 == Git
 === Hooks
-/ `commit-msg`: 在提交信息编辑完成后,最终提交前执行. 可以验证或修改最终的提交信息.
+/ `commit-msg`: 在提交信息编辑完成后,最终提交前执行.可以验证或修改最终的提交信息.
 / `prepare-commit-msg`: 在生成提交信息后,打开编辑器前执行.在提交时增加额外信息.
 == 桌面环境
 之前用`hyprland`,发现#link("https://github.com/hyprwm/Hyprland/issues/8850")[依赖太重],于是切换到`niri`.此外`niri`的标签页交互很舒适.
@@ -349,7 +360,7 @@ Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 == 输入法
 #link("https://aur.archlinux.org/packages/fcitx5-pinyin-sougou-dict-git")[aur/fcitx5-pinyin-sougou-dict-git]提供了搜狗词库.
 == 邮件客户端
-`thunderbird`几乎开箱即用,不过一些高级用户会选择#link("https://neomutt.org/guide/index")[neomutt]/`mutt`,两者配置基本兼容.
+`thunderbird`几乎开箱即用.不过一些高级用户会选择#link("https://neomutt.org/guide/index")[neomutt]/`mutt`,两者配置基本兼容.
 
 对于`mutt`,既可以用自带的IMAP协议,也可以使用外部收取程序,如#link("https://wiki.archlinux.org/title/OfflineIMAP")[offlineimap]以及#link("https://wiki.archlinux.org/title/Msmtp")[msmtp].
 
@@ -387,7 +398,7 @@ OpenType字体有一系列feature可以启用,参考#link("https://typst.app/doc
 - #link("https://catppuccin.com/palette")[猫布奇诺调色盘]
 - #link("https://oklch.com/")[OKLCH Color Picker & Converter]
 === 排版原则
-- #link("https://practicaltypography.com/")[Butterick’s Practical Typography]
+- #link("https://practicaltypography.com/")[Butterick's Practical Typography]
 == 配置管理
 GNU `stow`利用软链接集中地管理配置文件,可以配合`git`进行版本控制和备份.
 
@@ -419,8 +430,8 @@ file '2.mp4'
 #link("https://wiki.archlinux.org/title/SSHFS")[sshfs]可以通过`ssh`连接挂载远程文件系统.
 == 逆向
 Hash推荐我用`binaryninja-free`.
-== 资源监控
-=== 文件系统
+= 资源监控
+== 文件系统
 `ncdu`是采用`ncurses`界面的磁盘占用统计工具,比`du`命令更好用,带有彩色模式:
 ```
 # /etc/ncdu.conf
@@ -431,11 +442,11 @@ Hash推荐我用`binaryninja-free`.
 ```sh
 fio -filename=/home/adamanteye/test -direct=1 -iodepth 1 -thread -rw=randrw -bs=4k -size=2G -numjobs=5 -runtime=10 -group_reporting -name=mytest | tee randrw.log
 ```
-=== CPU信息
+== CPU信息
 ```sh
 cat /proc/cpuinfo
 ```
-=== 温度监控
+== 温度监控
 读取硬盘温度,使用`smartctl`:
 ```sh
 sudo smartctl --all /dev/sda
@@ -446,14 +457,14 @@ sudo smartctl --all /dev/sda
 sudo sensors-detect  # 初次配置 lm-sensors
 sensors              # 按照配置读取温度
 ```
-=== 风扇控制
+== 风扇控制
 参考#link("https://gist.github.com/jhatler/855abc7fb8663bcc2c97fec77b10ea03")[jhatler/ipmi-fanctrl-dell_r630.sh]:
 
 ```sh
 sudo ipmitool raw 0x30 0x30 0x01 0x00       # enable manual fan control
 sudo ipmitool raw 0x30 0x30 0x02 0xff 0x14  # set fan speed to 20%
 ```
-=== 功率监控
+== 功率监控
 ```sh
 ipmitool dcmi power reading
 ```
@@ -493,7 +504,15 @@ dpkg-deb -c example_0.1.0-1_all.deb
 ```sh
 dpkg-deb -I example_0.1.0-1_all.deb
 ```
-= 守护程序
+= init程序
+`init`程序是系统启动的第一个程序(`pid`为1),它完成主引导流程.
+
+Debian和Arch系统的`/usr/sbin/init`是指向`../lib/systemd/systemd`的符号链接.
+== systemd
+列出所有unit的初始化时间:
+```sh
+systemd-analyze blame
+```
 == macOS
 macOS所使用的守护进程管理是`launchd`,管理系统级或用户级的守护程序.
 
@@ -511,17 +530,17 @@ sudo journalctl --unit github-actions-runner
 ```
 
 注意希望使用如果非`sudo`身份查看日志,需要在`systemd-journal`用户组当中.
-= 服务器
-== Dell Power Edge R630
-我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
-
-双路E5-2680处理器,2条32GB内存,外加4个2.5英寸硬盘在开机空载时的耗电量大约为161W.仅主板通电的功率为10W左右.
-== 文件系统
+= 文件系统
 获取用于挂载标识的UUID:
 ```sh
 sudo blkid /dev/sda2
 ```
-=== ZFS
+== 符号链接
+路径分为逻辑路径与物理路径.如果解析符号链接到实际目录,那么是物理路径,否则是逻辑路径,`pwd`命令默认输出逻辑路径.
+```sh
+pwd -P # 物理路径
+```
+== ZFS
 `zpool history`可以查看操作历史,包括`zpool create`, `zpool add`等的记录.前提是`pool`还在,如果已经被`zpool destroy`了,相应的历史都会删除.
 ```sh
 zpool create -o ashift=12 oskar draid:2d \
@@ -568,8 +587,8 @@ sudo zfs set mountpoint=/srv oskar/home
 - #link("https://farseerfc.me/zhs/file-size-histogram.html")[系统中的大多数文件有多大？ - Farseerfc的小窝]
 - #link("https://openzfs.github.io/openzfs-docs/man/master/7/zpoolconcepts.7.html")[zpoolconcepts.7 — OpenZFS documentation]
 - #link("https://forums.truenas.com/t/openzfs-draid-a-complete-guide/2440")[OpenZFS dRAID - A Complete Guide - Resources - TrueNAS Community Forums]
-=== Btrfs
-=== NFS
+== Btrfs
+== NFS
 参考:
 - #link("https://wiki.debian.org/NFSServerSetup")[NFSServerSetup - Debian Wiki]
 - #link("https://help.ubuntu.com/community/NFSv4Howto")[NFSv4Howto - Community Help Wiki]
@@ -591,12 +610,27 @@ mount -t nfs4 -o proto=tcp,port=2049 heloise.adamanteye.cc:/oskar/elisabeth /srv
 ```
 heloise.adamanteye.cc:/oskar/elisabeth	/srv/	nfs4	_netdev,auto,defaults	0	0
 ```
+= 虚拟化技术
 == Docker
 === 构建镜像
 从含`Dockerfile`的路径构建镜像:
 ```sh
 docker buildx build --tag nvchecker:latest .
 ```
+==== 最小化打包
+使用alpine镜像,并且从alpine安装软件包时使用`--no-cache`选项:
+```sh
+apk add --no-cache bash
+# 等价于
+apk update && apk add bash && rm -rf /var/cache/apk/*
+```
+如果使用debian镜像,类似的减少体积的方式是
+```sh
+apt-get update && \
+apt-get install -y --no-install-recommends bash && \
+rm -rf /var/lib/apt/lists/*
+```
+==== 可重复构建
 === 运行容器
 交互式运行容器,设置代理,挂载本地路径:
 ```sh
@@ -629,42 +663,24 @@ docker run -it --rm --add-host=host.docker.internal:host-gateway --name typst gh
 ```
 export http_proxy='http://host.docker.internal:10801'
 ```
-== 最小化打包
-使用alpine镜像,并且从alpine安装软件包时使用`--no-cache`选项:
-```sh
-apk add --no-cache bash
-# 等价于
-apk update && apk add bash && rm -rf /var/cache/apk/*
-```
-如果使用debian镜像,类似的减少体积的方式是
-```sh
-apt-get update && \
-apt-get install -y --no-install-recommends bash && \
-rm -rf /var/lib/apt/lists/*
-```
-== 可重复构建
-== 网络服务
-=== nginx
+= 网络服务
+== nginx
 启用#link("https://en.wikipedia.org/wiki/OCSP_stapling")[OSCP Stapling]:
 ```
 ssl_stapling on;
 ssl_stapling_verify on;
 ```
-=== caddy
+== caddy
 #link("https://github.com/mholt/caddy-webdav")[mholt/caddy-webdav]为`caddy`扩展了webdav模块.
-=== 压力测试
+== 压力测试
 用#link("https://github.com/hatoo/oha")[hatoo/oha: Ohayou(おはよう)]产生HTTP流量.
-== 证书
-#link("https://github.com/acmesh-official/acme.sh")[acmesh-official/acme.sh]可以自动签发与更新证书.
-
-将证书安装到指定位置:
-```sh
-./acme.sh --install-cert -d 'adamanteye.cc' \
-  --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
-  --key-file /srv/cert/all.adamanteye.cc.key
-```
-
-=== Telegram Bot
-首先阅读#link("https://core.telegram.org/bots/tutorial")[From BotFather to 'Hello World'],这里讲解了机器人开发的基础知识.
 = 内核
 == dkms
+= 其他应用
+== Telegram Bot
+首先阅读#link("https://core.telegram.org/bots/tutorial")[From BotFather to 'Hello World'],这里讲解了机器人开发的基础知识.
+= 服务器
+== Dell Power Edge R630
+我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
+
+双路E5-2680处理器,2条32GB内存,外加4个2.5英寸硬盘在开机空载时的耗电量大约为161W.仅主板通电的功率为10W左右.
