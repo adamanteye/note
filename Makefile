@@ -39,7 +39,7 @@ typ: $(TYP_BUILDS) $(TYP_REFS)
 
 build/index.html: typ build/assets/ generate.sh index-template.html
 	@mkdir -p $(@D)
-	cd $(@D) && ../generate.sh . ../index-template.html
+	cd $(@D) && $(ROOT_DIR)/generate.sh . $(ROOT_DIR)/index-template.html
 
 print:
 	@for pdf in $(TYP_BUILDS); do \
