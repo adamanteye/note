@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Reset Symbolic Link
+      - name: Reset symlink
         run: |
           rm -rf build
           ln -s /srv/note build
@@ -39,7 +39,7 @@ jobs:
       - name: Minify
         run: |
           minify -i build
-      - name: Depoly to CF Pages
+      - name: Deploy to cloudlfare pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

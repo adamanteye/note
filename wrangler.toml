@@ -2,5 +2,4 @@ name = "note"
 compatibility_date = "2025-05-23"
 [assets]
 directory = "./build"
-binding = "ASSETS"
 not_found_handling = "404-page"

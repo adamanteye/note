@@ -6,9 +6,7 @@
 #show: rest => columns(2, rest)
 = Cloudflare
 == Tunnel
-CF Tunnel可以方便地在中国地区搭建服务.
-
-比如:
+CF Tunnel可以方便地在中国地区搭建服务,例如:
 ```yml
 services:
   nginx:
@@ -49,7 +47,7 @@ networks:
   with:
     fetch-depth: 0
 ```
-== 自托管运行器
+== Self-hosted Runner
 `systemd`系统服务例子:
 ```
 # /etc/systemd/system/github-actions-runner.service
@@ -70,6 +68,8 @@ Environment="all_proxy=http://[::1]:10801"
 [Install]
 WantedBy=multi-user.target
 ```
+允许在Self-hosted Runner上运行容器内的作业,前提是容器内安装有对应的软件.例如
+#link("https://github.com/cloudflare/wrangler-action")[cloudflare/wrangler-action]需要`npm`以及`node`.
 == 复用工作流
 - #link("https://docs.github.com/zh/actions/sharing-automations/reusing-workflows")[复用工作流 - GitHub 文档]
 == 其他参考
