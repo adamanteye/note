@@ -13,7 +13,7 @@ on:
 jobs:
   build-and-deploy:
     name: Build and Deploy
-    runs-on: [self-hosted, linux, docker]
+    runs-on: [self-hosted, linux, docker, perf]
     container:
       image: ghcr.io/adamanteye/typst:latest
       env:
@@ -28,13 +28,12 @@ jobs:
           fetch-depth: 0
       - name: Restore Cache
         run: |
-          rsync -azu --delete --checksum ${{ secrets.ARTIFACTS_DIR }} build/
+          rsync -azu --delete --checksum /srv/note build/
       - name: Build
         run: |
           git config --global safe.directory "*"
           make site -j$(nproc)
           make remove
-          minify -ars -o . build
       - name: Deploy
         run: |
-          rsync -rzuhv --delete --checksum build/ ${{ secrets.ARTIFACTS_DIR }}
+          minify -ars -o . /srv/note

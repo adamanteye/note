@@ -126,7 +126,10 @@ rfkill # list wireless devices
 rfkill unblock bluetooth
 ```
 == 网络测绘
-参考#link("https://aajax.top/2025/04/27/ToMapNetwork/")[进行网络测绘的方法与挑战 | Ajax's Blog].
+=== 代理
+代理使用者会有相当多可供探测的#link("https://proxy.incolumitas.com/proxy_detect.html")[特征]#footnote[参见#link("https://github.com/net4people/bbs/issues/445")[Avoiding Live `VPN/Proxy Detection` · Issue #445 · net4people/bbs]].
+=== 参考
+- #link("https://aajax.top/2025/04/27/ToMapNetwork/")[进行网络测绘的方法与挑战 | Ajax's Blog].
 = 启动引导
 == GRUB
 从grub命令行中引导系统.
@@ -588,22 +591,25 @@ mount -t nfs4 -o proto=tcp,port=2049 heloise.adamanteye.cc:/oskar/elisabeth /srv
 ```
 heloise.adamanteye.cc:/oskar/elisabeth	/srv/	nfs4	_netdev,auto,defaults	0	0
 ```
-== docker
+== Docker
+=== 构建镜像
 从含`Dockerfile`的路径构建镜像:
 ```sh
-docker buildx build --tag nvchecker:master .
+docker buildx build --tag nvchecker:latest .
 ```
+=== 运行容器
 交互式运行容器,设置代理,挂载本地路径:
 ```sh
 docker run -it --rm --name debian --network host -e HTTP_PROXY=http://[::1]:10801 -v "$HOME/Documents/debian:/home/debian:rw" -v "/etc/wgetrc:/etc/wgetrc:ro" -e DEBFULLNAME -e DEBEMAIL ghcr.io/adamanteye/debian-builder:master
 ```
+=== 清理
 删除所有未使用镜像(不止dangling):
 ```sh
 docker image prune -a
 ```
-=== 网络
+=== 配置网络
 在中国,免不了需要配置各种代理,为docker daemon配置代理可以通过编写`/etc/docker/daemon.json`实现:
-```
+```json
 {
   "proxies": {
     "http-proxy": "http://[::1]:10801",
@@ -657,8 +663,7 @@ ssl_stapling_verify on;
   --fullchain-file /srv/cert/all.adamanteye.cc.fullchain \
   --key-file /srv/cert/all.adamanteye.cc.key
 ```
-=== 代理
-代理使用者会有相当多的特征,可以依次进行#link("https://proxy.incolumitas.com/proxy_detect.html")[探测]#footnote[参见#link("https://github.com/net4people/bbs/issues/445")[Avoiding Live `VPN/Proxy Detection` · Issue #445 · net4people/bbs]].
+
 === Telegram Bot
 首先阅读#link("https://core.telegram.org/bots/tutorial")[From BotFather to 'Hello World'],这里讲解了机器人开发的基础知识.
 = 内核
