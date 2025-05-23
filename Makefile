@@ -7,7 +7,7 @@ TYP_REFS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).ref)
 
 ROOT_DIR = $(shell pwd)
 
-.PHONY: site latex tex typ clean help remove print
+.PHONY: site tex typ clean help remove print
 
 build/%.ref: %/main.typ %/
 	@mkdir -p $(@D)
@@ -33,13 +33,11 @@ build/assets/: assets/
 	@mkdir -p $(@D)
 	cp -r $(<D)/* $(@D)
 
-latex: $(TEX_BUILDS)
-
-tex: $(TEX_REFS)
+tex: $(TEX_BUILDS) $(TEX_REFS)
 
 typ: $(TYP_BUILDS) $(TYP_REFS)
 
-build/index.html: tex typ build/assets/ generate.sh index-template.html
+build/index.html: typ build/assets/ generate.sh index-template.html
 	@mkdir -p $(@D)
 	cd $(@D) && ../generate.sh . ../index-template.html
 
