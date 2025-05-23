@@ -9,6 +9,7 @@
 build/
 .vscode/
 
-# emacs
-*~
-\#*\#
+node_modules
+.wrangler
+package.json
+pnpm-lock.yaml

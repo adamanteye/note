@@ -14,6 +14,7 @@ jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: [self-hosted, linux, docker, perf]
+    environment: production
     container:
       image: ghcr.io/adamanteye/typst:latest
       env:
@@ -38,3 +39,8 @@ jobs:
       - name: Minify
         run: |
           minify -i build
+      - name: Depoly to CF Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
