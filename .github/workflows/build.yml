@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
       - name: Reset Symbolic Link
         run: |
-          rm -f build
+          rm -rf build
           ln -s /srv/note build
       - name: Build
         run: |
