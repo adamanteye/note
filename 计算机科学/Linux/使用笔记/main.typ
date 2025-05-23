@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../../note_zh.typ": *
 #show: conf.with(
   title: "Linux使用笔记",
   author: "adamanteye",
@@ -539,10 +539,10 @@ A dRAID with N disks of size X, D data disks per redundancy group, P parity leve
 
 例如`draid2:7d:10c:1s`表示10个磁盘中设置1个热备盘,剩下9个磁盘为一个`group`,含有7个数据盘以及2个校验盘.这可以承受2个磁盘的损坏,并在第一个损坏发生时立刻投入1个热备盘进行恢复(所以实际上能承受3个磁盘损坏而不丢失数据).
 
-单个`group`相对于单块硬盘的吞吐量为:$ floor((c-s)/(d+p)) $
+单个`group`相对于单块硬盘的吞吐量为:$ floor((c-s) / (d+p)) $
 其中$c$是`children`的数量.注意这里是理论值,实际上还受内存缓存,是否开启压缩等因素影响.
 
-单个`group`相对于单块硬盘的存储量为:$ (d(c-s))/(d+p) $
+单个`group`相对于单块硬盘的存储量为:$ (d(c-s)) / (d+p) $
 
 注意奇偶校验和热备实际上是分散在所有磁盘上的,这也是为什么不能创建后再修改热备盘的数量.
 
@@ -600,6 +600,28 @@ docker run -it --rm --name debian --network host -e HTTP_PROXY=http://[::1]:1080
 删除所有未使用镜像(不止dangling):
 ```sh
 docker image prune -a
+```
+=== 网络
+在中国,免不了需要配置各种代理,为docker daemon配置代理可以通过编写`/etc/docker/daemon.json`实现:
+```
+{
+  "proxies": {
+    "http-proxy": "http://[::1]:10801",
+    "https-proxy": "http://[::1]:10801"
+  }
+}
+```
+如果要为docker container配置代理,可以使用`--add-host`配置容器与宿主机网络的映射,例如:
+```sh
+docker run -it --rm --add-host=host.docker.internal:host-gateway --name typst ghcr.io/adamanteye/typst:latest
+```
+进入容器后查看`/etc/hosts`,发现域名已经解析到宿主机地址:
+```
+172.17.0.1 host.docker.internal
+```
+在宿主机上,可以监听`172.17.0.1`这个地址并提供代理.而在容器中指定相应的环境变量:
+```
+export http_proxy='http://host.docker.internal:10801'
 ```
 == 最小化打包
 使用alpine镜像,并且从alpine安装软件包时使用`--no-cache`选项:
