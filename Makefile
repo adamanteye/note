@@ -55,8 +55,8 @@ remove:
 			rm -f "$$pdf"; \
 		fi \
 	done
-	-@find build/ -type d | while read -r dir; do \
-		if [ -z "$$(find "$$dir" -mindepth 1 ! -name 'index.html' 2>/dev/null)" ]; then \
+	-@find build/ -depth -type d | while read -r dir; do \
+		if [ -z "$$(find "$$dir" -mindepth 1 ! -name 'index.html' ! -name '*.ref' 2>/dev/null)" ]; then \
 			rm -rf "$$dir"; \
 		fi \
 	done
