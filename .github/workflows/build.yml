@@ -3,6 +3,8 @@ name: Build and Deploy
 on:
   workflow_dispatch:
   push:
+    branches:
+      - '**'
     paths-ignore:
       - 'README.md'
       - 'LICENSE'
