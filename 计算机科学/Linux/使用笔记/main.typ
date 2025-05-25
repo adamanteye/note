@@ -161,6 +161,23 @@ grub> initrd /boot/initrd.img-6.1.0-30-amd64
 grub> boot
 ```
 == systemd-boot
+```
+# /boot/loader/loader.conf
+
+default arch.conf
+timeout 4
+console-mode max
+editor no
+```
+```
+# /boot/loader/entries/arch.conf
+
+title Arch
+linux /vmlinuz-linux
+initrd /intel-ucode.img
+initrd /initramfs-linux.img
+options root=UUID=1a514b60-fdd7-4b19-a53b-3ce10b157faa rw
+```
 = 软件分发
 == 手册页
 #link("https://git.sr.ht/~sircmpwn/scdoc")[scdoc]自定义了与Markdown相近的语法,可以用来生成man手册页:
@@ -357,6 +374,12 @@ Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 #link("https://github.com/sxyazi/yazi")[sxyazi/yazi]是使用Rust编写的命令行文件管理器.
 == 文档手册
 #link("https://github.com/tealdeer-rs/tealdeer")[tealdeer]提供了相当好的`tldr`体验,可以查看大部分命令的简短文档.
+== 归档与压缩
+=== tar
+```sh
+tar cvzf archive.tar.gz <sources>
+tar xvf archive.tar.gz
+```
 == 输入法
 #link("https://aur.archlinux.org/packages/fcitx5-pinyin-sougou-dict-git")[aur/fcitx5-pinyin-sougou-dict-git]提供了搜狗词库.
 == 邮件客户端
@@ -681,6 +704,6 @@ ssl_stapling_verify on;
 首先阅读#link("https://core.telegram.org/bots/tutorial")[From BotFather to 'Hello World'],这里讲解了机器人开发的基础知识.
 = 服务器
 == Dell Power Edge R630
-我这台R630上装的阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
+阵列卡是H330(小卡),可以在BIOS里面改成HBA模式,即硬盘直通.
 
 双路E5-2680处理器,2条32GB内存,外加4个2.5英寸硬盘在开机空载时的耗电量大约为161W.仅主板通电的功率为10W左右.

@@ -1,4 +1,4 @@
-#import "../../../note_zh.typ": *
+#import "../../note_zh.typ": *
 #show: conf.with(
   title: "模数电路工具",
   author: "adamanteye",
