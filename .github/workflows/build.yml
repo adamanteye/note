@@ -34,6 +34,7 @@ jobs:
       - name: Build
         run: |
           git config --global safe.directory "*"
+          make remove
           make site -j$(nproc)
           make remove
       - name: Minify

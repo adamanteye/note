@@ -50,6 +50,9 @@ print:
 	done
 
 remove:
+	-@find build -depth -type f -name "*.ref" | while read -r ref; do \
+		rm -f "$$ref"; \
+	done
 	-@find build -type f -name "*.pdf" | while read -r pdf; do \
 		if ! echo "$(TEX_BUILDS) $(TYP_BUILDS)" | grep -q "$$pdf"; then \
 			rm -f "$$pdf"; \

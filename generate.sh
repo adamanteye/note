@@ -10,7 +10,6 @@ print_files() {
         local size=$(du -sk "$file" | awk '{print $1}')
         local f="${file%.*}.ref"
         read date time zone sha1 <<<"$(cat "$f")"
-        rm -f "$f"
         echo "<tr><td><a href=\"$name\" target=\"_blank\">$name</a></td><td>$size</td><td><a href=\"$REPO/commit/$sha1\" target=\"_blank\">$date $time $zone</a></td></tr>"
     done
 }
