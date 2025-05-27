@@ -79,7 +79,11 @@ IEEE浮点数标准定义了4种修约(Rounding)模式:
 )
 Round-to-even是最常用的模式,不会引入统计误差.
 = Machine-Level Representation of Programs
-如果想查看详细的机器指令,可以参考#link("http://ref.x86asm.net/coder64.html")[coder64 edition | X86 Opcode and Instruction Reference 1.12].
+x86是一系列复杂指令集计算机(CISC)指令集体系结构.
+
+/ IA-32: Intel Architecture, 32-bit简写,通常称为i386.
+
+如果想查看详细的x86指令,可以参考#link("http://ref.x86asm.net/coder64.html")[coder64 edition | X86 Opcode and Instruction Reference 1.12].
 == Historical Perspective
 8086(1978, 29K晶体管)是第一代x86系列处理器, 16位寄存器. i386(1985, 275K晶体管)扩展到32位,成为第一个可以运行UNIX的x86处理器. Pentium 4E(2004, 125M晶体管)引入超线程技术与EM64T(现在称为x86-64). Core i7, Sandy Bridge(2011, 1.16B晶体管)引入了AVX指令集.
 == Program Encodings

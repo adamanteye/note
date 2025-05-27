@@ -354,7 +354,7 @@ cat /usr/share/fortune/chinese | sed 's/\x1B\[[0-9:;<=>?]*[!-/\x20]*[@-~]//g' > 
 == 编辑器
 #link("https://github.com/helix-editor/helix")[helix-editor/helix]在绝大多数发行版都已经得到了支持,但是debian尚且没有打包.
 == 终端与Shell
-`foot`是轻量的wayland终端,支持`img2sixel`.
+`foot`是轻量的Wayland终端,支持`img2sixel`.
 
 `fish`相比`zsh`速度更快,且4.0版本已经成功用Rust重写.
 == 浏览器
@@ -687,6 +687,8 @@ docker run -it --rm --add-host=host.docker.internal:host-gateway --name typst gh
 export http_proxy='http://host.docker.internal:10801'
 ```
 = 网络服务
+== 邮件
+参考#link("https://maddy.email/tutorials/setting-up/")[Installation & initial configuration - maddy]
 == nginx
 启用#link("https://en.wikipedia.org/wiki/OCSP_stapling")[OSCP Stapling]:
 ```
@@ -698,6 +700,19 @@ ssl_stapling_verify on;
 == 压力测试
 用#link("https://github.com/hatoo/oha")[hatoo/oha: Ohayou(おはよう)]产生HTTP流量.
 = 内核
+== Wayland图形栈
+图形栈的任务是连接不同的输入设备:键盘,鼠标,触摸板,触摸屏,绘图板.将输入事件分配到不同的客户端,并且将不同客户端的输出显示在桌面上.
+
+#link("https://wayland-book.com/")[Wayland]是类Unix系统的下一代显示服务器.
+
+/ evdev: 内核#link("https://en.wikipedia.org/wiki/Evdev#cite_note-2")[evdev] (event device)是Linux内核以及Free BSD中的通用输入事件接口,与之对应的用户空间库称为`libevdev`.
+/ libinput: Wayland下工作在`libevdev`上的另一层抽象,为合成器提供统一的处理输入事件的方式.
+/ DRM: 内核#link("https://en.wikipedia.org/wiki/Direct_Rendering_Manager")[Direct Rendering Manager]是处理现代显卡的内核子系统,它检测到的显卡列在`/dev/drm`/当中.主节点(primary node)名称形如`card0`,允许特权操作.渲染节点名称形如`renderD128`,允许非特权操作(渲染或视频解码).
+/ libdrm: 内核DRM的用户空间部分.
+/ Mesa: Vulkan和OpenGL都是图形API. Mesa是Linux上基于Intel以及AMD GPU驱动程序对Vulkan和OpenGL的实现,是位于内核驱动程序之上的高级层.
+/ xcbcommon: `libinput`通过scancode的形式传递键盘事件,而`xcbcommon`负责将其解释为有意义的通用键盘符号.
+/ pixman: 高效操作像素缓冲区.
+/ libwayland: Wayland协议的最常用实现,C语言编写.它提供了从XML定义文件生成高级代码的工具`wayland-scanner`.
 == dkms
 = 其他应用
 == Telegram Bot
