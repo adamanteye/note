@@ -92,8 +92,11 @@ for i in {1..254}; do sudo ping -c 1 -W 1 192.168.1.$i | grep "bytes from" && ec
 ```
 == 端口
 `ss`命令由`iproute2`提供,功能与`netstat`类似,但信息更全.
-== ifup以及ifdown
-这是Debian上的传统方法.
+== ifupdown
+这是Debian上的传统方法.例如启用所有以`auto`定义的接口:
+```sh
+sudo ifup -a
+```
 
 配置DHCP:
 ```
@@ -126,6 +129,39 @@ dns=dnsmasq
 rfkill # list wireless devices
 rfkill unblock bluetooth
 ```
+== 网络攻击
+=== namp
+```sh
+nmap -T4 -A -v -Pn 192.168.0.1
+#最常用的一种扫描
+```
+- `-T4`: 设置时序,越高扫描越快
+- `-A`: 启用操作系统检测,版本检测,脚本扫描和跟踪路由
+- `-v`: 增加详细级别(使用`-vv`或更高级别以获得更好的效果)
+- `-Pn`: 无ping扫描
+=== 密码爆破
+Kail提供了`rockyou.txt`,是常见密码的集合.
+
+针对开启ssh密码登陆的主机,可以用`hydra`:
+```sh
+hydra -l root -s 22 -P passwords.txt 154.12.60.17 ssh
+```
+=== DDoS
+==== 传输层
+耗尽目标服务器的网络带宽或连接资源.
+
+/ 常见形式:
+- SYN Flood
+- UDP Flood
+- ICMP Flood
+==== 应用层
+模拟合法用户请求,耗尽服务器的CPU,内存等资源.
+
+/ 常见形式:
+- HTTP FLood
+- Slowloris
+
+防护需要WAF.
 == 网络测绘
 === 代理
 代理使用者会有相当多可供探测的#link("https://proxy.incolumitas.com/proxy_detect.html")[特征]#footnote[参见#link("https://github.com/net4people/bbs/issues/445")[Avoiding Live `VPN/Proxy Detection` · Issue #445 · net4people/bbs]].
@@ -683,7 +719,7 @@ docker run -it --rm --add-host=host.docker.internal:host-gateway --name typst gh
 172.17.0.1 host.docker.internal
 ```
 在宿主机上,可以监听`172.17.0.1`这个地址并提供代理.而在容器中指定相应的环境变量:
-```
+```sh
 export http_proxy='http://host.docker.internal:10801'
 ```
 = 网络服务
@@ -712,7 +748,21 @@ ssl_stapling_verify on;
 / Mesa: Vulkan和OpenGL都是图形API. Mesa是Linux上基于Intel以及AMD GPU驱动程序对Vulkan和OpenGL的实现,是位于内核驱动程序之上的高级层.
 / xcbcommon: `libinput`通过scancode的形式传递键盘事件,而`xcbcommon`负责将其解释为有意义的通用键盘符号.
 / pixman: 高效操作像素缓冲区.
-/ libwayland: Wayland协议的最常用实现,C语言编写.它提供了从XML定义文件生成高级代码的工具`wayland-scanner`.
+/ libwayland: Wayland协议的最常用实现,C语言编写.它提供了从XML定义文件生成C头文件以及胶水代码的工具`wayland-scanner`.
+=== 协议
+Wayland协议由多层抽象构成,最基本的是Wire Protocol.
+==== Wire Protocol
+线路协议是32字节单位的流,按照主机的端序编码.
+
+基本类型:
+/ int, uint: 32比特的有符号或无符号整数
+/ fixed: 24.8比特的有符号定点数
+/ object: 32比特的对象ID
+/ new_object: 32比特的对象ID,且接受时会为其分配内存
+/ string: 编码通常用UTF-8
+/ array: 任意数据的blob
+
+线路协议是用消息构建的,每条消息都是事件(服务器到客户端)或请求(客户端到服务器).事件作用在`object`上.
 == dkms
 = 其他应用
 == Telegram Bot
