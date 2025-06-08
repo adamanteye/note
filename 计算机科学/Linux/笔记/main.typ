@@ -503,7 +503,8 @@ fio -filename=/home/adamanteye/test -direct=1 -iodepth 1 -thread -rw=randrw -bs=
 ```
 == CPU信息
 ```sh
-cat /proc/cpuinfo
+cat /proc/cpuinfo # 或者
+lscpu
 ```
 == 温度监控
 读取硬盘温度,使用`smartctl`:
