@@ -7,10 +7,16 @@
 = CI/CD
 == GitHub Security
 === Dependabot
-- #link("https://docs.github.com/zh/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates")[配置 Dependabot 版本更新 - GitHub 文档]
-- #link("https://docs.github.com/zh/code-security/dependabot/working-with-dependabot/dependabot-options-reference")[Dependabot 选项参考 - GitHub 文档]
+- #link(
+    "https://docs.github.com/zh/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates",
+  )[配置 Dependabot 版本更新 - GitHub 文档]
+- #link(
+    "https://docs.github.com/zh/code-security/dependabot/working-with-dependabot/dependabot-options-reference",
+  )[Dependabot 选项参考 - GitHub 文档]
 == GitHub Actions
-- #link("https://docs.github.com/zh/actions/writing-workflows/workflow-syntax-for-github-actions#onschedule")[GitHub Actions 的工作流语法 - GitHub 文档]
+- #link(
+    "https://docs.github.com/zh/actions/writing-workflows/workflow-syntax-for-github-actions#onschedule",
+  )[GitHub Actions 的工作流语法 - GitHub 文档]
 === 代码检出
 默认的检出方式是浅克隆,即只包含最新提交,如果需要根据提交历史生成修改变更等,应当禁用浅克隆:
 ```yml
@@ -127,3 +133,30 @@ organization = ""
 bucket = ""
 ```
 最终在Grafana中添加数据源,配置仪表盘.
+= 证书签发
+== acme.sh
+通过Cloudflare提供的API创建TXT记录以签发证书:
+```sh
+./acme.sh --issue --dns dns_cf -d thudep.com -d '*.thudep.com'
+```
+完成签发后,安装到指定位置:
+```sh
+./acme.sh --install-cert -d 'thudep.com' --fullchain-file /srv/cert/all.thudep.com.pem --key-file /srv/cert/all.thudep.com.key
+```
+这里拿到的证书是同样适用于二级域名的:
+```
+X509v3 Subject Alternative Name:
+  DNS:thudep.com, DNS:*.thudep.com
+```
+可以通过查看PEM文件验证之:
+```sh
+openssl x509 -in <cert> -text -noout
+```
+此外,注意检查`acme.sh`是否创建了crontab.
+= Docker
+== 托管镜像
+托管镜像站时注意,如果开启了htpasswd鉴权,那么试图通过该镜像站拉取镜像将不再成功,因为`docker pull`并不会使用`docker login https://docker.thudep.com`时保存的凭据.相反,需要指定源:
+```sh
+docker pull docker.thudep.com/library/nginx:alpine
+```
+而如果没有任何鉴权,那么在`daemon.json`里面配置的镜像站就可以在默认拉取DockerHub时生效了.

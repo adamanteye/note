@@ -386,6 +386,8 @@ cat /usr/share/fortune/chinese | sed 's/\x1B\[[0-9:;<=>?]*[!-/\x20]*[@-~]//g' > 
 == 桌面环境
 之前用`hyprland`,发现#link("https://github.com/hyprwm/Hyprland/issues/8850")[依赖太重],于是切换到`niri`.此外`niri`的标签页交互很舒适.
 
+`niri`没有内置的Xwayland,文档推荐使用`xwayland-satellite`.
+
 此外之前也用过很久的`KDE`,同样因为太笨重而切换了平铺式桌面管理器.
 == 编辑器
 #link("https://github.com/helix-editor/helix")[helix-editor/helix]在绝大多数发行版都已经得到了支持,但是debian尚且没有打包.

@@ -5,10 +5,7 @@
 #let red = rgb("#8c0000")
 #let maroon = rgb("#e64553")
 #let orange = rgb("#db6600")
-#let scr(it) = text(
-  features: ("ss01",),
-  box($cal(it)$),
-)
+#let scr(it) = text(features: ("ss01",), box($cal(it)$))
 #let smcp(it) = {
   set text(features: ("smcp",), fill: orange)
   it

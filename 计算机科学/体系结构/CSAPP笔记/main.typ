@@ -19,7 +19,10 @@ $ "B2U"_w (va(x)):=sum_(i=0)^(w-1)x_i 2^i $
 $ "B2T"_w (va(x)):=-x_(w-1)2^(w-1)+sum_(i=0)^(w-2)x_i 2^i $
 
 两者间的转换:
-$ "T2U"_w(x)&=x+x_(w-1)2^w\ "U2T"_w(x)&=x-x_(w-1)2^w $
+$
+  "T2U"_w(x) & =x+x_(w-1)2^w \
+  "U2T"_w(x) & =x-x_(w-1)2^w
+$
 
 无符号数必须执行逻辑右移.
 
@@ -50,7 +53,10 @@ $ V=(-1)^s M 2^E $
 / 64位浮点数: `52`位$M$, `11`位$E$
 如何解读上述表述,分为3种情况:
 / Normalized Values: `exp`不是全`0`,也不是全`1`
-  $ E&=e-"Bias"\ &=e_(k-1)dots e_1e_0-(2^(k-1)-1) $
+  $
+    E & =e-"Bias"                       \
+      & =e_(k-1)dots e_1e_0-(2^(k-1)-1)
+  $
   因此对于32位和64位浮点数,$E$的范围分别是$[-127,+128]$以及$[-1023,+1024]$.但考虑到这里`exp`不能是全`0`或者全`1`,因此最终为$[-126,+127]$以及$[-1022,+1023]$.
 
   `frac`解释为$M=1+f=1. f_(n-1)dots f_1 f_0$.这是为了无开销地增加一位精度.
@@ -70,7 +76,8 @@ IEEE浮点数标准定义了4种修约(Rounding)模式:
     table.hline(),
     table.header([Mode], [Description]),
     table.hline(),
-    [Round-to-even], [find a closest match, or round either upward or downward such that the least significant digit of the result is even],
+    [Round-to-even],
+    [find a closest match, or round either upward or downward such that the least significant digit of the result is even],
     [Round-toward-zero], [downward if greater than zero, upward otherwise],
     [Round-down], [$x^- <= x$],
     [Round-up], [$x^+ >= x$],
@@ -143,6 +150,7 @@ x86-64架构有16个64位的通用寄存器,它们既存储整数,也存储指�
   ),
   caption: [Integer registers],
 )
+#figure(image("./Table_of_x86_Registers_svg.svg.png", width: 100%), caption: "x86 寄存器")
 寄存器可以按照1,2,4,8字节的方式被使用,对应不同的指令后缀.其中对于目标寄存器的更新,有这样的规则:
 - 使用1,2字节的指令,目标寄存器的高位字节保持不动.
 - 使用4字节的指令,目标寄存器的高位字节会被清零.
@@ -175,7 +183,9 @@ x86-64架构有16个64位的通用寄存器,它们既存储整数,也存储指�
 == Data Movement Instructions
 #figure(
   table(
-    columns: 2, table.hline(), table.header([Instruction], [Discription]),
+    columns: 2,
+    table.hline(),
+    table.header([Instruction], [Discription]),
     table.hline(),
     [`movb S, D`], [Move byte],
     [`movw S, D`], [Move word],
@@ -211,34 +221,35 @@ movq %rbp,(%rsp)
 ```
 
 关于代码和数据的地址空间是否独立,以及哈佛架构,可以参考这些文章:
-- #link("https://pointersgonewild.com/2023/03/12/memory-pages-mmap-and-linear-address-spaces/")[Memory, Pages, mmap, and Linear Address Spaces]
+- #link(
+    "https://pointersgonewild.com/2023/03/12/memory-pages-mmap-and-linear-address-spaces/",
+  )[Memory, Pages, mmap, and Linear Address Spaces]
 == Arithmetic and Logical Operations
-#figure(
-  caption: [Integer arithmetic operations],
-  table(
-    columns: 4, table.hline(),
-    table.header([Instr], [Operand], [Effect], [Description]), table.hline(),
-    [`leaq`], [ `S, D`], [`D <- &S`], [Load effective address],
-    table.hline(),
-    smcp[inc], [ `D`], [`D <- D + 1`], [Increment],
-    smcp[dec], [ `D`], [`D <- D - 1`], [Decrement],
-    smcp[neg ], [`D`], [`D <- -D`], [Negate],
-    smcp[not ], [`D`], [`D <- ~D`], [Complement],
-    table.hline(),
-    smcp[add ], [`S, D`], [`D <- D + S`], [Add],
-    smcp[sub ], [`S, D`], [`D <- D - S`], [Substract],
-    smcp[imul], [`S, D`], [`D <- D * 1`], [Multiply],
-    smcp[xor], [`S, D`], [`D <- D - 1`], [Exclusive-or],
-    smcp[or], [`S, D`], [`D <- D | S`], [Or],
-    smcp[and], [`S, D`], [`D <- D & S`], [And],
-    table.hline(),
-    smcp[sal], [`k, D`], [`D <- D << k`], [Left shift],
-    smcp[shl], [`k, D`], [`D <- D << k`], [Left shift(same as #smcp[sal])],
-    smcp[sar], [`k, D`], [`D <- D >> k`], [Arithmetic right shift],
-    smcp[shr], [`k, D`], [`D <- D >> k`], [Logical right shift],
-    table.hline(),
-  ),
-)
+#figure(caption: [Integer arithmetic operations], table(
+  columns: 4,
+  table.hline(),
+  table.header([Instr], [Operand], [Effect], [Description]),
+  table.hline(),
+  [`leaq`], [ `S, D`], [`D <- &S`], [Load effective address],
+  table.hline(),
+  smcp[inc], [ `D`], [`D <- D + 1`], [Increment],
+  smcp[dec], [ `D`], [`D <- D - 1`], [Decrement],
+  smcp[neg ], [`D`], [`D <- -D`], [Negate],
+  smcp[not ], [`D`], [`D <- ~D`], [Complement],
+  table.hline(),
+  smcp[add ], [`S, D`], [`D <- D + S`], [Add],
+  smcp[sub ], [`S, D`], [`D <- D - S`], [Substract],
+  smcp[imul], [`S, D`], [`D <- D * 1`], [Multiply],
+  smcp[xor], [`S, D`], [`D <- D - 1`], [Exclusive-or],
+  smcp[or], [`S, D`], [`D <- D | S`], [Or],
+  smcp[and], [`S, D`], [`D <- D & S`], [And],
+  table.hline(),
+  smcp[sal], [`k, D`], [`D <- D << k`], [Left shift],
+  smcp[shl], [`k, D`], [`D <- D << k`], [Left shift(same as #smcp[sal])],
+  smcp[sar], [`k, D`], [`D <- D >> k`], [Arithmetic right shift],
+  smcp[shr], [`k, D`], [`D <- D >> k`], [Logical right shift],
+  table.hline(),
+))
 == Control
 === Condition Codes
 / `CF`: Carry flag. The most recent operation generated a carry out of the most significant bit. Used to detect overflow yielded zero.
@@ -246,16 +257,15 @@ movq %rbp,(%rsp)
 / `SF`: Sign flag. The most recent operation yielded a negative value.
 / `OF`: Overflow flag. The most recent operation caused a two's-complement overflow: either negative or positive.
 注意`leaq`不对上面四个标志产生影响,因为操作的是"内存地址".
-#figure(
-  caption: [Comparsion and test instructions],
-  table(
-    columns: 3, table.hline(),
-    table.header([Instr], [Operand], [Based on]), table.hline(),
-    smcp[cmp], [`S1, S2`], [`S2 - S1`],
-    smcp[test], [`S1, S2`], [`S2 & S1`],
-    table.hline()
-  ),
-)
+#figure(caption: [Comparsion and test instructions], table(
+  columns: 3,
+  table.hline(),
+  table.header([Instr], [Operand], [Based on]),
+  table.hline(),
+  smcp[cmp], [`S1, S2`], [`S2 - S1`],
+  smcp[test], [`S1, S2`], [`S2 & S1`],
+  table.hline(),
+))
 #smcp[cmp]与#smcp[test]只会操作4个标志,不修改操作数.
 
 #smcp[test]常用于测试单个寄存器是否满足某条件,例如:
@@ -263,61 +273,59 @@ movq %rbp,(%rsp)
 testq %rax,%rax
 ```
 === Accessing the Condition Codes
-#figure(
-  caption: [The #smcp[set] instructions],
-  table(
-    columns: 4, table.hline(),
-    table.header([Instr], [Synonym], [Effect], [Set condition]), table.hline(),
-    [`sete D`], [`setz`], [`D <- ZF`], [Zero],
-    [`setne D`], [`setnz`], [`D <- ZF`], [Not zero],
-    table.hline(),
-    [`sets D`], [], [`D <- SF`], [Negative],
-    [`setns D`], [], [`D <- ~SF`], [Nonnegative],
-    table.hline(),
-    [`setg D`], [`setnle`], [`D <- ~(SF^OF)&~ZF`], [Greater (Signed)],
-    [`setge D`], [`setnl`], [`D <- ~(SF^OF)`], [Greater or Equal (Signed)],
-    table.hline(),
-    [`setl D`], [`setnge`], [`D <- SF^OF`], [Less (Signed)],
-    [`setle D`], [`setng`], [`D <- (SF^OF)|ZF`], [Less or Equal (Signed)],
-    table.hline(),
-    [`seta D`], [`setnbe`], [`D <- ~CF&~ZF`], [Above (Unsigned)],
-    [`setae D`], [`setnb`], [`D <- ~CF`], [Above or equal (Unsigned)],
-    table.hline(),
-    [`setb D`], [`setnae`], [`D <- CF`], [Below (Unsigned)],
-    [`setbe D`], [`setna`], [`D <- CF|ZF`], [Below or equal (Unsigned)],
-    table.hline(),
-  ),
-)
+#figure(caption: [The #smcp[set] instructions], table(
+  columns: 4,
+  table.hline(),
+  table.header([Instr], [Synonym], [Effect], [Set condition]),
+  table.hline(),
+  [`sete D`], [`setz`], [`D <- ZF`], [Zero],
+  [`setne D`], [`setnz`], [`D <- ZF`], [Not zero],
+  table.hline(),
+  [`sets D`], [], [`D <- SF`], [Negative],
+  [`setns D`], [], [`D <- ~SF`], [Nonnegative],
+  table.hline(),
+  [`setg D`], [`setnle`], [`D <- ~(SF^OF)&~ZF`], [Greater (Signed)],
+  [`setge D`], [`setnl`], [`D <- ~(SF^OF)`], [Greater or Equal (Signed)],
+  table.hline(),
+  [`setl D`], [`setnge`], [`D <- SF^OF`], [Less (Signed)],
+  [`setle D`], [`setng`], [`D <- (SF^OF)|ZF`], [Less or Equal (Signed)],
+  table.hline(),
+  [`seta D`], [`setnbe`], [`D <- ~CF&~ZF`], [Above (Unsigned)],
+  [`setae D`], [`setnb`], [`D <- ~CF`], [Above or equal (Unsigned)],
+  table.hline(),
+  [`setb D`], [`setnae`], [`D <- CF`], [Below (Unsigned)],
+  [`setbe D`], [`setna`], [`D <- CF|ZF`], [Below or equal (Unsigned)],
+  table.hline(),
+))
 注意#smcp[set]操作1字节大小的寄存器或内存.
 === Jump Instructions
-#figure(
-  caption: [The #smcp[jump] instructions],
-  table(
-    columns: 4, table.hline(),
-    table.header([Instr], [Synonym], [Jump condition], [Description]), table.hline(),
-    [`jmp Label`], [], [`1`], [Direct jump],
-    [`jmp *Operand`], [], [`1`], [Indirect jump],
-    table.hline(),
-    [`je Label`], [`jz`], [`ZF`], [Equal or zero],
-    [`jne Label`], [`jnz`], [`~SF`], [Not equal or not zero],
-    table.hline(),
-    [`js Label`], [], [`SF`], [Negative],
-    [`jns Label`], [], [`~SF`], [Nonnegative],
-    table.hline(),
-    [`jg Label`], [`jnle`], [`~(SF^OF)&~ZF`], [Greater (Signed)],
-    [`jge Label`], [`jnl`], [`~(SF^OF)`], [Greater or equal (Signed)],
-    table.hline(),
-    [`jl Label`], [`jnge`], [`SF^OF`], [Less (Signed)],
-    [`jle Label`], [`jng`], [`(SF^OF)|ZF`], [Less or Equal (Signed)],
-    table.hline(),
-    [`ja Label`], [`jnbe`], [`~CF&~ZF`], [Above (Unsigned)],
-    [`jae Label`], [`jnb`], [`~CF`], [Above or equal (Unsigned)],
-    table.hline(),
-    [`jb Label`], [`jnae`], [`CF`], [Below (Unsigned)],
-    [`jbe Label`], [`jna`], [`CF|ZF`], [Below or equal (Unsigned)],
-    table.hline(),
-  ),
-)
+#figure(caption: [The #smcp[jump] instructions], table(
+  columns: 4,
+  table.hline(),
+  table.header([Instr], [Synonym], [Jump condition], [Description]),
+  table.hline(),
+  [`jmp Label`], [], [`1`], [Direct jump],
+  [`jmp *Operand`], [], [`1`], [Indirect jump],
+  table.hline(),
+  [`je Label`], [`jz`], [`ZF`], [Equal or zero],
+  [`jne Label`], [`jnz`], [`~SF`], [Not equal or not zero],
+  table.hline(),
+  [`js Label`], [], [`SF`], [Negative],
+  [`jns Label`], [], [`~SF`], [Nonnegative],
+  table.hline(),
+  [`jg Label`], [`jnle`], [`~(SF^OF)&~ZF`], [Greater (Signed)],
+  [`jge Label`], [`jnl`], [`~(SF^OF)`], [Greater or equal (Signed)],
+  table.hline(),
+  [`jl Label`], [`jnge`], [`SF^OF`], [Less (Signed)],
+  [`jle Label`], [`jng`], [`(SF^OF)|ZF`], [Less or Equal (Signed)],
+  table.hline(),
+  [`ja Label`], [`jnbe`], [`~CF&~ZF`], [Above (Unsigned)],
+  [`jae Label`], [`jnb`], [`~CF`], [Above or equal (Unsigned)],
+  table.hline(),
+  [`jb Label`], [`jnae`], [`CF`], [Below (Unsigned)],
+  [`jbe Label`], [`jna`], [`CF|ZF`], [Below or equal (Unsigned)],
+  table.hline(),
+))
 == Procedures
 === The Run-Time Stack
 如果要在栈上分配或释放空间:
