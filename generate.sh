@@ -34,6 +34,12 @@ render_html() {
     else
         local backwards=""
     fi
+    if [ -n "$dirs" ]; then
+        local dirs="<table><thead><tr><th scope=col>Directories<th scope=col>Size [KiB]<tbody>$dirs</table>"
+    fi
+        if [ -n "$files" ]; then
+        local files="<table><thead><tr><th scope=col>Files<th scope=col>Size [KiB]<th scope=col>Last Modified<tbody><tbody>$files</table>"
+    fi
     awk -v files="$(printf '%s\n' "$files")" -v dirs="$(printf '%s\n' "$dirs")" -v backwards="$(printf '%s\n' "$backwards")" '{
         if ($0 ~ /\{\{files\}\}/) {
             print files;
