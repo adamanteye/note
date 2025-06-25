@@ -17,6 +17,7 @@
   show link: it => underline(text(fill: orange, it), offset: 0.2em)
   show: codly-init.with()
   codly(languages: codly-languages)
+  codly(number-format: none)
   set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
   set text(
     size: 12pt,
@@ -27,19 +28,13 @@
   set quote(block: true)
   set par(leading: 1em)
   show strong: set text(fill: red)
-  align(
-    center,
-    text(1.4em)[
-      *#title*
-    ],
-  )
+  align(center, text(1.4em)[
+    *#title*
+  ])
   if author != none {
-    align(
-      center,
-      text(1.2em)[
-        #author
-      ],
-    )
+    align(center, text(1.2em)[
+      #author
+    ])
   }
   show: thmrules
   show figure.where(kind: table): set block(breakable: true)

@@ -91,6 +91,10 @@ nmap -sn 192.168.1.0/24
 for i in {1..254}; do sudo ping -c 1 -W 1 192.168.1.$i | grep "bytes from" && echo "192.168.1.$i is alive"; done
 ```
 == 端口
+查看当前监听的端口以及进程:
+```sh
+sudo netstat -tunlp
+```
 `ss`命令由`iproute2`提供,功能与`netstat`类似,但信息更全.
 == ifupdown
 这是Debian上的传统方法.例如启用所有以`auto`定义的接口:
@@ -262,7 +266,7 @@ Windows下保存的`h5`文件在MacOS或Linux下打开也有可能出现列名�
 === CRLF
 打字机时代,换行包含两个动作,移到第一列,移到下一行, Windows遵循了这种惯例.
 
-在Unix中换行只是`\n`,因此在版本控制系统中需要注意两者的转换,可以在git中设置遵循其中一种格式:
+在Unix中换行只是`\n`,因此在版本控制系统中需要注意两者的转换,可以在Git中设置遵循其中一种格式:
 ```
 # .gitconfig
 [core]
@@ -380,6 +384,13 @@ cat /usr/share/fortune/chinese | sed 's/\x1B\[[0-9:;<=>?]*[!-/\x20]*[@-~]//g' > 
 ```
 = 实用程序
 == Git
+=== 通过邮件提交补丁
+参考#link("https://peter.eisentraut.org/blog/2023/05/09/how-to-submit-a-patch-by-email-2023-edition")[How to submit a patch by email | Peter Eisentraut],首先撰写commit.之后使用
+```sh
+git format-path [ <since> | <revision-range> ]
+```
+生成补丁.
+
 === Hooks
 / `commit-msg`: 在提交信息编辑完成后,最终提交前执行.可以验证或修改最终的提交信息.
 / `prepare-commit-msg`: 在生成提交信息后,打开编辑器前执行.在提交时增加额外信息.
@@ -550,6 +561,7 @@ pacman -Fy
 寻找包含指定文件名的包:
 ```sh
 pacman -F tldr
+pacman -F /usr/bin/tldr
 ```
 == AUR
 之前使用#link("https://github.com/Jguer/yay")[Juger/yay],现在我迁移到了#link("https://github.com/Morganamilo/paru")[Morganamilo/paru].
@@ -643,12 +655,20 @@ sudo zfs set mountpoint=/srv oskar/home
 - `zpool-create(8)`
 - `zfs-create(8)`
 - `zfsprops(7)`
-- #link("https://www.thomas-krenn.com/en/wiki/ZFS_dRAID_Basics_and_Configuration")[ZFS dRAID Basics and Configuration - Thomas-Krenn-Wiki-en]
+- #link(
+    "https://www.thomas-krenn.com/en/wiki/ZFS_dRAID_Basics_and_Configuration",
+  )[ZFS dRAID Basics and Configuration - Thomas-Krenn-Wiki-en]
 - #link("http://www.linvon.cn/posts/linux%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E6%B5%85%E8%B0%88/")[Linux文件大小浅谈]
-- #link("https://github.com/openzfs/zfs/discussions/14542")[What does the ZFS Metadata Special Device do? · openzfs/zfs · Discussion #14542]
+- #link(
+    "https://github.com/openzfs/zfs/discussions/14542",
+  )[What does the ZFS Metadata Special Device do? · openzfs/zfs · Discussion #14542]
 - #link("https://farseerfc.me/zhs/file-size-histogram.html")[系统中的大多数文件有多大？ - Farseerfc的小窝]
-- #link("https://openzfs.github.io/openzfs-docs/man/master/7/zpoolconcepts.7.html")[zpoolconcepts.7 — OpenZFS documentation]
-- #link("https://forums.truenas.com/t/openzfs-draid-a-complete-guide/2440")[OpenZFS dRAID - A Complete Guide - Resources - TrueNAS Community Forums]
+- #link(
+    "https://openzfs.github.io/openzfs-docs/man/master/7/zpoolconcepts.7.html",
+  )[zpoolconcepts.7 — OpenZFS documentation]
+- #link(
+    "https://forums.truenas.com/t/openzfs-draid-a-complete-guide/2440",
+  )[OpenZFS dRAID - A Complete Guide - Resources - TrueNAS Community Forums]
 == Btrfs
 == NFS
 参考:
