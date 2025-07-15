@@ -33,7 +33,9 @@ auth sufficient pam_ssh_agent_auth.so file=~/.ssh/authorized_keys
 # /etc/sudoers:
 Defaults:%sudo env_keep += "SSH_AUTH_SOCK"
 ```
-从而不再需要为服务器sudo用户组的用户设置密码,由于`SSH_AUTH_SOCK`被保留,鉴权会通过`pam-ssh-agent-auth`进行.
+由于`SSH_AUTH_SOCK`被保留,鉴权会通过`pam-ssh-agent-auth`进行.但还是需要设置密码,否则可物理接触到机器的人能够直接通过用户名登录.
+
+此外,`.ssh`文件夹的权限应为755,`.ssh/authorized_keys`的权限应为644.
 == sudo
 用`env_keep`可以保留一些有用的环境变量:
 ```
@@ -96,6 +98,9 @@ for i in {1..254}; do sudo ping -c 1 -W 1 192.168.1.$i | grep "bytes from" && ec
 sudo netstat -tunlp
 ```
 `ss`命令由`iproute2`提供,功能与`netstat`类似,但信息更全.
+```sh
+ss -tlpn
+```
 == ifupdown
 这是Debian上的传统方法.例如启用所有以`auto`定义的接口:
 ```sh
@@ -239,7 +244,7 @@ man ./foot.1.gz
 
 Debian打包体系随时间演化,在#link("https://trends.debian.net/#build-systems")[Debian Trends]可以看到不同源码格式,打包工具的使用比例.
 
-我构建了一个debian的docker环境,#link("https://github.com/adamanteye/images/tree/master/debian-builder")[adamanteye/images/debian-builder],用来完成在干净系统下的打包.
+我构建了一个debian的docker环境,#link("https://github.com/adamanteye/images/tree/debian-builder")[adamanteye/images/debian-builder],用来完成在干净系统下的打包.
 
 一般的打包流程:
 ```sh
@@ -610,7 +615,7 @@ sudo journalctl --unit github-actions-runner
 sudo blkid /dev/sda2
 ```
 == 符号链接
-路径分为逻辑路径与物理路径.如果解析符号链接到实际目录,那么是物理路径,否则是逻辑路径,`pwd`命令默认输出逻辑路径.
+路径分为逻辑路径与物理路径.如果解析符号链接到实际目录,那么是物理路径,否则是逻辑路径,`pwd`命令默认输出逻辑路径.如果要输出物理路径:
 ```sh
 pwd -P # 物理路径
 ```
@@ -692,7 +697,16 @@ mount -t nfs4 -o proto=tcp,port=2049 heloise.adamanteye.cc:/oskar/elisabeth /srv
 ```
 heloise.adamanteye.cc:/oskar/elisabeth	/srv/	nfs4	_netdev,auto,defaults	0	0
 ```
-= 虚拟化技术
+== OverlayFS
+#link("https://docs.kernel.org/filesystems/overlayfs.html")[Overlay Filesystem]是upper目录树与lower目录树的融合.其中lower不需要可写,甚至也可以是另一个overlay,而upper一般来说需要可写,并且支持创建特定attributes,因此NFS不能作为upper.
+
+特别地,如果创建只读overlay,那么upper和lower可以使用任何文件系统.
+
+```sh
+mount -t overlay overlay -olowerdir=/lower,upperdir=/upper,\
+workdir=/work /merged
+```
+= 容器与虚拟化
 == Docker
 === 构建镜像
 从含`Dockerfile`的路径构建镜像:
@@ -744,6 +758,11 @@ docker run -it --rm --add-host=host.docker.internal:host-gateway --name typst gh
 在宿主机上,可以监听`172.17.0.1`这个地址并提供代理.而在容器中指定相应的环境变量:
 ```sh
 export http_proxy='http://host.docker.internal:10801'
+```
+== KVM
+Kernel Virtual Machine (#link("https://wiki.debian.org/KVM")[KVM])是Intel或AMD平台上的硬件虚拟化技术.
+```sh
+sudo apt install --no-install-recommends qemu-system libvirt-clients libvirt-daemon-system
 ```
 = 网络服务
 == 邮件
