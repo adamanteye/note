@@ -160,3 +160,11 @@ openssl x509 -in <cert> -text -noout
 docker pull docker.thudep.com/library/nginx:alpine
 ```
 而如果没有任何鉴权,那么在`daemon.json`里面配置的镜像站就可以在默认拉取DockerHub时生效了.
+= 邮件
+/ MUA: 邮件用户代理(Mail User Agent)是通常所说的邮件客户端,常见的MUA有`mutt`,`thunderbird`等.
+/ MTA: 邮件传输代理(Mail Transfer Agent)是邮件中继,专门用于接收已提交邮件并进行转发.
+/ MDA: 邮件投递代理(Mail Delivery Agent)负责接收来自MTA的电子邮件并放进收件人的信箱中.收件人通过IMAP(S)同步邮箱状态.
+邮件投递的要点是,当用户Alice(例如outlook)向用户Bob(例如gmail)发送邮件时,Alice不会直接向Bob的MTA投递,而始终首先发到自己的MTA.
+== 反垃圾邮件
+#link("https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf/")[What are DMARC, DKIM, and SPF? | Cloudflare]介绍了提高MTA可信任性的方法.
+= 跨域
