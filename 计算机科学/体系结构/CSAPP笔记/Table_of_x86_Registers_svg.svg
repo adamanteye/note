@@ -1,0 +1,464 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3055" height="1075">
+  <g fill="#A72929">
+    <path d="M1402 500h40v40h-40z"/>
+    <text x="60" y="30" font-family="Sans" font-size="32" transform="translate(1402 500)">8-bit register</text>
+  </g>
+  <g fill="#8E6902">
+    <path d="M1402 554h40v40h-40z"/>
+    <text x="60" y="30" font-family="Sans" font-size="32" transform="translate(1402 554)">16-bit register</text>
+  </g>
+  <g fill="#539C0B">
+    <path d="M1730 500h40v40h-40z"/>
+    <text x="60" y="30" font-family="Sans" font-size="32" transform="translate(1730 500)">32-bit register</text>
+  </g>
+  <g fill="#737373">
+    <path d="M1730 554h40v40h-40z"/>
+    <text x="60" y="30" font-family="Sans" font-size="32" transform="translate(1730 554)">64-bit register</text>
+  </g>
+  <g fill="#007D7D">
+    <path d="M2058 500h40v40h-40z"/>
+    <text x="60" y="30" font-family="Sans" font-size="32" transform="translate(2058 500)">80-bit register</text>
+  </g>
+  <g fill="#183DA4">
+    <path d="M2058 554h40v40h-40z"/>
+    <text x="60" y="30" font-family="Sans" font-size="32" transform="translate(2058 554)">128-bit register</text>
+  </g>
+  <g fill="#530B9C">
+    <path d="M2386 500h40v40h-40z"/>
+    <text x="60" y="30" font-family="Sans" font-size="32" transform="translate(2386 500)">256-bit register</text>
+  </g>
+  <g fill="#8E0269">
+    <path d="M2386 554h40v40h-40z"/>
+    <text x="60" y="30" font-family="Sans" font-size="32" transform="translate(2386 554)">512-bit register</text>
+  </g>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 2h552v64H2z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(2 2)">ZMM0</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M222 9h325v50H222z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(2 2)">YMM0</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M402 13h141v42H402z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(2 2)">XMM0</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 2h552v64H562z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(562 2)">ZMM1</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M782 9h325v50H782z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(562 2)">YMM1</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M962 13h141v42H962z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(562 2)">XMM1</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 74h552v64H2z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(2 74)">ZMM2</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M222 81h325v50H222z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(2 74)">YMM2</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M402 85h141v42H402z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(2 74)">XMM2</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 74h552v64H562z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(562 74)">ZMM3</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M782 81h325v50H782z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(562 74)">YMM3</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M962 85h141v42H962z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(562 74)">XMM3</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 146h552v64H2z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(2 146)">ZMM4</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M222 153h325v50H222z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(2 146)">YMM4</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M402 157h141v42H402z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(2 146)">XMM4</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 146h552v64H562z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(562 146)">ZMM5</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M782 153h325v50H782z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(562 146)">YMM5</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M962 157h141v42H962z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(562 146)">XMM5</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 218h552v64H2z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(2 218)">ZMM6</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M222 225h325v50H222z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(2 218)">YMM6</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M402 229h141v42H402z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(2 218)">XMM6</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 218h552v64H562z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(562 218)">ZMM7</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M782 225h325v50H782z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(562 218)">YMM7</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M962 229h141v42H962z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(562 218)">XMM7</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 290h552v64H2z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(2 290)">ZMM8</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M222 297h325v50H222z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(2 290)">YMM8</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M402 301h141v42H402z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(2 290)">XMM8</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 290h552v64H562z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(562 290)">ZMM9</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M782 297h325v50H782z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(562 290)">YMM9</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M962 301h141v42H962z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(562 290)">XMM9</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 362h552v64H2z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(2 362)">ZMM10</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M222 369h325v50H222z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(2 362)">YMM10</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M402 373h141v42H402z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(2 362)">XMM10</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 362h552v64H562z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(562 362)">ZMM11</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M782 369h325v50H782z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(562 362)">YMM11</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M962 373h141v42H962z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(562 362)">XMM11</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 434h552v64H2z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(2 434)">ZMM12</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M222 441h325v50H222z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(2 434)">YMM12</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M402 445h141v42H402z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(2 434)">XMM12</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 434h552v64H562z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(562 434)">ZMM13</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M782 441h325v50H782z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(562 434)">YMM13</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M962 445h141v42H962z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(562 434)">XMM13</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 506h552v64H2z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(2 506)">ZMM14</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M222 513h325v50H222z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(2 506)">YMM14</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M402 517h141v42H402z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(2 506)">XMM14</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 506h552v64H562z"/>
+  <text x="17" y="47" fill="#8E0269" font-family="Sans" font-size="40" transform="translate(562 506)">ZMM15</text>
+  <path fill="none" stroke="#530B9C" stroke-width="2" d="M782 513h325v50H782z"/>
+  <text x="237" y="47" fill="#530B9C" font-family="Sans" font-size="40" transform="translate(562 506)">YMM15</text>
+  <path fill="none" stroke="#183DA4" stroke-width="2" d="M962 517h141v42H962z"/>
+  <text x="404" y="45" fill="#183DA4" font-family="Sans" font-size="36" transform="translate(562 506)">XMM15</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 578h132v64H2z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(2 578)">ZMM16</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M142 578h132v64H142z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(142 578)">ZMM17</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M282 578h132v64H282z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(282 578)">ZMM18</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M422 578h132v64H422z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(422 578)">ZMM19</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 578h132v64H562z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(562 578)">ZMM20</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M702 578h132v64H702z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(702 578)">ZMM21</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M842 578h132v64H842z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(842 578)">ZMM22</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M982 578h132v64H982z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(982 578)">ZMM23</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M2 650h132v64H2z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(2 650)">ZMM24</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M142 650h132v64H142z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(142 650)">ZMM25</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M282 650h132v64H282z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(282 650)">ZMM26</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M422 650h132v64H422z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(422 650)">ZMM27</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M562 650h132v64H562z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(562 650)">ZMM28</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M702 650h132v64H702z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(702 650)">ZMM29</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M842 650h132v64H842z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(842 650)">ZMM30</text>
+  <path fill="none" stroke="#8E0269" stroke-width="2" d="M982 650h132v64H982z"/>
+  <text x="17" y="42" fill="#8E0269" font-family="Sans" font-size="30" transform="translate(982 650)">ZMM31</text>
+  <path fill="none" stroke="#007D7D" stroke-width="2" d="M1148 2h272v64h-272z"/>
+  <text x="17" y="47" fill="#007D7D" font-family="Sans" font-size="40" transform="translate(1148 2)">ST(0)</text>
+  <path fill="none" stroke="#737373" stroke-width="2" d="M1285 9h128v50h-128z"/>
+  <text x="141" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1148 2)">MM0</text>
+  <path fill="none" stroke="#007D7D" stroke-width="2" d="M1428 2h272v64h-272z"/>
+  <text x="17" y="47" fill="#007D7D" font-family="Sans" font-size="40" transform="translate(1428 2)">ST(1)</text>
+  <path fill="none" stroke="#737373" stroke-width="2" d="M1565 9h128v50h-128z"/>
+  <text x="141" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1428 2)">MM1</text>
+  <path fill="none" stroke="#007D7D" stroke-width="2" d="M1148 74h272v64h-272z"/>
+  <text x="17" y="47" fill="#007D7D" font-family="Sans" font-size="40" transform="translate(1148 74)">ST(2)</text>
+  <path fill="none" stroke="#737373" stroke-width="2" d="M1285 81h128v50h-128z"/>
+  <text x="141" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1148 74)">MM2</text>
+  <path fill="none" stroke="#007D7D" stroke-width="2" d="M1428 74h272v64h-272z"/>
+  <text x="17" y="47" fill="#007D7D" font-family="Sans" font-size="40" transform="translate(1428 74)">ST(3)</text>
+  <path fill="none" stroke="#737373" stroke-width="2" d="M1565 81h128v50h-128z"/>
+  <text x="141" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1428 74)">MM3</text>
+  <path fill="none" stroke="#007D7D" stroke-width="2" d="M1148 146h272v64h-272z"/>
+  <text x="17" y="47" fill="#007D7D" font-family="Sans" font-size="40" transform="translate(1148 146)">ST(4)</text>
+  <path fill="none" stroke="#737373" stroke-width="2" d="M1285 153h128v50h-128z"/>
+  <text x="141" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1148 146)">MM4</text>
+  <path fill="none" stroke="#007D7D" stroke-width="2" d="M1428 146h272v64h-272z"/>
+  <text x="17" y="47" fill="#007D7D" font-family="Sans" font-size="40" transform="translate(1428 146)">ST(5)</text>
+  <path fill="none" stroke="#737373" stroke-width="2" d="M1565 153h128v50h-128z"/>
+  <text x="141" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1428 146)">MM5</text>
+  <path fill="none" stroke="#007D7D" stroke-width="2" d="M1148 218h272v64h-272z"/>
+  <text x="17" y="47" fill="#007D7D" font-family="Sans" font-size="40" transform="translate(1148 218)">ST(6)</text>
+  <path fill="none" stroke="#737373" stroke-width="2" d="M1285 225h128v50h-128z"/>
+  <text x="141" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1148 218)">MM6</text>
+  <path fill="none" stroke="#007D7D" stroke-width="2" d="M1428 218h272v64h-272z"/>
+  <text x="17" y="47" fill="#007D7D" font-family="Sans" font-size="40" transform="translate(1428 218)">ST(7)</text>
+  <path fill="none" stroke="#737373" stroke-width="2" d="M1565 225h128v50h-128z"/>
+  <text x="141" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1428 218)">MM7</text>
+  <g text-anchor="middle">
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1148 362h132v64h-132z"/>
+    <text x="66" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1148 362)">CW</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1288 362h132v64h-132z"/>
+    <text x="66" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1288 362)">FP_IP</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1428 362h132v64h-132z"/>
+    <text x="66" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1428 362)">FP_DP</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1568 362h132v64h-132z"/>
+    <text x="66" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1568 362)">FP_CS</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1148 434h132v64h-132z"/>
+    <text x="66" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1148 434)">SW</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1148 506h132v64h-132z"/>
+    <text x="66" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1148 506)">TW</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1148 578h132v64h-132z"/>
+    <text x="66" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1148 578)">FP_DS</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1148 650h132v64h-132z"/>
+    <text x="66" y="43" fill="#8E6902" font-family="Sans" font-size="32" transform="translate(1148 650)">FP_OPC</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M1288 650h132v64h-132z"/>
+    <text x="66" y="47" fill="#539C0B" font-family="Sans" font-size="40" transform="translate(1288 650)">FP_DP</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M1428 650h132v64h-132z"/>
+    <text x="66" y="47" fill="#539C0B" font-family="Sans" font-size="40" transform="translate(1428 650)">FP_IP</text>
+  </g>
+  <g text-anchor="end">
+    <path fill="none" stroke="#737373" stroke-width="2" d="M1730 2h296v64h-296z"/>
+    <text x="292" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1730 2)">RAX</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M1734 9h200v50h-200z"/>
+    <text x="198" y="43" fill="#539C0B" font-family="Sans" font-size="32" transform="translate(1730 2)">EAX</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1738 13h126v42h-126z"/>
+    <text x="132" y="43" fill="#8E6902" font-family="Sans" font-size="32" transform="translate(1730 2)">AX</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1780 17h36v34h-36z"/>
+    <text x="45" y="39" fill="#A72929" font-family="Sans" font-size="20" transform="translate(1768 2)">AH</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1742 17h36v34h-36z"/>
+    <text x="45" y="39" fill="#A72929" font-family="Sans" font-size="20" transform="translate(1730 2)">AL</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M1730 74h296v64h-296z"/>
+    <text x="292" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1730 74)">RBX</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M1734 81h200v50h-200z"/>
+    <text x="198" y="43" fill="#539C0B" font-family="Sans" font-size="32" transform="translate(1730 74)">EBX</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1738 85h126v42h-126z"/>
+    <text x="132" y="43" fill="#8E6902" font-family="Sans" font-size="32" transform="translate(1730 74)">BX</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1780 89h36v34h-36z"/>
+    <text x="45" y="39" fill="#A72929" font-family="Sans" font-size="20" transform="translate(1768 74)">BH</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1742 89h36v34h-36z"/>
+    <text x="45" y="39" fill="#A72929" font-family="Sans" font-size="20" transform="translate(1730 74)">BL</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M1730 146h296v64h-296z"/>
+    <text x="292" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1730 146)">RCX</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M1734 153h200v50h-200z"/>
+    <text x="198" y="43" fill="#539C0B" font-family="Sans" font-size="32" transform="translate(1730 146)">ECX</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1738 157h126v42h-126z"/>
+    <text x="132" y="43" fill="#8E6902" font-family="Sans" font-size="32" transform="translate(1730 146)">CX</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1780 161h36v34h-36z"/>
+    <text x="45" y="39" fill="#A72929" font-family="Sans" font-size="20" transform="translate(1768 146)">CH</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1742 161h36v34h-36z"/>
+    <text x="45" y="39" fill="#A72929" font-family="Sans" font-size="20" transform="translate(1730 146)">CL</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M1730 218h296v64h-296z"/>
+    <text x="292" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1730 218)">RDX</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M1734 225h200v50h-200z"/>
+    <text x="198" y="43" fill="#539C0B" font-family="Sans" font-size="32" transform="translate(1730 218)">EDX</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1738 229h126v42h-126z"/>
+    <text x="132" y="43" fill="#8E6902" font-family="Sans" font-size="32" transform="translate(1730 218)">DX</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1780 233h36v34h-36z"/>
+    <text x="45" y="39" fill="#A72929" font-family="Sans" font-size="20" transform="translate(1768 218)">DH</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1742 233h36v34h-36z"/>
+    <text x="45" y="39" fill="#A72929" font-family="Sans" font-size="20" transform="translate(1730 218)">DL</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2034 2h264v64h-264z"/>
+    <text x="260" y="45" fill="#737373" font-family="Sans" font-size="36" transform="translate(2034 2)">R8</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2038 9h184v50h-184z"/>
+    <text x="184" y="39" fill="#539C0B" font-family="Sans" font-size="22" transform="translate(2034 2)">R8D</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2042 13h112v42h-112z"/>
+    <text x="118" y="38" fill="#8E6902" font-family="Sans" font-size="20" transform="translate(2034 2)">R8W</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2046 17h44v34h-44z"/>
+    <text x="54" y="36" fill="#A72929" font-family="Sans" font-size="14" transform="translate(2034 2)">R8B</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2034 74h264v64h-264z"/>
+    <text x="260" y="45" fill="#737373" font-family="Sans" font-size="36" transform="translate(2034 74)">R9</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2038 81h184v50h-184z"/>
+    <text x="184" y="39" fill="#539C0B" font-family="Sans" font-size="22" transform="translate(2034 74)">R9D</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2042 85h112v42h-112z"/>
+    <text x="118" y="38" fill="#8E6902" font-family="Sans" font-size="20" transform="translate(2034 74)">R9W</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2046 89h44v34h-44z"/>
+    <text x="54" y="36" fill="#A72929" font-family="Sans" font-size="14" transform="translate(2034 74)">R9B</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2034 146h264v64h-264z"/>
+    <text x="260" y="45" fill="#737373" font-family="Sans" font-size="36" transform="translate(2034 146)">R10</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2038 153h184v50h-184z"/>
+    <text x="184" y="39" fill="#539C0B" font-family="Sans" font-size="22" transform="translate(2034 146)">R10D</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2042 157h112v42h-112z"/>
+    <text x="118" y="38" fill="#8E6902" font-family="Sans" font-size="20" transform="translate(2034 146)">R10W</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2046 161h44v34h-44z"/>
+    <text x="54" y="36" fill="#A72929" font-family="Sans" font-size="14" transform="translate(2034 146)">R10B</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2034 218h264v64h-264z"/>
+    <text x="260" y="45" fill="#737373" font-family="Sans" font-size="36" transform="translate(2034 218)">R11</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2038 225h184v50h-184z"/>
+    <text x="184" y="39" fill="#539C0B" font-family="Sans" font-size="22" transform="translate(2034 218)">R11D</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2042 229h112v42h-112z"/>
+    <text x="118" y="38" fill="#8E6902" font-family="Sans" font-size="20" transform="translate(2034 218)">R11W</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2046 233h44v34h-44z"/>
+    <text x="54" y="36" fill="#A72929" font-family="Sans" font-size="14" transform="translate(2034 218)">R11B</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2306 2h264v64h-264z"/>
+    <text x="260" y="45" fill="#737373" font-family="Sans" font-size="36" transform="translate(2306 2)">R12</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2310 9h184v50h-184z"/>
+    <text x="184" y="39" fill="#539C0B" font-family="Sans" font-size="22" transform="translate(2306 2)">R12D</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2314 13h112v42h-112z"/>
+    <text x="118" y="38" fill="#8E6902" font-family="Sans" font-size="20" transform="translate(2306 2)">R12W</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2318 17h44v34h-44z"/>
+    <text x="54" y="36" fill="#A72929" font-family="Sans" font-size="14" transform="translate(2306 2)">R12B</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2306 74h264v64h-264z"/>
+    <text x="260" y="45" fill="#737373" font-family="Sans" font-size="36" transform="translate(2306 74)">R13</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2310 81h184v50h-184z"/>
+    <text x="184" y="39" fill="#539C0B" font-family="Sans" font-size="22" transform="translate(2306 74)">R13D</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2314 85h112v42h-112z"/>
+    <text x="118" y="38" fill="#8E6902" font-family="Sans" font-size="20" transform="translate(2306 74)">R13W</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2318 89h44v34h-44z"/>
+    <text x="54" y="36" fill="#A72929" font-family="Sans" font-size="14" transform="translate(2306 74)">R13B</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2306 146h264v64h-264z"/>
+    <text x="260" y="45" fill="#737373" font-family="Sans" font-size="36" transform="translate(2306 146)">R14</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2310 153h184v50h-184z"/>
+    <text x="184" y="39" fill="#539C0B" font-family="Sans" font-size="22" transform="translate(2306 146)">R14D</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2314 157h112v42h-112z"/>
+    <text x="118" y="38" fill="#8E6902" font-family="Sans" font-size="20" transform="translate(2306 146)">R14W</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2318 161h44v34h-44z"/>
+    <text x="54" y="36" fill="#A72929" font-family="Sans" font-size="14" transform="translate(2306 146)">R14B</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2306 218h264v64h-264z"/>
+    <text x="260" y="45" fill="#737373" font-family="Sans" font-size="36" transform="translate(2306 218)">R15</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2310 225h184v50h-184z"/>
+    <text x="184" y="39" fill="#539C0B" font-family="Sans" font-size="22" transform="translate(2306 218)">R15D</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2314 229h112v42h-112z"/>
+    <text x="118" y="38" fill="#8E6902" font-family="Sans" font-size="20" transform="translate(2306 218)">R15W</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2318 233h44v34h-44z"/>
+    <text x="54" y="36" fill="#A72929" font-family="Sans" font-size="14" transform="translate(2306 218)">R15B</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M1730 290h264v64h-264z"/>
+    <text x="260" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1730 290)">RBP</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M1734 297h176v50h-176z"/>
+    <text x="176" y="45" fill="#539C0B" font-family="Sans" font-size="36" transform="translate(1730 290)">EBP</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1738 301h100v42h-100z"/>
+    <text x="104" y="44" fill="#8E6902" font-family="Sans" font-size="34" transform="translate(1730 290)">BP</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1742 305h44v34h-44z"/>
+    <text x="54" y="40" fill="#A72929" font-family="Sans" font-size="22" transform="translate(1730 290)">BPL</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2018 290h264v64h-264z"/>
+    <text x="260" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2018 290)">RDI</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2022 297h176v50h-176z"/>
+    <text x="176" y="45" fill="#539C0B" font-family="Sans" font-size="36" transform="translate(2018 290)">EDI</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2026 301h100v42h-100z"/>
+    <text x="104" y="44" fill="#8E6902" font-family="Sans" font-size="34" transform="translate(2018 290)">DI</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2030 305h44v34h-44z"/>
+    <text x="54" y="40" fill="#A72929" font-family="Sans" font-size="22" transform="translate(2018 290)">DIL</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2306 290h264v64h-264z"/>
+    <text x="260" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2306 290)">RIP</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2310 297h176v50h-176z"/>
+    <text x="176" y="45" fill="#539C0B" font-family="Sans" font-size="36" transform="translate(2306 290)">EIP</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2314 301h100v42h-100z"/>
+    <text x="104" y="44" fill="#8E6902" font-family="Sans" font-size="34" transform="translate(2306 290)">IP</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M1730 362h264v64h-264z"/>
+    <text x="260" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(1730 362)">RSI</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M1734 369h176v50h-176z"/>
+    <text x="176" y="45" fill="#539C0B" font-family="Sans" font-size="36" transform="translate(1730 362)">ESI</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1738 373h100v42h-100z"/>
+    <text x="104" y="44" fill="#8E6902" font-family="Sans" font-size="34" transform="translate(1730 362)">SI</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M1742 377h44v34h-44z"/>
+    <text x="54" y="40" fill="#A72929" font-family="Sans" font-size="22" transform="translate(1730 362)">SIL</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2018 362h264v64h-264z"/>
+    <text x="260" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2018 362)">RSP</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2022 369h176v50h-176z"/>
+    <text x="176" y="45" fill="#539C0B" font-family="Sans" font-size="36" transform="translate(2018 362)">ESP</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2026 373h100v42h-100z"/>
+    <text x="104" y="44" fill="#8E6902" font-family="Sans" font-size="34" transform="translate(2018 362)">SP</text>
+    <path fill="none" stroke="#A72929" stroke-width="2" d="M2030 377h44v34h-44z"/>
+    <text x="54" y="40" fill="#A72929" font-family="Sans" font-size="22" transform="translate(2018 362)">SPL</text>
+  </g>
+  <g text-anchor="middle">
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2602 2h176v64h-176z"/>
+    <text x="136" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2602 2)">CR0</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2610 13h88v42h-88z"/>
+    <text x="52" y="47" fill="#8E6902" font-family="Sans" font-size="34" transform="translate(2602 2)">MSW</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2602 74h176v64h-176z"/>
+    <text x="90" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2602 74)">CR1</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2602 146h176v64h-176z"/>
+    <text x="90" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2602 146)">CR2</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2602 218h176v64h-176z"/>
+    <text x="90" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2602 218)">CR3</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2602 290h176v64h-176z"/>
+    <text x="90" y="47" fill="#539C0B" font-family="Sans" font-size="40" transform="translate(2602 290)">MXCSR</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 2h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 2)">CR4</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 74h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 74)">CR5</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 146h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 146)">CR6</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 218h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 218)">CR7</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 290h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 290)">CR8</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 362h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 362)">CR9</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 434h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 434)">CR10</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 506h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 506)">CR11</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 578h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 578)">CR12</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 650h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 650)">CR13</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 722h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 722)">CR14</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2786 794h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2786 794)">CR15</text>
+  </g>
+  <g text-anchor="middle">
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2426 650h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2426 650)">DR0</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2426 722h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2426 722)">DR1</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2426 794h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2426 794)">DR2</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2426 866h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2426 866)">DR3</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2426 938h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2426 938)">DR4</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2426 1010h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2426 1010)">DR5</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2578 650h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2578 650)">DR6</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2578 722h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2578 722)">DR7</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2578 794h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2578 794)">DR8</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2578 866h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2578 866)">DR9</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2578 938h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2578 938)">DR10</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2578 1010h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2578 1010)">DR11</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2730 938h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2730 938)">DR12</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2730 1010h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2730 1010)">DR13</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2882 938h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2882 938)">DR14</text>
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2882 1010h144v64h-144z"/>
+    <text x="72" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2882 1010)">DR15</text>
+  </g>
+  <g text-anchor="middle">
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1642 650h120v64h-120z"/>
+    <text x="60" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1642 650)">CS</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1770 650h120v64h-120z"/>
+    <text x="60" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1770 650)">SS</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1898 650h120v64h-120z"/>
+    <text x="60" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1898 650)">DS</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1642 722h120v64h-120z"/>
+    <text x="60" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1642 722)">ES</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1770 722h120v64h-120z"/>
+    <text x="60" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1770 722)">FS</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M1898 722h120v64h-120z"/>
+    <text x="60" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(1898 722)">GS</text>
+  </g>
+  <g text-anchor="middle">
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2050 650h168v64h-168z"/>
+    <text x="84" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(2050 650)">GDTR</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2226 650h168v64h-168z"/>
+    <text x="84" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(2226 650)">IDTR</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2050 722h168v64h-168z"/>
+    <text x="84" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(2050 722)">TR</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2226 722h168v64h-168z"/>
+    <text x="84" y="47" fill="#8E6902" font-family="Sans" font-size="40" transform="translate(2226 722)">LDTR</text>
+  </g>
+  <g text-anchor="end">
+    <path fill="none" stroke="#737373" stroke-width="2" d="M2050 818h344v64h-344z"/>
+    <text x="340" y="47" fill="#737373" font-family="Sans" font-size="40" transform="translate(2050 818)">RFLAGS</text>
+    <path fill="none" stroke="#539C0B" stroke-width="2" d="M2054 825h176v50h-176z"/>
+    <text x="176" y="40" fill="#539C0B" font-family="Sans" font-size="20" transform="translate(2050 818)">EFLAGS</text>
+    <path fill="none" stroke="#8E6902" stroke-width="2" d="M2058 829h86v42h-86z"/>
+    <text x="84" y="40" fill="#8E6902" font-family="Sans" font-size="20" transform="translate(2050 818)">FLAGS</text>
+  </g>
+</svg>

@@ -150,7 +150,7 @@ x86-64架构有16个64位的通用寄存器,它们既存储整数,也存储指�
   ),
   caption: [Integer registers],
 )
-#figure(image("./Table_of_x86_Registers_svg.svg.png", width: 100%), caption: "x86 寄存器")
+#figure(image("./Table_of_x86_Registers_svg.svg", width: 100%), caption: "x86 寄存器")
 寄存器可以按照1,2,4,8字节的方式被使用,对应不同的指令后缀.其中对于目标寄存器的更新,有这样的规则:
 - 使用1,2字节的指令,目标寄存器的高位字节保持不动.
 - 使用4字节的指令,目标寄存器的高位字节会被清零.
@@ -350,7 +350,17 @@ x86-64中,最多有6个寄存器可以传参.如果函数有多于6个参数,剩
 === Local Storage in Registers
 寄存器`%rbx`, `%rbp`以及`%r12`至`%r15`都是被调用者保存(callee-saved).其他除了`%rsp`的寄存器都是调用者保存(caller-saved).
 == Array Allocation and Access
+假设`int E[10]`是一个数组,那么它的值是
+```asm
+movl (%rdx,%rcx,4),%eax
+```
+是`E[i]`的表示(假设`%rdx`储存起始地址,`%rcx`储存索引).
 
+此外,`&E[2]`的值则是
+```asm
+leaq 8(%rdx),%rax
+```
+对于嵌套数组,访问顺序为行优先.
 == Floting-Point Code
 = 附录
 - 北大一位学长写了#link("https://github.com/Seterplus/CSAPP")[15年版本的Lab],代码很值得学习.
