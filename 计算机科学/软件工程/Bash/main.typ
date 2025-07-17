@@ -27,3 +27,9 @@ echo -e -n "\x48\x65\x6c\x6c\x6f" > hello.txt
 ```sh
 echo "john,21" | cut -d "," -f 1
 ```
+
+#link("https://stackoverflow.com/questions/59895/how-can-i-get-the-source-directory-of-a-bash-script-from-within-the-script-itsel")[Get the source diretory of a bash script]:
+
+```sh
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+```
