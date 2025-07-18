@@ -64,6 +64,10 @@ who
 ```
 adamanteye tty1         2025-01-25 20:34
 ```
+查看最近登入的用户:
+```sh
+last
+```
 = 网络管理
 == 地址与路由
 访问#link("https://4.ipw.cn")[4.ipw.cn]与#link("https://6.ipw.cn")[6.ipw.cn]可以看到出口IP地址.可以利用它配合`ddclient`更新DNS记录,例如配置`/etc/ddclient.conf`如下:
@@ -707,66 +711,16 @@ mount -t overlay overlay -olowerdir=/lower,upperdir=/upper,\
 workdir=/work /merged
 ```
 = 容器与虚拟化
-== Docker
-=== 构建镜像
-从含`Dockerfile`的路径构建镜像:
-```sh
-docker buildx build --tag nvchecker:latest .
-```
-==== 最小化打包
-使用alpine镜像,并且从alpine安装软件包时使用`--no-cache`选项:
-```sh
-apk add --no-cache bash
-# 等价于
-apk update && apk add bash && rm -rf /var/cache/apk/*
-```
-如果使用debian镜像,类似的减少体积的方式是
-```sh
-apt-get update && \
-apt-get install -y --no-install-recommends bash && \
-rm -rf /var/lib/apt/lists/*
-```
-==== 可重复构建
-=== 运行容器
-交互式运行容器,设置代理,挂载本地路径:
-```sh
-docker run -it --rm --name debian --network host -e HTTP_PROXY=http://[::1]:10801 -v "$HOME/Documents/debian:/home/debian:rw" -v "/etc/wgetrc:/etc/wgetrc:ro" -e DEBFULLNAME -e DEBEMAIL ghcr.io/adamanteye/debian-builder:master
-```
-=== 清理
-删除所有未使用镜像(不止dangling):
-```sh
-docker image prune -a
-```
-=== 配置网络
-在中国,免不了需要配置各种代理,为docker daemon配置代理可以通过编写`/etc/docker/daemon.json`实现:
-```json
-{
-  "proxies": {
-    "http-proxy": "http://[::1]:10801",
-    "https-proxy": "http://[::1]:10801"
-  }
-}
-```
-如果要为docker container配置代理,可以使用`--add-host`配置容器与宿主机网络的映射,例如:
-```sh
-docker run -it --rm --add-host=host.docker.internal:host-gateway --name typst ghcr.io/adamanteye/typst:latest
-```
-进入容器后查看`/etc/hosts`,发现域名已经解析到宿主机地址:
-```
-172.17.0.1 host.docker.internal
-```
-在宿主机上,可以监听`172.17.0.1`这个地址并提供代理.而在容器中指定相应的环境变量:
-```sh
-export http_proxy='http://host.docker.internal:10801'
-```
+== Container
+Docker在2013年发布,同年年末,Google的工程师们开发了k8s的原型,随后,Docker底层的镜像构建,容器运行的部分被抽出来作为#link("https://www.howtogeek.com/devops/what-is-containerd-and-how-does-it-relate-to-docker-and-kubernetes/")[containerd]发布,其遵循Open Container Initiative (OCI)标准.
+
+到现在,无论是Docker还是k8s,他们都以containred作为容器运行时.其中k8s的#link("https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes/")[Container Runtime Interface] (CRI)是OCI的抽象,作为不同的容器运行时的统一封装.
 == KVM
 Kernel Virtual Machine (#link("https://wiki.debian.org/KVM")[KVM])是Intel或AMD平台上的硬件虚拟化技术.
 ```sh
 sudo apt install --no-install-recommends qemu-system libvirt-clients libvirt-daemon-system
 ```
 = 网络服务
-== 邮件
-参考#link("https://maddy.email/tutorials/setting-up/")[Installation & initial configuration - maddy]
 == nginx
 启用#link("https://en.wikipedia.org/wiki/OCSP_stapling")[OSCP Stapling]:
 ```

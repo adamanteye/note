@@ -20,7 +20,7 @@
   codly(number-format: none)
   set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
   set text(
-    size: 12pt,
+    size: 11pt,
     font: font,
     lang: "zh",
     region: "cn",

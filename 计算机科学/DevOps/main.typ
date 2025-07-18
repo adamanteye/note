@@ -4,6 +4,9 @@
   author: "adamanteye",
 )
 #show: rest => columns(2, rest)
+= 概念
+/ 水平伸缩: 提高副本数量
+/ 垂直伸缩: 提高单实例资源
 = CI/CD
 == GitHub Security
 === Dependabot
@@ -154,6 +157,57 @@ openssl x509 -in <cert> -text -noout
 ```
 此外,注意检查`acme.sh`是否创建了crontab.
 = Docker
+== 构建镜像
+从含`Dockerfile`的路径构建镜像:
+```sh
+docker buildx build --tag nvchecker:latest .
+```
+=== 最小化打包
+使用alpine镜像,并且从alpine安装软件包时使用`--no-cache`选项:
+```sh
+apk add --no-cache bash
+# 等价于
+apk update && apk add bash && rm -rf /var/cache/apk/*
+```
+如果使用debian镜像,类似的减少体积的方式是
+```sh
+apt-get update && \
+apt-get install -y --no-install-recommends bash && \
+rm -rf /var/lib/apt/lists/*
+```
+=== 可重复构建
+== 运行容器
+交互式运行容器,设置代理,挂载本地路径:
+```sh
+docker run -it --rm --name debian --network host -e HTTP_PROXY=http://[::1]:10801 -v "$HOME/Documents/debian:/home/debian:rw" -v "/etc/wgetrc:/etc/wgetrc:ro" -e DEBFULLNAME -e DEBEMAIL ghcr.io/adamanteye/debian-builder:master
+```
+== 清理
+删除所有未使用镜像(不止dangling):
+```sh
+docker image prune -a
+```
+== 配置网络
+在中国,免不了需要配置各种代理,为docker daemon配置代理可以通过编写`/etc/docker/daemon.json`实现:
+```json
+{
+  "proxies": {
+    "http-proxy": "http://[::1]:10801",
+    "https-proxy": "http://[::1]:10801"
+  }
+}
+```
+如果要为docker container配置代理,可以使用`--add-host`配置容器与宿主机网络的映射,例如:
+```sh
+docker run -it --rm --add-host=host.docker.internal:host-gateway --name typst ghcr.io/adamanteye/typst:latest
+```
+进入容器后查看`/etc/hosts`,发现域名已经解析到宿主机地址:
+```
+172.17.0.1 host.docker.internal
+```
+在宿主机上,可以监听`172.17.0.1`这个地址并提供代理.而在容器中指定相应的环境变量:
+```sh
+export http_proxy='http://host.docker.internal:10801'
+```
 == 托管镜像
 托管镜像站时注意,如果开启了htpasswd鉴权,那么试图通过该镜像站拉取镜像将不再成功,因为`docker pull`并不会使用`docker login https://docker.thudep.com`时保存的凭据.相反,需要指定源:
 ```sh
