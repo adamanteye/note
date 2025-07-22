@@ -250,13 +250,20 @@ Debian打包体系随时间演化,在#link("https://trends.debian.net/#build-sys
 
 我构建了一个debian的docker环境,#link("https://github.com/adamanteye/images/tree/debian-builder")[adamanteye/images/debian-builder],用来完成在干净系统下的打包.
 
-一般的打包流程:
+从上游开始的打包流程:
 ```sh
 tar xaf example-0.1.0.tar.gz
 cd example-0.1.0
 debmake -b':sh' -x1   # 选一个模板
 vim debian/control    # 以及其他文件
 rm -rf debian/patches # 以及其他用不到的文件
+debuild
+```
+
+依托源码包做出修改:
+```sh
+apt source sqlite3
+patch debian/rules < ~/enable-icu.patch
 debuild
 ```
 == 证书
@@ -393,13 +400,16 @@ cat /usr/share/fortune/chinese | sed 's/\x1B\[[0-9:;<=>?]*[!-/\x20]*[@-~]//g' > 
 ```
 = 实用程序
 == Git
+=== 打包
+```sh
+git archive -o foo.tar.gz HEAD
+```
 === 通过邮件提交补丁
 参考#link("https://peter.eisentraut.org/blog/2023/05/09/how-to-submit-a-patch-by-email-2023-edition")[How to submit a patch by email | Peter Eisentraut],首先撰写commit.之后使用
 ```sh
 git format-path [ <since> | <revision-range> ]
 ```
 生成补丁.
-
 === Hooks
 / `commit-msg`: 在提交信息编辑完成后,最终提交前执行.可以验证或修改最终的提交信息.
 / `prepare-commit-msg`: 在生成提交信息后,打开编辑器前执行.在提交时增加额外信息.
@@ -407,6 +417,11 @@ git format-path [ <since> | <revision-range> ]
 之前用`hyprland`,发现#link("https://github.com/hyprwm/Hyprland/issues/8850")[依赖太重],于是切换到`niri`.此外`niri`的标签页交互很舒适.
 
 `niri`没有内置的Xwayland,文档推荐使用`xwayland-satellite`.
+
+列出所有的显示器:
+```sh
+niri msg outputs
+```
 
 此外之前也用过很久的`KDE`,同样因为太笨重而切换了平铺式桌面管理器.
 == 编辑器
@@ -485,9 +500,11 @@ GNU `stow`利用软链接集中地管理配置文件,可以配合`git`进行版�
 
 我自己的配置文件管理在#link("https://github.com/adamanteye/dotfiles")[adamanteye/dotfiles].
 == 待办管理
-#link("https://taskwarrior.org/")[Taskwarrior]功能丰富,更新到3.0版本后改变了远程同步的方式,可以自己托管远程同步服务.
+我使用#link("https://taskwarrior.org/")[TaskWarrior]以及其TUI界面#link("https://github.com/kdheepak/taskwarrior-tui")[taskwarrior-tui].
 
-Taskwarrior创建循环任务:
+TaskWarrior更新到3.0版本后改变了远程同步的方式,可以自己托管远程同步服务.
+
+TaskWarrior创建循环任务:
 ```sh
 task recur:2d due:eod add 吃山楂片
 ```
@@ -512,6 +529,11 @@ file '2.mp4'
 == 逆向
 Hash推荐我用`binaryninja-free`.
 = 资源监控
+== 硬盘
+完整磁盘诊断:
+```sh
+sudo smartctl -x /dev/sda
+```
 == 文件系统
 `ncdu`是采用`ncurses`界面的磁盘占用统计工具,比`du`命令更好用,带有彩色模式:
 ```
@@ -523,7 +545,7 @@ Hash推荐我用`binaryninja-free`.
 ```sh
 fio -filename=/home/adamanteye/test -direct=1 -iodepth 1 -thread -rw=randrw -bs=4k -size=2G -numjobs=5 -runtime=10 -group_reporting -name=mytest | tee randrw.log
 ```
-== CPU信息
+== CPU
 ```sh
 cat /proc/cpuinfo # 或者
 lscpu
@@ -587,6 +609,11 @@ dpkg-deb -c example_0.1.0-1_all.deb
 ```sh
 dpkg-deb -I example_0.1.0-1_all.deb
 ```
+== pip
+以`requirements.txt`格式列出安装的包:
+```sh
+pip freeze
+```
 = init程序
 `init`程序是系统启动的第一个程序(`pid`为1),它完成主引导流程.
 
@@ -595,6 +622,10 @@ Debian和Arch系统的`/usr/sbin/init`是指向`../lib/systemd/systemd`的符号
 列出所有unit的初始化时间:
 ```sh
 systemd-analyze blame
+```
+展示unit属性:
+```sh
+systemctl show k3s
 ```
 == macOS
 macOS所使用的守护进程管理是`launchd`,管理系统级或用户级的守护程序.
@@ -712,14 +743,18 @@ workdir=/work /merged
 ```
 = 容器与虚拟化
 == Container
-Docker在2013年发布,同年年末,Google的工程师们开发了k8s的原型,随后,Docker底层的镜像构建,容器运行的部分被抽出来作为#link("https://www.howtogeek.com/devops/what-is-containerd-and-how-does-it-relate-to-docker-and-kubernetes/")[containerd]发布,其遵循Open Container Initiative (OCI)标准.
+容器作为应用分发的优势在于,不包括内核,仅打包需要的库.其技术基于`cgroups(1)`与OverlayFs.
 
-到现在,无论是Docker还是k8s,他们都以containred作为容器运行时.其中k8s的#link("https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes/")[Container Runtime Interface] (CRI)是OCI的抽象,作为不同的容器运行时的统一封装.
+Docker在2013年发布,同年年末,Google的工程师们开发了#link("https://cloudplatform.googleblog.com/2015/01/in-coming-weeks-we-will-be-publishing.html")[k8s]的原型,随后,Docker底层的镜像构建,容器运行的部分被抽出来作为#link("https://www.howtogeek.com/devops/what-is-containerd-and-how-does-it-relate-to-docker-and-kubernetes/")[containerd]发布,其遵循Open Container Initiative (OCI)标准.
+
+到现在,无论是Docker还是k8s,他们都以containred作为容器运行时.其中k8s的#link("https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes/")[CRI] (Container Runtime Interface)是OCI的抽象,作为不同的容器运行时的统一封装.
 == KVM
 Kernel Virtual Machine (#link("https://wiki.debian.org/KVM")[KVM])是Intel或AMD平台上的硬件虚拟化技术.
 ```sh
 sudo apt install --no-install-recommends qemu-system libvirt-clients libvirt-daemon-system
 ```
+=== ESXi
+ESXib不是应用程序,而是直接安装在硬件上的虚拟化平台.
 = 网络服务
 == nginx
 启用#link("https://en.wikipedia.org/wiki/OCSP_stapling")[OSCP Stapling]:

@@ -5,8 +5,10 @@
 )
 #show: rest => columns(2, rest)
 = 概念
+== 部署
 / 水平伸缩: 提高副本数量
 / 垂直伸缩: 提高单实例资源
+/ Canary Deployment: 只向部分用户推送新版,渐进更新
 = CI/CD
 == GitHub Security
 === Dependabot
@@ -93,7 +95,7 @@ networks:
 更新wrangler版本时注意查看
 #link("https://developers.cloudflare.com/workers/configuration/compatibility-flags/")[Compatibility flags]以了解是否出现兼容性问题.
 = 监控与日志
-Grafana是开源的数据可视化平台,用于创建仪表盘,展示来自各种数据源的指标.结合数据收集代理Telegraf与高性能的时序数据库InfluxDB,可以完成数据的采集,存储,查询展示的流程.
+Grafana是开源的数据可视化平台,用于创建仪表盘,展示来自各种数据源的指标.结合数据收集代理Telegraf与高性能的时序数据库#link("https://www.tisonkun.org/2024/06/05/influxdb-to-sql/")[InfluxDB],可以完成数据的采集,存储,查询展示的流程.
 
 首先配置Telegraf采集数据,例如采集CPU负载:
 ```toml
@@ -175,7 +177,17 @@ apt-get update && \
 apt-get install -y --no-install-recommends bash && \
 rm -rf /var/lib/apt/lists/*
 ```
-=== 可重复构建
+=== 可复现构建
+可复现构建的源头是保证上游的一致不变,在镜像打包的语义下,上游不仅仅是指开发者作为上游,从发行版安装的软件也是上游.
+
+对于发行版,使用对应快照来锁定版本.
+
+*Debian发行版*:
+仅仅依赖稳定版冻结软件包版本是不可靠的,因为还有可能从debian-security接受更新.
+```sh
+sed -i 's|http://deb.debian.org/debian-security|http://snapshot.debian.org/archive/debian-security/20250717T060459Z|g' /etc/apt/sources.list.d/debian.sources
+sed -i 's|http://deb.debian.org/debian|http://snapshot.debian.org/archive/debian/20250718T082802Z|g' /etc/apt/sources.list.d/debian.sources
+```
 == 运行容器
 交互式运行容器,设置代理,挂载本地路径:
 ```sh
@@ -213,7 +225,52 @@ export http_proxy='http://host.docker.internal:10801'
 ```sh
 docker pull docker.thudep.com/library/nginx:alpine
 ```
-而如果没有任何鉴权,那么在`daemon.json`里面配置的镜像站就可以在默认拉取DockerHub时生效了.
+而如果镜像站没有任何鉴权,那么在`daemon.json`里面配置的镜像站就可以在默认拉取DockerHub时生效了.
+= Kubernetes
+#link("https://cloudplatform.googleblog.com/2015/01/what-makes-a-container-cluster.html")[Kubernetes]是源自Google的内部工具,现在成为了企业级容器和集群调度的工具.
+
+Kubernetes提供的能力有:
+- 服务发现和负载均衡
+- 存储编排
+- 自动部署和回滚
+- 水平扩展
+#figure(image("components-of-kubernetes.svg", width: 100%), caption: "Components of Kubernetes")
+/ Pod: 一组容器,被作为一个单元放置在相同节点上.例如一个数据库容器与后端服务容器,它们可以组成一个Pod.
+/ Label: 每个Pod都有若干键值对,一个键值对就是一个Label.可以通过Label来选中一组Pod.
+/ Scaling: 根据Label以及期望的Pod数量,Kubernetes中的Replication Controller可以缩放Pod.
+
+参考:
+- #link("https://kubernetes.io/zh-cn/docs/concepts/architecture/")[Kubernetes 架构 | Kubernetes]
+- #link("https://kubernetes.io/zh-cn/docs/tutorials/hello-minikube/")[Hello Minikube | Kubernetes]
+== 节点
+节点(Node)可以是物理机或虚拟机,每个节点至少运行:
+- kubelet
+- 容器运行时
+
+节点必须有不同的主机名.
+== Pod
+每个Pod在集群范围内,都会分配到独立的`IP`,例如`10.x.x.x`.集群内的访问是不需要NAT的.
+
+在同一Pod内的所有容器都可以在`localhost`上访问彼此的端口,代价是降低了容器间的隔离性,不同容器的端口可能冲突.
+
+以上性质与Docker不同.
+== 容器
+Kubernetes支持的容器运行时为containerd与CRI-O,以及兼容CRI的任何实现.
+= Kubernetes部署
+== k3s
+默认的kubeconfig文件位于`/etc/rancher/k3s/k3s.yaml`.
+= Kubernetes管理
+== 调试
+最常用的操作
+- `kubectl get` 列出资源
+- `kubectl describe` 显示资源详细信息
+- `kubectl logs` 打印Pod中容器的日志
+- `kubectl exec` 在Pod中的容器上执行命令
+=== 集群
+检查`kubectl`是否能与集群通信:
+```sh
+kubectl version
+```
 = 邮件
 / MUA: 邮件用户代理(Mail User Agent)是通常所说的邮件客户端,常见的MUA有`mutt`,`thunderbird`等.
 / MTA: 邮件传输代理(Mail Transfer Agent)是邮件中继,专门用于接收已提交邮件并进行转发.

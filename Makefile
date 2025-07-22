@@ -1,3 +1,5 @@
+.DELETE_ON_ERROR:
+
 TEX_DIRS = $(shell find . -type f -name "main.tex" -exec dirname {} \;)
 TYP_DIRS = $(shell find . -type f -name "main.typ" -exec dirname {} \;)
 TEX_BUILDS = $(foreach dir,$(TEX_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
