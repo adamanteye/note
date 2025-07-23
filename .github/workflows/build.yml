@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Deploy To Pages
 
 on:
   workflow_dispatch:
@@ -12,25 +12,14 @@ on:
 
 jobs:
   build-and-deploy:
-    name: Build and Deploy
-    runs-on: [self-hosted, linux, docker, perf]
+    name: Build and deploy
+    runs-on: ubuntu-latest
     environment: production
-    container:
-      image: ghcr.io/adamanteye/typst:latest
-      env:
-        HTTP_PROXY: http://host.docker.internal:10801
-        HTTPS_PROXY: http://host.docker.internal:10801
-      volumes:
-        - /srv/note:/srv/note:rw
-      options: --add-host=host.docker.internal:host-gateway
+    container: ghcr.io/adamanteye/typst:latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Reset symlink
-        run: |
-          rm -rf build
-          ln -s /srv/note build
       - name: Build
         run: |
           git config --global safe.directory "*"
@@ -40,7 +29,7 @@ jobs:
       - name: Minify
         run: |
           minify -i build
-      - name: Deploy to cloudlfare pages
+      - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
