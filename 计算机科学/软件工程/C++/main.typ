@@ -4,6 +4,9 @@
   author: "adamanteye",
 )
 #show: rest => columns(2, rest)
+= 编译
+== 标志
+- #link("https://maskray.me/blog/2020-11-15-explain-gnu-linker-options")[Explain GNU style linker options | MaskRay]
 = 工具链
 == CMake
 参考:

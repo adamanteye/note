@@ -257,6 +257,9 @@ Kubernetes提供的能力有:
 == 容器
 Kubernetes支持的容器运行时为containerd与CRI-O,以及兼容CRI的任何实现.
 = Kubernetes部署
+- #link(
+    "https://www.reddit.com/r/kubernetes/comments/1kd5a5e/whatre_people_using_as_selfhotedonprem_k8/",
+  )[What're people using as self-hoted/on-prem K8 distributions in 2025? : r/kubernetes]
 == k3s
 默认的kubeconfig文件位于`/etc/rancher/k3s/k3s.yaml`.
 = Kubernetes管理
@@ -270,6 +273,10 @@ Kubernetes支持的容器运行时为containerd与CRI-O,以及兼容CRI的任何
 检查`kubectl`是否能与集群通信:
 ```sh
 kubectl version
+```
+查看集群配置
+```sh
+kubectl config view
 ```
 = 邮件
 / MUA: 邮件用户代理(Mail User Agent)是通常所说的邮件客户端,常见的MUA有`mutt`,`thunderbird`等.
