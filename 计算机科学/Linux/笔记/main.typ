@@ -23,7 +23,14 @@
 软件包更新甚至比Gentoo激进.
 == OpenSUSE
 被称为最适合`KDE`的发行版,大概都是德国人开发的吧.
+== Talos
+为Kubernetes准备的发行版.
 = 多用户管理
+== 权限和密码
+在非TTY环境中修改密码:
+```sh
+echo "root:debian" | chpasswd
+```
 == SSH
 #link("https://github.com/jbeverly/pam_ssh_agent_auth")[pam_ssh_agent_auth]允许登入的用户通过ssh-agent获得权限,在服务器上的配置参考`pam_ssh_agent_auth(8)`.
 例如:

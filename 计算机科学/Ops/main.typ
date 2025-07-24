@@ -5,6 +5,8 @@
 )
 #show: rest => columns(2, rest)
 = 概念
+== 开发
+- #link("https://12factor.net/")[The Twelve-Factor App]
 == 部署
 / 水平伸缩: 提高副本数量
 / 垂直伸缩: 提高单实例资源
@@ -158,6 +160,17 @@ X509v3 Subject Alternative Name:
 openssl x509 -in <cert> -text -noout
 ```
 此外,注意检查`acme.sh`是否创建了crontab.
+= Podman
+推荐crun作为运行时.
+
+编辑`/etc/containers/registries.conf`以添加镜像站:
+```toml
+unqualified-search-registries = ["docker.io"]
+[[registry]]
+location = "docker.io"
+[[registry.mirror]]
+location = "docker.thudep.com"
+```
 = Docker
 == 构建镜像
 从含`Dockerfile`的路径构建镜像:
@@ -227,7 +240,7 @@ docker pull docker.thudep.com/library/nginx:alpine
 ```
 而如果镜像站没有任何鉴权,那么在`daemon.json`里面配置的镜像站就可以在默认拉取DockerHub时生效了.
 = Kubernetes
-#link("https://cloudplatform.googleblog.com/2015/01/what-makes-a-container-cluster.html")[Kubernetes]是源自Google的内部工具,现在成为了企业级容器和集群调度的工具.
+#link("https://cloudplatform.googleblog.com/2015/01/what-makes-a-container-cluster.html")[Kubernetes]是源自Google的内部工具Borg,现在成为了企业级容器和集群调度的工具.
 
 Kubernetes提供的能力有:
 - 服务发现和负载均衡
@@ -242,6 +255,7 @@ Kubernetes提供的能力有:
 参考:
 - #link("https://kubernetes.io/zh-cn/docs/concepts/architecture/")[Kubernetes 架构 | Kubernetes]
 - #link("https://kubernetes.io/zh-cn/docs/tutorials/hello-minikube/")[Hello Minikube | Kubernetes]
+- _B. Burns, E. Villalba, D. Strebel, and L. Evenson, Kubernetes best practices: blueprints for building successful applications on Kubernetes, Second edition. Sebastopol, CA: O'Reilly Media, Inc, 2023._
 == 节点
 节点(Node)可以是物理机或虚拟机,每个节点至少运行:
 - kubelet
@@ -262,6 +276,14 @@ Kubernetes支持的容器运行时为containerd与CRI-O,以及兼容CRI的任何
   )[What're people using as self-hoted/on-prem K8 distributions in 2025? : r/kubernetes]
 == k3s
 默认的kubeconfig文件位于`/etc/rancher/k3s/k3s.yaml`.
+
+Registry配置位于`/etc/rancher/k3s/registries.yaml`.
+```yaml
+mirrors:
+  docker.io:
+    endpoint:
+      - https://mirror.ccs.tencentyun.com
+```
 = Kubernetes管理
 == 调试
 最常用的操作
@@ -278,6 +300,10 @@ kubectl version
 ```sh
 kubectl config view
 ```
+= GitOps
+Weaveworks推广了GitOps的概念.GitOps旨在通过声明式的配置文件维持集群.
+
+常用的拉取-应用更改的工具有Flux和ArgoCD.
 = 邮件
 / MUA: 邮件用户代理(Mail User Agent)是通常所说的邮件客户端,常见的MUA有`mutt`,`thunderbird`等.
 / MTA: 邮件传输代理(Mail Transfer Agent)是邮件中继,专门用于接收已提交邮件并进行转发.
