@@ -270,6 +270,16 @@ Kubernetes提供的能力有:
 以上性质与Docker不同.
 == 容器
 Kubernetes支持的容器运行时为containerd与CRI-O,以及兼容CRI的任何实现.
+== Gateway
+2023年末,Kubernetes发布了Gateway API,它旨在成为Kubernetes中暴露服务的新标准,替代Ingress.
+== 卷
+/ PersistentVolume:
+  访问模式分为:
+  / ReadWriteOnce: 被一个Node以读写方式挂载,并且允许该Node上的多个Pod读写该卷.
+  / ReadOnlyMany: 被多个Node以只读方式挂载.
+  / ReadWriteMany: 被多个Node以读写模式挂载.
+
+StorageClass是集群管理员提前配置的,例如阿里云ACK集群上通过csi-provisioner提供不同类型的StorageClass.开发人员声明PersistentVolumeClaim,并且配置对应的StorageClassName后即可动态从中创建PersistentVolume.
 = Kubernetes部署
 - #link(
     "https://www.reddit.com/r/kubernetes/comments/1kd5a5e/whatre_people_using_as_selfhotedonprem_k8/",
@@ -287,6 +297,8 @@ mirrors:
 = Kubernetes管理
 == 调试
 最常用的操作
+- `kubectl top` 使用情况
+  - `1m` 代表 1 millicore
 - `kubectl get` 列出资源
 - `kubectl describe` 显示资源详细信息
 - `kubectl logs` 打印Pod中容器的日志
@@ -312,3 +324,30 @@ Weaveworks推广了GitOps的概念.GitOps旨在通过声明式的配置文件维
 == 反垃圾邮件
 #link("https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf/")[What are DMARC, DKIM, and SPF? | Cloudflare]介绍了提高MTA可信任性的方法.
 = 跨域
+= 服务
+== GitLab
+通过Docker部署GitLab
+```yml
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:18.2.1-ce.0
+    container_name: gitlab
+    restart: unless-stopped
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # Add any other gitlab.rb configuration here, each on its own line
+        external_url 'https://gitlab.example.com'
+        letsencrypt['enabled'] = false
+        nginx['listen_https'] = false
+        nginx['listen_port'] = 81
+        registry_external_url 'https://registry.example.com'
+        registry_nginx['listen_https'] = false
+        registry_nginx['listen_port'] = 82
+    ports:
+      - '22:22'
+    volumes:
+      - '/srv/gitlab/config:/etc/gitlab'
+      - '/srv/gitlab/logs:/var/log/gitlab'
+      - '/srv/gitlab/data:/var/opt/gitlab'
+```
+此外一并配置反向代理.
