@@ -497,6 +497,7 @@ OpenType字体有一系列feature可以启用,参考#link("https://typst.app/doc
   it
 }
 ```
+/ woff2: #link("https://www.w3.org/TR/WOFF2/")[WOFF File Format 2.0]
 === 配色
 - #link("https://catppuccin.com/palette")[猫布奇诺调色盘]
 - #link("https://oklch.com/")[OKLCH Color Picker & Converter]

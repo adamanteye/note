@@ -285,6 +285,8 @@ StorageClass是集群管理员提前配置的,例如阿里云ACK集群上通过c
     "https://www.reddit.com/r/kubernetes/comments/1kd5a5e/whatre_people_using_as_selfhotedonprem_k8/",
   )[What're people using as self-hoted/on-prem K8 distributions in 2025? : r/kubernetes]
 == k3s
+注意安装iptables.
+
 默认的kubeconfig文件位于`/etc/rancher/k3s/k3s.yaml`.
 
 Registry配置位于`/etc/rancher/k3s/registries.yaml`.
@@ -294,6 +296,16 @@ mirrors:
     endpoint:
       - https://mirror.ccs.tencentyun.com
 ```
+
+为了配置server的`tls-san`等参数,修改`/etc/rancher/k3s/config.yaml`:
+```yaml
+tls-san:
+  - "10.0.0.1"
+  - "k3s.adamanteye.cc"
+cluster-cidr: "10.16.0.0/12"
+service-cidr: "10.32.0.0/12"
+```
+agent上不用做配置.
 = Kubernetes管理
 == 调试
 最常用的操作
@@ -325,6 +337,14 @@ Weaveworks推广了GitOps的概念.GitOps旨在通过声明式的配置文件维
 #link("https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf/")[What are DMARC, DKIM, and SPF? | Cloudflare]介绍了提高MTA可信任性的方法.
 = 跨域
 = 服务
+== Git
+Git可视化页面,以便在无CI/CD,用户管理,Issues等需求的情况下使用.
+
+- #link("https://hub.docker.com/r/mlan/gitweb")[mlan/gitweb - Docker Image | Docker Hub]
+#link("https://gitolite.com/gitolite/")[Gitolite]
+== nginx
+=== 参数
+/ `client_max_body_size 1000M;`: 调整大小,以满足反向代理registry的Docker镜像上传的需求,否则`413 Request Entity Too Large`.
 == GitLab
 通过Docker部署GitLab
 ```yml
