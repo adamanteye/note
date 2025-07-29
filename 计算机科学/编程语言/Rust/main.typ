@@ -13,6 +13,7 @@
 `crate`的命名应当为`snake_case`,更多讨论参考#link("https://github.com/rust-lang/api-guidelines/discussions/29")[Naming convention for crates · rust-lang/api-guidelines · Discussion #29]
 == 性能
 - #link("https://nnethercote.github.io/perf-book/")[The Rust Performance Book]
+= 对象安全
 = 异步
 无脑tokio全家桶就对了:
 - #link(
@@ -44,6 +45,8 @@
 = 系统调用
 #link("https://docs.rs/rustix/latest/rustix/index.html")[rustix - Rust]
 = 包管理
+*crate*是Rust编译的最小单元,即便是使用`rustc`编译的单文件,也是一个crate.
+更高的一层是*package*,只要包含`Cargo.toml`,就是一个package.单个package最多有一个库crate,以及任意多个二进制crate.
 == feature
 Cargo会将同一个包的features进行并集操作,例如A,B都依赖了C包的不同feature,那么为了避免产生两个版本的C,会对C启用的features取并集.
 
@@ -64,3 +67,5 @@ Cargo会将同一个包的features进行并集操作,例如A,B都依赖了C包�
 - #link(
     "https://github.com/purpleprotocol/mimalloc_rust",
   )[purpleprotocol/mimalloc_rust: A Rust wrapper over Microsoft's MiMalloc memory allocator]
+= 嵌入式开发
+- #link("https://red.implrust.com/")[Introduction - Rust Embedded Drivers Book]
