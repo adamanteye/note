@@ -1,6 +1,6 @@
 #import "../../note_zh.typ": *
 #show: conf.with(
-  title: "DevOps笔记",
+  title: "运维笔记",
   author: "adamanteye",
 )
 #show: rest => columns(2, rest)
@@ -10,8 +10,10 @@
 == 部署
 / 水平伸缩: 提高副本数量
 / 垂直伸缩: 提高单实例资源
+/ Rolling Update: 逐个更新
 / Canary Deployment: 只向部分用户推送新版,渐进更新
 / Infrastructure as Code: 基础设施即代码(IsC)
+== 监控
 = CI/CD
 == GitHub Security
 === Dependabot
@@ -175,6 +177,8 @@ location = "docker.io"
 location = "docker.thudep.com"
 ```
 = Docker
+== 文件系统
+在Btrfs上的Docker会消耗大量metadata.
 == 构建镜像
 从含`Dockerfile`的路径构建镜像:
 ```sh
@@ -193,6 +197,7 @@ apt-get update && \
 apt-get install -y --no-install-recommends bash && \
 rm -rf /var/lib/apt/lists/*
 ```
+- #link("https://news.ycombinator.com/item?id=10782897")[Super small Docker image based on Alpine Linux | Hacker News]
 === 可复现构建
 可复现构建的源头是保证上游的一致不变,在镜像打包的语义下,上游不仅仅是指开发者作为上游,从发行版安装的软件也是上游.
 
@@ -262,7 +267,13 @@ Kubernetes提供的能力有:
 参考:
 - #link("https://kubernetes.io/zh-cn/docs/concepts/architecture/")[Kubernetes 架构 | Kubernetes]
 - #link("https://kubernetes.io/zh-cn/docs/tutorials/hello-minikube/")[Hello Minikube | Kubernetes]
+- _B. Burns, J. Beda, K. Hightower, and L. Evenson, Kubernetes: up and running: dive into the future of infrastructure, Third edition. Beijing Boston Farnham Sebastopol Tokyo: O'Reilly, 2022._
 - _B. Burns, E. Villalba, D. Strebel, and L. Evenson, Kubernetes best practices: blueprints for building successful applications on Kubernetes, Second edition. Sebastopol, CA: O'Reilly Media, Inc, 2023._
+== 配额
+Kubernetes利用cgroup来限制Pod的资源使用.最小的CPU单位是`1m`,即千分之一个CPU核心.
+- #link(
+    "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+  )[Resource Management for Pods and Containers | Kubernetes]
 == Etcd
 - #link("https://en.wikipedia.org/wiki/Container_Linux#ETCD")[Etcd - Wikipedia]
 == 节点
@@ -294,6 +305,18 @@ StorageClass是集群管理员提前配置的,例如阿里云ACK集群上通过c
   "https://www.stackrox.io/blog/kubernetes-networking-demystified/",
 )[Kubernetes Networking Demystified])
 Flannel是流行的Kubernetes容器网络插件,通过VXLAN创建Overlay网络.
+=== DNS
+在集群内部,服务被解析为`<servicename>.<namespace>.svc.cluster.local`.
+== CRD & Controller
+k8s允许创建自定义资源(Custom Resource),注意CRD不是ConfigMap,它的使用方法不是记录静态数据.相反,CRD最常见的用法是声明式的集群对象,配合自己编写的Controller,当CRD被改变时,Controller对集群施加动作,使得集群对象变为期望的状态.
+
+Pod,Deployment,StatefulSet都是原生的Kubernetes资源.它们都有对应的Controller管理.
+- #link("https://kube.rs/controllers/intro/")[Controller Overview]
+- #link("https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/")[Custom Resources]
+== Operator
+- #link(
+    "https://www.redhat.com/en/blog/introducing-operators-putting-operational-knowledge-into-software",
+  )[Introducing Operators: Putting Operational Knowledge into Software]
 = Kubernetes部署
 - #link(
     "https://www.reddit.com/r/kubernetes/comments/1kd5a5e/whatre_people_using_as_selfhotedonprem_k8/",
@@ -322,13 +345,9 @@ service-cidr: "10.32.0.0/12"
 agent上不用做配置.
 == Flux
 Flux提供了可选组件,需要通过`--components-extra=image-reflector-controller,image-automation-controller`安装.如果第一次未安装,附加该选项后再次bootstrap.
-- #link(
-    "https://docs.gitlab.com/user/clusters/agent/getting_started/#next-steps",
-  )[Connecting a Kubernetes cluster to GitLab]
+- #link("https://www.youtube.com/watch?v=2CCZ8fcLyGk")[Building with FluxCD and Kubernetes - YouTube] (精炼,适合入门)
+- #link("https://docs.gitlab.com/user/clusters/agent/getting_started/#next-steps")[Connecting a Kubernetes cluster to GitLab] (只参考创建GitLab Agent之前的内容,因为GitLab Agent和Flux没什么关系,也不好用)
 - #link("https://spacelift.io/blog/fluxcd")[What is Flux CD & How Does It Work | Tutorial]
-- #link(
-    "https://www.youtube.com/watch?v=2CCZ8fcLyGk",
-  )[Building with FluxCD and Kubernetes | GitOps Principles Explained in Action - YouTube]
 = Kubernetes管理
 == kubectl
 最常用的操作
@@ -429,7 +448,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./config.toml:/etc/gitlab-runner/config.toml
 ```
-注意GitLab的文档提到了多种配置Docker Executor的办法,最简单的是挂载socks:
+注意GitLab的文档提到了多种在Docker Container中配置Docker Executor的办法(Docker in Docker),最简单的是挂载socks:
 ```toml
 [[runners]]
   executor = "docker"
@@ -449,3 +468,26 @@ services:
     shm_size = 0
     network_mtu = 0
 ```
+如果要在Kubernetes中部署,参考#link("https://docs.gitlab.com/ci/docker/using_docker_build/#docker-in-docker-with-tls-disabled-in-kubernetes")[Docker-in-Docker with TLS disabled in Kubernetes].
+
+runner应配置为privileged模式.
+```toml
+[[runners]]
+[runners.kubernetes]
+image = "ubuntu:24.04"
+privileged = true
+```
+还可以配置缓存
+```toml
+[[runners.kubernetes.volumes.pvc]]
+name = "docker-cache"
+mount_path = "/var/lib/docker"
+```
+此外,参考#link("https://docs.gitlab.com/ci/docker/using_docker_build/#enable-registry-mirror-for-dockerdind-service")[Enable registry mirror for docker:dind service]配置CI当中的镜像.
+```toml
+[[runners.kubernetes.volumes.config_map]]
+name = "docker-daemon"
+mount_path = "/etc/docker/daemon.json"
+sub_path = "daemon.json"
+```
+= 安全

@@ -6,6 +6,28 @@
 #show: rest => columns(2, rest)
 = 总结
 这篇笔记主要来自结城浩-图解密码技术.
+= 编码
+== 二进制文本编码
+最常见的二进制到文本的编码是Base64以及变体.
+- #link("https://datatracker.ietf.org/doc/html/rfc4648")[RFC 4648 - The Base16, Base32, and Base64 Data Encodings]
+- #link("https://www.rfc-editor.org/rfc/rfc9285.html")[RFC 9285: The Base45 Data Encoding]
+== 二维码
+二维码采用4种模式编码数据:
+#figure(table(
+  columns: 3,
+  table.hline(),
+  table.header([模式], [字符集], [字符集大小]),
+  table.hline(),
+  [Numeric], [`[0-9]`], [10],
+  [Alphanumeric], [`[0-9A-Z$%*+-.:/ ]`], [45],
+  [Binary], [bytes], [256],
+  [Kanji], [], [8189],
+))
+参考:
+- #link("https://huonw.github.io/blog/2024/03/qr-base10-base64/")[10 > 64, in QR codes | Huon on the internet]
+= 鉴权
+== OAuth
+- #link("https://www.rfc-editor.org/rfc/rfc8707.html")[RFC 8707: Resource Indicators for OAuth 2.0]
 = 对称密码
 对称密码也称共享密钥密码,用相同的密钥进行加密和解密.
 == 一次性密码本
@@ -20,7 +42,8 @@ RSA得名于三位开发者的首字母组合.
 RSA可以被用于公钥与密码签名.
 #figure(
   table(
-    columns: 2, table.hline(),
+    columns: 2,
+    table.hline(),
     [公钥], [$(E,N)$],
     [私钥], [$(D,N)$],
     [加密], [$"密文"="明文"^E mod N$],
@@ -100,7 +123,9 @@ HMAC是用单向散列函数构造消息认证码的方法(RFC 2104).
 
 #figure(
   table(
-    columns: 3, table.hline(), table.header([], [私钥], [公钥]),
+    columns: 3,
+    table.hline(),
+    table.header([], [私钥], [公钥]),
     table.hline(),
     [非对称密码], [接受者解密], [发送者加密],
     [数字签名], [签名者生成签名], [验证者验证签名],
@@ -116,3 +141,7 @@ HMAC是用单向散列函数构造消息认证码的方法(RFC 2104).
 SSL是1994年由网景(netscape)设计的协议,于1995年发布了3.0版本,在2014年, SSL 3.0协议被发现存在可能导致POODLE攻击的安全漏洞,不再安全.
 
 1999年, IETF在SSL 3.0基础上设计了TLS 1.0,作为RFC 2246发布. 2006年, TLS 1.1以RFC 4346发布,加入了AES对称密码算法. TLS 1.2新增了HMAC-SHA256以及对GCM, CCM认证加密的支持,移除了IDEA和DES.
+= 信用卡
+- #link(
+    "https://increase.com/articles/iso-8583-the-language-of-credit-cards",
+  )[ISO 8583: The language of credit cards — Increase]
