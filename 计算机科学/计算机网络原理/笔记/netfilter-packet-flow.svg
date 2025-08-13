@@ -1,0 +1,353 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1650" height="525" version="1.0">
+  <defs>
+    <linearGradient id="f">
+      <stop offset="0" stop-color="#cfcfcf"/>
+      <stop offset="1" stop-color="#3f3f3f"/>
+    </linearGradient>
+    <linearGradient id="e">
+      <stop offset="0" stop-color="#fffe99"/>
+      <stop offset="1" stop-color="#ffffe1"/>
+    </linearGradient>
+    <linearGradient id="g">
+      <stop offset="0" stop-color="#ff99bd"/>
+      <stop offset="1" stop-color="#ffe1ec"/>
+    </linearGradient>
+    <linearGradient id="d">
+      <stop offset="0" stop-color="#81b9ff"/>
+      <stop offset="1" stop-color="#e1efff"/>
+    </linearGradient>
+    <linearGradient id="c">
+      <stop offset="0" stop-color="#c1ffa6"/>
+      <stop offset="1" stop-color="#ebffe1"/>
+    </linearGradient>
+    <linearGradient id="h">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#d0d0d0"/>
+    </linearGradient>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#8080ff"/>
+      <stop offset="1" stop-color="#0000a0"/>
+    </linearGradient>
+    <linearGradient id="b">
+      <stop offset="0" stop-color="#bdff99"/>
+      <stop offset="1" stop-color="#00e000"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="Q" x1="350.063" x2="350.063" y1="776.875" y2="787" gradientTransform="matrix(.98765 0 0 1.01266 -273.74 -94.314)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#b" id="R" x1="649.938" x2="649.938" y1="776.875" y2="787.25" gradientTransform="matrix(1.01266 0 0 .98765 -586.165 -94.886)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#c" id="k" x1="185" x2="185" y1="541.479" y2="666.479" gradientTransform="matrix(.99997 0 0 1.33998 217.02 -28.085)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#d" id="j" x1="185" x2="185" y1="676.479" y2="766.479" gradientTransform="translate(217 198.521)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#e" id="l" x1="185" x2="185" y1="226.479" y2="271.479" gradientTransform="translate(217 414.521)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#f" id="S" x1="750" x2="750" y1="776.875" y2="812.125" gradientTransform="matrix(.2 0 0 .28571 -78 370)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#g" id="m" x1="185" x2="185" y1="226.479" y2="271.479" gradientTransform="translate(217 344.521)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#h" id="T" x1="750" x2="750" y1="776.875" y2="812.125" gradientTransform="matrix(.2 0 0 .28571 -78 390)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#f" id="p" x1="750" x2="750" y1="777" y2="807" gradientTransform="translate(-118 53)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="r" x1="370" x2="370" y1="776.875" y2="787.125" gradientTransform="translate(132 148.521)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#b" id="t" x1="670" x2="670" y1="776.479" y2="786.479" gradientTransform="translate(92 148.521)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#h" id="u" x1="670" x2="670" y1="786.479" y2="806.479" gradientTransform="translate(92 148.521)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#h" id="v" x1="750" x2="750" y1="777" y2="807" gradientTransform="translate(77 148)" gradientUnits="userSpaceOnUse"/>
+    <marker id="x" orient="auto" overflow="visible" refX="0" refY="0">
+      <use xlink:href="#i" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".625" font-size="12" transform="scale(-.6)"/>
+    </marker>
+    <marker id="M" orient="auto" overflow="visible" refX="0" refY="0">
+      <use xlink:href="#i" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".625" font-size="12" transform="scale(-.6)"/>
+    </marker>
+    <marker id="N" orient="auto" overflow="visible" refX="0" refY="0">
+      <use xlink:href="#i" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".625" font-size="12" transform="scale(-.6)"/>
+    </marker>
+    <marker id="O" orient="auto" overflow="visible" refX="0" refY="0">
+      <use xlink:href="#i" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".625" font-size="12" transform="scale(-.6)"/>
+    </marker>
+    <marker id="P" orient="auto" overflow="visible" refX="0" refY="0">
+      <use xlink:href="#i" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".625" font-size="12" transform="scale(-.6)"/>
+    </marker>
+    <path id="i" d="M8.719 4.034-2.207.016 8.719-4.002c-1.746 2.372-1.736 5.618 0 8.036"/>
+    <path id="L" fill="none" stroke="#000" d="M1062 845h47.39"/>
+  </defs>
+  <g stroke="#000" stroke-linejoin="bevel">
+    <path fill="url(#j)" fill-rule="evenodd" stroke-width=".2" d="M392 875h1095v90H392z" transform="translate(0 -475)"/>
+    <path fill="url(#k)" fill-rule="evenodd" stroke-width=".232" d="M392.016 697.487h1094.968v167.498H392.016z" transform="translate(0 -475)"/>
+    <path fill="url(#l)" stroke-linecap="square" stroke-width=".2" d="M392 626h1095v60H392z" transform="translate(0 -475)"/>
+    <path fill="url(#m)" stroke-linecap="square" stroke-width=".2" d="M392 571h1095v45H392z" transform="translate(0 -475)"/>
+  </g>
+  <path fill-opacity=".09" fill-rule="evenodd" stroke="#000" stroke-linejoin="bevel" stroke-width=".213" d="M872.006 80.518h199.987v419.476H872.006zm210 0h394.987v419.476h-394.987zm-680.519 3.735h459.987v418.703H401.487z" opacity=".86"/>
+  <g transform="translate(0 -475)">
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(-195 -95)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(-195 -95)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(-65 -95)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(0 -95)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(-65 -95)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(0 -95)"/>
+    <rect id="w" width="50" height="25" x="607" y="830" fill="url(#p)" fill-opacity="1" fill-rule="evenodd" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="bevel" stroke-miterlimit="4" stroke-opacity="1" stroke-width=".25" display="inline" rx="10" ry="10"/>
+    <use xlink:href="#q" width="1488" height="1052" transform="translate(139.8 -344)"/>
+    <use xlink:href="#q" width="1488" height="1052" transform="translate(-345 -274)"/>
+    <path id="s" fill="url(#r)" fill-opacity="1" fill-rule="evenodd" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="bevel" stroke-miterlimit="4" stroke-opacity="1" stroke-width=".25" d="M477 925h50v10h-50z" display="inline"/>
+    <use xlink:href="#n" width="1488.189" height="1052.362" transform="translate(-195)"/>
+    <use xlink:href="#o" width="1488.189" height="1052.362" transform="translate(-195)"/>
+    <use xlink:href="#s" width="1488.189" height="1052.362" transform="translate(-65)"/>
+    <use xlink:href="#q" width="1488" height="1052" transform="translate(-465)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(-325)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(-260)"/>
+    <use xlink:href="#q" width="1610" height="1052" transform="translate(-530)"/>
+    <use xlink:href="#q" width="1488" height="1052" transform="translate(0 -95)"/>
+    <path id="n" fill="url(#t)" fill-opacity="1" fill-rule="evenodd" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="bevel" stroke-miterlimit="4" stroke-opacity="1" stroke-width=".25" d="M737 925h50v10h-50z" display="inline"/>
+    <path id="o" fill="url(#u)" fill-opacity="1" fill-rule="evenodd" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="bevel" stroke-miterlimit="4" stroke-opacity="1" stroke-width=".25" d="M737 935h50v15h-50z" display="inline"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(65 -135)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(65 -135)"/>
+    <use xlink:href="#s" width="1052.362" height="744.094" transform="translate(325 -40)"/>
+    <use xlink:href="#n" width="1488.189" height="1052.362" transform="translate(-65)"/>
+    <use xlink:href="#o" width="1488.189" height="1052.362" transform="translate(-65)"/>
+    <rect id="q" width="50" height="25" x="802" y="925" fill="url(#v)" fill-opacity="1" fill-rule="evenodd" stroke="#000" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="bevel" stroke-miterlimit="4" stroke-opacity="1" stroke-width=".25" display="inline" rx="10" ry="10"/>
+    <use xlink:href="#n" width="1488" height="1052" transform="translate(65 -175)"/>
+    <use xlink:href="#o" width="1488" height="1052" transform="translate(65 -175)"/>
+    <use xlink:href="#q" width="1488" height="1052" transform="translate(0 -274)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(65 -40)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(210 -95)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(210 -95)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(210 -40)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(210 -40)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" font-family="Arial" font-size="20" font-weight="400" style="line-height:100%;text-align:start" transform="translate(210)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(210)"/>
+    <use xlink:href="#o" width="1488" height="1052" transform="translate(275)"/>
+    <use xlink:href="#o" width="1488" height="1052" transform="translate(275 -40)"/>
+    <use xlink:href="#o" width="1488" height="1052" transform="translate(275 -95)"/>
+    <use xlink:href="#n" width="1488" height="1052" transform="translate(275)"/>
+    <use xlink:href="#n" width="1488" height="1052" transform="translate(275 -40)"/>
+    <use xlink:href="#n" width="1488" height="1052" transform="translate(275 -95)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(420 -170)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(420 -170)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(420)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(420)"/>
+    <use xlink:href="#o" width="1488" height="1052" transform="translate(484.563 -128.583)"/>
+    <use xlink:href="#n" width="1488" height="1052" transform="translate(484.563 -128.583)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(420 -40)"/>
+    <use xlink:href="#n" width="1510" height="1052" transform="translate(420 -40)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(485)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(485)"/>
+    <use xlink:href="#n" width="1488" height="1052" transform="translate(549.563 -128.583)"/>
+    <use xlink:href="#o" width="1488" height="1052" transform="translate(549.563 -128.583)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(485 -40)"/>
+    <use xlink:href="#n" width="1510" height="1052" transform="translate(485 -40)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(550 -170)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(550 -170)"/>
+    <use xlink:href="#s" width="1052.362" height="744.094" transform="translate(810 -40)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(550 -40)"/>
+    <use xlink:href="#q" width="1488" height="1052" transform="translate(420 -274)"/>
+    <use xlink:href="#q" width="1488" height="1052" transform="translate(290 -170)"/>
+    <use xlink:href="#s" width="1052.362" height="744.094" transform="translate(405)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(145)"/>
+    <use xlink:href="#s" width="1052.362" height="744.094" transform="translate(615)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(355)"/>
+    <use xlink:href="#s" width="1052.362" height="744.094" transform="translate(875 -40)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(615 -40)"/>
+    <use xlink:href="#q" width="1488" height="1052" transform="translate(550 -95)"/>
+    <use xlink:href="#o" width="1510" height="1052" transform="translate(679.993 -40.027)"/>
+    <use xlink:href="#s" width="1510" height="1052" transform="translate(939.993 -40.027)"/>
+    <use xlink:href="#q" width="1488" height="1052" transform="translate(695)"/>
+    <use xlink:href="#q" width="1610" height="1052" transform="translate(760)"/>
+    <use xlink:href="#q" width="1400" height="475" transform="translate(-530 -95)"/>
+    <use xlink:href="#q" width="1400" height="475" transform="translate(-595)"/>
+    <use xlink:href="#q" width="1400" height="475" transform="translate(760 -95)"/>
+    <use xlink:href="#w" width="1450" height="475" transform="translate(0 95)"/>
+    <use xlink:href="#w" width="1450" height="475" transform="translate(615 -75)"/>
+    <use xlink:href="#q" width="1400" height="475" transform="translate(-718.886 .632)"/>
+    <use xlink:href="#q" width="1400" height="475" transform="translate(-796.225 1.62)"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M110.506 925.115v-82.171l17.001-17.001h21.049"/>
+    <use xlink:href="#n" width="1488" height="1052" transform="translate(64.95 -215.47)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(64.863 -216.354)"/>
+  </g>
+  <g transform="translate(0 -475)">
+    <text xml:space="preserve" id="A" x="566.727" y="933.114" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="566.727" y="933.114">raw</tspan></text>
+    <text xml:space="preserve" id="I" x="501.705" y="933.961" fill="#fff" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="501.705" y="933.961">nat</tspan></text>
+    <text xml:space="preserve" x="436.883" y="933.842" fill="#fff" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="436.883" y="933.842">broute</tspan></text>
+    <text xml:space="preserve" x="437.01" y="945.027" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="437.01" y="945.027">brouting</tspan></text>
+    <text xml:space="preserve" x="361.883" y="936.021" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="361.883" y="936.021">bridge</tspan><tspan x="361.883" y="946.021">check</tspan></text>
+    <use xlink:href="#y" width="1488" height="1052" transform="translate(-195)"/>
+    <use xlink:href="#y" width="1488" height="1052" transform="translate(-260)"/>
+    <text xml:space="preserve" x="296.861" y="935.027" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="296.861" y="935.027">ingress</tspan><tspan x="296.861" y="945.027">(qdisc)</tspan></text>
+    <use xlink:href="#z" width="1488" height="1052" transform="translate(0 95)"/>
+    <use xlink:href="#A" width="1488" height="1052" transform="translate(0 -95)"/>
+    <use xlink:href="#B" width="1488" height="1052" transform="translate(0 -94.678)"/>
+    <use xlink:href="#y" width="1488" height="1052" transform="translate(-195 -95)"/>
+    <use xlink:href="#y" width="1488" height="1052" transform="translate(-65 -95)"/>
+    <use xlink:href="#y" width="1488" height="1052" transform="translate(0 -95)"/>
+    <use xlink:href="#C" width="1488" height="1052" transform="translate(0 -95)"/>
+    <text xml:space="preserve" id="z" x="610.135" y="846.021" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="20" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:start" text-anchor="start" writing-mode="lr-tb"><tspan x="610.135" y="846.021" font-size="10">conntrack</tspan></text>
+    <text xml:space="preserve" id="J" x="827.176" y="841.021" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="827.176" y="841.021">routing</tspan><tspan x="827.176" y="851.021">decision</tspan></text>
+    <text xml:space="preserve" id="K" x="826.702" y="905.085" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="826.702" y="905.085">input</tspan></text>
+    <text xml:space="preserve" id="B" x="761.705" y="933.44" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="761.705" y="933.44">nat</tspan></text>
+    <text xml:space="preserve" id="y" x="762.007" y="945.027" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="762.007" y="945.027">prerouting</tspan></text>
+    <text xml:space="preserve" id="C" x="696.892" y="932.796" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="9" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="696.892" y="932.796">mangle</tspan></text>
+    <text xml:space="preserve" x="827.176" y="936.021" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="827.176" y="936.021">bridging</tspan><tspan x="827.176" y="946.021">decision</tspan></text>
+    <use xlink:href="#y" width="1488" height="1052" transform="translate(-65)"/>
+    <use xlink:href="#D" width="1488" height="1052" transform="translate(-80 -40)"/>
+    <text xml:space="preserve" id="E" x="907.317" y="946.082" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="907.317" y="946.082">forward</tspan></text>
+    <text xml:space="preserve" id="D" x="906.89" y="934.103" fill="#fff" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="906.89" y="934.103">filter</tspan></text>
+    <use xlink:href="#C" width="1488" height="1052" transform="translate(275)"/>
+    <use xlink:href="#C" width="1488" height="1052" transform="translate(275 -40)"/>
+    <use xlink:href="#C" width="1488" height="1052" transform="translate(275 -95)"/>
+    <use xlink:href="#E" width="1488" height="1052" transform="translate(65)"/>
+    <use xlink:href="#E" width="1488" height="1052" transform="translate(65 -40)"/>
+    <use xlink:href="#E" width="1488" height="1052" transform="translate(65 -95)"/>
+    <use xlink:href="#E" width="1488" height="1052" transform="translate(130)"/>
+    <use xlink:href="#E" width="1488" height="1052" transform="translate(130 -40)"/>
+    <use xlink:href="#E" width="1488" height="1052" transform="translate(130 -95)"/>
+    <text xml:space="preserve" id="F" x="1036.89" y="934.103" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="1036.89" y="934.103">filter</tspan></text>
+    <use xlink:href="#F" width="1488" height="1052" transform="translate(0 -40)"/>
+    <use xlink:href="#F" width="1488" height="1052" transform="translate(0 -95)"/>
+    <use xlink:href="#G" width="1488" height="1052" transform="translate(-130.437 -88.583)"/>
+    <use xlink:href="#C" width="1488" height="1052" transform="translate(485)"/>
+    <use xlink:href="#F" width="1488" height="1052" transform="translate(209.563 -128.583)"/>
+    <use xlink:href="#C" width="1510" height="1052" transform="translate(485 -40)"/>
+    <use xlink:href="#H" width="1488" height="1052" transform="translate(65)"/>
+    <g transform="translate(65.633)">
+      <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(420 -95)"/>
+      <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(420 -95)"/>
+      <text xml:space="preserve" x="1181.892" y="837.651" font-family="Arial" font-size="9" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="1181.892" y="837.651">mangle</tspan></text>
+      <use xlink:href="#H" width="1488" height="1052" transform="translate(65 -95)"/>
+    </g>
+    <use xlink:href="#H" width="1510" height="1052" transform="translate(65 -40)"/>
+    <use xlink:href="#H" width="1488" height="1052" transform="translate(130)"/>
+    <use xlink:href="#B" width="1488" height="1052" transform="translate(485 .521)"/>
+    <use xlink:href="#G" width="1488" height="1052" transform="translate(-65.437 -88.583)"/>
+    <use xlink:href="#B" width="1488" height="1052" transform="translate(549.563 -128.062)"/>
+    <use xlink:href="#n" width="1052.362" height="744.094" transform="translate(549 -95)"/>
+    <use xlink:href="#o" width="1052.362" height="744.094" transform="translate(549 -95)"/>
+    <use xlink:href="#B" width="1488" height="1052" transform="translate(549 -94.479)"/>
+    <use xlink:href="#H" width="1488" height="1052" transform="translate(194 -95)"/>
+    <use xlink:href="#B" width="1510" height="1052" transform="translate(485 -39.479)"/>
+    <use xlink:href="#H" width="1510" height="1052" transform="translate(130 -40)"/>
+    <use xlink:href="#G" width="1488" height="1052" transform="translate(-65)"/>
+    <g transform="translate(-46.2 33.356)">
+      <use xlink:href="#q" width="1488" height="1052" transform="translate(355.101 -128.344)"/>
+      <text xml:space="preserve" x="1181.435" y="807.024" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="1181.435" y="807.024">reroute</tspan><tspan x="1181.435" y="817.024">check</tspan></text>
+    </g>
+    <use xlink:href="#I" width="1488" height="1052" transform="translate(810 -40)"/>
+    <text xml:space="preserve" id="G" x="1376.868" y="905.005" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="1376.868" y="905.005">output</tspan></text>
+    <use xlink:href="#D" width="1488" height="1052" transform="translate(470 -40)"/>
+    <text xml:space="preserve" x="1377.027" y="841.082" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="1377.027" y="841.082">xfrm</tspan><tspan x="1377.027" y="851.082">lookup</tspan></text>
+    <use xlink:href="#I" width="1510" height="1052" transform="translate(939.993 -40.027)"/>
+    <use xlink:href="#H" width="1510" height="1052" transform="translate(324.993 -40.027)"/>
+    <use xlink:href="#G" width="1488" height="1052" transform="translate(-195 -130)"/>
+    <use xlink:href="#A" width="1488" height="1052" transform="translate(615 -170)"/>
+    <use xlink:href="#z" width="1488" height="1052" transform="translate(615 -75)"/>
+    <use xlink:href="#G" width="1488" height="1052" transform="translate(-65 -130)"/>
+    <use xlink:href="#C" width="1488" height="1052" transform="translate(615 -170)"/>
+    <text xml:space="preserve" x="1247.027" y="662.082" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="1247.027" y="662.082">xfrm</tspan><tspan x="1247.027" y="672.082">encode</tspan></text>
+    <use xlink:href="#J" width="1488" height="1052" transform="translate(290 -75)"/>
+    <text xml:space="preserve" id="H" x="1117.007" y="945.027" fill="#000" fill-opacity="1" stroke="none" display="inline" font-family="Arial" font-size="10" font-stretch="normal" font-style="normal" font-variant="normal" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" writing-mode="lr-tb"><tspan x="1117.007" y="945.027">postrouting</tspan></text>
+    <use xlink:href="#I" width="1488" height="1052" transform="translate(615)"/>
+    <use xlink:href="#C" width="1488" height="1052" transform="translate(130 -135)"/>
+    <use xlink:href="#K" width="1488" height="1052" transform="translate(0 -95)"/>
+    <text xml:space="preserve" x="826.702" y="770.085" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="826.702" y="770.085">input</tspan></text>
+    <text xml:space="preserve" x="826.88" y="660.889" font-family="Arial" font-size="9" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="826.88" y="660.889">xfrm/socket</tspan><tspan x="826.88" y="670.165" font-size="10">lookup</tspan></text>
+    <use xlink:href="#F" width="1488" height="1052" transform="translate(-210.519 -216.154)"/>
+    <text xml:space="preserve" x="966.663" y="591.085" font-family="Arial" font-size="9" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="966.663" y="591.085" font-size="10">local</tspan><tspan x="966.663" y="600.361" font-size="10">process</tspan></text>
+    <text xml:space="preserve" x="1522.01" y="935.146" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="1522.01" y="935.146">egress</tspan><tspan x="1522.01" y="945.146">(qdisc)</tspan></text>
+    <text xml:space="preserve" x="1586.878" y="935.146" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="1586.878" y="935.146">interface</tspan><tspan x="1586.878" y="945.146">output</tspan></text>
+    <text xml:space="preserve" x="365.527" y="682.491" font-family="Arial" font-size="8.124" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" transform="scale(.8124 1.23091)"><tspan x="365.527" y="682.491">taps (e.g.</tspan><tspan x="365.527" y="690.615">AF_PACKET)</tspan></text>
+    <text xml:space="preserve" x="31.476" y="941.646" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="31.476" y="941.646">(start)</tspan></text>
+    <text xml:space="preserve" x="1953.566" y="687.31" font-family="Arial" font-size="8.124" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" transform="scale(.8124 1.23091)"><tspan x="1953.566" y="687.31">AF_PACKET</tspan></text>
+    <text xml:space="preserve" x="109.012" y="936.106" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="109.012" y="936.106">XDP</tspan><tspan x="109.012" y="946.106">eBPF</tspan></text>
+    <text xml:space="preserve" x="231.569" y="939.465" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="231.569" y="939.465">alloc_skb</tspan></text>
+    <text xml:space="preserve" x="458.981" y="691.109" stroke-width=".955" font-family="Arial" font-size="7.756" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" transform="scale(1.04993 .95244)"><tspan x="458.981" y="691.109" font-size="10">xfrm</tspan><tspan x="458.981" y="698.865" font-size="6">(e.g. ipsec)</tspan><tspan x="458.981" y="707.797" font-size="10.267">decode</tspan></text>
+    <use xlink:href="#B" width="1488" height="1052" transform="translate(64.19 -175.628)"/>
+    <text xml:space="preserve" x="826.92" y="729.436" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="826.92" y="729.436">input</tspan></text>
+  </g>
+  <g transform="translate(0 -475)">
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="m827.2 651-.2-45 10-10h105"/>
+    <path fill="none" stroke="#000" stroke-width="1.35" marker-end="url(#x)" d="M1272.046 845h12.146" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1547 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1402 845h110l10 10v70" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1272 940h225" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1467 900h45l10 10" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width=".686" marker-end="url(#x)" d="M1336.817 845h16.753" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1207 770h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1272 770h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1287 810h-15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="m1222 810-77.014.386-9.113 6.977.01 12.175" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1337 770h15l10 10v20l-10 10h-15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1062 900h95" opacity=".86"/>
+    <use xlink:href="#L" stroke-width="1.059" marker-end="url(#x)" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.758" marker-end="url(#x)" d="M1376.726 830.303v-151.88l-9.949-13.807h-94.51" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1272 900h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1207 900h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1337 900h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1402 900h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M877 845h70" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M932 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1142 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.265" marker-end="url(#x)" d="M1136.861 855.246v38.12l10.26 6.93" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M852 845h25l45 50h25" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1207 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M997 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M997 900h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1062 940h30" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M997 845h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M722 845h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M787 845h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M657 845h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.758" marker-end="url(#x)" d="M992.078 595.882h114.504l9.957 13.8.199 144.89" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M802 666H507" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="2.061" marker-end="url(#x)" d="M1221.363 666.582h-29.13l-9.711 19.439v68.035" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M527 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M462 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M437 925.521V855l10-10" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M322 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M592 845h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M387 940h25" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M362 925v-70l10-10h170" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M592 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.721" marker-end="url(#x)" d="M456.9 665.282h-9.904l-9.904 13.287v152.8l9.904 13.288" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M257 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M852 940h30" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M657 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M722 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M787 940h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1142 770h15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M827 830v-15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M827 790v-15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.583" marker-end="url(#x)" d="M827 709.633v-33.407" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M827 885v-30" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M827 925v-15" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M232 925v-70l10-10h30" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M1547 935s8.533-5.52 10-10c6.82-20.834-16.82-44.166-10-65 2.2-6.72 15-15 15-15" opacity=".86"/>
+    <text xml:space="preserve" x="2736.02" y="336.784" fill="#ff0048" font-family="Arial" font-size="7.25" font-weight="400" letter-spacing="0" style="line-height:100%;-inkscape-font-specification:Arial;text-align:start" word-spacing="0">clone packet</text>
+    <path fill="none" stroke="#000" stroke-width="1.749" marker-end="url(#x)" d="M446.734 665.886H307.22l-9.966 13.642v150.06" opacity=".86"/>
+    <text xml:space="preserve" x="332" y="661" fill="red" font-family="Arial" font-size="10" font-weight="400" letter-spacing="0" style="line-height:100%;-inkscape-font-specification:Arial;text-align:start" word-spacing="0"><tspan x="332" y="661">clone packet</tspan></text>
+    <text xml:space="preserve" x="1162" y="651" fill="red" font-family="Arial" font-size="10" font-weight="400" letter-spacing="0" style="line-height:100%;-inkscape-font-specification:Arial;text-align:start" word-spacing="0"><tspan x="1162" y="651">no clone to</tspan><tspan x="1162" y="661">AF_PACKET</tspan></text>
+    <text xml:space="preserve" x="-920" y="227" fill="red" font-family="Arial" font-size="10" font-weight="400" letter-spacing="0" style="line-height:100%;-inkscape-font-specification:Arial;text-align:start" transform="rotate(-90)" word-spacing="0"><tspan x="-920" y="227">clone packet</tspan></text>
+    <text xml:space="preserve" x="-900" y="1542" fill="red" font-family="Arial" font-size="10" font-weight="400" letter-spacing="0" style="line-height:100%;-inkscape-font-specification:Arial;text-align:start" transform="rotate(-90)" word-spacing="0"><tspan x="-900" y="1542">clone packet</tspan></text>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#M)" d="M132.472 938.93h74.84" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#N)" d="M55.395 939.245h27.153" opacity=".86"/>
+    <text xml:space="preserve" x="114.296" y="983.614" fill="red" font-family="Arial" font-size="10" font-weight="400" letter-spacing="0" style="line-height:100%;-inkscape-font-specification:Arial;text-align:start" word-spacing="0"><tspan x="114.296" y="983.614">XDP_TX</tspan></text>
+    <text xml:space="preserve" x="133.638" y="934.494" fill="red" font-family="Arial" font-size="10" font-weight="400" letter-spacing="0" style="line-height:100%;-inkscape-font-specification:Arial;text-align:start" word-spacing="0"><tspan x="133.638" y="934.494">XDP_PASS</tspan></text>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#x)" d="M110.284 950.455v38.181h1437.081l38.028-36.818" opacity=".86"/>
+    <use xlink:href="#q" width="1400" height="475" transform="translate(-652.384 -111.278)"/>
+    <text xml:space="preserve" x="214.884" y="669.266" font-family="Arial" font-size="8.124" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle" transform="scale(.8124 1.23091)"><tspan x="214.884" y="669.266">userspace</tspan><tspan x="214.884" y="677.39">(AF_XDP)</tspan></text>
+    <text xml:space="preserve" x="-920.318" y="104.616" fill="red" font-family="Arial" font-size="10" font-weight="400" letter-spacing="0" style="line-height:100%;-inkscape-font-specification:Arial;text-align:start" transform="rotate(-90)" word-spacing="0"><tspan x="-920.318" y="104.616">XDP_REDIRECT</tspan></text>
+    <path fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#O)" d="M826.272 749.51v-15" opacity=".86"/>
+    <use xlink:href="#L" stroke-width="1.059" marker-end="url(#x)" opacity=".86"/>
+    <path fill="none" stroke="#000" stroke-width="1.193" marker-end="url(#P)" d="M1161.023 844.986h60.075" opacity=".86"/>
+  </g>
+  <g transform="translate(0 -475)">
+    <text xml:space="preserve" x="879.138" y="639.551" font-family="Times New Roman" font-size="10" font-weight="400" style="line-height:125%;-inkscape-font-specification:&quot;Times New Roman,&quot;;text-align:start"><tspan x="879.138" y="639.551" style="line-height:125%;-inkscape-font-specification:&quot;Times New Roman,&quot;;text-align:start">by Jan Engelhardt</tspan><tspan x="879.138" y="652.051" style="line-height:125%;-inkscape-font-specification:&quot;Times New Roman,&quot;;text-align:start">(based in part on Joshua Snyder&apos;s graph)</tspan><tspan x="879.138" y="664.551" style="line-height:125%;-inkscape-font-specification:&quot;Times New Roman,&quot;;text-align:start">XDP flow by Matteo Croce</tspan><tspan x="879.138" y="677.051" style="line-height:125%;-inkscape-font-specification:&quot;Times New Roman,&quot;;text-align:start">Last updated 2019-May-19; Linux 5.1</tspan></text>
+    <text xml:space="preserve" x="882" y="760" font-family="Arial" font-size="12" font-weight="400" style="line-height:100%;text-align:start"><tspan x="882" y="760">* “security” table left</tspan><tspan x="882" y="772">   out for brevity</tspan><tspan x="882" y="784">* “nat” table only consulted</tspan><tspan x="882" y="796">   for “NEW” connections</tspan></text>
+    <text xml:space="preserve" x="787" y="775" fill="#fff" fill-opacity=".502" stroke="#000" font-family="Arial Black" font-size="36" font-weight="400" style="line-height:100%;text-align:end" text-anchor="end"><tspan x="787" y="775" font-size="32">Network Layer</tspan></text>
+    <text xml:space="preserve" x="787" y="910" fill="#fff" fill-opacity=".502" stroke="#000" font-family="Arial Black" font-size="36" font-weight="400" style="line-height:100%;text-align:end" text-anchor="end"><tspan x="787" y="910" font-size="32">Link Layer</tspan></text>
+    <text xml:space="preserve" x="971.995" y="569.582" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="971.995" y="569.582">FORWARD PATH</tspan></text>
+    <text xml:space="preserve" x="1279.664" y="569.582" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="1279.664" y="569.582">OUTPUT PATH</tspan></text>
+    <text xml:space="preserve" x="787" y="656" fill="#fff" fill-opacity=".502" stroke="#000" font-family="Arial Black" font-size="36" font-weight="400" style="line-height:100%;text-align:end" text-anchor="end"><tspan x="787" y="656" font-size="32">Protocol Layer</tspan></text>
+    <text xml:space="preserve" x="631.939" y="569.582" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="631.939" y="569.582">INPUT PATH</tspan></text>
+    <text xml:space="preserve" x="787" y="606" fill="#fff" fill-opacity=".502" stroke="#000" font-family="Arial Black" font-size="36" font-weight="400" style="line-height:100%;text-align:end" text-anchor="end"><tspan x="787" y="606" font-size="32">Application Layer</tspan></text>
+    <text xml:space="preserve" x="907.07" y="541.162" font-family="Times New Roman" font-size="48" font-style="italic" font-weight="400" style="line-height:100%;text-align:center" text-anchor="middle"><tspan x="907.07" y="541.162">Packet flow in Netfilter and General Networking</tspan></text>
+    <path fill="url(#Q)" fill-rule="evenodd" stroke="#000" stroke-linejoin="bevel" stroke-width=".25" d="M67 692h20v10H67z"/>
+    <path fill="url(#R)" fill-rule="evenodd" stroke="#000" stroke-linejoin="bevel" stroke-width=".25" d="M67 672h20v10H67z"/>
+    <text xml:space="preserve" x="92" y="702" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:start"><tspan x="92" y="702" font-size="16">bridge level</tspan></text>
+    <text xml:space="preserve" x="92" y="647" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:start"><tspan x="92" y="647" font-size="16">basic set of filtering</tspan><tspan x="92" y="658.655" font-size="16">opportunities at the</tspan></text>
+    <rect width="20" height="10" x="67" y="592" fill="url(#S)" fill-rule="evenodd" stroke="#000" stroke-linejoin="bevel" stroke-width=".25" rx="5.745" ry="4.814"/>
+    <text xml:space="preserve" x="92" y="602" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:start"><tspan x="92" y="602" font-size="16">Other NF parts</tspan></text>
+    <rect width="20" height="10" x="67" y="612" fill="url(#T)" fill-rule="evenodd" stroke="#000" stroke-linejoin="bevel" stroke-width=".25" rx="5.745" ry="4.814"/>
+    <text xml:space="preserve" x="92" y="622" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:start"><tspan x="92" y="622" font-size="16">Other Networking</tspan></text>
+    <text xml:space="preserve" x="92" y="682" font-family="Arial" font-size="10" font-weight="400" style="line-height:100%;text-align:start"><tspan x="92" y="682" font-size="16">network level</tspan></text>
+  </g>
+</svg>

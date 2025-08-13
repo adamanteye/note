@@ -27,7 +27,6 @@
   )
   set quote(block: true)
   set par(leading: 1em)
-  show strong: set text(fill: red)
   align(center, text(1.4em)[
     *#title*
   ])
