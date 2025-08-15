@@ -1,4 +1,4 @@
-#import "../../note_en.typ": *
+#import "../../note-en.typ": *
 #show: conf.with(
   title: "Notes on Compilers",
   author: "adamanteye",

@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../note-zh.typ": *
 #show: conf.with(
   title: "两岸计算机术语翻译的共性与差异: 基于案例分析的对比研究",
   author: "adamanteye",

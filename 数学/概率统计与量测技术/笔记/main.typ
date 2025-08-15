@@ -1,4 +1,4 @@
-#import "../../../note_zh.typ": *
+#import "../../../note-zh.typ": *
 #show: conf.with(
   title: "概率统计分析与量测技术笔记",
   author: "adamanteye",
@@ -11,7 +11,7 @@
     table.header([分布], [分布律], [期望], [方差]),
     table.hline(),
     [$"Exp"(theta)$], [$f(x)=cases(1 / theta e^(-x / theta) "where" x>0, 0 "elsewhere")$], [$theta$], [$theta^2$],
-    table.hline()
+    table.hline(),
   ),
   caption: "常见概率分布表",
 )
@@ -83,7 +83,11 @@ $ P(A)=m(A) / m(S) $
 ]
 #proof[
   $
-    P(X>s+t|X>s)=&P(X>s+t) / P(X>s)\ =&(1-P(X<=s+t)) / (1-P(X<=s))\ =&(1-F(s+t)) / (1-F( s ))\ =&e^(-lambda(s+t)) / e^(-lambda s)\ =&e^(-lambda t)=P(X>t)
+    P(X>s+t|X>s)= & P(X>s+t) / P(X>s) \
+                = & (1-P(X<=s+t)) / (1-P(X<=s)) \
+                = & (1-F(s+t)) / (1-F( s )) \
+                = & e^(-lambda(s+t)) / e^(-lambda s) \
+                = & e^(-lambda t)=P(X>t)
   $
 ]
 指数分布作为 "寿命" 分布的近似,并不是例如人的寿命的实际分布.
@@ -121,7 +125,8 @@ $ P(A)=m(A) / m(S) $
 ]
 #def("Beta函数")[
   $
-    B(alpha,beta)&=:integral_0^1 t^(alpha-1)( 1-t )^(beta -1)dd(t),alpha,beta>0\ &=(Gamma(alpha)Gamma(beta)) / Gamma(alpha+beta)
+    B(alpha,beta) & =:integral_0^1 t^(alpha-1)( 1-t )^(beta -1)dd(t),alpha,beta>0 \
+                  & =(Gamma(alpha)Gamma(beta)) / Gamma(alpha+beta)
   $
 ]
 = 二维随机变量
@@ -134,11 +139,15 @@ $ P(A)=m(A) / m(S) $
 #thm("Chebyshev不等式")[
   设随机变量$X$有数学期望$E(X)=mu$和方差$"Var"(X)=sigma^2$,则:$ forall epsilon>0, P(abs(x-mu)>=epsilon)<=sigma^2 / epsilon^2 $
 ]
-#def("Khinchin")[辛钦大数定律是弱大数定律,设$X_1,X_2,dots$是相互独立,服从同一分布的随机变量序列,且具有数学期望$E(X_k)=mu,k=1,2,dots$,则$forall epsilon >0$,有
+#def(
+  "Khinchin",
+)[辛钦大数定律是弱大数定律,设$X_1,X_2,dots$是相互独立,服从同一分布的随机变量序列,且具有数学期望$E(X_k)=mu,k=1,2,dots$,则$forall epsilon >0$,有
   $ lim_(n->infinity) P(abs(1 / n sum_(k=1)^n X_k -mu)<epsilon)=1 $
   即 $overline(X)-->^P mu$
 ]
-#coll("Bernoulli")[伯努利大数定律是辛钦大数定律的重要推论,设$f_A$是$n$次独立重复试验中事件$A$发生的次数,$p$是事件$A$在每次试验中发生的概率,则$forall epsilon >0$,有
+#coll(
+  "Bernoulli",
+)[伯努利大数定律是辛钦大数定律的重要推论,设$f_A$是$n$次独立重复试验中事件$A$发生的次数,$p$是事件$A$在每次试验中发生的概率,则$forall epsilon >0$,有
   $ lim_(n->infinity) P(abs(f_A / n-p)<epsilon)=1 $
   或
   $ lim_(n->infinity) P(abs(f_A / n-p)>=epsilon)=0 $
@@ -209,7 +218,11 @@ $ P(A)=m(A) / m(S) $
     P(X<=x)&=P(U<=x|V<=f(U) / L)\ &=P(U<=x,V<=f(U) / L) / P(V<=f(U) / L)\ &=(integral_a^x dd(u) integral_0^(f( u ) / L) dd(v) g(u,v)) / (integral_a^b dd(u) integral_0^(f(u) / L) dd(v) g(u,v))\ &=integral_a^x dd(u) f(u)
   $
   其中$g(u,v)=1 / (b-a)$.此外,效率的期望为
-  $ E&=P(V<=f(U) / L)\ &=integral_a^b dd(u)integral_0^(f(u) / L)dd(v)g(u,v)\ &=1 / ((b-a)L) $
+  $
+    E & =P(V<=f(U) / L) \
+      & =integral_a^b dd(u)integral_0^(f(u) / L)dd(v)g(u,v) \
+      & =1 / ((b-a)L)
+  $
 ]
 = 分布族
 #def("指数分布族")[
@@ -223,11 +236,14 @@ $ P(A)=m(A) / m(S) $
 ]
 #thm[指数分布族的期望和方差为$ E(X)=A'(eta) $$ "Var"(X)=A''(eta) $]
 #exmp("二项分布属于指数分布族")[
-  $ P(k|p,n)&=binom(n, k)p^k(1-p)^(n-k)\ &=h(k) exp(T(k) eta(p)-B(p)) $
+  $
+    P(k|p,n) & =binom(n, k)p^k(1-p)^(n-k) \
+             & =h(k) exp(T(k) eta(p)-B(p))
+  $
   其中$ h(k)=binom(n, k),T(k)=k,eta(p)=ln(p / (1-p)),B(p)=-n ln(1-p) $
 ]
 #exmp("正态分布属于指数分布族")[
-  $ f(x|mu,sigma^2)&=1 / sqrt(2pi sigma^2) exp(-(x-mu)^2 / (2sigma^2)) $
+  $ f(x|mu,sigma^2) & =1 / sqrt(2pi sigma^2) exp(-(x-mu)^2 / (2sigma^2)) $
 ]
 = 统计学概论
 #def("分位数")[
@@ -279,9 +295,16 @@ R语言中分位函数(quantile function)可以用于计算对于给定概率的
 ]
 #proof[
   由于$(X_1,X_2,dots,X_n)$独立同分布于$X$,从而有
-  $ "Var"(overline(X))&=sum_(i=1)^n "Var"(1 / n X_i)\ &= sum_(i=1)^n 1 / n^2 "Var"(X)\ &= sigma^2 / n $
   $
-    E(B_2)&=E(1 / n sum_(i=1)^n X_i^2)-E(overline(X)^2)\ &=1 / n (n("Var"(X)+E^2(X)))-( "Var"(overline(X))+E^2(overline(X)) )\ &="Var"(X)+(E^2(X)) / n -1 / n "Var"(X)-1 / n E^2(X)\ &=(n-1) / n "Var"(X)
+    "Var"(overline(X)) & =sum_(i=1)^n "Var"(1 / n X_i) \
+                       & = sum_(i=1)^n 1 / n^2 "Var"(X) \
+                       & = sigma^2 / n
+  $
+  $
+    E(B_2) & =E(1 / n sum_(i=1)^n X_i^2)-E(overline(X)^2) \
+           & =1 / n (n("Var"(X)+E^2(X)))-( "Var"(overline(X))+E^2(overline(X)) ) \
+           & ="Var"(X)+(E^2(X)) / n -1 / n "Var"(X)-1 / n E^2(X) \
+           & =(n-1) / n "Var"(X)
   $
   由于$E(B_2)=(n-1) / n E(S^2)$,从而得证.
 ]
@@ -323,7 +346,8 @@ R语言中分位函数(quantile function)可以用于计算对于给定概率的
   设随机变量$X ~ N(0,1),Y ~ chi^2(n)$,且$X,Y$相互独立.
   称$ T=X / sqrt(Y\/n) $为服从自由度为$n$的$T$分布.
   $
-    f_T (t)&=t f_(T^2) (t^2), t in (-infinity,+infinity) \ &=Gamma((n+1) / 2) / Gamma(n / 2)sqrt(n pi)( 1+t^2 / n )^(-(n+1) / 2), t in (-infinity,+infinity)
+    f_T (t) & =t f_(T^2) (t^2), t in (-infinity,+infinity) \
+            & =Gamma((n+1) / 2) / Gamma(n / 2)sqrt(n pi)( 1+t^2 / n )^(-(n+1) / 2), t in (-infinity,+infinity)
   $
 ]
 #proof()[
@@ -429,7 +453,11 @@ ggsave("f_t.svg")
 #exmp("最大似然法的引入")[
   设总体$X$服从0-1分布,且$P(X=1)=p$,用最大似然法求$p$的估计值
   设$x_1,x_2,dots,x_n$为总体的样本的估计值,则得到该样本值的概率为
-  $ P&(X_1=x_1,dots,X_n=x_n)\ &=product_(i=1)^n P(X_i=x_i)\ &=p^(sum_(i=1)^n x_i) (1-p)^(1-sum_(i=1)^n x_i) =: L(p) $
+  $
+    P & (X_1=x_1,dots,X_n=x_n) \
+      & =product_(i=1)^n P(X_i=x_i) \
+      & =p^(sum_(i=1)^n x_i) (1-p)^(1-sum_(i=1)^n x_i) =: L(p)
+  $
   对于不同的$p$,有$L(p)$不同,取$p$使这个事件发生的概率最大
   $ hat(p)=arg max L(p) = arg max log L(p) $
   由于 $ dv(, p)log L=(sum_(i=1)^n x_i ) / p- (n-sum_(i=1)^n x_i) / (1-p)\ => hat(p)=overline(x) $
@@ -461,9 +489,16 @@ print(1 / theta$minimum)
 ]
 #sol[
   使用矩估计有
-  $ mu_1&=E(X)=(a+b) / 2\ mu_2&=E(X^2)="Var"(X)+E^2(X)\ &=(b-a)^2 / 12+(a+b)^2 / 4 $
+  $
+    mu_1 & =E(X)=(a+b) / 2 \
+    mu_2 & =E(X^2)="Var"(X)+E^2(X) \
+         & =(b-a)^2 / 12+(a+b)^2 / 4
+  $
   解得
-  $ va(a)&=A_1-sqrt(3(A_2-A_1^2))=A_1-sqrt(3 B_2)\ va(b)&=A_1+sqrt(3(A_2-A_1^2))=A_1+sqrt(3 B_2) $
+  $
+    va(a) & =A_1-sqrt(3(A_2-A_1^2))=A_1-sqrt(3 B_2) \
+    va(b) & =A_1+sqrt(3(A_2-A_1^2))=A_1+sqrt(3 B_2)
+  $
   使用最大似然估计有
   $ L(a,b)=cases(1 / (b-a)^n &"where" a<x_i<b, 0 &"elsewhere") $
   得到$a<=x_1,x_2,dots,x_n,b>=x_1,x_2,dots,x_n$
@@ -489,7 +524,9 @@ print(1 / theta$minimum)
   $ "Var"(hat(theta)_1)<="Var"(hat(theta)_2) $
   则称$hat(theta)_1$比$hat(theta)_2$有效.
 ]
-#def("一致最小方差无偏估计")[如果一个估计量比任何其它估计量都有效,则称之为一致最小方差无偏估计(uniformly minimum variance unbiased estimator, UMVUE)]
+#def(
+  "一致最小方差无偏估计",
+)[如果一个估计量比任何其它估计量都有效,则称之为一致最小方差无偏估计(uniformly minimum variance unbiased estimator, UMVUE)]
 #thm("最大似然估计量理论")[
   - 如果参数存在有效无偏估计量,那么它一定是最大似然估计量
   - 一般情况下,最大似然估计量是一致的
@@ -564,7 +601,10 @@ qt(0.05, 17 - 1)
   如果取
   $ chi^2=((n-1)S^2) / sigma_0^2 $
   对于双边检验,习惯上取
-  $ P_(sigma_0^2) (((n-1)S^2) / sigma_0^2<=k_1)&=alpha / 2 \ P_(sigma_0^2) (((n-1)S^2) / sigma_0^2>=k_2)&=alpha / 2 $
+  $
+    P_(sigma_0^2) (((n-1)S^2) / sigma_0^2<=k_1) & =alpha / 2 \
+    P_(sigma_0^2) (((n-1)S^2) / sigma_0^2>=k_2) & =alpha / 2
+  $
   对于单边检验,例如$H_0:sigma^2<=sigma_0^2$,取
   $ P_(sigma^2<=sigma_0^2) (((n-1)S^2) / sigma^2 >= ((n-1)k) / sigma_0^2)=alpha $
   可得拒绝域为
@@ -590,10 +630,10 @@ print(var(a))
 方差分析又称F检验(纪念Fisher), Analysis of Variance,简称AoV/ANOVA.
 #def("偏差平方和")[
   $
-    S_T&=sum_j^s sum_i^(n_j) (X_(i j)-overline(X))^2=sum_j^s sum_i^(n_j) X_(i j)^2-T_(dot dot)^2 / n\
-    S_A&=sum_j^s n_j overline(X)_(dot j)^2-n overline(X)^2=sum_j^s T^2_(dot j) / n_j-T_(dot dot)^2 / n\
-    S_E&=S_T-S_A\
-    T_(dot j)&=sum_i^n_j X_(i j), T_(dot dot)=sum_j^s T_(dot j)
+          S_T & =sum_j^s sum_i^(n_j) (X_(i j)-overline(X))^2=sum_j^s sum_i^(n_j) X_(i j)^2-T_(dot dot)^2 / n \
+          S_A & =sum_j^s n_j overline(X)_(dot j)^2-n overline(X)^2=sum_j^s T^2_(dot j) / n_j-T_(dot dot)^2 / n \
+          S_E & =S_T-S_A \
+    T_(dot j) & =sum_i^n_j X_(i j), T_(dot dot)=sum_j^s T_(dot j)
   $
   称$S_E$为*误差平方和*,$S_A$为*效应平方和*.
 ]
@@ -605,18 +645,15 @@ print(var(a))
 构造统计量$ F=(S_A\/nu_A) / (S_E\/nu_E) $
 #figure(
   table(
-    stroke: none, columns: 5, table.hline(), table.header(
-      [],
-      [自由度\ `Df`],
-      [平方和\ `Sum Sq`],
-      [均方\ `Mean Sq`],
-      [$F$比\ `F value`],
-    ),
+    stroke: none,
+    columns: 5,
+    table.hline(),
+    table.header([], [自由度\ `Df`], [平方和\ `Sum Sq`], [均方\ `Mean Sq`], [$F$比\ `F value`]),
     table.hline(),
     [效应], [$s-1$], [$S_A$], [$overline(S_A)=S_A\/(s-1)$], [$overline(S_A)\/overline(S_E)$],
     [误差], [$n-s$], [$S_E$], [$overline(S_E)=S_E\/(n-s)$], [],
     [总和], [$n-1$], [$S_T$], [], [],
-    table.hline()
+    table.hline(),
   ),
   caption: "单因素试验的方差分析表",
 )
@@ -642,7 +679,8 @@ print(qf(0.05, 3, 12))
 #def("经验回归方程")[
   $ hat(y)=hat(a)+hat(b)x $
   $
-    hat(b)=&(sum_(i=1)^n (x_i-overline(x))(y_i-overline(y))) / (sum_(i=1)^n (x_i-overline(x))^2)\ hat(a)=&overline(y)-hat(b)overline(x)
+    hat(b)= & (sum_(i=1)^n (x_i-overline(x))(y_i-overline(y))) / (sum_(i=1)^n (x_i-overline(x))^2) \
+    hat(a)= & overline(y)-hat(b)overline(x)
   $
 ]
 #def("log1P")[

@@ -1,4 +1,4 @@
-#import "../../../slide_zh.typ": *
+#import "../../../slide-zh.typ": *
 #let pm = $plus.minus$
 #show: university-theme.with(
   aspect-ratio: "16-9",
@@ -49,9 +49,7 @@
 == "负能量"共振
 1958年,Brookhaven国家实验室(美)的F. J. Shore 和 V. L. Sailor认为热中子区反常大的截面来自于某种“背景”截面,并假设该截面可以视为负能量区(能量小于0)存在一个或多个束缚能级导致的共振峰,尝试基于数学方法寻找该存在于假想中的共振峰@SNR_1958
 
-通过利用四种拟合模型进行最小二乘拟合,得到了最符合“背景”截面曲线的函数拟合 $ sigma_(n X)(E)=K sqrt(E) / (E-E_0)^2 $$
-  cases(K=208.5 "barn" (e V)^(5 / 2), E_0=-1.45e V)
-$
+通过利用四种拟合模型进行最小二乘拟合,得到了最符合“背景”截面曲线的函数拟合 $ sigma_(n X)(E)=K sqrt(E) / (E-E_0)^2 $$ cases(K=208.5 "barn" (e V)^(5 / 2), E_0=-1.45e V) $
 对比描述单能共振峰的Breit-Wigner公式$ sigma_(n,X)(E)=4 pi lambda^2((Gamma_n Gamma_X) / Gamma^2)1 / (1+4(E-E_R)^2\/Gamma^2) $
 
 因此,Shore和Sailor认为这种"背景"截面近似等价于来自一个位于结合能以下1.45eV处,等效中子宽度$Gamma_n^0=3.04times 10^(-3)e V$的较强的单能共振峰的干涉效应#figure(image("img/BACKGROUND.png", width: 50%), caption: "裂变截面数据曲线")
@@ -74,9 +72,7 @@ $ sigma_(n,T)=pi / k_n^2 sum_J 2g Re{1- U_(n n)^J} $
 == 实验原理
 === 截面与极化度
 极化中子和极化核之间的作用截面满足如下公式
-$
-  sigma=I / (2I+1)(1-f_N f_n)sigma_-+(I+1) / (2I+1)(1+I / (I+1)f_N f_n)sigma_+
-$其中$f_n,f_N$分别表示中子和核的极化度,$sigma_pm$表示两种自旋方向$J=I pm 1 / 2$的截面
+$ sigma=I / (2I+1)(1-f_N f_n)sigma_-+(I+1) / (2I+1)(1+I / (I+1)f_N f_n)sigma_+ $其中$f_n,f_N$分别表示中子和核的极化度,$sigma_pm$表示两种自旋方向$J=I pm 1 / 2$的截面
 
 为简便处理,将基底变换为极化相关和无关量$ sigma=sigma_0+f_N f_n sigma_p $其中$ cases(sigma_0=(I+1) / (2I+1)sigma_++I / (2I+1)sigma_-=sigma_(I+1\/2)+sigma_(I-1\/2), sigma_p=I / (2I+1)(sigma_+-sigma_-)=I / (I+1)sigma_(I+1\/2)-sigma_(I-1\/2)) $
 #pagebreak()

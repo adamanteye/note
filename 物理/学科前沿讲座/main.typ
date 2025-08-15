@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../note-zh.typ": *
 #show: conf.with(
   title: "学科前沿讲座笔记",
   author: "adamanteye",

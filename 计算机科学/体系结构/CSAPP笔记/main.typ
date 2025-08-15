@@ -1,4 +1,4 @@
-#import "../../../note_zh.typ": *
+#import "../../../note-zh.typ": *
 #show: conf.with(
   title: "CSAPP 笔记",
   author: "adamanteye",
@@ -54,7 +54,7 @@ $ V=(-1)^s M 2^E $
 如何解读上述表述,分为3种情况:
 / Normalized Values: `exp`不是全`0`,也不是全`1`
   $
-    E & =e-"Bias"                       \
+    E & =e-"Bias" \
       & =e_(k-1)dots e_1e_0-(2^(k-1)-1)
   $
   因此对于32位和64位浮点数,$E$的范围分别是$[-127,+128]$以及$[-1023,+1024]$.但考虑到这里`exp`不能是全`0`或者全`1`,因此最终为$[-126,+127]$以及$[-1022,+1023]$.

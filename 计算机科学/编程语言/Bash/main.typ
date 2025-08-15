@@ -1,4 +1,4 @@
-#import "../../../note_zh.typ": *
+#import "../../../note-zh.typ": *
 #show: conf.with(
   title: "Bash编程笔记",
   author: "adamanteye",

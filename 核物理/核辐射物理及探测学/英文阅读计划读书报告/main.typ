@@ -1,4 +1,4 @@
-#import "../../../note_en.typ": *
+#import "../../../note-en.typ": *
 #show: conf.with(
   title: "Radiation Spectroscopy of Gamma-Rays",
   author: "adamanteye",
@@ -6,9 +6,7 @@
 )
 #show: rest => columns(2, rest)
 #let subft = it => text(10pt)[#it]
-My reference is the book #link(
-  "https://indico-tdli.sjtu.edu.cn/event/171/contributions/2123/attachments/982/1592/Knoll4thEdition.pdf",
-)[_Radiation detection and measurement, 4th ed_] by Glenn F. Knoll. And in this
+My reference is the book #link("https://indico-tdli.sjtu.edu.cn/event/171/contributions/2123/attachments/982/1592/Knoll4thEdition.pdf")[_Radiation detection and measurement, 4th ed_] by Glenn F. Knoll. And in this
 arctile I will follow the structure of Chapter 10 in the book and discuss the
 critical mechanisms of gamma-ray spectroscopy with scintillators.
 
@@ -52,7 +50,10 @@ energy ranges from few keV ($isotope(z: 11, "Na")$, 1keV) to hundred keV($isotop
 == Compton Sacttering
 
 The result of Compton scattering is a scattered photon and a recoil electron.
-$ h nu'&=(h nu) / ((1+(h nu)\/ m_0 c^2)(1-cos theta))\ E_(e^-)&=h nu - h nu' $
+$
+    h nu' & =(h nu) / ((1+(h nu)\/ m_0 c^2)(1-cos theta)) \
+  E_(e^-) & =h nu - h nu'
+$
 The angular distribution of scattered gamma rays is predicted by the
 Klein-Nishina formula and is ploted polarly in @comptonscatter.
 
@@ -240,12 +241,12 @@ NaI(Tl)#footnote[BGO has the strong advantage that its high density and atomic n
     image("geanticompton.png"), image("geanticomptonef.png"),
     subft[BGO and NaI(Tl) scintillators combined Compton suppression system],
     subft[#grid(
-        columns: 1,
-        row-gutter: 1em,
-        align: left,
-        [(a):unsupressed],
-        [(b): suppressed],
-      )],
+      columns: 1,
+      row-gutter: 1em,
+      align: left,
+      [(a):unsupressed],
+      [(b): suppressed],
+    )],
   ),
   caption: [Anticoincidence Compton Suppression],
 ) <comptonsuppress>
@@ -285,12 +286,12 @@ analytical techniques in gamma-ray spectroscopy.
     column-gutter: 2em,
     image("montecarlo.png"), image("deconvolution.png"),
     subft[#grid(
-        columns: 1,
-        row-gutter: 1em,
-        align: left,
-        [points: measured],
-        [line: Monte Carlo],
-      )],
+      columns: 1,
+      row-gutter: 1em,
+      align: left,
+      [points: measured],
+      [line: Monte Carlo],
+    )],
     subft[example of the application of deconvolution methods],
   ),
   caption: [Anticoincidence Compton Suppression],

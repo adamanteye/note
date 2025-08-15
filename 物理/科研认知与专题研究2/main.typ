@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../note-zh.typ": *
 #show: conf.with()
 #let title = [科研认知与专题研究(2)课程报告]
 #let author = "adamanteye"
@@ -35,14 +35,10 @@
 
 == `TBufferMerger`
 
-自 ROOT 6.10 起, #link(
-  "https://root.cern/doc/v632/classROOT_1_1TBufferMerger.html",
-)[`TBufferMerger`] 类被用于多线程并行写入文件的场景, 使用时每个要写入文件的进程从 `TBufferMerger` 中获取一个
+自 ROOT 6.10 起, #link("https://root.cern/doc/v632/classROOT_1_1TBufferMerger.html")[`TBufferMerger`] 类被用于多线程并行写入文件的场景, 使用时每个要写入文件的进程从 `TBufferMerger` 中获取一个
 `TBufferMergerFile` 作为其操作的文件, 随后就可以像正常操作 `TFile` 一样编写代码.
 
-#link(
-  "https://www.epj-conferences.org/10.1051/epjconf/201921405037",
-)[Writing ROOT Data in Parallel with TBufferMerger] 提供了一个多线程并行写入的例子.我在接下来编写程序的时候参考了论文中的例程.
+#link("https://www.epj-conferences.org/10.1051/epjconf/201921405037")[Writing ROOT Data in Parallel with TBufferMerger] 提供了一个多线程并行写入的例子.我在接下来编写程序的时候参考了论文中的例程.
 
 ```cpp
 std::shared_ptr<TBufferMergerFile> TBufferMerger::GetFile()

@@ -1,4 +1,4 @@
-#import "../../../note_zh.typ": *
+#import "../../../note-zh.typ": *
 #show: conf.with(
   title: "射线源导论作业",
   author: "adamanteye",
@@ -24,9 +24,15 @@ $ Psi(x, y, z)=sin(k_x x)sin(k_y y)sin(k_z z) "where" k_alpha L_alpha=pi n_alpha
 在$va(p)$空间体积元内的电子能态数目为$ dd(S)=(2V) / h^3 dd(p_x)dd(p_y)dd(p_z) $
 得到上面的式子后,可以将其与能量建立关系,在非相对论近似下,电子动能可以是$ E=1 / 2m(v_x^2+v_y^2+v_z^2) $
 对于速度空间元,对应的电子数目为
-$ dd(N)&=f(E)dd(S)\ &=(2m^3) / h^3 e^(E_F\/(k T)) e^(-m(v_x^2+v_y^2+v_z^2)\/(2k T))dd(v_x)dd(v_y)dd(v_z) $
+$
+  dd(N) & =f(E)dd(S) \
+        & =(2m^3) / h^3 e^(E_F\/(k T)) e^(-m(v_x^2+v_y^2+v_z^2)\/(2k T))dd(v_x)dd(v_y)dd(v_z)
+$
 从而速度空间元内的电流密度(只有$z$方向能发射)
-$ dd(J)&=e v_z dd(N)\ &=e v_z (2m^3) / h^3 e^(E_F\/(k T)) e^(-m(v_x^2+v_y^2+v_z^2)\/(2k T))dd(v_x)dd(v_y)dd(v_z) $
+$
+  dd(J) & =e v_z dd(N) \
+        & =e v_z (2m^3) / h^3 e^(E_F\/(k T)) e^(-m(v_x^2+v_y^2+v_z^2)\/(2k T))dd(v_x)dd(v_y)dd(v_z)
+$
 对$v_x,v_y,v_z$积分后可得总电流密度$J$,其中$v_(z 0)=sqrt(2(E_F+W) / m)$
 $
   J&=integral_(-infinity)^(+infinity) dd(v_x) integral_(-infinity)^(+infinity) dd(v_y) integral_(v_(z 0))^(+infinity) dd(v_z) e v_z (2m^3) / h^3 e^(E_F\/(k T)) e^(-m(v_x^2+v_y^2+v_z^2)\/(2k T))dd(v_x)dd(v_y)dd(v_z)\ &=(4pi e m k^2) / h^3 T^2 e^(-W / (k T))\ &= A T^2 e^(-W / (k T))

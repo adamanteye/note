@@ -1,4 +1,4 @@
-#import "../../../slide_zh.typ": *
+#import "../../../slide-zh.typ": *
 #show: university-theme.with(
   aspect-ratio: "16-9",
   config-info(

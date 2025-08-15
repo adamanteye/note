@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../note-zh.typ": *
 #show: conf.with(
   title: "德语笔记",
   author: "杨哲涵",

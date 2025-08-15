@@ -1,4 +1,4 @@
-#import "../../../note_zh.typ": *
+#import "../../../note-zh.typ": *
 #show: conf.with(
   title: "混合蒙特卡罗在反应堆分析中的应用调研",
   author: "adamanteye",
@@ -43,7 +43,11 @@ $ Pi(Q, P)=exp(-cal(H)(Q,P))=exp(-1 / 2 iprod(P, M^(-1)P))exp(-cal(V)(Q)) $
 ]
 #line(start: (0% + 0em, 0% + 0em), end: (0% + 38em, 0% + 0em))
 上面定义了一个时间步长的哈密顿动力学演化$Psi_h^(T)$,这个演化通常用Störmer-Verlet(leapfrog)显式方法@noauthor_leapfrog_2024 完成#footnote[一般情况下比欧拉法稳定],即对于步长$h$,定义$Psi_h^(T):(Q_0,P_0)|->(Q_h,P_h)$为
-$ P_(h\/2)&=P_0-h / 2 grad cal(V)(Q_0) \ Q_h&=Q_0+h cal(M)^(-1)P_(h\/2)\ P_h&=P_(h\/2)-h / 2 grad cal(V)(Q_0) $
+$
+  P_(h\/2) & =P_0-h / 2 grad cal(V)(Q_0) \
+       Q_h & =Q_0+h cal(M)^(-1)P_(h\/2) \
+       P_h & =P_(h\/2)-h / 2 grad cal(V)(Q_0)
+$
 $T$时刻的$Q(T)$可以通过迭代$floor.l T / h floor.r$次得到,即$Phi_h^((T)):=Phi_h^(floor.l T / h floor.r)$
 
 使用HMC算法采样时, 动量$P$是辅助变量. $h,T,cal(M)$由使用者决定,@gupta_tuning_1988@mackenze_improved_1989@beskos_optimal_2013 介绍了调整这些参数以提高采样效率的方法.

@@ -1,4 +1,4 @@
-#import "../../../note_en.typ": *
+#import "../../../note-en.typ": *
 #show: conf.with(
   title: "Notes on Observational Astronomy",
   author: "adamanteye",
@@ -106,7 +106,9 @@ of $upright("arcsec"^2)$.
 $ F=E_"band" / (dd(A) dd(t)) "in unit of" unit("W/cm^2") $
 / monochromatic flux: energy flux in a single wavelength or frequency
 $
-  F_lambda&=E_lambda / (dd(A) dd(t) dd(lambda)) "in unit of" unit("erg/s/cm^2")angstrom^(-1) \ F_nu&=E_nu / (dd(A) dd(t) dd(nu)) "in unit of" unit("erg/s/cm^2/Hz") \ nu F_nu &= lambda F_lambda
+  F_lambda & =E_lambda / (dd(A) dd(t) dd(lambda)) "in unit of" unit("erg/s/cm^2")angstrom^(-1) \
+      F_nu & =E_nu / (dd(A) dd(t) dd(nu)) "in unit of" unit("erg/s/cm^2/Hz") \
+   nu F_nu & = lambda F_lambda
 $
 == Blackbody
 / Wien's displacement law: as the temperature increases, the peak of the blackbody spectrum shifts to
@@ -162,9 +164,7 @@ $ S=F tan(theta) approx F theta $
 / plate scale: angular size of the object per unit length on the plate
 $ P_s=theta / S=1 / F $
 / image scale: how much of the sky in arcsec each and every pixel can see $ (206.2648 times "pixel size"_"in µm") / F_"in mm" $
-see also to #link(
-  "https://www.cloudynights.com/topic/777087-please-explain-image-scalepixel-scale-to-me/",
-)[explain image scale].
+see also to #link("https://www.cloudynights.com/topic/777087-please-explain-image-scalepixel-scale-to-me/")[explain image scale].
 / limiting magnitude: the magnitude of the faintest star an average observer is likely to see through
   the telescope
 $ M_L approx 2.7+5log(d) $
@@ -175,10 +175,14 @@ $ R=F / D "as" E prop D^2 / F^2 $
 $ "fov"=2arctan(w / (2 f))\ "where" w "is the sensor width" $
 #figure(image("fov.png", width: 80%), caption: [Field of view])
 == Resolution
-/ #link("https://en.wikipedia.org/wiki/Airy_disk")[Ariy disk]: The circular aperture has a diffraction pattern described by the Bessel
+/ #link(
+    "https://en.wikipedia.org/wiki/Airy_disk",
+  )[Ariy disk]: The circular aperture has a diffraction pattern described by the Bessel
   function, whose first zero is at 1.22
 $ sin theta=1.22 lambda / d $
-/ #link("https://en.wikipedia.org/wiki/Astronomical_seeing")[Seeing]: the degradation of the image of an astronomical object due to turbulence in the
+/ #link(
+    "https://en.wikipedia.org/wiki/Astronomical_seeing",
+  )[Seeing]: the degradation of the image of an astronomical object due to turbulence in the
   atmosphere of Earth that may become visible as blurring, twinkling or variable
   distortion. The strength of seeing is often characterized by the angular
   diameter (FWHM) of the long-exposure image of a star (seeing disk) in unit of

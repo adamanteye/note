@@ -1,4 +1,4 @@
-#import "../../../note_zh.typ": *
+#import "../../../note-zh.typ": *
 #show: conf.with(
   title: "Rust编程笔记",
   author: "adamanteye",
@@ -16,9 +16,7 @@
 = 对象安全
 = 异步
 无脑tokio全家桶就对了:
-- #link(
-    "https://github.com/tokio-rs/tokio",
-  )[tokio-rs/tokio: A runtime for writing reliable asynchronous applications with Rust. Provides I/O, networking, scheduling, timers, ...]
+- #link("https://github.com/tokio-rs/tokio")[tokio-rs/tokio]
 支持并发读写的容器:
 - #link("https://github.com/xacrimon/dashmap")[xacrimon/dashmap: Blazing fast concurrent HashMap for Rust]
 
@@ -69,3 +67,6 @@ Cargo会将同一个包的features进行并集操作,例如A,B都依赖了C包�
   )[purpleprotocol/mimalloc_rust: A Rust wrapper over Microsoft's MiMalloc memory allocator]
 = 嵌入式开发
 - #link("https://red.implrust.com/")[Introduction - Rust Embedded Drivers Book]
+#link(
+  "https://rustmagazine.github.io/rust_magazine_2021/chapter_8/bianlifeng_embedded_rust.html",
+)[便利蜂 | 门店网络与 Rust 落地实践 - Rust精选]

@@ -1,4 +1,4 @@
-#import "../../../slide_zh.typ": *
+#import "../../../slide-zh.typ": *
 #show: university-theme.with(
   aspect-ratio: "16-9",
   config-info(
@@ -73,10 +73,15 @@
     $isotope("Pu", a: 239)(n,f)$实验通过一组分布在半球面上的54个液体闪烁体探测器测量中子能谱.靶为含有锕系元素的平行板雪崩计数器.此外,所有中子都来自于标记了裂变事例的中子.
     #figure(image("img/8.png", height: 20%), caption: [Chi-Nu LiGl阵列和实验环境])
   ],
-  grid(row-gutter: 1em, rows: 2, figure(image("img/6.png", height: 40%), caption: [LiGl探测器阵列]), figure(
+  grid(
+    row-gutter: 1em,
+    rows: 2,
+    figure(image("img/6.png", height: 40%), caption: [LiGl探测器阵列]),
+    figure(
       image("img/7.png", height: 40%),
       caption: [平行板雪崩计数器],
-    )),
+    ),
+  ),
 )
 == 实验设置
 实验测量出射中子的能谱,对于入射中子能量和测量角度,选取了如下数据:
@@ -84,13 +89,33 @@
   columns: 2,
   column-gutter: 5em,
   figure(
-    table(columns: 2, stroke: none, table.hline(), table.header(
-        [$expval(E^"inc"_n)$],
-        [范围],
-      ), table.hline(), [12.5MeV], [12-13MeV], [13.6MeV], [13-14MeV], [14.5MeV], [14-15MeV], [16.3MeV], [15-17.5MeV], [18.9MeV], [17.5-20MeV], table.hline()),
+    table(
+      columns: 2,
+      stroke: none,
+      table.hline(),
+      table.header([$expval(E^"inc"_n)$], [范围]),
+      table.hline(),
+      [12.5MeV],
+      [12-13MeV],
+      [13.6MeV],
+      [13-14MeV],
+      [14.5MeV],
+      [14-15MeV],
+      [16.3MeV],
+      [15-17.5MeV],
+      [18.9MeV],
+      [17.5-20MeV],
+      table.hline(),
+    ),
   ),
   figure(
-    table(columns: 1, stroke: none, table.hline(), table.header([出射角度]), table.hline(), [37.5$unit("d")$], [67.5$unit("d")$], [97.5$unit("d")$], [135$unit("d")$], table.hline()),
+    table(
+      columns: 1,
+      stroke: none,
+      table.hline(),
+      table.header([出射角度]),
+      table.hline(), [37.5$unit("d")$], [67.5$unit("d")$], [97.5$unit("d")$], [135$unit("d")$], table.hline(),
+    ),
   ),
 )
 #pause
@@ -159,7 +184,8 @@ $
 K-M(Kalbach-Mann)拟合方法是一种用于描述MSD和MSC拟合的方法@kalbach_phenomenology_1981,描述公式为
 #pause
 $
-  (pdv(sigma, Omega, E))=&sigma_"MSD" sum_(l=0)^(l_max) b_l P_l (cos theta)\ + & sigma_"MSC" sum_(l=0, Delta l=2)^(l_max) b_l P_l (cos theta)
+  (pdv(sigma, Omega, E))= & sigma_"MSD" sum_(l=0)^(l_max) b_l P_l (cos theta) \
+                        + & sigma_"MSC" sum_(l=0, Delta l=2)^(l_max) b_l P_l (cos theta)
 $
 由于测量预平衡中子,所以本实验中认为$sigma_"MSC"=0$,有
 #pause

@@ -9,7 +9,13 @@ TYP_REFS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).ref)
 
 ROOT_DIR = $(shell pwd)
 
-.PHONY: site tex typ clean help remove print
+.PHONY: site tex typ clean help remove print union
+
+union: build/union.txt
+
+build/union.txt: site
+	@mkdir -p $(@D)
+	@$(ROOT_DIR)/union.pl build/
 
 build/%.ref: %/main.typ %/
 	@mkdir -p $(@D)
@@ -19,7 +25,7 @@ build/%.ref: %/main.tex %/
 	@mkdir -p $(@D)
 	@git log -1 --format="%ci %H" -- $* > $@
 
-build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note_zh.typ $(ROOT_DIR)/note_en.typ $(ROOT_DIR)/common.typ $(ROOT_DIR)/theorem_en.typ $(ROOT_DIR)/theorem_zh.typ $(ROOT_DIR)/physics.typ $(ROOT_DIR)/slide_zh.typ
+build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note-zh.typ $(ROOT_DIR)/note-en.typ $(ROOT_DIR)/common.typ $(ROOT_DIR)/theorem-en.typ $(ROOT_DIR)/theorem-zh.typ $(ROOT_DIR)/physics.typ $(ROOT_DIR)/slide-zh.typ
 	@mkdir -p $(@D)
 	typst compile --root $(ROOT_DIR)  $(<D)/main.typ $@
 
@@ -41,7 +47,7 @@ typ: $(TYP_BUILDS) $(TYP_REFS)
 
 build/index.html: typ build/assets/ generate.sh index-template.html
 	@mkdir -p $(@D)
-	cd $(@D) && $(ROOT_DIR)/generate.sh . $(ROOT_DIR)/index-template.html
+	@cd $(@D) && $(ROOT_DIR)/generate.sh . $(ROOT_DIR)/index-template.html
 
 print:
 	@for pdf in $(TYP_BUILDS); do \

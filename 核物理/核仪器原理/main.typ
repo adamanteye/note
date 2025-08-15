@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../note-zh.typ": *
 #show: conf.with(
   title: "核仪器原理笔记",
   author: "adamanteye",
@@ -8,10 +8,15 @@
 == 核仪器测量的主要物理量
 #figure(
   table(
-    columns: 4, table.hline(),
-    table.header([物理量], [国际标准单位], [常用单位], [换算]), table.hline(),
+    columns: 4,
+    table.hline(),
+    table.header([物理量], [国际标准单位], [常用单位], [换算]),
+    table.hline(),
     [照射量$X=dv(Q, m)$], [$unit("C/kg")$], [$unit("R")$], [$qty("1", "R")=qty("2.58e-4", "C/kg")$],
-    [辐射(吸收)剂量$D=dv(epsilon, m)$], [$unit("Gy")=unit("J/kg")$], [$unit("Rad")$], [$qty("1", "Rad")=qty("0.01", "Gy")$],
+    [辐射(吸收)剂量$D=dv(epsilon, m)$],
+    [$unit("Gy")=unit("J/kg")$],
+    [$unit("Rad")$],
+    [$qty("1", "Rad")=qty("0.01", "Gy")$],
   ),
 )
 == 常见核仪器

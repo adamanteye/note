@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../note-zh.typ": *
 #show: conf.with(
   title: "硬件知识库",
   author: "adamanteye",
@@ -20,7 +20,7 @@
   - UHS-III 624 MB/s
 === microSD
 microSD基于由闪迪制造的TransFlash卡格式所创立,是一种小型闪存卡,专为移动设备和嵌入式系统设计,广泛用于扩展存储或作为启动介质.
-/ 物理规格: 11mm × 15mm × 1mm
+/ 物理规格: 11mm x 15mm x 1mm
 = 接口
 == mSATA
 针对小型设备设计的SATA接口规范.

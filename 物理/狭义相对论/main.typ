@@ -1,4 +1,4 @@
-#import "../../note_en.typ": *
+#import "../../note-en.typ": *
 #show: conf.with(
   title: "Special Relativity",
   numbered-equation: true,
@@ -13,8 +13,8 @@
   / lightlike: $tensor(a, +mu)tensor(a, -mu)=0$
 ]
 #def("Lorentz Transform Matrix")[$
-    tensor(Lambda, +mu, -nu)=mat(gamma, -gamma beta, , ; -gamma beta, gamma, , ; , , 1, ; , , , 1)
-  $]
+  tensor(Lambda, +mu, -nu)=mat(gamma, -gamma beta, , ; -gamma beta, gamma, , ; , , 1, ; , , , 1)
+$]
 $ x_mu=tensor(g, -mu, -nu)x^nu $
 $ overline(x^mu)=tensor(Lambda, +mu, -nu)x^nu $
 #def("Proper Time")[$ dd(tau)=sqrt(1-u^2 / c^2)dd(t) $]

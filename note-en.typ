@@ -1,10 +1,9 @@
 #import "common.typ": *
-#import "theorem_zh.typ": *
+#import "theorem-en.typ": *
 #let conf(
   title: none,
   author: none,
   numbered-equation: false,
-  font: ("Libertinus Serif", "Source Han Serif SC"),
   mono-font: "LXGW Bright Code TC",
   doc,
 ) = {
@@ -20,10 +19,10 @@
   codly(number-format: none)
   set page("a4", numbering: "1", margin: (x: 1.2cm, y: 1.2cm))
   set text(
-    size: 11pt,
-    font: font,
-    lang: "zh",
-    region: "cn",
+    size: 12pt,
+    font: "Libertinus Serif",
+    lang: "en",
+    region: "us",
   )
   set quote(block: true)
   set par(leading: 1em)
@@ -39,16 +38,12 @@
   show figure.where(kind: table): set block(breakable: true)
   set enum(numbering: n => text(fill: red, numbering("1.", n)))
   set list(marker: n => text(fill: red, "•"))
-  show raw.where(block: false): it => text(
-    fill: maroon,
-    size: 1.2em,
-    it,
-  ) // 西文等宽字体对比中文容易看着太小
+  show raw.where(block: false): it => text(fill: maroon, it)
   show raw: set text(font: mono-font)
   set align(left)
   set table(stroke: none, align: left)
   if numbered-equation {
-    set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [式.])
+    set math.equation(numbering: "(1)", number-align: bottom + right, supplement: [Eq.])
     doc
   } else {
     doc

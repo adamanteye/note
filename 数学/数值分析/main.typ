@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../note-zh.typ": *
 #show: conf.with(
   title: "数值分析笔记",
   author: "adamanteye",
@@ -20,3 +20,5 @@ LU分解是高斯消元的矩阵形式.
 
 并不是所有的矩阵$A$都可以进行LU分解.
 = 插值
+
+https://stackoverflow.com/questions/17858104/what-is-the-relation-between-blas-lapack-and-atlas

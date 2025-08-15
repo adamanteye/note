@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../note-zh.typ": *
 #show: conf.with(
   title: "模数电路工具",
   author: "adamanteye",
@@ -17,7 +17,9 @@
 open /usr/share/doc/ltspice/index.htm
 ```
 一些其他资料:
-- #link("https://cde.nus.edu.sg/ece/wp-content/uploads/sites/3/2024/09/LTspiceManual.pdf")[LTSPICE MANUAL for Teaching Module EE4415]
+- #link(
+    "https://cde.nus.edu.sg/ece/wp-content/uploads/sites/3/2024/09/LTspiceManual.pdf",
+  )[LTSPICE MANUAL for Teaching Module EE4415]
 - #link("https://www.youtube.com/watch?v=JRcyHuyb1V0")[LTSpice Tutorial - EP1 Getting started - YouTube]
 == 原理图
 具有相同名称的端子具有相同的电位.

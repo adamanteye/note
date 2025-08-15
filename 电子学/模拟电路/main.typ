@@ -1,4 +1,4 @@
-#import "../../note_zh.typ": *
+#import "../../note-zh.typ": *
 #show: conf.with(
   title: "模拟电路笔记",
   author: "adamanteye",
@@ -9,7 +9,9 @@
 - 模拟电子技术基础(第六版),童诗白,华成英原著,华成英主编
 - _Microelectronic Circuits, Sedra, Smith, 7th edition_
 == 在线资源
-- #link("https://wiki.analog.com/university/courses/electronics/text/electronics-toc")[Electronics I and II: [Analog Devices Wiki]]
+- #link(
+    "https://wiki.analog.com/university/courses/electronics/text/electronics-toc",
+  )[Electronics I and II: [Analog Devices Wiki]]
 - 维基百科
 = 信号
 #thm("Norton")[

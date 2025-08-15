@@ -1,4 +1,4 @@
-#import "../../../note_zh.typ": *
+#import "../../../note-zh.typ": *
 #show: conf.with(
   title: "核工程原理笔记",
   author: "adamanteye",
@@ -44,7 +44,9 @@
   $ phi(va(r), v)=integral_(4pi)psi(va(r), v, va(Omega))dd(Omega) $
   若再对速率积分,得到与速率无关的三维物理空间上的中子注量率,有
   $
-    phi(va(r))&=integral_0^infinity phi(va(r), v)dd(v)\ &=integral_va(v) v n(va(r),va(v)) dd(v)\ &= n(va(r))overline(v)
+    phi(va(r)) & =integral_0^infinity phi(va(r), v)dd(v) \
+               & =integral_va(v) v n(va(r),va(v)) dd(v) \
+               & = n(va(r))overline(v)
   $
 
   $phi(va(r))$表示空间$va(r))$处中子数密度与中子平均速率之乘积,它是标量不是矢量.
@@ -64,7 +66,9 @@
 #def("净中子流密度")[
   净中子流密度是标量,定义为单位时间内穿过方向为$vu(n)$的单位面积的中子数.常用单位是$unit("cm^-2 s^-1")$.
   $
-    J( va(r) )&=integral_va(v) vu(n) dprod va(Omega)psi(va(r), va(v))\ &=vu(n) dprod integral_va(v) va(Omega)psi(va(r), va(v))\ &=vu(n) dprod va(J)( va(r) )
+    J( va(r) ) & =integral_va(v) vu(n) dprod va(Omega)psi(va(r), va(v)) \
+               & =vu(n) dprod integral_va(v) va(Omega)psi(va(r), va(v)) \
+               & =vu(n) dprod va(J)( va(r) )
   $
   常称为*中子流密度*.
 ]
@@ -75,7 +79,8 @@
 
 #figure(
   table(
-    columns: 3, stroke: none,
+    columns: 3,
+    stroke: none,
     table.hline(),
     table.header([慢化剂], [慢化能力$xi Sigma_S [unit("cm^-1")]$], [慢化比$xi Sigma_S\/Sigma_a$]),
     table.hline(),
@@ -215,7 +220,9 @@ $ -laplacian phi(va(r))+1 / L^2 phi(va(r))=1 / D s'''(va(r)) $
 #def("裸堆")[无反射层的反应堆.]
 #def("裸堆扩散方程")[
   $
-    pdv(n(va(r),t), t)=& 1 / v pdv(phi(va(r), t), t) \ =&s'''(va(r),t)-Sigma_a phi(va(r), t)-div va(J)( va(r),t ) \ =&v Sigma_f phi-Sigma_a phi+D grad^2 phi
+    pdv(n(va(r),t), t)= & 1 / v pdv(phi(va(r), t), t) \
+                      = & s'''(va(r),t)-Sigma_a phi(va(r), t)-div va(J)( va(r),t ) \
+                      = & v Sigma_f phi-Sigma_a phi+D grad^2 phi
   $
 ]
 对于裸堆扩散方程的求解,分离变量$phi(va(r), t)=phi(va(r))T(t)$,有
