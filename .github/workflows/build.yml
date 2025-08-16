@@ -23,6 +23,7 @@ jobs:
           make remove
           make font
           make remove
+          mv wrangler.toml build/
       - name: Minify
         run: |
           minify -i build
@@ -45,6 +46,9 @@ jobs:
         with:
           name: build-output
           path: build/
+      - name: Move wrangler.toml
+        run: |
+          mv build/wrangler.toml .
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:

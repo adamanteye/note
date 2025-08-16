@@ -9,7 +9,7 @@ TYP_REFS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).ref)
 
 ROOT_DIR = $(shell pwd)
 
-.PHONY: site tex typ clean help remove print union font
+.PHONY: site tex typ clean help remove print font
 
 font: build/maple.woff2
 
