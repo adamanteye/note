@@ -1,87 +1,112 @@
 .DELETE_ON_ERROR:
+.ONESHELL:
 
-TEX_DIRS = $(shell find . -type f -name "main.tex" -exec dirname {} \;)
-TYP_DIRS = $(shell find . -type f -name "main.typ" -exec dirname {} \;)
-TEX_BUILDS = $(foreach dir,$(TEX_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
-TEX_REFS = $(foreach dir,$(TEX_DIRS),build/$(patsubst ./%,%,$(dir)).ref)
-TYP_BUILDS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).pdf)
-TYP_REFS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).ref)
+BUILD_DIR := build
+ASSETS_DIR := assets
 
-ROOT_DIR = $(shell pwd)
+TEX_DIRS := $(shell find . -type f -name "main.tex" -exec dirname {} \; | sort)
+TYP_DIRS := $(shell find . -type f -name "main.typ" -exec dirname {} \; | sort)
 
-.PHONY: site tex typ clean help remove print font
+TEX_BUILDS := $(foreach dir,$(TEX_DIRS),$(BUILD_DIR)/$(patsubst ./%,%,$(dir)).pdf)
+TEX_REFS := $(foreach dir,$(TEX_DIRS),$(BUILD_DIR)/$(patsubst ./%,%,$(dir)).ref)
+TYP_BUILDS := $(foreach dir,$(TYP_DIRS),$(BUILD_DIR)/$(patsubst ./%,%,$(dir)).pdf)
+TYP_REFS := $(foreach dir,$(TYP_DIRS),$(BUILD_DIR)/$(patsubst ./%,%,$(dir)).ref)
 
-font: build/maple.woff2
+TYPST_DEPS := note-zh.typ note-en.typ common.typ theorem-en.typ theorem-zh.typ physics.typ slide-zh.typ
 
-build/maple.woff2: site
-	@mkdir -p $(@D)
-	@$(ROOT_DIR)/union.sh "$(@D)"
+.DEFAULT_GOAL := site
 
-build/%.ref: %/main.typ %/
-	@mkdir -p $(@D)
-	@git log -1 --format="%ci %H" -- $* > $@
+.PHONY: all site tex typ font clean help remove print
 
-build/%.ref: %/main.tex %/
-	@mkdir -p $(@D)
-	@git log -1 --format="%ci %H" -- $* > $@
+all: site
 
-build/%.pdf: %/main.typ %/ $(ROOT_DIR)/note-zh.typ $(ROOT_DIR)/note-en.typ $(ROOT_DIR)/common.typ $(ROOT_DIR)/theorem-en.typ $(ROOT_DIR)/theorem-zh.typ $(ROOT_DIR)/physics.typ $(ROOT_DIR)/slide-zh.typ
-	@mkdir -p $(@D)
-	typst compile --root $(ROOT_DIR)  $(<D)/main.typ $@
+site: $(BUILD_DIR)/index.html
 
-build/%.pdf: %/main.tex %/
-	@mkdir -p $(@D)
-	latexmk -xelatex -cd $< > /dev/null 2>&1
-	@cp $(<D)/main.pdf $@
-
-site: build/index.html
-
-build/assets/: assets/
-	@rm -rf $(@D)
-	@mkdir -p $(@D)
-	cp -r $(<D)/* $(@D)
+font: $(BUILD_DIR)/maple.woff2
 
 tex: $(TEX_BUILDS) $(TEX_REFS)
 
 typ: $(TYP_BUILDS) $(TYP_REFS)
 
-build/index.html: typ build/assets/ generate.sh index-template.html
+$(BUILD_DIR)/maple.woff2: site | $(BUILD_DIR)
+	@echo "Generating optimized font..."
+	@./union.sh "$(BUILD_DIR)"
+
+$(BUILD_DIR)/%.ref: %/main.typ | $(BUILD_DIR)
 	@mkdir -p $(@D)
-	@cd $(@D) && $(ROOT_DIR)/generate.sh . $(ROOT_DIR)/index-template.html
+	@git log -1 --format="%ci %H" -- $* > $@
+
+$(BUILD_DIR)/%.ref: %/main.tex | $(BUILD_DIR)
+	@mkdir -p $(@D)
+	@git log -1 --format="%ci %H" -- $* > $@
+
+$(BUILD_DIR)/%.pdf: %/main.typ $(TYPST_DEPS) | $(BUILD_DIR)
+	@echo "Compiling Typst: $<"
+	@mkdir -p $(@D)
+	@typst compile --root . $< $@
+
+$(BUILD_DIR)/%.pdf: %/main.tex | $(BUILD_DIR)
+	@echo "Compiling LaTeX: $<"
+	@mkdir -p $(@D)
+	@latexmk -xelatex -cd $< > /dev/null 2>&1
+	@cp $(<D)/main.pdf $@
+
+$(BUILD_DIR)/index.html: $(TYP_BUILDS) $(TYP_REFS) $(BUILD_DIR)/assets/ generate.sh index-template.html | $(BUILD_DIR)
+	@echo "Generating site index..."
+	@cd $(BUILD_DIR) && ../generate.sh . ../index-template.html
+
+$(BUILD_DIR)/assets/: $(ASSETS_DIR)/ | $(BUILD_DIR)
+	@echo "Copying assets..."
+	@rm -rf $@
+	@mkdir -p $(@D)
+	@cp -r $<* $@
+
+$(BUILD_DIR):
+	@mkdir -p $@
 
 print:
-	@for pdf in $(TYP_BUILDS); do \
-		echo $$pdf; \
-	done
-	@for pdf in $(TEX_BUILDS); do \
-		echo $$pdf; \
-	done
+	@echo "Typst PDFs:"
+	@for pdf in $(TYP_BUILDS); do echo "  $$pdf"; done
+	@echo "LaTeX PDFs:"
+	@for pdf in $(TEX_BUILDS); do echo "  $$pdf"; done
 
 remove:
-	-@find build -depth -type f -name "*.ref" | while read -r ref; do \
-		rm -f "$$ref"; \
-	done
-	-@find build -type f -name "*.pdf" | while read -r pdf; do \
+	@echo "Cleaning up dangling files..."
+	@# Remove orphaned ref files
+	@find $(BUILD_DIR) -depth -type f -name "*.ref" -delete 2>/dev/null || true
+	@# Remove orphaned PDF files
+	@find $(BUILD_DIR) -type f -name "*.pdf" | while read -r pdf; do \
 		if ! echo "$(TEX_BUILDS) $(TYP_BUILDS)" | grep -q "$$pdf"; then \
+			echo "Removing orphaned: $$pdf"; \
 			rm -f "$$pdf"; \
-		fi \
+		fi; \
 	done
-	-@find build/ -depth -type d | while read -r dir; do \
-		if [ -z "$$(find "$$dir" -mindepth 1 ! -name 'index.html' ! -name '*.ref' 2>/dev/null)" ]; then \
-			rm -rf "$$dir"; \
-		fi \
-	done
-	@rm -f build/union.txt
+	@# Remove empty directories
+	@find $(BUILD_DIR) -depth -type d -empty -delete 2>/dev/null || true
+	@# Remove temporary files
+	@rm -f $(BUILD_DIR)/union.txt
 
-clean: $(TEX_DIRS)
-	@for tex in $(TEX_DIRS); do \
-		latexmk -C -cd "$$tex/main.tex" 1>/dev/null; \
+clean:
+	@echo "Cleaning LaTeX auxiliary files..."
+	@for tex_dir in $(TEX_DIRS); do \
+		if [ -f "$$tex_dir/main.tex" ]; then \
+			latexmk -C -cd "$$tex_dir/main.tex" 2>/dev/null || true; \
+		fi; \
 	done
+
+distclean: clean
+	@echo "Removing entire build directory..."
+	@rm -rf $(BUILD_DIR)
 
 help:
 	@echo "Available targets:"
-	@echo "  site   : Compile all PDFs that are out of date. This will check all source directories for '.tex' and '.typ' files and compile them into PDFs in the 'build/' directory. After that, a static site will be generated"
-	@echo "  clean  : Remove all build files and auxiliary files generated by LaTeX. This will not remove the PDF files in the build directory."
-	@echo "  help   : Show this help message, providing a brief description of all the makefile targets."
-	@echo "  print  : Print all PDF files that will be built. This will not actually build the PDFs, but will show which ones would be built if the 'site' target were run."
-	@echo "  remove : Remove all dangling PDF files from the 'build/' directory that no longer have a corresponding '.tex' or '.typ' file in the source tree as well as empty directories."
+	@echo "  all      : Build everything (same as 'site')"
+	@echo "  site     : Build complete site with PDFs and index"
+	@echo "  font     : Generate optimized font subset"
+	@echo "  tex      : Build only LaTeX PDFs"
+	@echo "  typ      : Build only Typst PDFs"
+	@echo "  print    : List all PDFs that would be built"
+	@echo "  remove   : Remove orphaned files and empty directories"
+	@echo "  clean    : Remove LaTeX auxiliary files"
+	@echo "  distclean: Remove entire build directory"
+	@echo "  help     : Show this help message"

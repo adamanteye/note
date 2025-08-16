@@ -27,7 +27,7 @@ while IFS= read -r -d '' file; do
 done < <(find "$dir" -type f -print0)
 unique_chars=$(extract_unique_chars "$combined")
 mkdir -p "$out_dir"
-allsorts subset -t "$unique_chars" /usr/share/fonts/MapleMono-NL-CN-Regular.ttf "$out_dir"/out.ttf > /dev/null
+allsorts subset -t "$unique_chars" /usr/share/fonts/MapleMono-NF-CN-Regular.ttf "$out_dir"/out.ttf > /dev/null
 woff2_compress "$out_dir"/out.ttf > /dev/null 2>&1
 mv "$out_dir"/out.woff2 "$out_dir"/maple.woff2
 rm -f "$out_dir"/out.ttf
