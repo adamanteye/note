@@ -9,10 +9,9 @@ on:
       - 'LICENSE'
       - '.gitignore'
 jobs:
-  build-and-deploy:
-    name: Build and deploy
+  build:
+    name: Build font and generate build directory
     runs-on: ubuntu-latest
-    environment: production
     container: ghcr.io/adamanteye/typst:latest
     steps:
       - uses: actions/checkout@v4
@@ -22,11 +21,30 @@ jobs:
         run: |
           git config --global safe.directory "*"
           make remove
-          make union
+          make font
           make remove
       - name: Minify
         run: |
           minify -i build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: build/
+          retention-days: 1
+
+  deploy:
+    name: Deploy to Cloudflare Pages
+    needs: build
+    runs-on: ubuntu-latest
+    container: node:alpine
+    environment: production
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v5
+        with:
+          name: build-output
+          path: build/
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:

@@ -13,14 +13,9 @@ ROOT_DIR = $(shell pwd)
 
 font: build/maple.woff2
 
-union: build/union.txt
-
-build/maple.woff2: union
-	@$(ROOT_DIR)/compress.sh
-
-build/union.txt: site
+build/maple.woff2: site
 	@mkdir -p $(@D)
-	@$(ROOT_DIR)/union.pl build/
+	@$(ROOT_DIR)/union.sh "$(@D)"
 
 build/%.ref: %/main.typ %/
 	@mkdir -p $(@D)
@@ -76,6 +71,7 @@ remove:
 			rm -rf "$$dir"; \
 		fi \
 	done
+	@rm -f build/union.txt
 
 clean: $(TEX_DIRS)
 	@for tex in $(TEX_DIRS); do \
