@@ -9,9 +9,14 @@ TYP_REFS = $(foreach dir,$(TYP_DIRS),build/$(patsubst ./%,%,$(dir)).ref)
 
 ROOT_DIR = $(shell pwd)
 
-.PHONY: site tex typ clean help remove print union
+.PHONY: site tex typ clean help remove print union font
+
+font: build/maple.woff2
 
 union: build/union.txt
+
+build/maple.woff2: union
+	@$(ROOT_DIR)/compress.sh
 
 build/union.txt: site
 	@mkdir -p $(@D)

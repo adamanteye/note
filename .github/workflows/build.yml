@@ -1,5 +1,4 @@
 name: Deploy To Pages
-
 on:
   workflow_dispatch:
   push:
@@ -9,7 +8,6 @@ on:
       - 'README.md'
       - 'LICENSE'
       - '.gitignore'
-
 jobs:
   build-and-deploy:
     name: Build and deploy
@@ -24,7 +22,7 @@ jobs:
         run: |
           git config --global safe.directory "*"
           make remove
-          make site
+          make union
           make remove
       - name: Minify
         run: |
